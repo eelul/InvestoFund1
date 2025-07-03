@@ -49,6 +49,52 @@ function InvestorForm() {
     "Review and Submit"
   ];
 
+  const validateStep = (step: number) => {
+    const values = form.getValues();
+    
+    switch (step) {
+      case 1:
+        return values.investmentAmount >= 5000 && values.investmentType !== undefined;
+      case 2:
+        return values.firstName && values.lastName && values.email && values.phone;
+      case 3:
+        return values.accreditedStatus && values.documentsAgreed;
+      case 4:
+        return true;
+      default:
+        return false;
+    }
+  };
+
+  const goToNextStep = () => {
+    if (validateStep(currentStep)) {
+      setStepValidation(prev => ({ ...prev, [currentStep]: true }));
+      if (currentStep < totalSteps) {
+        setCurrentStep(currentStep + 1);
+      }
+    } else {
+      toast({
+        title: "Please complete all required fields",
+        description: "Fill in all the information before proceeding.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const goToPreviousStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const goToStep = (step: number) => {
+    // Only allow going to completed steps or the next step
+    const validSteps = [1, 2, 3, 4];
+    if (validSteps.includes(step) && (step <= currentStep || stepValidation[step as 1 | 2 | 3 | 4])) {
+      setCurrentStep(step);
+    }
+  };
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -85,11 +131,6 @@ function InvestorForm() {
   });
 
   const onSubmit = async (data: FormData) => {
-    if (currentStep < 5) {
-      setCurrentStep(currentStep + 1);
-      return;
-    }
-
     try {
       // Step 1: Create or get user
       const userData = {
@@ -139,8 +180,8 @@ function InvestorForm() {
         description: "Your investment application has been submitted. Payment instructions have been sent to your email.",
       });
 
-      // Move to step 6 to show payment instructions
-      setCurrentStep(6);
+      // Move to step 5 to show payment instructions
+      setCurrentStep(5);
 
     } catch (error: any) {
       toast({
@@ -157,12 +198,10 @@ function InvestorForm() {
   };
 
   const steps = [
-    { number: 1, title: "Investment Amount", completed: currentStep > 1 },
-    { number: 2, title: "Accredited Status", completed: currentStep > 2 },
-    { number: 3, title: "Investment Preferences", completed: currentStep > 3 },
-    { number: 4, title: "Personal Information", completed: currentStep > 4 },
-    { number: 5, title: "Review & Submit", completed: currentStep > 5 },
-    { number: 6, title: "Payment Instructions", completed: false },
+    { number: 1, title: "Investment Amount", completed: stepValidation[1] },
+    { number: 2, title: "Personal Information", completed: stepValidation[2] },
+    { number: 3, title: "Investment Verification", completed: stepValidation[3] },
+    { number: 4, title: "Review & Submit", completed: stepValidation[4] },
   ];
 
   const canNavigateToStep = (stepNumber: number) => {
@@ -180,7 +219,7 @@ function InvestorForm() {
               <div 
                 key={step.number}
                 className={`flex flex-col items-center ${canNavigateToStep(step.number) ? 'cursor-pointer' : 'cursor-default'}`}
-                onClick={() => canNavigateToStep(step.number) && setCurrentStep(step.number)}
+                onClick={() => canNavigateToStep(step.number) && goToStep(step.number)}
               >
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm mb-2 transition-all ${
                   currentStep === step.number 
@@ -215,115 +254,72 @@ function InvestorForm() {
             <CardHeader>
               <CardTitle>Step 1: Choose Your Investment Amount</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {INVESTMENT_TIERS.map((tier) => (
-                  <div
-                    key={tier.value}
-                    className={`investment-option p-4 border-2 rounded-lg text-center cursor-pointer transition-all ${
-                      selectedTier === tier.value
-                        ? "border-brand-blue bg-brand-blue/5 selected"
-                        : "border-gray-200 hover:border-brand-blue"
-                    }`}
-                    onClick={() => {
-                      setSelectedTier(tier.value);
-                      form.setValue("investmentAmount", tier.min);
-                    }}
-                  >
-                    <div className="text-2xl font-bold text-brand-blue">{tier.label}</div>
-                    <div className="text-sm text-brand-gray">
-                      {tier.value === "5000-25000" && "Starter"}
-                      {tier.value === "25000-100000" && "Growth"}
-                      {tier.value === "100000-500000" && "Premium"}
-                      {tier.value === "500000+" && "Enterprise"}
-                    </div>
-                  </div>
-                ))}
+            <CardContent className="space-y-6">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-brand-dark">Investment Type</h3>
+                <FormField
+                  control={form.control}
+                  name="investmentType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <RadioGroup
+                        value={field.value}
+                        onValueChange={handleInvestmentTypeChange}
+                        className="space-y-4"
+                      >
+                        <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border-2 border-green-200">
+                          <div className="flex items-center space-x-3">
+                            <RadioGroupItem value="single" id="single" />
+                            <div>
+                              <FormLabel htmlFor="single" className="text-brand-dark font-medium">
+                                Option 1: Direct Deal Participation
+                              </FormLabel>
+                              <p className="text-sm text-brand-gray">Minimum: $5,000</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg border-2 border-yellow-200">
+                          <div className="flex items-center space-x-3">
+                            <RadioGroupItem value="portfolio" id="portfolio" />
+                            <div>
+                              <FormLabel htmlFor="portfolio" className="text-brand-dark font-medium">
+                                Option 2: Portfolio Blend
+                              </FormLabel>
+                              <p className="text-sm text-brand-gray">Minimum: $25,000</p>
+                            </div>
+                          </div>
+                        </div>
+                      </RadioGroup>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
-            </CardContent>
-          </Card>
-        )}
 
-        {/* Step 2: Accredited Investor Status */}
-        {currentStep === 2 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Step 2: Accredited Investor Status</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <FormField
-                control={form.control}
-                name="accreditedStatus"
-                render={({ field }) => (
-                  <FormItem className="space-y-4">
-                    <div className="bg-white rounded-lg p-6">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-brand-dark">Investment Amount</h3>
+                <FormField
+                  control={form.control}
+                  name="investmentAmount"
+                  render={({ field }) => (
+                    <FormItem>
                       <FormControl>
-                        <div className="flex items-center space-x-3">
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                          />
-                          <FormLabel className="text-brand-gray">
-                            I confirm my accredited investor status
-                          </FormLabel>
-                        </div>
+                        <Input
+                          type="number"
+                          placeholder="Enter amount"
+                          {...field}
+                          onChange={(e) => field.onChange(Number(e.target.value))}
+                          className="text-lg"
+                        />
                       </FormControl>
-                      <div className="text-sm text-brand-gray mt-4">
-                        <p>An accredited investor is someone with:</p>
-                        <ul className="list-disc list-inside mt-2 space-y-1">
-                          <li>Annual income exceeding $200K ($300K with spouse)</li>
-                          <li>Net worth exceeding $1 million</li>
-                          <li>Certain professional certifications (Series 7, 65, 82)</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Step 3: Investment Preferences */}
-        {currentStep === 3 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Step 3: Investment Preferences</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <FormField
-                control={form.control}
-                name="investmentType"
-                render={({ field }) => (
-                  <FormItem>
-                    <RadioGroup
-                      value={field.value}
-                      onValueChange={handleInvestmentTypeChange}
-                      className="space-y-4"
-                    >
-                      <div className="flex items-center justify-between p-4 bg-white rounded-lg">
-                        <div>
-                          <div className="font-medium text-brand-dark">Single Deal Focus</div>
-                          <div className="text-sm text-brand-gray">Deploy capital into one high-quality MCA</div>
-                        </div>
-                        <RadioGroupItem value="single" />
-                      </div>
-                      <div className="flex items-center justify-between p-4 bg-white rounded-lg">
-                        <div>
-                          <div className="font-medium text-brand-dark">Portfolio Diversification</div>
-                          <div className="text-sm text-brand-gray">Spread risk across multiple MCA deals</div>
-                        </div>
-                        <RadioGroupItem value="portfolio" />
-                      </div>
-                    </RadioGroup>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
               {showPortfolioCalculator && (
-                <div className="mt-8">
+                <div className="mt-6">
                   <PortfolioBlendCalculator />
                 </div>
               )}
@@ -331,14 +327,14 @@ function InvestorForm() {
           </Card>
         )}
 
-        {/* Step 4: Contact Information */}
-        {currentStep === 4 && (
+        {/* Step 2: Personal Information */}
+        {currentStep === 2 && (
           <Card>
             <CardHeader>
-              <CardTitle>Step 4: Contact Information</CardTitle>
+              <CardTitle>Step 2: Personal Information</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-4">
+            <CardContent className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="firstName"
@@ -346,7 +342,7 @@ function InvestorForm() {
                     <FormItem>
                       <FormLabel>First Name</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input placeholder="Enter first name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -359,20 +355,23 @@ function InvestorForm() {
                     <FormItem>
                       <FormLabel>Last Name</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input placeholder="Enter last name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel>Email Address</FormLabel>
                       <FormControl>
-                        <Input type="email" {...field} />
+                        <Input type="email" placeholder="Enter email address" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -383,9 +382,9 @@ function InvestorForm() {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Phone</FormLabel>
+                      <FormLabel>Phone Number</FormLabel>
                       <FormControl>
-                        <Input type="tel" {...field} />
+                        <Input type="tel" placeholder="Enter phone number" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -396,162 +395,198 @@ function InvestorForm() {
           </Card>
         )}
 
-        {/* Step 5: Final Review */}
-        {currentStep === 5 && (
+        {/* Step 3: Investment Verification */}
+        {currentStep === 3 && (
           <Card>
             <CardHeader>
-              <CardTitle>Step 5: Final Review & Submit</CardTitle>
+              <CardTitle>Step 3: Investment Verification</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
-                <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-                  <div className="flex items-center mb-4">
-                    <div className="w-6 h-6 bg-brand-blue rounded-full flex items-center justify-center mr-3">
-                      <span className="text-white text-sm">✓</span>
-                    </div>
-                    <span className="text-brand-gray">Ready to submit your investment application</span>
-                  </div>
-                  <div className="text-sm text-brand-gray">
-                    <p className="mb-3">Upon submission, you will receive payment instructions via email for:</p>
-                    <div className="bg-white p-4 rounded border">
-                      <p className="font-medium text-brand-dark text-lg">
-                        {formatCurrency(form.watch("investmentAmount"))} Investment
-                      </p>
-                      <p className="text-sm text-brand-gray mt-1">
-                        Type: {form.watch("investmentType") === "single" ? "Single Deal" : "Portfolio Blend"}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <FormField
-                  control={form.control}
-                  name="documentsAgreed"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                        <h4 className="font-medium text-brand-dark mb-3">Required Documentation</h4>
-                        <div className="space-y-3">
-                          <FormControl>
-                            <div className="flex items-center space-x-3">
-                              <Checkbox
-                                checked={field.value}
-                                onCheckedChange={field.onChange}
-                              />
-                              <FormLabel className="text-brand-gray">
-                                I have read and agree to all required documents
-                              </FormLabel>
+            <CardContent className="space-y-6">
+              <FormField
+                control={form.control}
+                name="accreditedStatus"
+                render={({ field }) => (
+                  <FormItem className="space-y-4">
+                    <div className="bg-blue-50 rounded-lg p-6">
+                      <h3 className="text-lg font-semibold text-brand-dark mb-4">Accredited Investor Status</h3>
+                      <FormControl>
+                        <div className="flex items-start space-x-3">
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            className="mt-1"
+                          />
+                          <div>
+                            <FormLabel className="text-brand-dark font-medium">
+                              I confirm my accredited investor status
+                            </FormLabel>
+                            <div className="text-sm text-brand-gray mt-2">
+                              <p className="mb-2">An accredited investor is someone with:</p>
+                              <ul className="list-disc list-inside space-y-1">
+                                <li>Annual income exceeding $200K ($300K with spouse)</li>
+                                <li>Net worth exceeding $1 million</li>
+                                <li>Certain professional certifications (Series 7, 65, 82)</li>
+                              </ul>
                             </div>
-                          </FormControl>
-                          <div className="text-sm text-brand-gray ml-6">
-                            <p>📄 Documents will be sent to your email for review and digital signature:</p>
-                            <ul className="list-disc list-inside mt-2 space-y-1">
-                              <li>Profit Sharing Agreement (PSA)</li>
-                              <li>Risk Disclosure Summary</li>
-                              <li>Investor Welcome Packet</li>
-                              <li>Terms of Service</li>
-                            </ul>
                           </div>
                         </div>
-                      </div>
+                      </FormControl>
                       <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+                    </div>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="documentsAgreed"
+                render={({ field }) => (
+                  <FormItem className="space-y-4">
+                    <div className="bg-gray-50 rounded-lg p-6">
+                      <h3 className="text-lg font-semibold text-brand-dark mb-4">Document Agreement</h3>
+                      <FormControl>
+                        <div className="flex items-start space-x-3">
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                            className="mt-1"
+                          />
+                          <div>
+                            <FormLabel className="text-brand-dark font-medium">
+                              I agree to the terms and have reviewed all documents
+                            </FormLabel>
+                            <div className="text-sm text-brand-gray mt-2">
+                              <p>By checking this box, you acknowledge that you have received and reviewed:</p>
+                              <ul className="list-disc list-inside mt-1 space-y-1">
+                                <li>Investment agreement and profit-sharing terms</li>
+                                <li>Risk disclosure statements</li>
+                                <li>Regulatory compliance information</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </div>
+                  </FormItem>
+                )}
+              />
             </CardContent>
           </Card>
         )}
 
-        {/* Step 6: Payment Instructions */}
-        {currentStep === 6 && paymentInstructions && (
+        {/* Step 4: Review & Submit */}
+        {currentStep === 4 && (
           <Card>
             <CardHeader>
-              <CardTitle>Payment Instructions</CardTitle>
+              <CardTitle>Step 4: Review & Submit</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
-                <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
-                      <span className="text-white text-lg">✓</span>
+            <CardContent className="space-y-6">
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-brand-dark mb-4">Review Your Application</h3>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-medium text-brand-dark mb-2">Personal Information</h4>
+                    <div className="text-sm text-brand-gray space-y-1">
+                      <p>{form.watch("firstName")} {form.watch("lastName")}</p>
+                      <p>{form.watch("email")}</p>
+                      <p>{form.watch("phone")}</p>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-green-800">Application Submitted Successfully!</h3>
-                      <p className="text-green-600 text-sm">Reference: {paymentInstructions.reference}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-brand-dark mb-2">Investment Details</h4>
+                    <div className="text-sm text-brand-gray space-y-1">
+                      <p>Type: {form.watch("investmentType") === "single" ? "Direct Deal Participation" : "Portfolio Blend"}</p>
+                      <p>Amount: {formatCurrency(form.watch("investmentAmount"))}</p>
+                      <p>Accredited: {form.watch("accreditedStatus") ? "Yes" : "No"}</p>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <div className="space-y-4">
-                  <div className="border rounded-lg p-4">
-                    <h4 className="font-medium text-brand-dark mb-2">Investment Amount</h4>
-                    <p className="text-2xl font-bold text-brand-blue">{paymentInstructions.amount}</p>
-                  </div>
-
-                  <div className="border rounded-lg p-4">
-                    <h4 className="font-medium text-brand-dark mb-3">Wire Transfer Instructions</h4>
-                    <div className="space-y-2 text-sm text-brand-gray">
-                      {paymentInstructions.instructions.map((instruction: string, index: number) => (
-                        <p key={index}>• {instruction}</p>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                    <h4 className="font-medium text-brand-dark mb-2">Important</h4>
-                    <p className="text-sm text-brand-gray">
-                      Payment instructions have been sent to your email. Please reference number{" "}
-                      <span className="font-mono bg-white px-2 py-1 rounded border">
-                        {paymentInstructions.reference}
-                      </span>{" "}
-                      when making your wire transfer.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex justify-center">
-                  <Button
-                    type="button"
-                    onClick={() => {
-                      form.reset();
-                      setCurrentStep(1);
-                      setPaymentInstructions(null);
-                    }}
-                    className="bg-brand-blue hover:bg-brand-blue-light text-white"
-                  >
-                    Start New Application
-                  </Button>
+              <div className="bg-blue-50 rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-brand-dark mb-4">Next Steps</h3>
+                <div className="text-sm text-brand-gray space-y-2">
+                  <p>1. Your application will be reviewed within 24 hours</p>
+                  <p>2. You'll receive wire transfer instructions via email</p>
+                  <p>3. Once funding is received, your investment will be deployed</p>
+                  <p>4. You'll receive regular updates on deal performance</p>
                 </div>
               </div>
             </CardContent>
           </Card>
         )}
 
-        {/* Navigation */}
-        {currentStep < 6 && (
-          <div className="flex justify-between">
-            {currentStep > 1 && (
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setCurrentStep(currentStep - 1)}
-              >
-                Previous
-              </Button>
-            )}
+        {/* Navigation Buttons */}
+        <div className="flex justify-between items-center mt-8">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={goToPreviousStep}
+            disabled={currentStep === 1}
+            className="flex items-center space-x-2"
+          >
+            <span>← Previous</span>
+          </Button>
+
+          <div className="text-sm text-brand-gray">
+            Step {currentStep} of {totalSteps}
+          </div>
+
+          {currentStep < totalSteps ? (
+            <Button
+              type="button"
+              onClick={goToNextStep}
+              className="flex items-center space-x-2"
+            >
+              <span>Next →</span>
+            </Button>
+          ) : (
             <Button
               type="submit"
-              className="bg-brand-blue hover:bg-brand-blue-light text-white"
-              disabled={
-                createUserMutation.isPending ||
-                createApplicationMutation.isPending ||
-                requestPaymentMutation.isPending
-              }
+              disabled={createUserMutation.isPending || createApplicationMutation.isPending || requestPaymentMutation.isPending}
+              className="flex items-center space-x-2"
             >
-              {currentStep === 5 ? "Submit Investment Application" : "Next"}
+              <span>Submit Application</span>
             </Button>
-          </div>
+          )}
+        </div>
+
+        {/* Payment Instructions Display */}
+        {currentStep === 5 && paymentInstructions && (
+          <Card className="mt-8">
+            <CardHeader>
+              <CardTitle className="text-green-600">Application Submitted Successfully!</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="bg-green-50 rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-brand-dark mb-4">Wire Transfer Instructions</h3>
+                <div className="grid md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <strong>Bank Name:</strong> {paymentInstructions.bankName || "Wells Fargo Bank"}
+                  </div>
+                  <div>
+                    <strong>Routing Number:</strong> {paymentInstructions.routingNumber || "121000248"}
+                  </div>
+                  <div>
+                    <strong>Account Number:</strong> {paymentInstructions.accountNumber || "4532********1234"}
+                  </div>
+                  <div>
+                    <strong>Reference:</strong> {paymentInstructions.reference || `INV-${Date.now()}`}
+                  </div>
+                </div>
+                <div className="mt-4 p-4 bg-white rounded border-l-4 border-green-500">
+                  <strong>Amount to Transfer:</strong> {formatCurrency(form.watch("investmentAmount"))}
+                </div>
+              </div>
+              
+              <div className="text-sm text-brand-gray">
+                <p>Important: Please include the reference number with your wire transfer. Instructions have also been sent to your email address.</p>
+              </div>
+            </CardContent>
+          </Card>
         )}
       </form>
     </Form>

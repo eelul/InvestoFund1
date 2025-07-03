@@ -236,9 +236,50 @@ export default function Investors() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-8">
               Start Your Investment Journey
             </h2>
+            <p className="text-center text-brand-gray mb-12">
+              Choose your investment approach and begin the onboarding process
+            </p>
+            
+            {/* Quick Option Selection */}
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 hover:shadow-lg transition-shadow cursor-pointer">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold">1</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-brand-dark mb-2">
+                    Direct Deal Participation
+                  </h3>
+                  <p className="text-brand-gray text-sm mb-4">
+                    Invest in a single, fully-underwritten MCA deal
+                  </p>
+                  <div className="text-green-700 font-medium">
+                    Minimum: $5,000
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-200 hover:shadow-lg transition-shadow cursor-pointer">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold">2</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-brand-dark mb-2">
+                    Portfolio Blend
+                  </h3>
+                  <p className="text-brand-gray text-sm mb-4">
+                    Diversify across multiple MCA deals
+                  </p>
+                  <div className="text-yellow-700 font-medium">
+                    Minimum: $25,000
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
             <InvestorOnboardingForm />
           </div>
         </div>
