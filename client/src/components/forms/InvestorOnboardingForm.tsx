@@ -33,7 +33,21 @@ function InvestorForm() {
   const [selectedTier, setSelectedTier] = useState<string>("");
   const [showPortfolioCalculator, setShowPortfolioCalculator] = useState(false);
   const [paymentInstructions, setPaymentInstructions] = useState<any>(null);
+  const [stepValidation, setStepValidation] = useState({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+  });
   const { toast } = useToast();
+
+  const totalSteps = 4;
+  const stepTitles = [
+    "Choose Your Investment Amount",
+    "Personal Information",
+    "Investment Verification",
+    "Review and Submit"
+  ];
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
