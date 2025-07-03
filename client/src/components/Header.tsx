@@ -1,8 +1,9 @@
 import { Link, useLocation } from "wouter";
-import { CheckCircle, Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
+import logoPath from "@assets/IF Logo 1.1_1751571539944.png";
 
 export default function Header() {
   const [location] = useLocation();
@@ -19,15 +20,16 @@ export default function Header() {
   const closeSheet = () => setIsOpen(false);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+    <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-brand-border">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 brand-gradient rounded-lg flex items-center justify-center">
-              <CheckCircle className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold text-brand-dark">InvestoFund</span>
+          <Link href="/" className="flex items-center">
+            <img 
+              src={logoPath} 
+              alt="InvestoFund" 
+              className="h-12 w-auto"
+            />
           </Link>
           
           {/* Desktop Navigation */}
@@ -50,7 +52,7 @@ export default function Header() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <Link href="/investors">
-              <Button className="bg-brand-blue hover:bg-blue-600">
+              <Button className="bg-brand-blue hover:bg-brand-blue-light text-white">
                 Get Started
               </Button>
             </Link>
@@ -81,7 +83,7 @@ export default function Header() {
                 ))}
                 <div className="pt-4 border-t">
                   <Link href="/investors" onClick={closeSheet}>
-                    <Button className="w-full bg-brand-blue hover:bg-blue-600">
+                    <Button className="w-full bg-brand-blue hover:bg-brand-blue-light text-white">
                       Get Started
                     </Button>
                   </Link>

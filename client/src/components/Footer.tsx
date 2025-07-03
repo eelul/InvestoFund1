@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { CheckCircle, Linkedin, Twitter, Facebook } from "lucide-react";
+import { Linkedin, Twitter, Facebook } from "lucide-react";
+import logoPath from "@assets/IF Logo 1.1_1751571539944.png";
 
 export default function Footer() {
   return (
@@ -8,11 +9,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 brand-gradient rounded-lg flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-bold">InvestoFund</span>
+            <div className="mb-6">
+              <img 
+                src={logoPath} 
+                alt="InvestoFund" 
+                className="h-12 w-auto filter brightness-0 invert"
+              />
             </div>
             <p className="text-gray-300 mb-4">
               Professional alternative investment opportunities with transparent 

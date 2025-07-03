@@ -454,7 +454,7 @@ function InvestorForm() {
                       setCurrentStep(1);
                       setPaymentInstructions(null);
                     }}
-                    className="bg-brand-blue hover:bg-blue-600"
+                    className="bg-brand-blue hover:bg-brand-blue-light text-white"
                   >
                     Start New Application
                   </Button>
@@ -478,7 +478,7 @@ function InvestorForm() {
             )}
             <Button
               type="submit"
-              className="bg-brand-blue hover:bg-blue-600"
+              className="bg-brand-blue hover:bg-brand-blue-light text-white"
               disabled={
                 createUserMutation.isPending ||
                 createApplicationMutation.isPending ||

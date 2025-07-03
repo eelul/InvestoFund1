@@ -1,8 +1,12 @@
 export const BRAND_COLORS = {
-  teal: "#4FD1C7",
-  blue: "#4A90E2", 
-  dark: "#1E293B",
-  gray: "#475569"
+  teal: "#4ECDC4",
+  blue: "#2B4A66", 
+  bluLight: "#3A5A77",
+  dark: "#1E2B37",
+  gray: "#6B7280",
+  light: "#F8FAFC",
+  card: "#FFFFFF",
+  border: "#D1D5DB"
 } as const;
 
 export const INVESTMENT_TIERS = [

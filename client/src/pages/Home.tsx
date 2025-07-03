@@ -24,7 +24,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/investors">
-                <Button className="bg-brand-blue hover:bg-blue-600 px-8 py-3">
+                <Button className="bg-brand-blue hover:bg-brand-blue-light text-white px-8 py-3">
                   View Investment Details
                 </Button>
               </Link>
@@ -54,7 +54,7 @@ export default function Home() {
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-brand-dark mb-2">45</div>
-              <div class="text-brand-gray">Days Avg. Term</div>
+              <div className="text-brand-gray">Days Avg. Term</div>
             </div>
           </div>
         </div>
@@ -213,7 +213,7 @@ export default function Home() {
       </section>
 
       {/* Risk Mitigation */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-brand-light">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
             Risk Mitigation & Transparency
@@ -346,7 +346,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/investors">
-              <Button className="bg-white text-brand-blue hover:bg-gray-100 px-8 py-3">
+              <Button className="bg-white text-brand-blue hover:bg-brand-light px-8 py-3">
                 Get Started Today
               </Button>
             </Link>

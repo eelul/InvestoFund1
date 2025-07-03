@@ -24,11 +24,27 @@
   --ring: hsl(240, 5%, 64.9%);
   --radius: 0.5rem;
 
-  /* InvestoFund Brand Colors */
-  --brand-teal: hsl(177, 61%, 54%);
-  --brand-blue: hsl(214, 72%, 58%);
-  --brand-dark: hsl(221, 39%, 11%);
-  --brand-gray: hsl(215, 16%, 47%);
+  /* InvestoFund Brand Colors - Updated to match reference site */
+  --brand-teal: hsl(174, 72%, 56%);
+  --brand-blue: hsl(217, 33%, 17%);
+  --brand-blue-light: hsl(217, 33%, 25%);
+  --brand-dark: hsl(210, 11%, 15%);
+  --brand-gray: hsl(210, 8%, 46%);
+  --brand-light: hsl(210, 17%, 98%);
+  --brand-card: hsl(0, 0%, 100%);
+  --brand-border: hsl(210, 12%, 87%);
+}
+
+/* Brand Utility Classes */
+.brand-gradient {
+  background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-teal) 100%);
+}
+
+.brand-text-gradient {
+  background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .dark {
