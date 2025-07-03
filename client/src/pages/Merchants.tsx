@@ -193,66 +193,7 @@ export default function Merchants() {
               </Card>
             </div>
 
-            {/* Industry Examples */}
-            <Card className="mb-12">
-              <CardHeader>
-                <CardTitle className="text-center text-brand-dark">Who We Work With</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-4 gap-4 text-center">
-                  <div className="p-4">
-                    <div className="w-12 h-12 bg-brand-teal/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <DollarSign className="w-6 h-6 text-brand-teal" />
-                    </div>
-                    <span className="text-sm text-brand-gray">Restaurants</span>
-                  </div>
-                  <div className="p-4">
-                    <div className="w-12 h-12 bg-brand-blue/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <DollarSign className="w-6 h-6 text-brand-blue" />
-                    </div>
-                    <span className="text-sm text-brand-gray">Retail Stores</span>
-                  </div>
-                  <div className="p-4">
-                    <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <DollarSign className="w-6 h-6 text-green-500" />
-                    </div>
-                    <span className="text-sm text-brand-gray">Auto Repair</span>
-                  </div>
-                  <div className="p-4">
-                    <div className="w-12 h-12 bg-yellow-500/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <DollarSign className="w-6 h-6 text-yellow-500" />
-                    </div>
-                    <span className="text-sm text-brand-gray">Beauty Salons</span>
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-4 gap-4 text-center mt-4">
-                  <div className="p-4">
-                    <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <DollarSign className="w-6 h-6 text-purple-500" />
-                    </div>
-                    <span className="text-sm text-brand-gray">Professional Services</span>
-                  </div>
-                  <div className="p-4">
-                    <div className="w-12 h-12 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <DollarSign className="w-6 h-6 text-red-500" />
-                    </div>
-                    <span className="text-sm text-brand-gray">Healthcare</span>
-                  </div>
-                  <div className="p-4">
-                    <div className="w-12 h-12 bg-indigo-500/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <DollarSign className="w-6 h-6 text-indigo-500" />
-                    </div>
-                    <span className="text-sm text-brand-gray">Construction</span>
-                  </div>
-                  <div className="p-4">
-                    <div className="w-12 h-12 bg-pink-500/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <DollarSign className="w-6 h-6 text-pink-500" />
-                    </div>
-                    <span className="text-sm text-brand-gray">E-commerce</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            
           </div>
         </div>
       </section>
