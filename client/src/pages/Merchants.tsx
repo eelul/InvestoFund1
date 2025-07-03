@@ -19,7 +19,6 @@ export default function Merchants() {
           </div>
         </div>
       </section>
-
       {/* What We Offer */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -67,7 +66,6 @@ export default function Merchants() {
           </div>
         </div>
       </section>
-
       {/* Industries We Serve */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -138,9 +136,8 @@ export default function Merchants() {
           </div>
         </div>
       </section>
-
       {/* Funding Details */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white pt-[60px] pb-[60px]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
@@ -197,19 +194,6 @@ export default function Merchants() {
           </div>
         </div>
       </section>
-
-      {/* Application Form */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
-              Apply for Funding
-            </h2>
-            <MerchantApplicationForm />
-          </div>
-        </div>
-      </section>
-
       {/* Process Timeline */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -262,7 +246,17 @@ export default function Merchants() {
           </div>
         </div>
       </section>
-
+      {/* Application Form */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+              Apply for Funding
+            </h2>
+            <MerchantApplicationForm />
+          </div>
+        </div>
+      </section>
       {/* FAQ Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -342,7 +336,6 @@ export default function Merchants() {
           </div>
         </div>
       </section>
-
       {/* Required Documents */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">

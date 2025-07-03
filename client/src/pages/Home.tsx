@@ -63,24 +63,26 @@ export default function Home() {
       {/* Portfolio Performance */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">Portfolio Performance</h2>
-          <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <div className="text-sm text-brand-gray mb-1">Initial Investment</div>
-                <div className="text-2xl font-bold text-brand-dark">$25,000</div>
-              </div>
-              <div>
-                <div className="text-sm text-brand-gray mb-1">Total Repayment</div>
-                <div className="text-2xl font-bold text-brand-dark">$37,250</div>
-              </div>
-              <div>
-                <div className="text-sm text-brand-gray mb-1">Your Share (50%)</div>
-                <div className="text-2xl font-bold text-brand-teal">$5,206.25</div>
-              </div>
-              <div>
-                <div className="text-sm text-brand-gray mb-1">Net Return</div>
-                <div className="text-2xl font-bold text-green-600">20.83%</div>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-brand-dark mb-12">Portfolio Performance</h2>
+            <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+              <div className="grid grid-cols-2 gap-8">
+                <div>
+                  <div className="text-sm text-brand-gray mb-1">Initial Investment</div>
+                  <div className="text-2xl font-bold text-brand-dark">$25,000</div>
+                </div>
+                <div>
+                  <div className="text-sm text-brand-gray mb-1">Total Repayment</div>
+                  <div className="text-2xl font-bold text-brand-dark">$37,250</div>
+                </div>
+                <div>
+                  <div className="text-sm text-brand-gray mb-1">Your Share (50%)</div>
+                  <div className="text-2xl font-bold text-brand-teal">$5,206.25</div>
+                </div>
+                <div>
+                  <div className="text-sm text-brand-gray mb-1">Net Return</div>
+                  <div className="text-2xl font-bold text-green-600">20.83%</div>
+                </div>
               </div>
             </div>
           </div>
@@ -103,9 +105,9 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="bg-white shadow-sm">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 bg-brand-teal/10 rounded-lg flex items-center justify-center mb-6">
-                    <TrendingUp className="w-6 h-6 text-brand-teal" />
+                <CardContent className="p-8 text-center">
+                  <div className="w-20 h-20 bg-brand-teal/10 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                    <TrendingUp className="w-10 h-10 text-brand-teal" />
                   </div>
                   <h3 className="text-xl font-semibold text-brand-dark mb-4">Market Opportunity</h3>
                   <p className="text-brand-gray">
@@ -116,9 +118,9 @@ export default function Home() {
               </Card>
               
               <Card className="bg-white shadow-sm">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 bg-brand-blue/10 rounded-lg flex items-center justify-center mb-6">
-                    <Target className="w-6 h-6 text-brand-blue" />
+                <CardContent className="p-8 text-center">
+                  <div className="w-20 h-20 bg-brand-blue/10 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                    <Target className="w-10 h-10 text-brand-blue" />
                   </div>
                   <h3 className="text-xl font-semibold text-brand-dark mb-4">Our Solution</h3>
                   <p className="text-brand-gray">
@@ -129,9 +131,9 @@ export default function Home() {
               </Card>
               
               <Card className="bg-white shadow-sm">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-6">
-                    <Shield className="w-6 h-6 text-green-500" />
+                <CardContent className="p-8 text-center">
+                  <div className="w-20 h-20 bg-green-500/10 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                    <Shield className="w-10 h-10 text-green-500" />
                   </div>
                   <h3 className="text-xl font-semibold text-brand-dark mb-4">Competitive Edge</h3>
                   <p className="text-brand-gray">

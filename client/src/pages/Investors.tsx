@@ -18,7 +18,6 @@ export default function Investors() {
           </div>
         </div>
       </section>
-
       {/* Key Benefits */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -63,7 +62,6 @@ export default function Investors() {
           </div>
         </div>
       </section>
-
       {/* Investment Structure */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -142,7 +140,7 @@ export default function Investors() {
             </div>
             
             <div className="text-center">
-              <p className="text-brand-gray text-sm">
+              <p className="text-brand-gray text-sm pt-[10px] pb-[10px]">
                 Our underwriting always aims to maximize returns within the constraints of each merchant's capacity, 
                 cash flow, and risk score — ensuring a healthy balance of safety and yield.
               </p>
@@ -181,7 +179,6 @@ export default function Investors() {
           </div>
         </div>
       </section>
-
       {/* Liquidity & Flexibility */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -231,7 +228,6 @@ export default function Investors() {
           </div>
         </div>
       </section>
-
       {/* Investment Onboarding Form */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -284,7 +280,6 @@ export default function Investors() {
           </div>
         </div>
       </section>
-
       {/* Investment Requirements */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
