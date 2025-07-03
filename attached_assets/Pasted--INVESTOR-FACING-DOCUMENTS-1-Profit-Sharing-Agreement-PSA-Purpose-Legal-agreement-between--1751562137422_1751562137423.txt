@@ -1,0 +1,230 @@
+📁 INVESTOR-FACING DOCUMENTS
+📄 1. Profit Sharing Agreement (PSA)
+Purpose:
+
+Legal agreement between InvestoFund and the capital provider
+
+Outlines the deal structure, returns, terms, risk acceptance, and exit policy
+
+Website Location:
+
+Investor Intake Page → Step 3 or 4 (before capital confirmation)
+
+Legal Pages section (read-only version)
+
+Email Workflow:
+
+Auto-sent after investor submits form
+
+Also sent for e-signature if above $25K
+
+Access Rules:
+
+Must check acknowledgment box to proceed
+
+Required for all investors before funds accepted
+
+📄 2. Investor Welcome Packet
+Purpose:
+
+Friendly onboarding guide
+
+Explains timeline, deal matching, reinvestment, FAQs, and key contacts
+
+Website Location:
+
+Optional preview after form submit (small image and “what’s inside” text)
+
+Email Workflow:
+
+Auto-attached after investor form submission
+
+Sent again upon deal match
+
+Access Rules:
+
+Gated behind form or available post-submission
+
+📄 3. Risk Disclosure Summary
+Purpose:
+
+Clear, non-legal overview of potential risks (e.g., default, delay, reclassification)
+
+Informs investor about MCA industry realities
+
+Website Location:
+
+Legal Pages section
+
+Linked during investor flow ("Read before investing")
+
+Email Workflow:
+
+Sent as attachment with PSA or onboarding email
+
+Access Rules:
+
+Public and downloadable
+
+📄 4. Terms of Service & Privacy Policy
+Purpose:
+
+Legal and compliance requirements
+
+Data handling, liability limits, cookies, opt-out info
+
+Website Location:
+
+Footer
+
+Legal Pages (standalone pages)
+
+Email Workflow:
+
+Not emailed unless requested
+
+Checkboxes in all forms
+
+Access Rules:
+
+Public
+
+🧑‍💼 BROKER-FACING DOCUMENTS
+📄 5. ISO Information Packet
+Purpose:
+
+Onboarding guide for Independent Sales Organizations
+
+Commission tiers, expectations, process, sample deal structure
+
+Website Location:
+
+Broker Portal > "Download Info Packet"
+
+Also snippet preview before broker form
+
+Email Workflow:
+
+Auto-sent after ISO submits inquiry or deal
+
+Can be downloaded from the broker page
+
+Access Rules:
+
+Gated by name/email
+
+Form required before download
+
+📄 6. Commission Structure Sheet
+Purpose:
+
+Breakdown of commission logic:
+
+15% for full packages
+
+Tiered for unverified or partial deals
+
+Bonuses for volume
+
+Website Location:
+
+Broker Portal (inside dashboard or submission form sidebar)
+
+Email Workflow:
+
+Attached to ISO Packet
+
+Re-sent upon deal approval or change in commission
+
+Access Rules:
+
+Private to registered brokers only
+
+📄 7. Deal Submission Template (Optional)
+Purpose:
+
+Downloadable Excel or PDF form for ISOs that want to submit deals offline
+
+Lists all required fields for underwriting
+
+Website Location:
+
+Broker Portal > “Prefer to email us your deal?” option
+
+Linked in footer
+
+Email Workflow:
+
+Sent only upon request
+
+Can be auto-sent if deal submission is incomplete
+
+Access Rules:
+
+Optional — not gated
+
+📄 8. Broker Agreement / Terms of Submission
+Purpose:
+
+Legal doc outlining expectations, exclusivity (if any), dispute resolution
+
+Protects you from chargebacks or nonperformance claims
+
+Website Location:
+
+Broker Portal → Agreement step (after first submission)
+
+Linked in Legal Pages
+
+Email Workflow:
+
+Sent after ISO submits first deal
+
+Must sign to continue using dashboard
+
+Access Rules:
+
+Required signature before ongoing deal submissions
+
+📘 ADMINISTRATIVE / MISC.
+📄 9. Internal Summary for Manual Underwriting
+Purpose:
+
+Checklist or guide used by team to evaluate deal quality
+
+Includes scoring rubric
+
+Website Location:
+
+Not shown publicly
+
+Email Workflow:
+
+Used by internal team
+
+📄 10. Investor or ISO NDA (Optional)
+Purpose:
+
+For large investor prospects or ISO agencies
+
+Protects your proprietary methods or pricing
+
+Website Location:
+
+Not public
+
+Sent on request or by sales team
+
+Email Workflow:
+
+Manual trigger via sales call or investor consultation
+
+🧩 INTEGRATION POINTS (When These Appear or Trigger)
+Event	Document(s) Sent or Linked
+Investor form submitted	PSA, Welcome Packet, Risk Summary
+Investor selects > $25K	+ E-signature PSA, optional diversification form
+Broker submits deal	ISO Packet, Commission Structure
+Broker registers account	Broker Agreement, ISO Packet
+User downloads gated doc	ISO Packet or Investor Guide
+Deal gets approved	Commission confirmation + Optional PDF
+Legal page visit	Risk Summary, Privacy, TOS

@@ -1,0 +1,168 @@
+Below is a fully compiled developer prompt for building all the interactive sliders (calculators) for InvestoFund. It includes:
+
+✅ The 3 calculators
+
+✅ Their intended use case
+
+✅ Where they go on the site
+
+✅ The slider settings
+
+✅ The HTML/JS snippets
+
+✅ Logic notes for behavior and tooltips
+
+You can hand this prompt to a developer or paste it into Replit with zero coding required from your side.
+
+⚙️ COMPILED PROMPT FOR CALCULATORS & SLIDERS
+🔢 CALCULATOR #1: Standard Deal ROI Calculator
+🔹 Location: Homepage → “Calculate Your Potential Returns” section
+👤 Audience: Investors entering $5K–$25K
+💻 Description: Calculates net ROI on a single MCA deal
+
+🛠 Sliders:
+Investment Amount: $5,000 – $1,000,000
+
+Factor Rate: 1.10 – 1.49 (default 1.49, max locked)
+
+Average Term: 30 – 90 days (default 45)
+
+🔧 JS Logic:
+js
+Copy
+Edit
+function calculateStandardROI(investment, factorRate, termDays) {
+  const repayment = investment * factorRate;
+  const grossProfit = repayment - investment;
+  const isoCommission = grossProfit * 0.15;
+  const netProfit = grossProfit - isoCommission;
+  const investorShare = netProfit * 0.5;
+  const returnPct = (investorShare / investment) * 100;
+  return returnPct.toFixed(2);
+}
+📝 HTML Snippet:
+html
+Copy
+Edit
+<h3>Standard ROI Calculator</h3>
+<label>Investment Amount ($):</label>
+<input type="range" id="amountSlider" min="5000" max="1000000" step="1000" value="25000">
+<span id="amountValue">$25,000</span>
+
+<label>Factor Rate:</label>
+<input type="range" id="factorSlider" min="1.10" max="1.49" step="0.01" value="1.49">
+<span id="factorValue">1.49</span>
+
+<label>Term (Days):</label>
+<input type="range" id="termSlider" min="30" max="90" step="5" value="45">
+<span id="termValue">45 Days</span>
+
+<div><strong>Your Return:</strong> <span id="returnPct">20.8%</span></div>
+🔴 Warning if user changes ISO commission
+js
+Copy
+Edit
+if (userChangedCommission) {
+  showTooltip("Brokers typically earn 15% commission unless special conditions are met. Commissions may adjust based on deal size or quality.");
+}
+🔢 CALCULATOR #2: Portfolio Blend Optimizer
+🔹 Location: After user chooses “Diversify Portfolio”
+👤 Audience: Investors above $25K
+💻 Description: Shows optimized ROI across multiple blended deals
+
+🛠 Sliders:
+Investment Amount: $25,000 – $1,000,000
+
+# of Deals: 2 – 12
+
+Avg Factor Rate: 1.35 – 1.49
+
+Blended Management Fee: Fixed (10% → reduces investor share to 45%)
+
+🔧 JS Logic:
+js
+Copy
+Edit
+function calculatePortfolioROI(investment, deals, factorRate) {
+  const perDeal = investment / deals;
+  const repayment = perDeal * factorRate;
+  const grossProfit = repayment - perDeal;
+  const isoCommission = grossProfit * 0.15;
+  const netProfit = grossProfit - isoCommission;
+  const investorShare = netProfit * 0.45; // reduced from 50% for managed blend
+  const totalInvestorReturn = investorShare * deals;
+  const returnPct = (totalInvestorReturn / investment) * 100;
+  return returnPct.toFixed(2);
+}
+📝 HTML Snippet:
+html
+Copy
+Edit
+<h3>Blended Portfolio ROI</h3>
+<label>Total Investment ($):</label>
+<input type="range" id="blendAmount" min="25000" max="1000000" step="5000" value="50000">
+<span id="blendAmountVal">$50,000</span>
+
+<label>Number of Deals:</label>
+<input type="range" id="dealCount" min="2" max="12" value="4">
+<span id="dealCountVal">4 Deals</span>
+
+<label>Average Factor Rate:</label>
+<input type="range" id="blendFactor" min="1.35" max="1.49" step="0.01" value="1.45">
+<span id="blendFactorVal">1.45</span>
+
+<p><em>Note: A portfolio blend includes a 10% management fee (Investor share reduced to 45%).</em></p>
+
+<div><strong>Blended Return:</strong> <span id="blendROI">XX%</span></div>
+🔢 CALCULATOR #3: ISO Deal Submission Estimator
+🔹 Location: Broker Portal > Deal Submission Form
+👤 Audience: ISO submitting deals
+💻 Description: Shows estimated commission payout
+
+🛠 Sliders:
+Deal Size: $5,000 – $1,000,000
+
+Factor Rate: 1.10 – 1.49
+
+Commission Tier: Auto-set or manual with warning
+
+🔧 JS Logic:
+js
+Copy
+Edit
+function calculateISOCommission(dealAmount, factorRate, commissionRate) {
+  const repayment = dealAmount * factorRate;
+  const grossProfit = repayment - dealAmount;
+  const isoCommission = grossProfit * commissionRate;
+  return isoCommission.toFixed(2);
+}
+📝 HTML Snippet:
+html
+Copy
+Edit
+<h3>Estimated ISO Commission</h3>
+<label>Deal Amount ($):</label>
+<input type="range" id="dealAmountSlider" min="5000" max="1000000" value="25000">
+<span id="dealAmt">$25,000</span>
+
+<label>Factor Rate:</label>
+<input type="range" id="dealFactorSlider" min="1.10" max="1.49" step="0.01" value="1.45">
+<span id="dealFactorVal">1.45</span>
+
+<p><strong>Estimated Commission:</strong> <span id="isoCommission">$X,XXX.XX</span></p>
+
+<div id="warning" style="color:red; display:none;">
+  Brokers typically receive 15% commission unless stated otherwise or special terms apply. Reduced commissions apply for low-quality or partial submissions.
+</div>
+🧠 BONUS LOGIC RULES (Add-on Prompts)
+If user selects investment > $1M, prompt:
+
+"For investments above $1,000,000, please schedule a custom consultation with our team."
+
+If ISO chooses partial underwriting, show:
+
+"This deal will be reviewed and commission may be reduced based on quality and completeness."
+
+On calculator change, suggest premium features or scheduling:
+
+“Want help optimizing your portfolio? Schedule a free investor consultation.”

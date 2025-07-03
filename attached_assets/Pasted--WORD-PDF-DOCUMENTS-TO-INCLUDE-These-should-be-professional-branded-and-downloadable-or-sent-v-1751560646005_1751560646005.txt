@@ -1,0 +1,115 @@
+📄 WORD / PDF DOCUMENTS TO INCLUDE
+These should be professional, branded, and downloadable or sent via email based on user interaction.
+
+📄 Document	🔍 Purpose	📤 How It’s Used
+1. ISO Information Packet	Outlines your commission tiers, submission requirements, compliance rules, sample deals, and support contacts.	- Preview snippet on Broker Portal page
+- Full download after email/name submission
+- Auto-sent to ISO via confirmation email
+2. Profit-Sharing Agreement (PSA)	Legal agreement for investors who fund deals. Includes disclaimers, payout schedule, exit terms, and risk acknowledgments.	- Required before funding
+- Auto-sent after intake form submission
+- Integrated with e-signature service
+3. Investor Welcome Packet	Friendly onboarding guide for investors: what to expect, how payouts work, timeline, FAQ.	- Auto-attached in post-intake email
+- Can also be downloaded from site after form
+4. Risk Disclosure Summary	Separate legal doc summarizing known risks and mitigation strategies (non-legal language).	- Linked in investor wizard
+- Auto-sent or downloadable from legal section
+5. Terms & Conditions / Privacy Policy (HTML + PDF)	Compliance requirement	- Linked in footer & consent checkboxes
+- PDF backup for offline record
+6. Commission Structure Chart	ISO-specific breakdown of how commissions are structured depending on deal quality, size, etc.	- Included in ISO packet and dashboard
+- Optional popup when deal submitted
+7. Deal Submission Template (Optional)	For brokers to use when not submitting via portal — includes all fields required for underwriting.	- Downloadable template or email-only request form
+
+📧 EMAIL WORKFLOWS
+Here’s what gets sent, when, to whom:
+
+🔹 1. Investor Inquiry Submitted
+Triggered by: Investor Intake Form submission
+To: Investor
+Subject: Welcome to InvestoFund – Here’s What Happens Next
+Includes:
+
+Thank-you message
+
+Confirmation of investment range
+
+[PDF] Profit Sharing Agreement
+
+[PDF] Investor Welcome Packet
+
+Optional: Calendly link for consultation
+
+🔹 2. Investor Doc Signature Request
+Triggered by: High-tier investor ($25K+), or upon “Yes” to PSA
+To: Investor
+Subject: Please Sign Your Profit Sharing Agreement
+Includes:
+
+Link to DocuSign or Dropbox Sign
+
+Deadline reminder
+
+Contact for questions
+
+🔹 3. Investor Deal Matched / Funding Confirmed
+Triggered by: Admin approval or deal match
+To: Investor
+Subject: You’ve Been Matched to a Deal – Here Are the Details
+Includes:
+
+Summary of deal (amount, factor rate, term)
+
+Expected return
+
+Timeline for profit distribution
+
+Option to diversify
+
+🔹 4. Investor Payout Confirmation
+Triggered by: Deal maturity and return distributed
+To: Investor
+Subject: Your Profits Have Been Delivered 💸
+Includes:
+
+Summary of payout
+
+ROI breakdown
+
+Next steps or reinvest options
+
+🔹 5. Broker Deal Submission Confirmation
+Triggered by: Broker submits deal via portal
+To: Broker
+Subject: Deal Received – We’re On It
+Includes:
+
+Summary of submission
+
+Commission preview
+
+Reminder of ISO expectations
+
+[PDF] ISO Packet if not already sent
+
+🔹 6. Broker Deal Status Updates
+Triggered by: Status changes (reviewed, approved, declined)
+To: Broker
+Subject: Update on Your Submitted Deal
+Includes:
+
+Reason for status
+
+Approval terms or rejection feedback
+
+Commission confirmation if funded
+
+🔹 7. Doc Download Request (Gated PDF)
+Triggered by: Name/email submitted on ISO or investor resource pages
+To: ISO or Investor
+Subject: Here’s Your Requested Packet
+Includes:
+
+File attachment (ISO Packet or PSA or Investor Guide)
+
+Contact info for follow-up
+
+Link to submission or intake portal
+
