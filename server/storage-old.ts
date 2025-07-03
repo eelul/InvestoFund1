@@ -20,9 +20,8 @@ import {
   type Document,
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, desc, sql } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
-// Interface for storage operations
 export interface IStorage {
   // User operations
   getUser(id: number): Promise<User | undefined>;
@@ -63,6 +62,7 @@ export interface IStorage {
 }
 
 export class DatabaseStorage implements IStorage {
+
   // User operations
   async getUser(id: number): Promise<User | undefined> {
     const [user] = await db.select().from(users).where(eq(users.id, id));
@@ -70,208 +70,184 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getUserByEmail(email: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.email, email));
-    return user || undefined;
+    return Array.from(this.users.values()).find(user => user.email === email);
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const [user] = await db
-      .insert(users)
-      .values(insertUser)
-      .returning();
+    const id = this.currentId++;
+    const user: User = {
+      ...insertUser,
+      id,
+      stripeCustomerId: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+    this.users.set(id, user);
     return user;
   }
 
   async updateUser(id: number, updates: Partial<User>): Promise<User> {
-    const [user] = await db
-      .update(users)
-      .set({ ...updates, updatedAt: new Date() })
-      .where(eq(users.id, id))
-      .returning();
-    if (!user) {
-      throw new Error("User not found");
-    }
-    return user;
+    const user = this.users.get(id);
+    if (!user) throw new Error("User not found");
+    
+    const updatedUser = { ...user, ...updates, updatedAt: new Date() };
+    this.users.set(id, updatedUser);
+    return updatedUser;
   }
 
   // Investment applications
   async createInvestmentApplication(application: InsertInvestmentApplication & { userId: number }): Promise<InvestmentApplication> {
-    const [app] = await db
-      .insert(investmentApplications)
-      .values(application)
-      .returning();
+    const id = this.currentId++;
+    const app: InvestmentApplication = {
+      ...application,
+      id,
+      paymentIntentId: null,
+      status: "pending",
+      createdAt: new Date(),
+    };
+    this.investmentApplications.set(id, app);
     return app;
   }
 
   async getInvestmentApplicationsByUser(userId: number): Promise<InvestmentApplication[]> {
-    return await db
-      .select()
-      .from(investmentApplications)
-      .where(eq(investmentApplications.userId, userId))
-      .orderBy(desc(investmentApplications.createdAt));
+    return Array.from(this.investmentApplications.values()).filter(app => app.userId === userId);
   }
 
   async updateInvestmentApplication(id: number, updates: Partial<InvestmentApplication>): Promise<InvestmentApplication> {
-    const [app] = await db
-      .update(investmentApplications)
-      .set(updates)
-      .where(eq(investmentApplications.id, id))
-      .returning();
-    if (!app) {
-      throw new Error("Investment application not found");
-    }
-    return app;
+    const application = this.investmentApplications.get(id);
+    if (!application) throw new Error("Investment application not found");
+    
+    const updatedApplication = { ...application, ...updates };
+    this.investmentApplications.set(id, updatedApplication);
+    return updatedApplication;
   }
 
   // Deal submissions
   async createDealSubmission(submission: InsertDealSubmission & { userId: number }): Promise<DealSubmission> {
-    const [deal] = await db
-      .insert(dealSubmissions)
-      .values(submission)
-      .returning();
+    const id = this.currentId++;
+    const deal: DealSubmission = {
+      ...submission,
+      id,
+      status: "submitted",
+      createdAt: new Date(),
+    };
+    this.dealSubmissions.set(id, deal);
     return deal;
   }
 
   async getDealSubmissionsByUser(userId: number): Promise<DealSubmission[]> {
-    return await db
-      .select()
-      .from(dealSubmissions)
-      .where(eq(dealSubmissions.userId, userId))
-      .orderBy(desc(dealSubmissions.createdAt));
+    return Array.from(this.dealSubmissions.values()).filter(deal => deal.userId === userId);
   }
 
   async getAllDealSubmissions(): Promise<DealSubmission[]> {
-    return await db
-      .select()
-      .from(dealSubmissions)
-      .orderBy(desc(dealSubmissions.createdAt));
+    return Array.from(this.dealSubmissions.values());
   }
 
   async updateDealSubmission(id: number, updates: Partial<DealSubmission>): Promise<DealSubmission> {
-    const [deal] = await db
-      .update(dealSubmissions)
-      .set(updates)
-      .where(eq(dealSubmissions.id, id))
-      .returning();
-    if (!deal) {
-      throw new Error("Deal submission not found");
-    }
-    return deal;
+    const submission = this.dealSubmissions.get(id);
+    if (!submission) throw new Error("Deal submission not found");
+    
+    const updatedSubmission = { ...submission, ...updates };
+    this.dealSubmissions.set(id, updatedSubmission);
+    return updatedSubmission;
   }
 
   // Merchant applications
   async createMerchantApplication(application: InsertMerchantApplication & { userId: number }): Promise<MerchantApplication> {
-    const [app] = await db
-      .insert(merchantApplications)
-      .values(application)
-      .returning();
+    const id = this.currentId++;
+    const app: MerchantApplication = {
+      ...application,
+      id,
+      status: "submitted",
+      createdAt: new Date(),
+    };
+    this.merchantApplications.set(id, app);
     return app;
   }
 
   async getMerchantApplicationsByUser(userId: number): Promise<MerchantApplication[]> {
-    return await db
-      .select()
-      .from(merchantApplications)
-      .where(eq(merchantApplications.userId, userId))
-      .orderBy(desc(merchantApplications.createdAt));
+    return Array.from(this.merchantApplications.values()).filter(app => app.userId === userId);
   }
 
   async getAllMerchantApplications(): Promise<MerchantApplication[]> {
-    return await db
-      .select()
-      .from(merchantApplications)
-      .orderBy(desc(merchantApplications.createdAt));
+    return Array.from(this.merchantApplications.values());
   }
 
   async updateMerchantApplication(id: number, updates: Partial<MerchantApplication>): Promise<MerchantApplication> {
-    const [app] = await db
-      .update(merchantApplications)
-      .set(updates)
-      .where(eq(merchantApplications.id, id))
-      .returning();
-    if (!app) {
-      throw new Error("Merchant application not found");
-    }
-    return app;
+    const application = this.merchantApplications.get(id);
+    if (!application) throw new Error("Merchant application not found");
+    
+    const updatedApplication = { ...application, ...updates };
+    this.merchantApplications.set(id, updatedApplication);
+    return updatedApplication;
   }
 
   // Contact inquiries
   async createContactInquiry(inquiry: InsertContactInquiry): Promise<ContactInquiry> {
-    const [contact] = await db
-      .insert(contactInquiries)
-      .values(inquiry)
-      .returning();
+    const id = this.currentId++;
+    const contact: ContactInquiry = {
+      ...inquiry,
+      id,
+      status: "new",
+      createdAt: new Date(),
+    };
+    this.contactInquiries.set(id, contact);
     return contact;
   }
 
   async getAllContactInquiries(): Promise<ContactInquiry[]> {
-    return await db
-      .select()
-      .from(contactInquiries)
-      .orderBy(desc(contactInquiries.createdAt));
+    return Array.from(this.contactInquiries.values());
   }
 
   async updateContactInquiry(id: number, updates: Partial<ContactInquiry>): Promise<ContactInquiry> {
-    const [contact] = await db
-      .update(contactInquiries)
-      .set(updates)
-      .where(eq(contactInquiries.id, id))
-      .returning();
-    if (!contact) {
-      throw new Error("Contact inquiry not found");
-    }
-    return contact;
+    const inquiry = this.contactInquiries.get(id);
+    if (!inquiry) throw new Error("Contact inquiry not found");
+    
+    const updatedInquiry = { ...inquiry, ...updates };
+    this.contactInquiries.set(id, updatedInquiry);
+    return updatedInquiry;
   }
 
   // Email logs
   async createEmailLog(log: Omit<EmailLog, 'id' | 'sentAt'>): Promise<EmailLog> {
-    const [emailLog] = await db
-      .insert(emailLogs)
-      .values({ ...log, sentAt: new Date() })
-      .returning();
+    const id = this.currentId++;
+    const emailLog: EmailLog = {
+      ...log,
+      id,
+      sentAt: new Date(),
+    };
+    this.emailLogs.set(id, emailLog);
     return emailLog;
   }
 
   async getEmailLogsByUser(userId: number): Promise<EmailLog[]> {
-    return await db
-      .select()
-      .from(emailLogs)
-      .where(eq(emailLogs.userId, userId))
-      .orderBy(desc(emailLogs.sentAt));
+    return Array.from(this.emailLogs.values()).filter(log => log.userId === userId);
   }
 
   // Documents
   async createDocument(document: Omit<Document, 'id' | 'downloadCount' | 'createdAt'>): Promise<Document> {
-    const [doc] = await db
-      .insert(documents)
-      .values({ 
-        ...document, 
-        downloadCount: 0,
-        createdAt: new Date()
-      })
-      .returning();
+    const id = this.currentId++;
+    const doc: Document = {
+      ...document,
+      id,
+      downloadCount: 0,
+      createdAt: new Date(),
+    };
+    this.documents.set(id, doc);
     return doc;
   }
 
   async getDocumentsByUser(userId: number): Promise<Document[]> {
-    return await db
-      .select()
-      .from(documents)
-      .where(eq(documents.userId, userId))
-      .orderBy(desc(documents.createdAt));
+    return Array.from(this.documents.values()).filter(doc => doc.userId === userId);
   }
 
   async incrementDownloadCount(id: number): Promise<void> {
-    const [doc] = await db.select().from(documents).where(eq(documents.id, id));
-    if (doc) {
-      await db
-        .update(documents)
-        .set({ 
-          downloadCount: (doc.downloadCount || 0) + 1
-        })
-        .where(eq(documents.id, id));
+    const document = this.documents.get(id);
+    if (document) {
+      document.downloadCount = (document.downloadCount || 0) + 1;
+      this.documents.set(id, document);
     }
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemStorage();
