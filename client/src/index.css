@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(240, 10%, 3.9%);
+  --muted: hsl(240, 4.8%, 95.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(240, 10%, 3.9%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(240, 10%, 3.9%);
+  --border: hsl(240, 5.9%, 90%);
+  --input: hsl(240, 5.9%, 90%);
+  --primary: hsl(197, 71%, 58%);
+  --primary-foreground: hsl(210, 100%, 98%);
+  --secondary: hsl(240, 4.8%, 95.9%);
+  --secondary-foreground: hsl(240, 5.3%, 26.1%);
+  --accent: hsl(240, 4.8%, 95.9%);
+  --accent-foreground: hsl(240, 5.3%, 26.1%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(240, 5%, 64.9%);
+  --radius: 0.5rem;
+
+  /* InvestoFund Brand Colors */
+  --brand-teal: hsl(177, 61%, 54%);
+  --brand-blue: hsl(214, 72%, 58%);
+  --brand-dark: hsl(221, 39%, 11%);
+  --brand-gray: hsl(215, 16%, 47%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(197, 71%, 58%);
+  --primary-foreground: hsl(210, 100%, 98%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 85.7%, 97.3%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  .brand-gradient {
+    @apply bg-gradient-to-r from-[hsl(177,61%,54%)] to-[hsl(214,72%,58%)];
+  }
+  
+  .brand-text-gradient {
+    @apply bg-gradient-to-r from-[hsl(177,61%,54%)] to-[hsl(214,72%,58%)] bg-clip-text text-transparent;
+  }
+
+  .investment-option {
+    @apply transition-all duration-200 hover:scale-105 cursor-pointer;
+  }
+
+  .investment-option.selected {
+    @apply border-[hsl(214,72%,58%)] bg-[hsl(214,72%,58%)]/5 scale-105;
+  }
+
+  .calculator-slider {
+    @apply w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer;
+  }
+
+  .calculator-slider::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 bg-[hsl(214,72%,58%)] rounded-full cursor-pointer;
+  }
+
+  .calculator-slider::-moz-range-thumb {
+    @apply w-5 h-5 bg-[hsl(214,72%,58%)] rounded-full cursor-pointer border-none;
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, 
+      hsl(214, 72%, 58%, 0.1) 0%, 
+      hsl(177, 61%, 54%, 0.1) 100%);
+  }
+
+  .file-upload-area {
+    @apply border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-[hsl(214,72%,58%)] transition-colors cursor-pointer;
+  }
+
+  .file-upload-area.dragover {
+    @apply border-[hsl(214,72%,58%)] bg-[hsl(214,72%,58%)]/5;
+  }
+}
+
+@layer utilities {
+  .text-brand-teal {
+    color: hsl(177, 61%, 54%);
+  }
+  
+  .text-brand-blue {
+    color: hsl(214, 72%, 58%);
+  }
+  
+  .text-brand-dark {
+    color: hsl(221, 39%, 11%);
+  }
+  
+  .text-brand-gray {
+    color: hsl(215, 16%, 47%);
+  }
+  
+  .bg-brand-teal {
+    background-color: hsl(177, 61%, 54%);
+  }
+  
+  .bg-brand-blue {
+    background-color: hsl(214, 72%, 58%);
+  }
+  
+  .bg-brand-dark {
+    background-color: hsl(221, 39%, 11%);
+  }
+  
+  .border-brand-blue {
+    border-color: hsl(214, 72%, 58%);
+  }
+  
+  .border-brand-teal {
+    border-color: hsl(177, 61%, 54%);
+  }
+}
