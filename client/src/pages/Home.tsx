@@ -90,9 +90,6 @@ export default function Home() {
       {/* Calculator Section */}
       <section id="calculator" className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
-            Calculate Your Potential Returns
-          </h2>
           <StandardROICalculator />
         </div>
       </section>

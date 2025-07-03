@@ -8,7 +8,7 @@ export default function Brokers() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white pt-[40px] pb-[40px]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl font-bold text-brand-dark mb-6">
@@ -21,7 +21,6 @@ export default function Brokers() {
           </div>
         </div>
       </section>
-
       {/* Key Benefits */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -82,7 +81,6 @@ export default function Brokers() {
           </div>
         </div>
       </section>
-
       {/* Commission Structure */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -157,7 +155,6 @@ export default function Brokers() {
           </div>
         </div>
       </section>
-
       {/* Deal Submission Process */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -210,7 +207,6 @@ export default function Brokers() {
           </div>
         </div>
       </section>
-
       {/* Deal Submission Form */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -222,7 +218,6 @@ export default function Brokers() {
           </div>
         </div>
       </section>
-
       {/* Join Network CTA */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -248,7 +243,6 @@ export default function Brokers() {
           </div>
         </div>
       </section>
-
       {/* Resources Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">

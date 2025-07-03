@@ -22,7 +22,7 @@ const formSchema = z.object({
   phone: z.string().min(10, "Valid phone number is required"),
   investmentAmount: z.number().min(5000, "Minimum investment is $5,000"),
   investmentType: z.enum(["single", "portfolio"]),
-  accreditedStatus: z.boolean().refine(val => val === true, "Accredited investor status required"),
+  accreditedStatus: z.boolean().optional(),
   documentsAgreed: z.boolean().refine(val => val === true, "Document agreement required"),
 });
 
@@ -58,7 +58,7 @@ function InvestorForm() {
       case 2:
         return values.firstName && values.lastName && values.email && values.phone;
       case 3:
-        return values.accreditedStatus && values.documentsAgreed;
+        return values.documentsAgreed;
       case 4:
         return true;
       default:
@@ -408,25 +408,28 @@ function InvestorForm() {
                 render={({ field }) => (
                   <FormItem className="space-y-4">
                     <div className="bg-blue-50 rounded-lg p-6">
-                      <h3 className="text-lg font-semibold text-brand-dark mb-4">Accredited Investor Status</h3>
+                      <h3 className="text-lg font-semibold text-brand-dark mb-4">Investor Status (Optional)</h3>
                       <FormControl>
                         <div className="flex items-start space-x-3">
                           <Checkbox
-                            checked={field.value}
+                            checked={field.value || false}
                             onCheckedChange={field.onChange}
                             className="mt-1"
                           />
                           <div>
                             <FormLabel className="text-brand-dark font-medium">
-                              I confirm my accredited investor status
+                              I am an accredited investor
                             </FormLabel>
                             <div className="text-sm text-brand-gray mt-2">
-                              <p className="mb-2">An accredited investor is someone with:</p>
+                              <p className="mb-2">✓ Check if you meet accredited investor criteria:</p>
                               <ul className="list-disc list-inside space-y-1">
                                 <li>Annual income exceeding $200K ($300K with spouse)</li>
                                 <li>Net worth exceeding $1 million</li>
                                 <li>Certain professional certifications (Series 7, 65, 82)</li>
                               </ul>
+                              <p className="mt-2 text-xs text-brand-gray">
+                                <em>Note: This is optional. Non-accredited investors are also welcome to participate.</em>
+                              </p>
                             </div>
                           </div>
                         </div>
