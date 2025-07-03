@@ -1,0 +1,116 @@
+🔀 Now — Your Two-Prong Investment Model (EXCELLENT IDEA)
+Let’s call them:
+
+🟩 Track 1: Single Deal Investment ("Direct Deal Participation")
+$5K minimum (or more)
+
+You’re in one deal, with a clear timeline, clear return
+
+Fully underwritten and disclosed
+
+Simple, high-clarity, and higher return variability
+
+🟨 Track 2: Diversified Deal Participation ("Portfolio Blend")
+$25K minimum recommended
+
+Your funds are spread across multiple deals (e.g., 10× $2.5K)
+
+Returns vary slightly by deal (e.g., factor 1.29–1.49)
+
+We pay based on average yield of the portfolio
+
+Lower volatility, more passive, but requires more capital
+
+✅ Update to /investors Copy — Investment Options Section
+Insert this under "How It Works" on the /investors page.
+
+🔁 Choose Your Investment Strategy
+🟩 Option 1: Direct Deal Participation
+Invest into a single, fully-underwritten MCA deal. This is our most direct investment option, with clear timelines and predictable returns.
+
+Highlights:
+
+Minimum Investment: $5,000
+
+Standard factor rate: 1.45x–1.49x
+
+Deal timeline: 25–60 days
+
+Underwriting includes:
+
+Bank statement analysis
+
+UCC search & lien analysis
+
+Owner background checks
+
+Seasonality & cash flow forecast review
+
+Merchant interview & reference check
+
+You receive 50% of net profits on deal completion
+
+🟨 Option 2: Portfolio Blend (Diversified Participation)
+We allocate your funds across multiple active MCA deals. This reduces risk exposure while maintaining yield — based on the average performance of your portfolio.
+
+Highlights:
+
+Minimum Investment: $25,000
+
+Each deal receives a slice (e.g., $2,500 × 10 deals)
+
+Payouts based on average yield across all placements
+
+Factor rates may range from 1.29–1.49 depending on deal type
+
+Returns are consistent but slightly lower than single-deal highs
+
+Great for passive investors who want diversification
+
+ℹ️ Our underwriting always aims to maximize returns within the constraints of each merchant’s capacity, cash flow, and risk score — ensuring a healthy balance of safety and yield.
+
+⚠️ Prompt Logic for Under-$25K Portfolio Inquiries
+If an investor selects Portfolio Blend but sets investment < $25,000:
+
+html
+Copy
+Edit
+<div id="portfolioAlert" style="color: darkorange; margin-top: 12px;">
+  ⚠️ The diversified portfolio program is designed for investments of $25,000 or more.
+  <br>However, in special cases, we may allow lower commitments on a trial basis.
+  <br>
+  <strong><a href="#custom-request-form">Click here to request an exception</a></strong>
+</div>
+📄 Quick Custom Request Form (Optional Modal or Section)
+html
+Copy
+Edit
+<form id="customRequest">
+  <h4>Request Portfolio Participation Below Minimum</h4>
+  <p>We’ll review and get back to you within 1 business day.</p>
+  
+  <label>Investment Amount:</label><br>
+  <input type="number" name="investment" required><br><br>
+
+  <label>Are you looking for diversification or just trial participation?</label><br>
+  <textarea name="intent" rows="3"></textarea><br><br>
+
+  <label>Email:</label><br>
+  <input type="email" name="email" required><br><br>
+
+  <button type="submit">Submit Request</button>
+</form>
+🧱 Update for /apply Page – Industry Descriptions
+Let’s add this under “Who We Work With”:
+
+💼 Industries We Serve — And Why It Works
+Industry	Description
+Retail & E-commerce	Need funding to restock inventory, launch marketing, or cover seasonal dips.
+Restaurants	Cash flow gaps from delayed invoices, equipment breakdowns, or unexpected repairs.
+Auto & Transportation	Vehicle repairs, fuel costs, or parts purchases before reimbursement.
+Construction & Trades	Bridge financing while awaiting project payment or to purchase materials.
+Health & Wellness	Investing in new equipment, staff, or location upgrades.
+Beauty & Salons	Slow seasons or one-time needs like expansion or rebranding.
+
+💡 MCA funding gives these businesses fast, flexible access to capital when banks say no — without waiting, paperwork, or collateral.
+

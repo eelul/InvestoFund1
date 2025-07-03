@@ -68,6 +68,77 @@ export default function Merchants() {
         </div>
       </section>
 
+      {/* Industries We Serve */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-8">
+              Industries We Serve — And Why It Works
+            </h2>
+            <p className="text-center text-brand-gray mb-12">
+              MCA funding gives these businesses fast, flexible access to capital when banks say no — 
+              without waiting, paperwork, or collateral.
+            </p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-brand-dark mb-2">Retail & E-commerce</h3>
+                  <p className="text-sm text-brand-gray">
+                    Need funding to restock inventory, launch marketing, or cover seasonal dips.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-brand-dark mb-2">Restaurants</h3>
+                  <p className="text-sm text-brand-gray">
+                    Cash flow gaps from delayed invoices, equipment breakdowns, or unexpected repairs.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-brand-dark mb-2">Auto & Transportation</h3>
+                  <p className="text-sm text-brand-gray">
+                    Vehicle repairs, fuel costs, or parts purchases before reimbursement.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-brand-dark mb-2">Construction & Trades</h3>
+                  <p className="text-sm text-brand-gray">
+                    Bridge financing while awaiting project payment or to purchase materials.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-brand-dark mb-2">Health & Wellness</h3>
+                  <p className="text-sm text-brand-gray">
+                    Investing in new equipment, staff, or location upgrades.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-brand-dark mb-2">Beauty & Salons</h3>
+                  <p className="text-sm text-brand-gray">
+                    Slow seasons or one-time needs like expansion or rebranding.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Funding Details */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">

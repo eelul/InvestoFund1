@@ -68,60 +68,84 @@ export default function Investors() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">Investment Structure</h2>
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">Choose Your Investment Strategy</h2>
             
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <Card className="bg-gray-50">
+              <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
                 <CardHeader>
-                  <CardTitle className="text-brand-dark">Profit-Sharing Model</CardTitle>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 bg-green-500 rounded"></div>
+                    <CardTitle className="text-brand-dark">Option 1: Direct Deal Participation</CardTitle>
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <p className="text-brand-gray mb-4">
-                    Direct 50/50 profit sharing aligning our success with yours. Not a debt instrument, 
-                    but a share in successful MCA profits.
+                    Invest into a single, fully-underwritten MCA deal. This is our most direct investment 
+                    option, with clear timelines and predictable returns.
                   </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-brand-gray">Transparent profit distribution</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-brand-gray">Aligned incentives</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-brand-gray">No hidden fees</span>
-                    </li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="bg-white/60 p-3 rounded-lg">
+                      <div className="text-sm font-medium text-brand-dark">Minimum Investment: $5,000</div>
+                      <div className="text-sm text-brand-gray">Standard factor rate: 1.45x–1.49x</div>
+                      <div className="text-sm text-brand-gray">Deal timeline: 25–60 days</div>
+                    </div>
+                    <div className="text-sm text-brand-gray">
+                      <strong>Underwriting includes:</strong>
+                      <ul className="list-disc list-inside mt-1 space-y-1">
+                        <li>Bank statement analysis</li>
+                        <li>UCC search & lien analysis</li>
+                        <li>Owner background checks</li>
+                        <li>Seasonality & cash flow forecast review</li>
+                        <li>Merchant interview & reference check</li>
+                      </ul>
+                    </div>
+                    <div className="bg-green-100 p-2 rounded text-sm font-medium text-green-800">
+                      You receive 50% of net profits on deal completion
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50">
+              <Card className="bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-200">
                 <CardHeader>
-                  <CardTitle className="text-brand-dark">Capital Deployment</CardTitle>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 bg-yellow-500 rounded"></div>
+                    <CardTitle className="text-brand-dark">Option 2: Portfolio Blend (Diversified Participation)</CardTitle>
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <p className="text-brand-gray mb-4">
-                    Your capital is deployed directly into vetted Merchant Cash Advance deals with 
-                    full operational control retained by InvestoFund.
+                    We allocate your funds across multiple active MCA deals. This reduces risk exposure 
+                    while maintaining yield — based on the average performance of your portfolio.
                   </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-brand-gray">Direct deal investment</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-brand-gray">Rigorous underwriting</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-brand-gray">Professional management</span>
-                    </li>
-                  </ul>
+                  <div className="space-y-3">
+                    <div className="bg-white/60 p-3 rounded-lg">
+                      <div className="text-sm font-medium text-brand-dark">Minimum Investment: $25,000</div>
+                      <div className="text-sm text-brand-gray">Each deal receives a slice (e.g., $2,500 × 10 deals)</div>
+                      <div className="text-sm text-brand-gray">Factor rates: 1.29–1.49 depending on deal type</div>
+                    </div>
+                    <div className="text-sm text-brand-gray">
+                      <strong>Key Benefits:</strong>
+                      <ul className="list-disc list-inside mt-1 space-y-1">
+                        <li>Payouts based on average yield across all placements</li>
+                        <li>Returns are consistent but slightly lower than single-deal highs</li>
+                        <li>Great for passive investors who want diversification</li>
+                        <li>Lower volatility through multiple deal exposure</li>
+                      </ul>
+                    </div>
+                    <div className="bg-yellow-100 p-2 rounded text-sm font-medium text-yellow-800">
+                      Lower risk through diversification across multiple deals
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
+            </div>
+            
+            <div className="text-center">
+              <p className="text-brand-gray text-sm">
+                Our underwriting always aims to maximize returns within the constraints of each merchant's capacity, 
+                cash flow, and risk score — ensuring a healthy balance of safety and yield.
+              </p>
             </div>
 
             {/* Key Terms */}
