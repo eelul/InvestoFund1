@@ -111,7 +111,7 @@ export default function Merchants() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-brand-gray">Repayment Period</span>
-                      <span className="font-bold text-brand-dark">3-18 months</span>
+                      <span className="font-bold text-brand-dark">Up to 6 months</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-brand-gray">Daily Collection</span>
@@ -315,8 +315,15 @@ export default function Merchants() {
                   How does repayment work?
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
-                  Repayment is based on a percentage of your daily credit card sales. When sales are good, 
-                  you pay more; when sales are slower, you pay less. This ensures payments align with your cash flow.
+                  <div className="space-y-4">
+                    <p><strong>Percentage of Daily Sales (Split or ACH)</strong> – A fixed percentage is automatically collected from your daily credit card sales or total business deposits. This continues until the full advance, plus agreed-upon fees (called a "factor rate"), is repaid.</p>
+                    
+                    <p><strong>Fixed Daily or Weekly Debits</strong> – Some agreements use set daily or weekly ACH withdrawals from your business bank account, regardless of sales volume. This option is more predictable, though it may not adjust with fluctuating revenue.</p>
+                    
+                    <p>It's important to note that repayment terms can vary based on the structure of the deal, the merchant's industry, sales consistency, and the specific funder. The payback duration is typically up to 6 months, but it can change depending on your business performance and the terms negotiated at funding.</p>
+                    
+                    <p>Always review your agreement carefully, and feel free to contact us if you'd like help understanding your options.</p>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

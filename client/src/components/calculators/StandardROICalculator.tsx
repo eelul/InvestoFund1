@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
+import { Input } from "@/components/ui/input";
 import { CALCULATOR_DEFAULTS } from "@/lib/constants";
 
 export default function StandardROICalculator() {
-  const [investment, setInvestment] = useState(CALCULATOR_DEFAULTS.standard.investment);
-  const [factorRate, setFactorRate] = useState(CALCULATOR_DEFAULTS.standard.factorRate);
-  const [termDays, setTermDays] = useState(CALCULATOR_DEFAULTS.standard.termDays);
+  const [investment, setInvestment] = useState<number>(CALCULATOR_DEFAULTS.standard.investment);
+  const [factorRate, setFactorRate] = useState<number>(CALCULATOR_DEFAULTS.standard.factorRate);
+  const [termDays, setTermDays] = useState<number>(CALCULATOR_DEFAULTS.standard.termDays);
 
   const calculateROI = () => {
     const repayment = investment * factorRate;
@@ -61,11 +62,17 @@ export default function StandardROICalculator() {
                   step={1000}
                   className="calculator-slider"
                 />
-                <div className="flex justify-between text-sm text-brand-gray mt-1">
+                <div className="flex justify-between items-center text-sm text-brand-gray mt-2">
                   <span>$5K</span>
-                  <span className="font-bold text-brand-blue">
-                    {formatCurrency(investment)}
-                  </span>
+                  <Input
+                    type="number"
+                    value={investment}
+                    onChange={(e) => {
+                      const value = Math.max(5000, Math.min(1000000, Number(e.target.value) || 5000));
+                      setInvestment(value);
+                    }}
+                    className="w-24 h-8 text-center font-bold text-brand-blue border-brand-blue/20"
+                  />
                   <span>$1M</span>
                 </div>
               </div>

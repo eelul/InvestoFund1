@@ -351,7 +351,7 @@ export default function Home() {
               </Button>
             </Link>
             <Link href="/contact">
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-brand-blue px-8 py-3">
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-brand-blue px-8 py-3 font-medium">
                 Schedule a Call
               </Button>
             </Link>

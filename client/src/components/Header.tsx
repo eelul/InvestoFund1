@@ -19,16 +19,20 @@ export default function Header() {
 
   const closeSheet = () => setIsOpen(false);
 
+  const handleNavClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-brand-border">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+    <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center" onClick={handleNavClick}>
             <img 
               src={logoPath} 
               alt="InvestoFund" 
-              className="h-12 w-auto"
+              className="h-10 w-auto"
             />
           </Link>
           
@@ -38,10 +42,11 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`font-medium transition-colors ${
+                onClick={handleNavClick}
+                className={`text-base font-medium transition-colors duration-200 py-2 ${
                   location === item.href
-                    ? "text-brand-blue"
-                    : "text-brand-gray hover:text-brand-blue"
+                    ? "text-brand-blue border-b-2 border-brand-blue"
+                    : "text-gray-700 hover:text-brand-blue"
                 }`}
               >
                 {item.label}

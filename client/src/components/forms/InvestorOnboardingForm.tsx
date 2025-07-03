@@ -142,9 +142,59 @@ function InvestorForm() {
     setShowPortfolioCalculator(value === "portfolio");
   };
 
+  const steps = [
+    { number: 1, title: "Investment Amount", completed: currentStep > 1 },
+    { number: 2, title: "Accredited Status", completed: currentStep > 2 },
+    { number: 3, title: "Investment Preferences", completed: currentStep > 3 },
+    { number: 4, title: "Personal Information", completed: currentStep > 4 },
+    { number: 5, title: "Review & Submit", completed: currentStep > 5 },
+    { number: 6, title: "Payment Instructions", completed: false },
+  ];
+
+  const canNavigateToStep = (stepNumber: number) => {
+    // Allow navigation to completed steps or current step
+    return stepNumber <= currentStep || steps[stepNumber - 1].completed;
+  };
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        {/* Progress Indicator */}
+        <div className="mb-8">
+          <div className="flex justify-between items-center">
+            {steps.map((step, index) => (
+              <div 
+                key={step.number}
+                className={`flex flex-col items-center ${canNavigateToStep(step.number) ? 'cursor-pointer' : 'cursor-default'}`}
+                onClick={() => canNavigateToStep(step.number) && setCurrentStep(step.number)}
+              >
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm mb-2 transition-all ${
+                  currentStep === step.number 
+                    ? 'bg-brand-blue text-white' 
+                    : step.completed 
+                      ? 'bg-brand-teal text-white' 
+                      : 'bg-gray-200 text-gray-500'
+                }`}>
+                  {step.completed ? '✓' : step.number}
+                </div>
+                <span className={`text-xs text-center ${
+                  currentStep === step.number 
+                    ? 'text-brand-blue font-medium' 
+                    : step.completed 
+                      ? 'text-brand-teal' 
+                      : 'text-gray-500'
+                }`}>
+                  {step.title}
+                </span>
+                {index < steps.length - 1 && (
+                  <div className={`absolute h-0.5 w-16 ${step.completed ? 'bg-brand-teal' : 'bg-gray-200'}`} 
+                       style={{ left: '50%', transform: 'translateX(-50%)', top: '20px', zIndex: -1 }} />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Step 1: Investment Amount */}
         {currentStep === 1 && (
           <Card>

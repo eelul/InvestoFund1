@@ -306,7 +306,7 @@ export default function Contact() {
                     <div className="grid gap-3">
                       <Button 
                         variant="outline" 
-                        className="justify-start border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white"
+                        className="justify-start border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white font-medium"
                       >
                         <Phone className="w-4 h-4 mr-2" />
                         Schedule a Call
