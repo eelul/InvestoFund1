@@ -11,54 +11,77 @@ export default function Home() {
   const [investmentAmount, setInvestmentAmount] = useState([25000]);
   const [timeHorizon, setTimeHorizon] = useState([12]);
 
-  // Portfolio types with different return profiles
-  const portfolioTypes = {
-    aggressive: {
-      name: "Aggressive Portfolio",
-      description: "High-yield, shorter-term deals",
-      monthlyReturn: 0.032, // 3.2% per month
+  // InvestoFund Business Logic - Two Investment Options
+  const investmentOptions = {
+    option1: {
+      name: "Option 1: Direct Deal Participation", 
+      description: "Higher risk, direct participation in individual MCA deals",
+      factorRate: 1.49,
+      avgTerm: 45, // days
+      profitSplit: 0.50, // 50% to investor after ISO commission
+      grossROI: 0.49, // 49% gross return (1.49 - 1)
+      netROI: 0.208, // ~20.8% net after ISO commission and profit split
+      annualizedROI: 1.664, // ~166.4% annualized (20.8% * 8 cycles/year)
+      minInvestment: 5000,
       riskLevel: "Higher Risk",
-      avgDealLength: "35 days",
-      color: "text-red-500"
+      color: "text-orange-600"
     },
-    balanced: {
-      name: "Balanced Portfolio", 
-      description: "Mixed deal types and terms",
-      monthlyReturn: 0.028, // 2.8% per month
+    option2: {
+      name: "Option 2: Diversified Portfolio",
+      description: "Lower risk through portfolio diversification across multiple deals", 
+      factorRate: 1.49,
+      avgTerm: 45, // days
+      profitSplit: 0.45, // 45% to investor (Fund takes 55% including 10% management fee)
+      grossROI: 0.49, // 49% gross return
+      netROI: 0.187, // ~18.7% net after ISO commission, profit split, and management fee  
+      annualizedROI: 1.496, // ~149.6% annualized (18.7% * 8 cycles/year)
+      minInvestment: 25000,
       riskLevel: "Moderate Risk",
-      avgDealLength: "45 days", 
       color: "text-brand-blue"
-    },
-    conservative: {
-      name: "Conservative Portfolio",
-      description: "Lower risk, established merchants",
-      monthlyReturn: 0.024, // 2.4% per month
-      riskLevel: "Lower Risk",
-      avgDealLength: "60 days",
-      color: "text-green-500"
     }
   };
 
-  const calculateReturns = (amount: number, months: number, monthlyRate: number) => {
-    let total = amount;
-    const monthlyBreakdown = [];
+  // Calculate returns based on InvestoFund business logic
+  const calculateInvestoFundReturns = (investment: number, months: number, option: 'option1' | 'option2') => {
+    const optionData = investmentOptions[option];
+    const dealsPerYear = Math.floor(365 / optionData.avgTerm); // ~8 deals per year
+    const totalDeals = Math.floor((months / 12) * dealsPerYear);
     
-    for (let i = 1; i <= months; i++) {
-      const monthlyProfit = total * monthlyRate;
-      total += monthlyProfit;
-      monthlyBreakdown.push({
-        month: i,
-        profit: monthlyProfit,
-        total: total,
-        cumulative: total - amount
+    let currentValue = investment;
+    const dealBreakdown = [];
+    
+    for (let deal = 1; deal <= totalDeals; deal++) {
+      // InvestoFund calculation: repayment = investment * factorRate
+      const repayment = currentValue * optionData.factorRate;
+      const grossProfit = repayment - currentValue;
+      
+      // ISO Commission (15% of gross profit)
+      const isoCommission = grossProfit * 0.15;
+      const netProfit = grossProfit - isoCommission;
+      
+      // Investor share based on profit split
+      const investorShare = netProfit * optionData.profitSplit;
+      currentValue += investorShare;
+      
+      dealBreakdown.push({
+        deal,
+        investorShare,
+        total: currentValue,
+        roi: (investorShare / (currentValue - investorShare)) * 100
       });
     }
     
+    const totalProfit = currentValue - investment;
+    const totalROI = (totalProfit / investment) * 100;
+    const annualizedROI = totalDeals > 0 ? (totalROI / totalDeals) * dealsPerYear : 0;
+    
     return {
-      totalReturn: total,
-      totalProfit: total - amount,
-      annualizedReturn: Math.pow(total / amount, 12 / months) - 1,
-      monthlyBreakdown
+      totalProfit,
+      totalReturn: currentValue,
+      totalROI,
+      annualizedROI,
+      totalDeals,
+      dealBreakdown
     };
   };
 
@@ -84,7 +107,7 @@ export default function Home() {
               <span className="font-semibold text-brand-dark">Transform your portfolio</span> with InvestoFund's 
               exclusive Merchant Cash Advance opportunities. Join successful investors earning 
               <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold mx-1">
-                2.4% - 3.2% monthly returns
+                20.8% per deal (45 days)
               </span>
               through our proven profit-sharing model.
             </p>
@@ -222,44 +245,61 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Portfolio Comparison */}
-              <Tabs defaultValue="balanced" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 mb-8">
-                  <TabsTrigger value="conservative" className="text-sm">
-                    Conservative
+              {/* Two Investment Options Comparison */}
+              <Tabs defaultValue="option2" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 mb-8">
+                  <TabsTrigger value="option1" className="text-sm">
+                    Option 1: Direct Deal
                   </TabsTrigger>
-                  <TabsTrigger value="balanced" className="text-sm">
-                    Balanced
-                  </TabsTrigger>
-                  <TabsTrigger value="aggressive" className="text-sm">
-                    Aggressive
+                  <TabsTrigger value="option2" className="text-sm">
+                    Option 2: Diversified Portfolio
                   </TabsTrigger>
                 </TabsList>
 
-                {Object.entries(portfolioTypes).map(([key, portfolio]) => {
-                  const returns = calculateReturns(
+                {Object.entries(investmentOptions).map(([key, option]) => {
+                  // Only show calculators for investments above minimum
+                  if (investmentAmount[0] < option.minInvestment) {
+                    return (
+                      <TabsContent key={key} value={key} className="space-y-6">
+                        <div className="text-center p-8 bg-gray-50 rounded-lg">
+                          <h3 className="text-2xl font-bold text-brand-dark mb-2">
+                            {option.name}
+                          </h3>
+                          <p className="text-brand-gray mb-4">{option.description}</p>
+                          <div className="text-lg text-orange-600 font-semibold">
+                            Minimum investment: ${option.minInvestment.toLocaleString()}
+                          </div>
+                          <p className="text-sm text-gray-500 mt-2">
+                            Please adjust the investment amount above to see projections.
+                          </p>
+                        </div>
+                      </TabsContent>
+                    );
+                  }
+
+                  const returns = calculateInvestoFundReturns(
                     investmentAmount[0], 
                     timeHorizon[0], 
-                    portfolio.monthlyReturn
+                    key as 'option1' | 'option2'
                   );
 
                   return (
                     <TabsContent key={key} value={key} className="space-y-6">
                       <div className="text-center">
                         <h3 className="text-2xl font-bold text-brand-dark mb-2">
-                          {portfolio.name}
+                          {option.name}
                         </h3>
-                        <p className="text-brand-gray mb-4">{portfolio.description}</p>
+                        <p className="text-brand-gray mb-4">{option.description}</p>
                         <div className="flex items-center justify-center space-x-6 text-sm">
                           <div className="flex items-center">
-                            <div className={`w-3 h-3 rounded-full mr-2 ${
-                              key === 'aggressive' ? 'bg-red-500' : 
-                              key === 'balanced' ? 'bg-brand-blue' : 'bg-green-500'
-                            }`}></div>
-                            <span className="text-brand-gray">{portfolio.riskLevel}</span>
+                            <div className={`w-3 h-3 rounded-full mr-2 ${option.color.replace('text-', 'bg-')}`}></div>
+                            <span className="text-brand-gray">{option.riskLevel}</span>
                           </div>
                           <div className="text-brand-gray">
-                            Avg Deal: {portfolio.avgDealLength}
+                            Factor Rate: {option.factorRate}x
+                          </div>
+                          <div className="text-brand-gray">
+                            Avg Term: {option.avgTerm} days
                           </div>
                         </div>
                       </div>
@@ -287,45 +327,73 @@ export default function Home() {
                         <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
                           <CardContent className="p-6 text-center">
                             <div className="text-2xl font-bold text-purple-600 mb-1">
-                              {(returns.annualizedReturn * 100).toFixed(1)}%
+                              {returns.annualizedROI.toFixed(1)}%
                             </div>
-                            <div className="text-sm text-purple-700">Annualized Return</div>
+                            <div className="text-sm text-purple-700">Annualized ROI</div>
                           </CardContent>
                         </Card>
 
                         <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
                           <CardContent className="p-6 text-center">
                             <div className="text-2xl font-bold text-orange-600 mb-1">
-                              {((returns.totalProfit / investmentAmount[0]) * 100).toFixed(1)}%
+                              {returns.totalDeals}
                             </div>
-                            <div className="text-sm text-orange-700">Total Return</div>
+                            <div className="text-sm text-orange-700">Total Deals</div>
                           </CardContent>
                         </Card>
                       </div>
 
-                      {/* Growth Visualization */}
+                      {/* Deal Breakdown Visualization */}
                       <Card className="bg-gray-50">
                         <CardHeader>
                           <CardTitle className="flex items-center text-lg">
                             <BarChart3 className="w-5 h-5 mr-2 text-brand-blue" />
-                            Growth Timeline
+                            Deal-by-Deal Breakdown
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            {returns.monthlyBreakdown.slice(0, 8).map((month, index) => (
-                              <div key={index} className="text-center">
-                                <div className="text-sm text-brand-gray mb-1">
-                                  Month {month.month}
+                          {returns.totalDeals > 0 ? (
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                              {returns.dealBreakdown.slice(0, 8).map((deal, index) => (
+                                <div key={index} className="text-center">
+                                  <div className="text-sm text-brand-gray mb-1">
+                                    Deal {deal.deal}
+                                  </div>
+                                  <div className="text-lg font-semibold text-brand-dark">
+                                    ${deal.total.toLocaleString()}
+                                  </div>
+                                  <div className="text-xs text-green-600">
+                                    +${deal.investorShare.toLocaleString()}
+                                  </div>
+                                  <div className="text-xs text-gray-500">
+                                    {deal.roi.toFixed(1)}% ROI
+                                  </div>
                                 </div>
-                                <div className="text-lg font-semibold text-brand-dark">
-                                  ${month.total.toLocaleString()}
-                                </div>
-                                <div className="text-xs text-green-600">
-                                  +${month.profit.toLocaleString()}
-                                </div>
-                              </div>
-                            ))}
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="text-center text-gray-500">
+                              No deals would complete in this timeframe. Try extending the time horizon.
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+
+                      {/* Business Logic Details */}
+                      <Card className="bg-blue-50 border-blue-200">
+                        <CardContent className="p-6">
+                          <h4 className="font-semibold text-brand-dark mb-3">InvestoFund Business Logic</h4>
+                          <div className="grid md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                              <div className="text-brand-gray">• Factor Rate: {option.factorRate}x</div>
+                              <div className="text-brand-gray">• ISO Commission: 15% of gross profit</div>
+                              <div className="text-brand-gray">• Investor Share: {(option.profitSplit * 100).toFixed(0)}% of net profit</div>
+                            </div>
+                            <div>
+                              <div className="text-brand-gray">• Average Term: {option.avgTerm} days</div>
+                              <div className="text-brand-gray">• Expected Deals/Year: ~8</div>
+                              <div className="text-brand-gray">• Per Deal ROI: {(option.netROI * 100).toFixed(1)}%</div>
+                            </div>
                           </div>
                         </CardContent>
                       </Card>

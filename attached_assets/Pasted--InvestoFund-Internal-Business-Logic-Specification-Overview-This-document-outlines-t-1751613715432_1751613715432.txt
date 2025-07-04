@@ -1,0 +1,147 @@
+**InvestoFund Internal Business Logic Specification**
+
+---
+
+## 📊 Overview
+
+This document outlines the internal logic governing InvestoFund's investor flows, broker submissions, commission structure, reinvestment strategy, deal underwriting, and payout calculations.
+
+It will serve as a master reference for developers, operations, and compliance.
+
+---
+
+## 📅 Deal Terms (Default)
+
+| Term             | Value                           |
+| ---------------- | ------------------------------- |
+| Factor Rate      | 1.49                            |
+| Average Term     | 45 Days                         |
+| ISO Commission   | 15% (default)                   |
+| Profit Split     | 50% Investor / 50% Fund         |
+| Net ROI per Deal | \~20.8%                         |
+| Portfolio Option | Diversification starts at \$25K |
+
+## 💲 Investor Deal Flow Logic
+
+### 1. Investment Input
+
+* Minimum investment: \$5,000
+* Investments > \$25,000 trigger optional **portfolio diversification**
+* Capital is placed in a funding queue and matched to MCA opportunities
+
+### 2. Deal Calculation
+
+```js
+repayment = investment * factorRate;
+grossProfit = repayment - investment;
+isoCommission = grossProfit * 0.15;
+netProfit = grossProfit - isoCommission;
+investorShare = netProfit * 0.50;
+roi = investorShare / investment;
+```
+
+### 3. Diversified Portfolio Logic (Premium Option)
+
+* Investor opts into a multi-deal allocation
+* InvestoFund management fee: 10% of net profit
+* Investor/Fund split: **45% / 55%**
+* Enhanced risk mitigation
+
+```js
+investorShare = netProfit * 0.45;
+```
+
+### 4. Reinvestment Rules
+
+* Default: Reinvest enabled
+* Capital reinvested after deal maturity (\~45 days)
+* Idle capital returned if not matched in 60 days
+* Opt-out reinvestment toggle must be selected manually
+
+### 5. Annualized ROI Estimate
+
+```js
+perDealROI * 8  // Approx. 8 cycles/year
+```
+
+---
+
+## 📈 Broker / ISO Logic
+
+### 1. Deal Submission Types
+
+| Type          | Requirements                | Commission |
+| ------------- | --------------------------- | ---------- |
+| Full          | All docs, underwritten      | 15%        |
+| Partial       | Incomplete docs / weak file | 8-12%      |
+| Fraud/Flagged | Fake docs / ghost merchant  | 0% + flag  |
+
+### 2. Commission Adjustment Logic
+
+```js
+commissionBase = grossProfit * 0.15;
+qualityMultiplier = 1 (full), 0.8 (partial), 0 (fraud);
+finalCommission = commissionBase * qualityMultiplier;
+```
+
+### 3. Broker Incentives
+
+* Volume bonuses: +1-2% if ISO funds 5+ deals/month
+* Early access to high-quality leads for top ISOs
+
+---
+
+## 🚀 Reinvestment & Portfolio Behavior
+
+### Reinvestment Options
+
+* Auto reinvest enabled unless opted out
+* Reinvestment triggers upon payout confirmation
+* Can be paused or capped manually
+
+### Diversification Mechanics
+
+* For investments > \$25K
+* Split across 2-10 MCA deals
+* No single deal exceeds 25% of portfolio value
+
+---
+
+## ⛔ Safeguards & Constraints
+
+| Constraint                | Rule Description                             |
+| ------------------------- | -------------------------------------------- |
+| Max Per Deal per Investor | One investor cannot fund 100% of a deal      |
+| Portfolio Split Limits    | No single deal >25% of investor portfolio    |
+| Commission Guardrails     | 15% base, reduced for poor submissions       |
+| Reinvest Lock Period      | 30-day cooldown before reinvest toggle reset |
+| Fraud Detection           | Auto-flag duplicate or ghost merchant apps   |
+| Idle Capital Return Rule  | Return funds if unmatched for 60 days        |
+
+---
+
+## 📢 Event-Based Communication Triggers
+
+| Event                   | Email / Action Triggered            |
+| ----------------------- | ----------------------------------- |
+| Investor form submitted | Send PSA + Welcome Packet           |
+| Investment > \$25K      | Prompt portfolio diversification    |
+| Doc signed              | Trigger capital acceptance workflow |
+| Deal match              | Notify investor of deal terms       |
+| Deal payout             | Notify investor + reinvest option   |
+| Broker submits deal     | Confirm receipt + send ISO packet   |
+| Deal status updated     | Notify broker of approval/decline   |
+
+---
+
+## 🌐 Future Automation Hooks
+
+* Webhooks for email (MailerLite, SendGrid, etc.)
+* DocuSign / Dropbox Sign for legal signatures
+* Zapier logic for deal status → CRM + calendar
+* Admin dashboard to review broker quality scoring
+* Auto calculator generation based on these rules
+
+---
+
+**This file is the logic engine for all front-end calculators, investor/broker experiences, automation workflows, and internal validations.**
