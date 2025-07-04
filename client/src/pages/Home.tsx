@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { TrendingUp, Target, Users, Shield, DollarSign, Clock, Calculator, ArrowRight, Zap, BarChart3 } from "lucide-react";
+import { TrendingUp, Target, Users, Shield, DollarSign, Clock, Calculator, ArrowRight, Zap, BarChart3, CheckCircle, PieChart } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
@@ -190,8 +190,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Interactive Profit Potential Section */}
-      <section id="calculator" className="py-20 bg-gradient-to-br from-brand-blue/5 to-brand-teal/5">
+      {/* 1. Discover Your Profit Potential */}
+      <section id="discover" className="py-20 bg-gradient-to-br from-brand-blue/5 to-brand-teal/5">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -202,8 +202,355 @@ export default function Home() {
                 </h2>
               </div>
               <p className="text-xl text-brand-gray max-w-3xl mx-auto">
-                See how your investment could grow with our three portfolio strategies. 
-                Adjust the sliders to explore different scenarios and timeframes.
+                See how your investment could grow with our proven MCA strategies. 
+                Real returns from real merchant cash advance deals.
+              </p>
+            </div>
+            
+            {/* Quick Profit Overview */}
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+                <div className="text-3xl font-bold text-green-600 mb-2">20.8%</div>
+                <div className="text-brand-gray">Per Deal Return</div>
+                <div className="text-sm text-gray-500 mt-1">After all fees</div>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+                <div className="text-3xl font-bold text-blue-600 mb-2">45</div>
+                <div className="text-brand-gray">Days Average</div>
+                <div className="text-sm text-gray-500 mt-1">Deal duration</div>
+              </div>
+              <div className="bg-white rounded-xl p-6 text-center shadow-lg">
+                <div className="text-3xl font-bold text-purple-600 mb-2">8+</div>
+                <div className="text-brand-gray">Deals Per Year</div>
+                <div className="text-sm text-gray-500 mt-1">Compound potential</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Deal-by-Deal Breakdown */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-brand-dark mb-4">
+                Deal-by-Deal Breakdown: The Reinvestment Advantage
+              </h2>
+              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
+                Individual deals are limited to 20.8% returns, but reinvestment creates exponential growth
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-2xl p-8">
+              {/* Key Explanation */}
+              <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded">
+                <div className="text-sm">
+                  <p className="font-semibold text-blue-800 mb-2">Why Reinvestment Creates Massive Returns:</p>
+                  <p className="text-blue-700 mb-1">• Individual deal maximum: <strong>1.49x factor rate (49% gross profit)</strong></p>
+                  <p className="text-blue-700 mb-1">• Your net share per deal: <strong>~20.8% return maximum</strong></p>
+                  <p className="text-blue-700">• Reinvestment strategy: <strong>Each deal's profits become investment capital for the next</strong></p>
+                </div>
+              </div>
+
+              {/* Sample Deal Progression */}
+              <div className="grid md:grid-cols-4 gap-4 mb-6">
+                <div className="text-center p-3 bg-white rounded-lg border">
+                  <div className="text-sm text-brand-gray mb-1">Deal 1</div>
+                  <div className="text-lg font-semibold text-brand-dark">$10,000</div>
+                  <div className="text-xs text-green-600">+$2,083 profit</div>
+                  <div className="text-xs text-gray-500">20.8% return</div>
+                </div>
+                <div className="text-center p-3 bg-white rounded-lg border">
+                  <div className="text-sm text-brand-gray mb-1">Deal 2</div>
+                  <div className="text-lg font-semibold text-brand-dark">$12,083</div>
+                  <div className="text-xs text-green-600">+$2,515 profit</div>
+                  <div className="text-xs text-gray-500">+ reinvested profits</div>
+                </div>
+                <div className="text-center p-3 bg-white rounded-lg border">
+                  <div className="text-sm text-brand-gray mb-1">Deal 3</div>
+                  <div className="text-lg font-semibold text-brand-dark">$14,598</div>
+                  <div className="text-xs text-green-600">+$3,037 profit</div>
+                  <div className="text-xs text-gray-500">Growing principal</div>
+                </div>
+                <div className="text-center p-3 bg-white rounded-lg border">
+                  <div className="text-sm text-brand-gray mb-1">Deal 8</div>
+                  <div className="text-lg font-semibold text-brand-dark">$25,000+</div>
+                  <div className="text-xs text-green-600">+$5,200+ profit</div>
+                  <div className="text-xs text-gray-500">Compound power</div>
+                </div>
+              </div>
+
+              <div className="mt-4 p-3 bg-green-50 rounded-lg">
+                <div className="text-sm text-green-800 text-center">
+                  <strong>Compound Effect:</strong> Starting with $10,000, reinvestment creates exponential growth. 
+                  After 8 deals, your investment could exceed $25,000 - that's 150%+ total return through compound reinvestment!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. How Big Returns Are Really Made */}
+      <section className="py-16 bg-gradient-to-br from-orange-50 to-yellow-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-brand-dark mb-4">
+                How Big Returns Are Really Made
+              </h2>
+              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
+                The secret isn't in individual deal profits - it's in the reinvestment strategy
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div className="bg-white rounded-xl p-6">
+                <div className="text-center mb-4">
+                  <div className="text-2xl font-bold text-red-600 mb-2">❌ Traditional Approach</div>
+                  <div className="text-lg text-gray-600">Take Profits Out</div>
+                </div>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                    <span>Deal 1: $10,000</span>
+                    <span className="text-green-600">+$2,083</span>
+                  </div>
+                  <div className="text-center text-orange-600 font-semibold">
+                    💸 Withdraw $2,083 profit
+                  </div>
+                  <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                    <span>Deal 2: $10,000</span>
+                    <span className="text-green-600">+$2,083</span>
+                  </div>
+                  <div className="text-center text-orange-600 font-semibold">
+                    💸 Withdraw $2,083 profit
+                  </div>
+                  <div className="text-center pt-2 border-t">
+                    <div className="text-lg font-bold text-gray-700">After 8 deals: $26,664 profit</div>
+                    <div className="text-sm text-gray-500">Linear growth only</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-6 border-2 border-green-200">
+                <div className="text-center mb-4">
+                  <div className="text-2xl font-bold text-green-600 mb-2">✅ InvestoFund Strategy</div>
+                  <div className="text-lg text-gray-600">Reinvest Everything</div>
+                </div>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center p-2 bg-white rounded">
+                    <span>Deal 1: $10,000</span>
+                    <span className="text-green-600">+$2,083</span>
+                  </div>
+                  <div className="text-center text-green-600 font-semibold">
+                    🔄 Reinvest all profits
+                  </div>
+                  <div className="flex justify-between items-center p-2 bg-white rounded">
+                    <span>Deal 2: $12,083</span>
+                    <span className="text-green-600">+$2,515</span>
+                  </div>
+                  <div className="text-center text-green-600 font-semibold">
+                    🔄 Reinvest all profits
+                  </div>
+                  <div className="text-center pt-2 border-t">
+                    <div className="text-lg font-bold text-green-700">After 8 deals: $50,000+ total</div>
+                    <div className="text-sm text-green-600">Exponential compound growth!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. How InvestoFund Works */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-brand-dark mb-4">
+                How InvestoFund Works
+              </h2>
+              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
+                Our proven 4-step process turns your investment into compound returns
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-6 mb-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="text-2xl font-bold text-blue-600">1</div>
+                </div>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2">You Invest</h3>
+                <p className="text-sm text-brand-gray">Choose your investment amount and strategy</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="text-2xl font-bold text-green-600">2</div>
+                </div>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2">We Fund Merchants</h3>
+                <p className="text-sm text-brand-gray">Your capital helps businesses grow through MCAs</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="text-2xl font-bold text-purple-600">3</div>
+                </div>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2">Merchants Repay</h3>
+                <p className="text-sm text-brand-gray">Daily payments generate 20.8% returns per deal</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="text-2xl font-bold text-orange-600">4</div>
+                </div>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2">Automatic Reinvestment</h3>
+                <p className="text-sm text-brand-gray">Profits compound into exponential growth</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Risk Mitigation & Transparency */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-brand-dark mb-4">
+                Risk Mitigation & Transparency
+              </h2>
+              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
+                We protect your investment through rigorous due diligence and transparent processes
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-xl p-6">
+                <div className="text-center mb-4">
+                  <Shield className="w-12 h-12 text-blue-600 mx-auto mb-2" />
+                  <h3 className="text-lg font-semibold text-brand-dark">Due Diligence</h3>
+                </div>
+                <ul className="text-sm text-brand-gray space-y-2">
+                  <li>• Credit checks on all merchants</li>
+                  <li>• Bank statement verification</li>
+                  <li>• Revenue analysis & projections</li>
+                  <li>• Industry risk assessment</li>
+                </ul>
+              </div>
+              <div className="bg-white rounded-xl p-6">
+                <div className="text-center mb-4">
+                  <BarChart3 className="w-12 h-12 text-green-600 mx-auto mb-2" />
+                  <h3 className="text-lg font-semibold text-brand-dark">Performance Tracking</h3>
+                </div>
+                <ul className="text-sm text-brand-gray space-y-2">
+                  <li>• Real-time deal monitoring</li>
+                  <li>• Daily payment tracking</li>
+                  <li>• Automated alerts for issues</li>
+                  <li>• Transparent reporting dashboard</li>
+                </ul>
+              </div>
+              <div className="bg-white rounded-xl p-6">
+                <div className="text-center mb-4">
+                  <CheckCircle className="w-12 h-12 text-purple-600 mx-auto mb-2" />
+                  <h3 className="text-lg font-semibold text-brand-dark">Legal Protection</h3>
+                </div>
+                <ul className="text-sm text-brand-gray space-y-2">
+                  <li>• UCC filings on all advances</li>
+                  <li>• Personal guarantees from owners</li>
+                  <li>• Collection agency partnerships</li>
+                  <li>• Legal recovery procedures</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Per Deal Performance Example */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-brand-dark mb-4">
+                Per Deal Performance Example
+              </h2>
+              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
+                See exactly how a typical merchant cash advance generates your 20.8% return
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Deal Structure</h3>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg">
+                      <span className="text-brand-gray">Merchant Advance:</span>
+                      <span className="font-semibold text-brand-dark">$10,000</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg">
+                      <span className="text-brand-gray">Factor Rate:</span>
+                      <span className="font-semibold text-brand-dark">1.49x</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg">
+                      <span className="text-brand-gray">Total Repayment:</span>
+                      <span className="font-semibold text-brand-dark">$14,900</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg">
+                      <span className="text-brand-gray">Gross Profit:</span>
+                      <span className="font-semibold text-green-600">$4,900</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg">
+                      <span className="text-brand-gray">Deal Duration:</span>
+                      <span className="font-semibold text-brand-dark">45 days</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Profit Distribution</h3>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg">
+                      <span className="text-brand-gray">Gross Profit:</span>
+                      <span className="font-semibold text-brand-dark">$4,900</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-orange-100 rounded-lg">
+                      <span className="text-orange-700">ISO Commission (15%):</span>
+                      <span className="font-semibold text-orange-700">-$735</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-blue-100 rounded-lg">
+                      <span className="text-blue-700">Net Profit:</span>
+                      <span className="font-semibold text-blue-700">$4,165</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg">
+                      <span className="text-gray-700">InvestoFund Share (50%):</span>
+                      <span className="font-semibold text-gray-700">$2,082</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-green-100 rounded-lg border-2 border-green-300">
+                      <span className="text-green-700 font-semibold">Your Return:</span>
+                      <span className="font-bold text-green-700">$2,083 (20.8%)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Calculate Your Potential Returns */}
+      <section id="calculator" className="py-20 bg-gradient-to-br from-brand-blue/5 to-brand-teal/5">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center mb-4">
+                <Calculator className="w-8 h-8 text-brand-teal mr-3" />
+                <h2 className="text-4xl font-bold text-brand-dark">
+                  Calculate Your Potential Returns
+                </h2>
+              </div>
+              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
+                Adjust the sliders to see how reinvestment creates exponential growth
               </p>
             </div>
 
@@ -654,10 +1001,108 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Calculator Section */}
-      <section id="calculator" className="py-16 bg-white">
+      {/* 8. How Deal Profits Actually Work */}
+      <section className="py-16 bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="container mx-auto px-4">
-          <StandardROICalculator />
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-brand-dark mb-4">
+                How Deal Profits Actually Work
+              </h2>
+              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
+                Complete transparency in our profit-sharing model - see exactly where every dollar goes
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-xl p-8">
+              <div className="grid md:grid-cols-3 gap-8 mb-8">
+                {/* Step 1: Merchant Repayment */}
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <DollarSign className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-brand-dark mb-2">1. Merchant Repays</h3>
+                  <div className="text-2xl font-bold text-blue-600 mb-2">$14,900</div>
+                  <p className="text-sm text-brand-gray">From $10,000 advance at 1.49x factor rate</p>
+                </div>
+
+                {/* Step 2: ISO Commission */}
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-8 h-8 text-orange-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-brand-dark mb-2">2. ISO Commission</h3>
+                  <div className="text-2xl font-bold text-orange-600 mb-2">-$735</div>
+                  <p className="text-sm text-brand-gray">15% of $4,900 gross profit goes to ISO partner</p>
+                </div>
+
+                {/* Step 3: Profit Split */}
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <PieChart className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-brand-dark mb-2">3. 50/50 Split</h3>
+                  <div className="text-2xl font-bold text-green-600 mb-2">$2,083</div>
+                  <p className="text-sm text-brand-gray">Your 50% share of $4,165 net profit</p>
+                </div>
+              </div>
+
+              {/* Detailed Breakdown */}
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h4 className="text-lg font-semibold text-brand-dark mb-4 text-center">
+                  Complete Financial Breakdown
+                </h4>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg">
+                      <span className="text-brand-gray">Merchant Advance:</span>
+                      <span className="font-semibold text-brand-dark">$10,000</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg">
+                      <span className="text-brand-gray">Factor Rate:</span>
+                      <span className="font-semibold text-brand-dark">1.49x</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-blue-100 rounded-lg">
+                      <span className="text-blue-700 font-semibold">Total Repayment:</span>
+                      <span className="font-bold text-blue-700">$14,900</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-green-100 rounded-lg">
+                      <span className="text-green-700 font-semibold">Gross Profit:</span>
+                      <span className="font-bold text-green-700">$4,900</span>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center p-3 bg-orange-100 rounded-lg">
+                      <span className="text-orange-700">ISO Commission (15%):</span>
+                      <span className="font-semibold text-orange-700">-$735</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-blue-100 rounded-lg">
+                      <span className="text-blue-700">Net Profit Available:</span>
+                      <span className="font-semibold text-blue-700">$4,165</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg">
+                      <span className="text-gray-700">InvestoFund Share (50%):</span>
+                      <span className="font-semibold text-gray-700">$2,082</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-green-200 rounded-lg border-2 border-green-400">
+                      <span className="text-green-800 font-bold">Your Return:</span>
+                      <span className="font-bold text-green-800">$2,083 (20.8%)</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+                  <h5 className="font-semibold text-yellow-800 mb-2">Why This Model Works:</h5>
+                  <ul className="text-sm text-yellow-700 space-y-1">
+                    <li>• ISOs are incentivized to bring quality deals (their commission depends on repayment)</li>
+                    <li>• InvestoFund shares the same profit incentive as investors</li>
+                    <li>• Transparent fee structure with no hidden costs</li>
+                    <li>• All parties benefit when merchants succeed</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -901,24 +1346,182 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Strong CTA Section */}
-      <section className="py-20 brand-gradient text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Start Investing?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Join InvestoFund and access high-yield alternative investments with our proven profit-sharing model.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/investors">
-              <Button className="bg-white text-brand-blue hover:bg-brand-light px-8 py-3">
-                Get Started Today
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-brand-blue px-8 py-3 font-medium">
-                Schedule a Call
-              </Button>
-            </Link>
+      {/* 9. Investment Amount Options */}
+      <section className="py-20 bg-gradient-to-br from-brand-blue to-brand-teal text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">Choose Your Investment Level</h2>
+              <p className="text-xl max-w-3xl mx-auto">
+                Start with as little as $5,000 or diversify with our premium portfolio options
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* $5,000 Minimum */}
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
+                <div className="text-center mb-6">
+                  <div className="text-3xl font-bold mb-2">$5,000</div>
+                  <div className="text-lg opacity-90">Starting Investment</div>
+                </div>
+                <ul className="space-y-3 mb-8 text-sm">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Access to all deal opportunities
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    20.8% maximum returns per deal
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Automatic reinvestment strategy
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Direct deal participation
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Monthly performance reports
+                  </li>
+                </ul>
+                <Link href="/investors">
+                  <Button className="w-full bg-white text-brand-blue hover:bg-gray-100">
+                    Start with $5,000
+                  </Button>
+                </Link>
+              </div>
+
+              {/* $25,000 Portfolio */}
+              <div className="bg-white/15 backdrop-blur-md rounded-2xl p-8 border-2 border-yellow-300/50 relative">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-yellow-400 text-brand-dark px-4 py-1 rounded-full text-sm font-semibold">
+                    Most Popular
+                  </div>
+                </div>
+                <div className="text-center mb-6">
+                  <div className="text-3xl font-bold mb-2">$25,000</div>
+                  <div className="text-lg opacity-90">Diversified Portfolio</div>
+                </div>
+                <ul className="space-y-3 mb-8 text-sm">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Everything in $5,000 plan
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Risk diversification across sectors
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Priority deal access
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Dedicated account manager
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Weekly strategy calls
+                  </li>
+                </ul>
+                <Link href="/investors">
+                  <Button className="w-full bg-yellow-400 text-brand-dark hover:bg-yellow-300">
+                    Start with $25,000
+                  </Button>
+                </Link>
+              </div>
+
+              {/* $500,000 Premium */}
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
+                <div className="text-center mb-6">
+                  <div className="text-3xl font-bold mb-2">$500,000</div>
+                  <div className="text-lg opacity-90">Premium Access</div>
+                </div>
+                <ul className="space-y-3 mb-8 text-sm">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Everything in lower tiers
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Exclusive high-value deals
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Custom investment strategies
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Direct CEO access
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
+                    Quarterly strategy reviews
+                  </li>
+                </ul>
+                <Link href="/contact">
+                  <Button className="w-full bg-white text-brand-blue hover:bg-gray-100">
+                    Contact for $500K+
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Time Horizon Options */}
+            <div className="mt-16 text-center">
+              <h3 className="text-2xl font-bold mb-8">Choose Your Time Horizon</h3>
+              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
+                  <div className="text-2xl font-bold mb-2">3 months</div>
+                  <div className="text-sm opacity-90">Short-term gains</div>
+                  <div className="text-xs mt-2">~2-3 deals</div>
+                </div>
+                <div className="bg-white/15 backdrop-blur-md rounded-xl p-6 border border-white/30">
+                  <div className="text-2xl font-bold mb-2">12 months</div>
+                  <div className="text-sm opacity-90">Optimal compounding</div>
+                  <div className="text-xs mt-2">~8-10 deals</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
+                  <div className="text-2xl font-bold mb-2">36 months</div>
+                  <div className="text-sm opacity-90">Maximum growth</div>
+                  <div className="text-xs mt-2">~24-30 deals</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="mt-16 text-center">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto">
+                <h3 className="text-3xl font-bold mb-4">Ready to Start Investing?</h3>
+                <p className="text-xl mb-8 opacity-90">
+                  Join InvestoFund and access high-yield alternative investments with our proven profit-sharing model.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link href="/investors">
+                    <Button className="bg-white text-brand-blue hover:bg-gray-100 px-8 py-3 text-lg">
+                      <Calculator className="w-5 h-5 mr-2" />
+                      Start Investing Today
+                    </Button>
+                  </Link>
+                  <Link href="/contact">
+                    <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-brand-blue px-8 py-3 text-lg font-medium">
+                      <Users className="w-5 h-5 mr-2" />
+                      Schedule a Call
+                    </Button>
+                  </Link>
+                </div>
+                
+                <div className="mt-6 text-sm opacity-75">
+                  <div className="flex items-center justify-center space-x-6">
+                    <span>✓ SEC-compliant operations</span>
+                    <span>✓ Transparent fee structure</span>
+                    <span>✓ 94.7% success rate</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
