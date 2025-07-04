@@ -341,6 +341,34 @@ export default function Home() {
                         </CardContent>
                       </Card>
 
+                      {/* Reinvestment Strategy Explanation */}
+                      <Card className="bg-orange-50 border-orange-200">
+                        <CardContent className="p-6">
+                          <h4 className="font-semibold text-orange-700 mb-3 flex items-center">
+                            <TrendingUp className="w-4 h-4 mr-2" />
+                            How Big Returns Are Really Made
+                          </h4>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                              <h5 className="font-medium text-gray-800 mb-2">Single Deal Limits:</h5>
+                              <div className="text-sm text-gray-700 space-y-1">
+                                <p>• Maximum factor rate: <strong>1.49x</strong></p>
+                                <p>• Maximum single deal profit: <strong>49%</strong></p>
+                                <p>• One-time return only</p>
+                              </div>
+                            </div>
+                            <div>
+                              <h5 className="font-medium text-gray-800 mb-2">Reinvestment Power:</h5>
+                              <div className="text-sm text-gray-700 space-y-1">
+                                <p>• Each deal's profits reinvested</p>
+                                <p>• Compound growth over time</p>
+                                <p>• <strong>This is where massive returns come from</strong></p>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+
                       {/* Results Grid */}
                       <div className="grid md:grid-cols-4 gap-6">
                         <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200">
@@ -385,28 +413,49 @@ export default function Home() {
                         <CardHeader>
                           <CardTitle className="flex items-center text-lg">
                             <BarChart3 className="w-5 h-5 mr-2 text-brand-blue" />
-                            Deal-by-Deal Breakdown
+                            Deal-by-Deal Breakdown: The Reinvestment Advantage
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
+                          {/* Key Explanation */}
+                          <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded">
+                            <div className="text-sm">
+                              <p className="font-semibold text-blue-800 mb-2">Why Reinvestment Creates Massive Returns:</p>
+                              <p className="text-blue-700 mb-1">• Individual deal maximum: <strong>1.49x factor rate</strong></p>
+                              <p className="text-blue-700 mb-1">• Single deal profit: <strong>49% return maximum</strong></p>
+                              <p className="text-blue-700">• Reinvestment strategy: <strong>Profits from each deal become investment capital for the next</strong></p>
+                            </div>
+                          </div>
+
                           {returns.totalDeals > 0 ? (
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                              {returns.dealBreakdown.slice(0, 8).map((deal, index) => (
-                                <div key={index} className="text-center">
-                                  <div className="text-sm text-brand-gray mb-1">
-                                    Deal {deal.deal}
+                            <div className="space-y-4">
+                              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                {returns.dealBreakdown.slice(0, 8).map((deal, index) => (
+                                  <div key={index} className="text-center p-3 bg-white rounded-lg border">
+                                    <div className="text-sm text-brand-gray mb-1">
+                                      Deal {deal.deal}
+                                      {index > 0 && <div className="text-xs text-green-600">+ reinvested profits</div>}
+                                    </div>
+                                    <div className="text-lg font-semibold text-brand-dark">
+                                      ${deal.total.toLocaleString()}
+                                    </div>
+                                    <div className="text-xs text-green-600">
+                                      +${deal.investorShare.toLocaleString()}
+                                    </div>
+                                    <div className="text-xs text-gray-500">
+                                      1.49x max factor
+                                    </div>
                                   </div>
-                                  <div className="text-lg font-semibold text-brand-dark">
-                                    ${deal.total.toLocaleString()}
-                                  </div>
-                                  <div className="text-xs text-green-600">
-                                    +${deal.investorShare.toLocaleString()}
-                                  </div>
-                                  <div className="text-xs text-gray-500">
-                                    {deal.roi.toFixed(1)}% ROI
-                                  </div>
+                                ))}
+                              </div>
+                              
+                              <div className="mt-4 p-3 bg-green-50 rounded-lg">
+                                <div className="text-sm text-green-800">
+                                  <strong>Compound Effect:</strong> Starting with ${investmentAmount[0].toLocaleString()}, each 49% profit gets reinvested. 
+                                  After {returns.totalDeals} deals, your total grows to ${Math.round(returns.totalReturn).toLocaleString()} - 
+                                  that's {((returns.totalReturn / investmentAmount[0] - 1) * 100).toFixed(0)}% total return through reinvestment!
                                 </div>
-                              ))}
+                              </div>
                             </div>
                           ) : (
                             <div className="text-center text-gray-500">
