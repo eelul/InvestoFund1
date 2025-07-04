@@ -15,27 +15,43 @@ export default function Home() {
   const investmentOptions = {
     option1: {
       name: "Option 1: Direct Deal Participation", 
-      description: "Higher risk, direct participation in individual MCA deals",
+      description: "Higher risk, direct control over individual MCA deals with approval options",
       targetFactorRate: 1.49, // Target rate - actual rates vary
       factorRateRange: "1.35x - 1.65x",
-      avgTerm: 45, // days
+      termRange: "10-180 days", // Variable terms based on deal type
+      avgTerm: 45, // Average for calculations
       profitSplit: 0.50, // 50% to investor after ISO commission
       targetROI: 0.208, // ~20.8% target per deal
       minInvestment: 5000,
       riskLevel: "Higher Risk",
-      color: "text-orange-600"
+      color: "text-orange-600",
+      features: [
+        "Manual deal approval via dashboard",
+        "Set factor rate preferences",
+        "Choose term length limits", 
+        "Risk level selection control",
+        "Quick approval timeframes"
+      ]
     },
     option2: {
       name: "Option 2: Diversified Portfolio",
-      description: "Lower risk through portfolio diversification across multiple deals", 
+      description: "Lower risk through automated diversification across multiple deal terms and types", 
       targetFactorRate: 1.49, // Target rate - actual rates vary
       factorRateRange: "1.35x - 1.65x",
-      avgTerm: 45, // days
+      termRange: "10-180 days", // Diversified across all terms
+      avgTerm: 45, // Average for calculations
       profitSplit: 0.45, // 45% to investor (Fund takes 55% including 10% management fee)
       targetROI: 0.187, // ~18.7% target per deal
       minInvestment: 25000,
-      riskLevel: "Moderate Risk",
-      color: "text-brand-blue"
+      riskLevel: "Moderate Risk", 
+      color: "text-brand-blue",
+      features: [
+        "Auto-approval within set parameters",
+        "Diversified across deal terms",
+        "Risk-balanced deal selection",
+        "Automated portfolio management",
+        "Professional deal curation"
+      ]
     }
   };
 
@@ -305,10 +321,25 @@ export default function Home() {
                             Range: {option.factorRateRange}
                           </div>
                           <div className="text-brand-gray">
-                            Avg Term: {option.avgTerm} days
+                            Term Range: {option.termRange}
                           </div>
                         </div>
                       </div>
+
+                      {/* Key Features */}
+                      <Card className="bg-gray-50 border-gray-200">
+                        <CardContent className="p-6">
+                          <h4 className="font-semibold text-brand-dark mb-3">Key Features</h4>
+                          <div className="grid md:grid-cols-2 gap-4">
+                            {option.features?.map((feature, index) => (
+                              <div key={index} className="flex items-start space-x-2">
+                                <div className="w-2 h-2 bg-brand-teal rounded-full mt-2 flex-shrink-0"></div>
+                                <span className="text-sm text-gray-700">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
 
                       {/* Results Grid */}
                       <div className="grid md:grid-cols-4 gap-6">
@@ -397,10 +428,27 @@ export default function Home() {
                               <div className="text-brand-gray">• Investor Share: {(option.profitSplit * 100).toFixed(0)}% of net profit</div>
                             </div>
                             <div>
-                              <div className="text-brand-gray">• Average Term: {option.avgTerm} days</div>
-                              <div className="text-brand-gray">• Expected Deals/Year: ~8</div>
+                              <div className="text-brand-gray">• Term Range: {option.termRange}</div>
+                              <div className="text-brand-gray">• Deal Frequency: Variable based on market</div>
                               <div className="text-brand-gray">• Target Per Deal ROI: {(option.targetROI * 100).toFixed(1)}%</div>
                             </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      {/* Deal Management Features */}
+                      <Card className="bg-green-50 border-green-200">
+                        <CardContent className="p-6">
+                          <h4 className="font-semibold text-brand-dark mb-3 flex items-center">
+                            <Clock className="w-4 h-4 mr-2" />
+                            How InvestoFund Manages Your Deals
+                          </h4>
+                          <div className="text-sm text-gray-700 space-y-2">
+                            <p>• <strong>Variable Terms:</strong> Deal terms range from 10 days to 6 months based on merchant needs and market conditions.</p>
+                            <p>• <strong>Dashboard Control:</strong> Receive deal notifications via your investor dashboard with short approval timeframes.</p>
+                            <p>• <strong>Auto-Settings:</strong> Set preferences for factor rate ranges, term limits, and risk levels for automatic deal matching.</p>
+                            <p>• <strong>Deal Prioritization:</strong> InvestoFund curates deals to match your selected risk level and investment goals.</p>
+                            <p>• <strong>Quick Deployment:</strong> Deals can close in as little as 10-15 days when terms align with market conditions.</p>
                           </div>
                         </CardContent>
                       </Card>
@@ -413,9 +461,10 @@ export default function Home() {
                             Important Disclaimer
                           </h4>
                           <div className="text-sm text-gray-700 space-y-2">
-                            <p>• <strong>Variable Returns:</strong> Factor rates and returns vary based on available deal opportunities and market conditions.</p>
-                            <p>• <strong>Target Scenarios:</strong> Calculations shown are based on target factor rates of 1.49x. Actual deals typically range from 1.35x to 1.65x.</p>
-                            <p>• <strong>Deal Availability:</strong> While we target specific factor rates, final terms depend on merchant negotiations and market conditions.</p>
+                            <p>• <strong>Variable Deal Terms:</strong> Deal terms range from 10 days to 6 months with factor rates from 1.35x to 1.65x based on market conditions.</p>
+                            <p>• <strong>Target Scenarios:</strong> Calculations shown use target factor rates of 1.49x. Actual deals vary based on merchant negotiations.</p>
+                            <p>• <strong>Deal Approval:</strong> Investors control deal participation through dashboard settings or manual approval for each opportunity.</p>
+                            <p>• <strong>Timeline Variability:</strong> While some deals close in 10-15 days, others may take months - InvestoFund manages this based on your preferences.</p>
                             <p>• <strong>Risk Notice:</strong> All investments carry risk. Past performance does not guarantee future results.</p>
                           </div>
                         </CardContent>

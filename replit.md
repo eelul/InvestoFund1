@@ -141,3 +141,4 @@ Changelog:
 - July 03, 2025. Integrated clear two-prong investment model with explicit Option 1 (Direct Deal Participation) and Option 2 (Portfolio Blend) descriptions, added industry-specific business descriptions for merchants page, improved header spacing and button visibility
 - July 04, 2025. Completed comprehensive e-signature integration with seamless document flow, modal interface, document templates, and database storage for investor onboarding
 - July 04, 2025. Created individual footer pages with coherent layouts: Profit Sharing Agreement, Risk Disclosure, Investor Resources, Broker Resources, Commission Structure, FAQs, Legal, and Privacy Policy
+- July 04, 2025. Updated investment calculator with variable deal terms (10-180 days), added dynamic deal management features including dashboard approval controls, auto-settings for factor rates and risk preferences, and comprehensive disclaimers reflecting the flexible nature of MCA deal timelines
