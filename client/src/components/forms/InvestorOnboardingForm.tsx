@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -14,6 +14,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { INVESTMENT_TIERS } from "@/lib/constants";
 import { formatCurrency, generatePaymentReference, formatPaymentInstructions } from "@/lib/payment-utils";
 import PortfolioBlendCalculator from "../calculators/PortfolioBlendCalculator";
+import ProgressIndicator from "../ui/progress-indicator";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
@@ -84,14 +85,6 @@ function InvestorForm() {
   const goToPreviousStep = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
-    }
-  };
-
-  const goToStep = (step: number) => {
-    // Only allow going to completed steps or the next step
-    const validSteps = [1, 2, 3, 4];
-    if (validSteps.includes(step) && (step <= currentStep || stepValidation[step as 1 | 2 | 3 | 4])) {
-      setCurrentStep(step);
     }
   };
 
@@ -226,44 +219,49 @@ function InvestorForm() {
     return stepNumber <= currentStep || steps[stepNumber - 1].completed;
   };
 
+  const goToStep = (stepNumber: number) => {
+    if (canNavigateToStep(stepNumber)) {
+      setCurrentStep(stepNumber);
+    }
+  };
+
+  // Update step validation when moving between steps
+  const validateCurrentStep = () => {
+    switch (currentStep) {
+      case 1:
+        const investmentAmount = form.getValues("investmentAmount");
+        const investmentType = form.getValues("investmentType");
+        return investmentAmount >= 5000 && investmentType;
+      case 2:
+        const { firstName, lastName, email, phone } = form.getValues();
+        return firstName && lastName && email && phone;
+      case 3:
+        return form.getValues("documentsAgreed");
+      case 4:
+        return true; // Review step
+      default:
+        return false;
+    }
+  };
+
+  // Update step validation whenever form values change
+  useEffect(() => {
+    const isCurrentStepValid = validateCurrentStep();
+    setStepValidation(prev => ({
+      ...prev,
+      [currentStep]: isCurrentStepValid
+    }));
+  }, [currentStep, form.watch()]);
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {/* Progress Indicator */}
-        <div className="mb-8">
-          <div className="flex justify-between items-center">
-            {steps.map((step, index) => (
-              <div 
-                key={step.number}
-                className={`flex flex-col items-center ${canNavigateToStep(step.number) ? 'cursor-pointer' : 'cursor-default'}`}
-                onClick={() => canNavigateToStep(step.number) && goToStep(step.number)}
-              >
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm mb-2 transition-all ${
-                  currentStep === step.number 
-                    ? 'bg-brand-blue text-white' 
-                    : step.completed 
-                      ? 'bg-brand-teal text-white' 
-                      : 'bg-gray-200 text-gray-500'
-                }`}>
-                  {step.completed ? '✓' : step.number}
-                </div>
-                <span className={`text-xs text-center ${
-                  currentStep === step.number 
-                    ? 'text-brand-blue font-medium' 
-                    : step.completed 
-                      ? 'text-brand-teal' 
-                      : 'text-gray-500'
-                }`}>
-                  {step.title}
-                </span>
-                {index < steps.length - 1 && (
-                  <div className={`absolute h-0.5 w-16 ${step.completed ? 'bg-brand-teal' : 'bg-gray-200'}`} 
-                       style={{ left: '50%', transform: 'translateX(-50%)', top: '20px', zIndex: -1 }} />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Animated Progress Indicator */}
+        <ProgressIndicator 
+          steps={steps}
+          currentStep={currentStep}
+          className="mb-8"
+        />
 
         {/* Step 1: Investment Amount */}
         {currentStep === 1 && (

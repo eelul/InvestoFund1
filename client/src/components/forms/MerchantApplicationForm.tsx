@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { FileUpload } from "@/components/ui/file-upload";
 import { BUSINESS_TYPES, YEARS_IN_BUSINESS, MONTHLY_REVENUE_RANGES, FUNDING_RANGES } from "@/lib/constants";
+import ProgressIndicator from "@/components/ui/progress-indicator";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
@@ -34,6 +35,12 @@ type FormData = z.infer<typeof formSchema>;
 export default function MerchantApplicationForm() {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [preQualification, setPreQualification] = useState<any>(null);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [stepValidation, setStepValidation] = useState({
+    1: false,
+    2: false,
+    3: false,
+  });
   const { toast } = useToast();
 
   const form = useForm<FormData>({
@@ -183,6 +190,49 @@ export default function MerchantApplicationForm() {
     }).format(amount);
   };
 
+  // Progress steps configuration
+  const steps = [
+    { number: 1, title: "Business Information", completed: stepValidation[1] },
+    { number: 2, title: "Owner Details", completed: stepValidation[2] },
+    { number: 3, title: "Review & Submit", completed: stepValidation[3] },
+  ];
+
+  // Step validation logic
+  const validateCurrentStep = () => {
+    const values = form.getValues();
+    switch (currentStep) {
+      case 1:
+        return values.businessName && values.businessType && values.yearsInBusiness && values.monthlyRevenue && values.requestedFunding;
+      case 2:
+        return values.firstName && values.lastName && values.email && values.phone && values.ownerName && values.businessAddress;
+      case 3:
+        return values.termsAgreed;
+      default:
+        return false;
+    }
+  };
+
+  // Update step validation
+  useEffect(() => {
+    const isValid = validateCurrentStep();
+    setStepValidation(prev => ({
+      ...prev,
+      [currentStep]: isValid
+    }));
+  }, [currentStep, form.watch()]);
+
+  const nextStep = () => {
+    if (currentStep < steps.length && validateCurrentStep()) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <Card className="bg-white shadow-lg">
@@ -195,6 +245,12 @@ export default function MerchantApplicationForm() {
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              {/* Animated Progress Indicator */}
+              <ProgressIndicator 
+                steps={steps}
+                currentStep={currentStep}
+                className="mb-8"
+              />
               {/* Business Information */}
               <div className="space-y-6">
                 <h3 className="text-lg font-semibold text-brand-dark">Business Information</h3>
