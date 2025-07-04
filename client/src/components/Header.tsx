@@ -5,8 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState, useEffect } from "react";
 import logoPath from "@assets/IF Logo 1.1_1751571539944.png";
 import UserTypeModal from "./UserTypeModal";
-
-import InvestoFund_white_background_long from "@assets/InvestoFund white background long.png";
+import investoFundLogo from "@assets/InvestoFund long transparant_1751612113571.png";
 
 export default function Header() {
   const [location] = useLocation();
@@ -66,9 +65,9 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center" onClick={handleNavClick}>
             <img 
-              src={InvestoFund_white_background_long} 
+              src={investoFundLogo} 
               alt="InvestoFund" 
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
           </Link>
           
