@@ -717,6 +717,73 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // E-signature routes
+  app.post("/api/e-signatures", async (req, res) => {
+    try {
+      const {
+        userId,
+        documentId,
+        documentTitle,
+        documentContent,
+        documentHash,
+        signerName,
+        signerEmail,
+        signatureData,
+        signatureType,
+        ipAddress,
+        applicationId,
+        applicationType
+      } = req.body;
+
+      const signature = await storage.createESignature({
+        userId,
+        documentId,
+        documentTitle,
+        documentContent,
+        documentHash,
+        signerName,
+        signerEmail,
+        signatureData,
+        signatureType,
+        ipAddress,
+        applicationId,
+        applicationType,
+      });
+
+      // Log the signature creation
+      await storage.createEmailLog({
+        userId,
+        emailType: "esignature_completed",
+        recipientEmail: signerEmail,
+        subject: `Document Signed: ${documentTitle}`,
+        status: "sent",
+      });
+
+      res.json(signature);
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/e-signatures/:userId", async (req, res) => {
+    try {
+      const userId = parseInt(req.params.userId);
+      const signatures = await storage.getESignaturesByUser(userId);
+      res.json(signatures);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/admin/e-signatures", async (req, res) => {
+    try {
+      const signatures = await storage.getAllESignatures();
+      res.json(signatures);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

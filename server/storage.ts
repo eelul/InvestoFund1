@@ -6,6 +6,7 @@ import {
   contactInquiries,
   emailLogs,
   documents,
+  eSignatures,
   type User,
   type InsertUser,
   type InvestmentApplication,
@@ -18,6 +19,8 @@ import {
   type InsertContactInquiry,
   type EmailLog,
   type Document,
+  type ESignature,
+  type InsertESignature,
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, sql } from "drizzle-orm";
@@ -63,6 +66,12 @@ export interface IStorage {
   createDocument(document: Omit<Document, 'id' | 'downloadCount' | 'createdAt'>): Promise<Document>;
   getDocumentsByUser(userId: number): Promise<Document[]>;
   incrementDownloadCount(id: number): Promise<void>;
+
+  // E-signatures
+  createESignature(signature: InsertESignature & { userId: number }): Promise<ESignature>;
+  getESignaturesByUser(userId: number): Promise<ESignature[]>;
+  getESignaturesByApplication(applicationId: number, applicationType: string): Promise<ESignature[]>;
+  getAllESignatures(): Promise<ESignature[]>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -295,6 +304,43 @@ export class DatabaseStorage implements IStorage {
         })
         .where(eq(documents.id, id));
     }
+  }
+
+  // E-signatures
+  async createESignature(signature: InsertESignature & { userId: number }): Promise<ESignature> {
+    const [esig] = await db
+      .insert(eSignatures)
+      .values({
+        ...signature,
+        signedAt: new Date(),
+      })
+      .returning();
+    return esig;
+  }
+
+  async getESignaturesByUser(userId: number): Promise<ESignature[]> {
+    return await db
+      .select()
+      .from(eSignatures)
+      .where(eq(eSignatures.userId, userId))
+      .orderBy(desc(eSignatures.signedAt));
+  }
+
+  async getESignaturesByApplication(applicationId: number, applicationType: string): Promise<ESignature[]> {
+    return await db
+      .select()
+      .from(eSignatures)
+      .where(
+        sql`${eSignatures.applicationId} = ${applicationId} AND ${eSignatures.applicationType} = ${applicationType}`
+      )
+      .orderBy(desc(eSignatures.signedAt));
+  }
+
+  async getAllESignatures(): Promise<ESignature[]> {
+    return await db
+      .select()
+      .from(eSignatures)
+      .orderBy(desc(eSignatures.signedAt));
   }
 }
 

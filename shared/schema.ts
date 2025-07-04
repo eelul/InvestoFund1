@@ -96,6 +96,24 @@ export const documents = pgTable("documents", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+// E-signature management
+export const eSignatures = pgTable("e_signatures", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").references(() => users.id),
+  documentId: text("document_id").notNull(), // template ID like 'investment-agreement'
+  documentTitle: text("document_title").notNull(),
+  documentContent: text("document_content").notNull(),
+  documentHash: text("document_hash").notNull(),
+  signerName: text("signer_name").notNull(),
+  signerEmail: text("signer_email").notNull(),
+  signatureData: text("signature_data").notNull(), // base64 image or typed text
+  signatureType: text("signature_type").notNull(), // 'typed' or 'drawn'
+  ipAddress: text("ip_address"),
+  signedAt: timestamp("signed_at").defaultNow(),
+  applicationId: integer("application_id"),
+  applicationType: text("application_type"), // 'investment', 'merchant', 'iso'
+});
+
 // Insert schemas
 export const insertUserSchema = createInsertSchema(users).pick({
   email: true,
@@ -144,6 +162,21 @@ export const insertContactInquirySchema = createInsertSchema(contactInquiries).p
   message: true,
 });
 
+// E-signature schema
+export const insertESignatureSchema = createInsertSchema(eSignatures).pick({
+  documentId: true,
+  documentTitle: true,
+  documentContent: true,
+  documentHash: true,
+  signerName: true,
+  signerEmail: true,
+  signatureData: true,
+  signatureType: true,
+  ipAddress: true,
+  applicationId: true,
+  applicationType: true,
+});
+
 // Types
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
@@ -157,3 +190,5 @@ export type InsertContactInquiry = z.infer<typeof insertContactInquirySchema>;
 export type ContactInquiry = typeof contactInquiries.$inferSelect;
 export type EmailLog = typeof emailLogs.$inferSelect;
 export type Document = typeof documents.$inferSelect;
+export type InsertESignature = z.infer<typeof insertESignatureSchema>;
+export type ESignature = typeof eSignatures.$inferSelect;

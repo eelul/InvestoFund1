@@ -15,6 +15,8 @@ import { INVESTMENT_TIERS } from "@/lib/constants";
 import { formatCurrency, generatePaymentReference, formatPaymentInstructions } from "@/lib/payment-utils";
 import PortfolioBlendCalculator from "../calculators/PortfolioBlendCalculator";
 import ProgressIndicator from "../ui/progress-indicator";
+import ESignatureModal from "../esignature/ESignatureModal";
+import { getDocumentTemplate, processDocumentTemplate } from "../esignature/DocumentTemplates";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
@@ -34,6 +36,10 @@ function InvestorForm() {
   const [selectedTier, setSelectedTier] = useState<string>("");
   const [showPortfolioCalculator, setShowPortfolioCalculator] = useState(false);
   const [paymentInstructions, setPaymentInstructions] = useState<any>(null);
+  const [showESignatureModal, setShowESignatureModal] = useState(false);
+  const [documentToSign, setDocumentToSign] = useState<any>(null);
+  const [signatureCompleted, setSignatureCompleted] = useState(false);
+  const [applicationData, setApplicationData] = useState<any>(null);
   const [stepValidation, setStepValidation] = useState({
     1: false,
     2: false,
@@ -155,29 +161,75 @@ function InvestorForm() {
       };
 
       const application = await createApplicationMutation.mutateAsync(applicationData);
+      
+      // Store application data for e-signature
+      setApplicationData({ application, user });
 
-      // Step 3: Request payment instructions
+      // Step 3: Prepare Investment Agreement for E-signature
+      const template = getDocumentTemplate('investment-agreement');
+      if (template) {
+        const documentData = {
+          fullName: `${data.firstName} ${data.lastName}`,
+          email: data.email,
+          investmentAmount: formatCurrency(data.investmentAmount),
+          investmentType: data.investmentType,
+          accreditedStatus: data.accreditedStatus ? 'Yes - Accredited Investor' : 'No - Non-Accredited',
+          applicationId: application.id,
+          investmentTypePortfolio: data.investmentType === 'portfolio'
+        };
+
+        const processedDocument = {
+          title: template.title,
+          content: processDocumentTemplate(template, documentData),
+          type: 'investment' as const
+        };
+
+        setDocumentToSign(processedDocument);
+        setShowESignatureModal(true);
+        return; // Wait for signature completion
+      }
+
+      // Fallback: Continue without e-signature
+      await continueAfterSignature();
+
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const continueAfterSignature = async () => {
+    try {
+      if (!applicationData) return;
+
+      const { application } = applicationData;
+      const formData = form.getValues();
+
+      // Step 4: Request payment instructions  
       const paymentRequest = await requestPaymentMutation.mutateAsync({
         applicationId: application.id,
         applicationType: "investment",
-        amount: data.investmentAmount,
-        userEmail: data.email,
-        userName: `${data.firstName} ${data.lastName}`,
+        amount: formData.investmentAmount,
+        userEmail: formData.email,
+        userName: `${formData.firstName} ${formData.lastName}`,
       });
 
-      // Step 4: Send investor document packet
+      // Step 5: Send investor document packet
       await sendInvestorPacketMutation.mutateAsync({
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        investmentAmount: data.investmentAmount,
-        investmentType: data.investmentType,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        investmentAmount: formData.investmentAmount,
+        investmentType: formData.investmentType,
         deliveryMethod: "email"
       });
 
       // Generate payment reference and instructions
       const reference = generatePaymentReference(application.id);
-      const instructions = formatPaymentInstructions(data.investmentAmount, reference);
+      const instructions = formatPaymentInstructions(formData.investmentAmount, reference);
 
       setPaymentInstructions({
         ...instructions,
@@ -197,6 +249,49 @@ function InvestorForm() {
       toast({
         title: "Error",
         description: error.message || "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleESignatureComplete = async (signatureData: any) => {
+    try {
+      if (!applicationData) return;
+
+      const { application, user } = applicationData;
+      const formData = form.getValues();
+
+      // Save e-signature to database
+      await apiRequest("POST", "/api/e-signatures", {
+        userId: user.id,
+        documentId: 'investment-agreement',
+        documentTitle: documentToSign?.title,
+        documentContent: documentToSign?.content,
+        documentHash: signatureData.documentHash,
+        signerName: signatureData.fullName,
+        signerEmail: signatureData.email,
+        signatureData: signatureData.signature,
+        signatureType: signatureData.signature.startsWith('data:') ? 'drawn' : 'typed',
+        ipAddress: signatureData.ipAddress,
+        applicationId: application.id,
+        applicationType: 'investment',
+      });
+
+      setSignatureCompleted(true);
+      setShowESignatureModal(false);
+
+      toast({
+        title: "Document Signed Successfully!",
+        description: "Your investment agreement has been signed. Proceeding with payment instructions.",
+      });
+
+      // Continue with the process
+      await continueAfterSignature();
+
+    } catch (error: any) {
+      toast({
+        title: "Signature Error",
+        description: error.message || "Failed to save signature. Please try again.",
         variant: "destructive",
       });
     }
@@ -244,6 +339,9 @@ function InvestorForm() {
     }
   };
 
+  // Watch form values for validation
+  const watchedValues = form.watch();
+
   // Update step validation whenever form values change
   useEffect(() => {
     const isCurrentStepValid = validateCurrentStep();
@@ -251,7 +349,7 @@ function InvestorForm() {
       ...prev,
       [currentStep]: isCurrentStepValid
     }));
-  }, [currentStep, form.watch()]);
+  }, [currentStep, watchedValues]);
 
   return (
     <Form {...form}>
@@ -607,6 +705,21 @@ function InvestorForm() {
           </Card>
         )}
       </form>
+
+      {/* E-Signature Modal */}
+      {showESignatureModal && documentToSign && (
+        <ESignatureModal
+          isOpen={showESignatureModal}
+          onClose={() => setShowESignatureModal(false)}
+          onComplete={handleESignatureComplete}
+          document={documentToSign}
+          userInfo={{
+            firstName: form.getValues('firstName'),
+            lastName: form.getValues('lastName'),
+            email: form.getValues('email'),
+          }}
+        />
+      )}
     </Form>
   );
 }
