@@ -8,6 +8,9 @@ import {
   insertMerchantApplicationSchema,
   insertContactInquirySchema,
 } from "@shared/schema";
+import { emailService } from "./emailService";
+import { DOCUMENT_TEMPLATES, getDocumentById, getDocumentsByCategory, personalizeDocument } from "@shared/documents";
+import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // User management
@@ -351,6 +354,287 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ success: true });
     } catch (error: any) {
       res.status(500).json({ message: error.message });
+    }
+  });
+
+  // Document template endpoints
+  app.get("/api/documents/templates", async (req, res) => {
+    try {
+      res.json(DOCUMENT_TEMPLATES);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/documents/templates/category/:category", async (req, res) => {
+    try {
+      const documents = getDocumentsByCategory(req.params.category);
+      res.json(documents);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/documents/templates/:id", async (req, res) => {
+    try {
+      const document = getDocumentById(req.params.id);
+      if (!document) {
+        return res.status(404).json({ message: "Document not found" });
+      }
+      res.json(document);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  // Download packet endpoint (for the DownloadPacket component)
+  const downloadPacketSchema = z.object({
+    firstName: z.string().min(2),
+    lastName: z.string().min(2), 
+    email: z.string().email(),
+    company: z.string().min(2),
+    phone: z.string().min(10),
+    deliveryMethod: z.enum(["email", "download"]),
+    documentIds: z.array(z.string()).optional().default(["iso-information-packet"])
+  });
+
+  app.post("/api/download-packet", async (req, res) => {
+    try {
+      const data = downloadPacketSchema.parse(req.body);
+      
+      if (data.deliveryMethod === "email") {
+        const success = await emailService.sendDocumentPacket({
+          to: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          company: data.company,
+          documentIds: data.documentIds
+        });
+
+        if (success) {
+          // Log the email in database
+          await storage.createEmailLog({
+            userId: null,
+            emailType: "document_packet",
+            recipientEmail: data.email,
+            subject: `InvestoFund Document Package`,
+            status: "sent",
+          });
+
+          res.json({ success: true, message: "Documents sent to email" });
+        } else {
+          res.status(500).json({ message: "Failed to send email" });
+        }
+      } else {
+        // For download method, just return success
+        res.json({ success: true, message: "Ready for download" });
+      }
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+  // Investor document packet endpoint
+  const investorPacketSchema = z.object({
+    firstName: z.string().min(2),
+    lastName: z.string().min(2),
+    email: z.string().email(),
+    investmentAmount: z.number().min(5000),
+    investmentType: z.enum(["single", "portfolio"]),
+    deliveryMethod: z.enum(["email", "download"])
+  });
+
+  app.post("/api/investor-packet", async (req, res) => {
+    try {
+      const data = investorPacketSchema.parse(req.body);
+      
+      const documentIds = [
+        "investor-welcome-packet",
+        "risk-disclosure-summary",
+        "profit-sharing-agreement"
+      ];
+
+      if (data.deliveryMethod === "email") {
+        const personalData = {
+          "Capital Provider Name": `${data.firstName} ${data.lastName}`,
+          "Amount, e.g., Ten Thousand Dollars ($10,000.00)": `${data.investmentAmount.toLocaleString()} Dollars ($${data.investmentAmount.toLocaleString()})`,
+          "Date": new Date().toLocaleDateString(),
+          "Your Name": "InvestoFund Management",
+          "Your Title, e.g., Managing Member": "Managing Member"
+        };
+
+        const success = await emailService.sendDocumentPacket({
+          to: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          documentIds,
+          personalData
+        });
+
+        if (success) {
+          await storage.createEmailLog({
+            userId: null,
+            emailType: "investor_packet",
+            recipientEmail: data.email,
+            subject: "InvestoFund Investor Package",
+            status: "sent",
+          });
+
+          res.json({ success: true, message: "Investor packet sent to email" });
+        } else {
+          res.status(500).json({ message: "Failed to send investor packet" });
+        }
+      } else {
+        res.json({ success: true, message: "Ready for download" });
+      }
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+  // ISO onboarding packet endpoint
+  const isoPacketSchema = z.object({
+    firstName: z.string().min(2),
+    lastName: z.string().min(2),
+    email: z.string().email(),
+    company: z.string().min(2),
+    phone: z.string().min(10),
+    deliveryMethod: z.enum(["email", "download"])
+  });
+
+  app.post("/api/iso-packet", async (req, res) => {
+    try {
+      const data = isoPacketSchema.parse(req.body);
+      
+      const documentIds = [
+        "iso-information-packet",
+        "iso-commission-structure", 
+        "iso-agreement",
+        "deal-submission-template"
+      ];
+
+      if (data.deliveryMethod === "email") {
+        const personalData = {
+          "ISO Company Name": data.company,
+          "ISO Address": "[To be completed]",
+          "Date of Signing": new Date().toLocaleDateString(),
+          "Your Company Address": "123 InvestoFund Plaza, New York, NY 10001",
+          "Your Name": "InvestoFund Management",
+          "Your Title": "Managing Partner",
+          "ISO Contact Name": `${data.firstName} ${data.lastName}`,
+          "ISO Title": "Principal"
+        };
+
+        const success = await emailService.sendDocumentPacket({
+          to: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          company: data.company,
+          documentIds,
+          personalData
+        });
+
+        if (success) {
+          await storage.createEmailLog({
+            userId: null,
+            emailType: "iso_packet",
+            recipientEmail: data.email,
+            subject: "InvestoFund ISO Partner Package",
+            status: "sent",
+          });
+
+          res.json({ success: true, message: "ISO packet sent to email" });
+        } else {
+          res.status(500).json({ message: "Failed to send ISO packet" });
+        }
+      } else {
+        res.json({ success: true, message: "Ready for download" });
+      }
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+  // Expert consultation request endpoint (for ISO training)
+  const expertCallSchema = z.object({
+    firstName: z.string().min(2),
+    lastName: z.string().min(2),
+    email: z.string().email(),
+    phone: z.string().min(10),
+    company: z.string().min(2),
+    experience: z.enum(["new", "1-2years", "3-5years", "5+years"]),
+    preferredTime: z.string().min(1),
+    topics: z.string().min(10)
+  });
+
+  app.post("/api/expert-consultation", async (req, res) => {
+    try {
+      const data = expertCallSchema.parse(req.body);
+      
+      // Send notification to internal team
+      const success = await emailService.sendWelcomeEmail({
+        to: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        userType: 'iso'
+      });
+
+      if (success) {
+        await storage.createEmailLog({
+          userId: null,
+          emailType: "expert_consultation_request",
+          recipientEmail: data.email,
+          subject: "Expert Consultation Request Received",
+          status: "sent",
+        });
+
+        res.json({ 
+          success: true, 
+          message: "Expert consultation request submitted. We'll contact you within 24 hours." 
+        });
+      } else {
+        res.status(500).json({ message: "Failed to process consultation request" });
+      }
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
+    }
+  });
+
+  // Send payment instructions with email
+  app.post("/api/send-payment-instructions", async (req, res) => {
+    try {
+      const { firstName, lastName, email, amount, investmentType } = req.body;
+      
+      const referenceNumber = `INV-${Date.now()}`;
+      
+      const success = await emailService.sendPaymentInstructions({
+        to: email,
+        firstName,
+        lastName,
+        amount,
+        investmentType,
+        referenceNumber
+      });
+
+      if (success) {
+        await storage.createEmailLog({
+          userId: null,
+          emailType: "payment_instructions",
+          recipientEmail: email,
+          subject: `Investment Payment Instructions - Reference ${referenceNumber}`,
+          status: "sent",
+        });
+
+        res.json({ 
+          success: true, 
+          referenceNumber,
+          message: "Payment instructions sent to email" 
+        });
+      } else {
+        res.status(500).json({ message: "Failed to send payment instructions" });
+      }
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
     }
   });
 

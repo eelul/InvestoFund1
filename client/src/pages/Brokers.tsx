@@ -1,10 +1,14 @@
-import { CheckCircle, Star, Upload, Calculator } from "lucide-react";
+import { useState } from "react";
+import { CheckCircle, Star, Upload, Calculator, Download } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import BrokerSubmissionForm from "@/components/forms/BrokerSubmissionForm";
 import { Link } from "wouter";
+import DownloadPacket from "@/components/DownloadPacket";
 
 export default function Brokers() {
+  const [showDownloadPacket, setShowDownloadPacket] = useState(false);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -254,11 +258,18 @@ export default function Brokers() {
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="bg-gray-50">
                 <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-brand-blue/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Download className="w-6 h-6 text-brand-blue" />
+                  </div>
                   <h3 className="font-semibold text-brand-dark mb-4">ISO Information Packet</h3>
                   <p className="text-sm text-brand-gray mb-4">
                     Complete guide to our commission structure, submission requirements, and partnership terms.
                   </p>
-                  <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white">
+                  <Button 
+                    variant="outline" 
+                    className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white"
+                    onClick={() => setShowDownloadPacket(true)}
+                  >
                     Download Packet
                   </Button>
                 </CardContent>
@@ -266,31 +277,47 @@ export default function Brokers() {
 
               <Card className="bg-gray-50">
                 <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-brand-teal/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Calculator className="w-6 h-6 text-brand-teal" />
+                  </div>
                   <h3 className="font-semibold text-brand-dark mb-4">White-Label Tools</h3>
                   <p className="text-sm text-brand-gray mb-4">
                     Branded materials and marketing tools to help you promote merchant funding solutions.
                   </p>
-                  <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white">
-                    Access Tools
-                  </Button>
+                  <Link href="/iso-tools">
+                    <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white">
+                      Access Tools
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
 
               <Card className="bg-gray-50">
                 <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-6 h-6 text-green-500" />
+                  </div>
                   <h3 className="font-semibold text-brand-dark mb-4">Training Materials</h3>
                   <p className="text-sm text-brand-gray mb-4">
                     Educational resources on MCA industry best practices and compliance requirements.
                   </p>
-                  <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white">
-                    Start Training
-                  </Button>
+                  <Link href="/iso-training">
+                    <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white">
+                      Start Training
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Download Packet Modal */}
+      <DownloadPacket 
+        isOpen={showDownloadPacket} 
+        onClose={() => setShowDownloadPacket(false)} 
+      />
     </div>
   );
 }

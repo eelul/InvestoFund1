@@ -130,6 +130,13 @@ function InvestorForm() {
     },
   });
 
+  const sendInvestorPacketMutation = useMutation({
+    mutationFn: async (packetData: any) => {
+      const response = await apiRequest("POST", "/api/investor-packet", packetData);
+      return response.json();
+    },
+  });
+
   const onSubmit = async (data: FormData) => {
     try {
       // Step 1: Create or get user
@@ -165,6 +172,16 @@ function InvestorForm() {
         userName: `${data.firstName} ${data.lastName}`,
       });
 
+      // Step 4: Send investor document packet
+      await sendInvestorPacketMutation.mutateAsync({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        investmentAmount: data.investmentAmount,
+        investmentType: data.investmentType,
+        deliveryMethod: "email"
+      });
+
       // Generate payment reference and instructions
       const reference = generatePaymentReference(application.id);
       const instructions = formatPaymentInstructions(data.investmentAmount, reference);
@@ -177,7 +194,7 @@ function InvestorForm() {
 
       toast({
         title: "Application Submitted Successfully!",
-        description: "Your investment application has been submitted. Payment instructions have been sent to your email.",
+        description: "Your investment application has been submitted. Payment instructions and investor documents have been sent to your email.",
       });
 
       // Move to step 5 to show payment instructions
