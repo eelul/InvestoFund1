@@ -43,19 +43,19 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/profit-sharing-agreement" className="text-gray-300 hover:text-white transition-colors">
                   Profit Sharing Agreement
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/risk-disclosure" className="text-gray-300 hover:text-white transition-colors">
                   Risk Disclosure
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/investor-resources" className="text-gray-300 hover:text-white transition-colors">
                   Investor Resources
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -70,14 +70,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/broker-resources" className="text-gray-300 hover:text-white transition-colors">
                   Broker Resources
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/commission-structure" className="text-gray-300 hover:text-white transition-colors">
                   Commission Structure
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/brokers" className="text-gray-300 hover:text-white transition-colors">
@@ -97,19 +97,19 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/faqs" className="text-gray-300 hover:text-white transition-colors">
                   FAQs
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/legal" className="text-gray-300 hover:text-white transition-colors">
                   Legal
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

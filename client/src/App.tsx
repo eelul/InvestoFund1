@@ -12,6 +12,14 @@ import Contact from "@/pages/Contact";
 import ISOTools from "@/pages/ISOTools";
 import ISOTraining from "@/pages/ISOTraining";
 import Admin from "@/pages/Admin";
+import ProfitSharingAgreement from "@/pages/ProfitSharingAgreement";
+import RiskDisclosure from "@/pages/RiskDisclosure";
+import InvestorResources from "@/pages/InvestorResources";
+import BrokerResources from "@/pages/BrokerResources";
+import CommissionStructure from "@/pages/CommissionStructure";
+import FAQs from "@/pages/FAQs";
+import Legal from "@/pages/Legal";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -26,6 +34,17 @@ function Router() {
         <Route path="/iso-tools" component={ISOTools} />
         <Route path="/iso-training" component={ISOTraining} />
         <Route path="/admin" component={Admin} />
+        
+        {/* Footer Pages */}
+        <Route path="/profit-sharing-agreement" component={ProfitSharingAgreement} />
+        <Route path="/risk-disclosure" component={RiskDisclosure} />
+        <Route path="/investor-resources" component={InvestorResources} />
+        <Route path="/broker-resources" component={BrokerResources} />
+        <Route path="/commission-structure" component={CommissionStructure} />
+        <Route path="/faqs" component={FAQs} />
+        <Route path="/legal" component={Legal} />
+        <Route path="/privacy-policy" component={PrivacyPolicy} />
+        
         <Route component={NotFound} />
       </Switch>
     </Layout>
