@@ -9,6 +9,7 @@ import {
   eSignatures,
   type User,
   type InsertUser,
+  type UpsertUser,
   type InvestmentApplication,
   type InsertInvestmentApplication,
   type DealSubmission,
@@ -30,9 +31,13 @@ export interface IStorage {
   // User operations
   getUser(id: number): Promise<User | undefined>;
   getUserByEmail(email: string): Promise<User | undefined>;
+  getUserByReplitId(replitUserId: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   updateUser(id: number, updates: Partial<User>): Promise<User>;
   getAllUsers(): Promise<User[]>;
+  
+  // Replit Auth operations
+  upsertUserFromReplit(replitUserId: string, userData: Partial<User>): Promise<User>;
 
   // Investment applications
   createInvestmentApplication(application: InsertInvestmentApplication & { userId: number }): Promise<InvestmentApplication>;
@@ -81,6 +86,11 @@ export class DatabaseStorage implements IStorage {
     return user || undefined;
   }
 
+  async getUserByReplitId(replitUserId: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.replitUserId, replitUserId));
+    return user || undefined;
+  }
+
   async getUserByEmail(email: string): Promise<User | undefined> {
     const [user] = await db.select().from(users).where(eq(users.email, email));
     return user || undefined;
@@ -104,6 +114,37 @@ export class DatabaseStorage implements IStorage {
       throw new Error("User not found");
     }
     return user;
+  }
+
+  async upsertUserFromReplit(replitUserId: string, userData: Partial<User>): Promise<User> {
+    // First try to find existing user by Replit ID
+    const existingUser = await this.getUserByReplitId(replitUserId);
+    
+    if (existingUser) {
+      // Update existing user
+      return await this.updateUser(existingUser.id, {
+        ...userData,
+        replitUserId,
+        updatedAt: new Date(),
+      });
+    } else {
+      // Create new user with default userType
+      const newUserData = {
+        replitUserId,
+        email: userData.email || '',
+        userType: userData.userType || 'investor',
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        profileImageUrl: userData.profileImageUrl,
+        ...userData,
+      };
+      
+      const [user] = await db
+        .insert(users)
+        .values(newUserData)
+        .returning();
+      return user;
+    }
   }
 
   async getAllUsers(): Promise<User[]> {

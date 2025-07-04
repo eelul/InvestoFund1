@@ -1,13 +1,21 @@
 import { Link, useLocation } from "wouter";
-import { Menu } from "lucide-react";
+import { Menu, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import type { User } from "@shared/schema";
 import logoPath from "@assets/IF Logo 1.1_1751571539944.png";
 
 export default function Header() {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useAuth();
+  const typedUser = user as User | undefined;
+
+  const handleLogout = () => {
+    window.location.href = "/api/logout";
+  };
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -54,13 +62,33 @@ export default function Header() {
             ))}
           </nav>
           
-          {/* Desktop CTA */}
+          {/* Desktop User Profile */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/investors">
-              <Button className="bg-brand-blue hover:bg-brand-blue-light text-white">
-                Get Started
-              </Button>
-            </Link>
+            {typedUser && (
+              <>
+                <div className="flex items-center space-x-2">
+                  {typedUser.profileImageUrl && (
+                    <img 
+                      src={typedUser.profileImageUrl} 
+                      alt="Profile" 
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  )}
+                  <span className="text-sm font-medium text-gray-700">
+                    {typedUser.firstName} {typedUser.lastName}
+                  </span>
+                </div>
+                <Button 
+                  onClick={handleLogout}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center space-x-2"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span>Logout</span>
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu */}
@@ -86,13 +114,33 @@ export default function Header() {
                     {item.label}
                   </Link>
                 ))}
-                <div className="pt-4 border-t">
-                  <Link href="/investors" onClick={closeSheet}>
-                    <Button className="w-full bg-brand-blue hover:bg-brand-blue-light text-white">
-                      Get Started
+                {typedUser && (
+                  <div className="pt-4 border-t">
+                    <div className="flex items-center space-x-3 mb-4">
+                      {typedUser.profileImageUrl && (
+                        <img 
+                          src={typedUser.profileImageUrl} 
+                          alt="Profile" 
+                          className="w-10 h-10 rounded-full object-cover"
+                        />
+                      )}
+                      <div>
+                        <p className="font-medium text-gray-900">
+                          {typedUser.firstName} {typedUser.lastName}
+                        </p>
+                        <p className="text-sm text-gray-500">{typedUser.email}</p>
+                      </div>
+                    </div>
+                    <Button 
+                      onClick={handleLogout}
+                      variant="outline"
+                      className="w-full flex items-center justify-center space-x-2"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      <span>Logout</span>
                     </Button>
-                  </Link>
-                </div>
+                  </div>
+                )}
               </div>
             </SheetContent>
           </Sheet>
