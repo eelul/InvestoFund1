@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { TrendingUp, Target, Users, Shield, DollarSign, Clock, Calculator, ArrowRight, Zap, BarChart3, CheckCircle, PieChart } from "lucide-react";
+import { TrendingUp, Target, Users, Shield, DollarSign, Clock, Calculator, ArrowRight, Zap, BarChart3, CheckCircle, PieChart, Star, Award, Rocket } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import StandardROICalculator from "@/components/calculators/StandardROICalculator";
+import StatsSection from "@/components/StatsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import EnhancedCalculatorSection from "@/components/EnhancedCalculatorSection";
+import FeatureCard from "@/components/FeatureCard";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 export default function Home() {
   const [investmentAmount, setInvestmentAmount] = useState([25000]);
@@ -170,20 +175,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Key Metrics */}
+      {/* Enhanced Key Metrics */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-brand-teal mb-2">20.8%+</div>
+            <div className="text-center transform hover:scale-105 transition-all duration-300">
+              <div className="text-4xl font-bold text-brand-teal mb-2">
+                <AnimatedCounter end={20.8} suffix="%" decimals={1} />
+              </div>
               <div className="text-brand-gray">Return Per Deal</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-brand-blue mb-2">$5K</div>
+            <div className="text-center transform hover:scale-105 transition-all duration-300">
+              <div className="text-4xl font-bold text-brand-blue mb-2">
+                <AnimatedCounter end={5000} prefix="$" />
+              </div>
               <div className="text-brand-gray">Minimum Investment</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-brand-dark mb-2">45</div>
+            <div className="text-center transform hover:scale-105 transition-all duration-300">
+              <div className="text-4xl font-bold text-brand-dark mb-2">
+                <AnimatedCounter end={45} />
+              </div>
               <div className="text-brand-gray">Days Avg. Term</div>
             </div>
           </div>
@@ -1520,6 +1531,136 @@ export default function Home() {
                     <span>✓ 94.7% success rate</span>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Enhanced Stats Section */}
+      <StatsSection />
+
+      {/* Enhanced Calculator Section */}
+      <EnhancedCalculatorSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* Feature Highlights */}
+      <section className="py-20 bg-gradient-to-br from-brand-blue/5 to-brand-teal/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-brand-dark mb-4">
+              Why Choose InvestoFund?
+            </h2>
+            <p className="text-xl text-brand-gray max-w-3xl mx-auto">
+              Built by investors, for investors. Every feature designed to maximize your returns.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <FeatureCard
+              icon={Rocket}
+              title="Fast Deal Deployment"
+              description="Get your capital working within 10-15 days"
+              badge="Speed"
+              badgeVariant="outline"
+              features={[
+                "Streamlined underwriting process",
+                "Direct ISO partnerships",
+                "Automated deal matching",
+                "Real-time notifications"
+              ]}
+              primaryAction={{
+                label: "View Active Deals",
+                onClick: () => window.location.href = "/investors"
+              }}
+            />
+            
+            <FeatureCard
+              icon={Shield}
+              title="Risk Management"
+              description="Comprehensive protection for your investments"
+              badge="Security"
+              badgeVariant="outline"
+              features={[
+                "Rigorous merchant screening",
+                "Diversification options",
+                "Real-time monitoring",
+                "Transparent reporting"
+              ]}
+              primaryAction={{
+                label: "Learn More",
+                onClick: () => window.location.href = "/risk-disclosure"
+              }}
+            />
+            
+            <FeatureCard
+              icon={Award}
+              title="Proven Track Record"
+              description="94.7% success rate with consistent returns"
+              badge="Verified"
+              badgeVariant="outline"
+              features={[
+                "Audited performance data",
+                "1,250+ satisfied investors",
+                "$50M+ successfully invested",
+                "98% investor satisfaction"
+              ]}
+              primaryAction={{
+                label: "See Results",
+                onClick: () => document.getElementById('stats')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Final Call to Action */}
+      <section className="py-20 bg-gradient-to-r from-brand-dark to-brand-blue text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-4">
+              Ready to Start Earning 20.8%+ Returns?
+            </h2>
+            <p className="text-xl mb-8 opacity-90">
+              Join successful investors who've already discovered the power of MCA investments
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link href="/investors">
+                <Button className="bg-white text-brand-dark hover:bg-gray-100 px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                  <TrendingUp className="w-5 h-5 mr-2" />
+                  Start Investing Now
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button 
+                  variant="outline" 
+                  className="border-white text-white hover:bg-white hover:text-brand-dark px-8 py-4 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  Speak with an Expert
+                </Button>
+              </Link>
+            </div>
+            
+            <div className="flex flex-wrap justify-center items-center gap-8 text-sm opacity-75">
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2" />
+                <span>No hidden fees</span>
+              </div>
+              <div className="flex items-center">
+                <Shield className="w-4 h-4 mr-2" />
+                <span>Transparent process</span>
+              </div>
+              <div className="flex items-center">
+                <Clock className="w-4 h-4 mr-2" />
+                <span>Quick deployment</span>
+              </div>
+              <div className="flex items-center">
+                <Star className="w-4 h-4 mr-2" />
+                <span>Proven returns</span>
               </div>
             </div>
           </div>

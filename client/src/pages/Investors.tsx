@@ -1,20 +1,79 @@
-import { CheckCircle, DollarSign, TrendingUp, Shield } from "lucide-react";
+import { CheckCircle, DollarSign, TrendingUp, Shield, Target, BarChart3, Clock, Award, Star, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import InvestorOnboardingForm from "@/components/forms/InvestorOnboardingForm";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import FeatureCard from "@/components/FeatureCard";
+import { Link } from "wouter";
 
 export default function Investors() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Enhanced Hero Section */}
+      <section className="relative py-20 bg-gradient-to-br from-brand-blue/10 to-brand-teal/10 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-white/90 to-transparent"></div>
+        <div className="relative container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl font-bold text-brand-dark mb-6">
-              Alternative Investing. Real-World Returns.
+            <div className="inline-flex items-center gap-2 bg-brand-teal/10 text-brand-teal px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+              <Star className="w-4 h-4" />
+              <span>20.8%+ Average Returns Per Deal</span>
+              <Star className="w-4 h-4" />
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold text-brand-dark mb-6">
+              Alternative Investing.
+              <span className="brand-text-gradient block">Real-World Returns.</span>
             </h1>
-            <p className="text-xl text-brand-gray mb-8">
-              Access high-yield MCA investments with transparent profit-sharing and professional management.
+            <p className="text-xl text-brand-gray mb-8 max-w-3xl mx-auto">
+              Access exclusive high-yield MCA investments with <strong className="text-brand-dark">transparent profit-sharing</strong> and professional management. 
+              Join <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold">1,250+ investors</span> already earning exceptional returns.
             </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Button className="bg-gradient-to-r from-brand-blue to-brand-teal hover:from-brand-dark hover:to-brand-blue text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <Target className="w-5 h-5 mr-2" />
+                Start Investing Today
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <Link href="/#calculator">
+                <Button 
+                  variant="outline" 
+                  className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white px-8 py-4 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <BarChart3 className="w-5 h-5 mr-2" />
+                  Calculate Returns
+                </Button>
+              </Link>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="bg-white rounded-xl shadow-lg p-6 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-brand-teal mb-1">
+                    <AnimatedCounter end={20.8} suffix="%" decimals={1} />
+                  </div>
+                  <div className="text-sm text-brand-gray">Target Return/Deal</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-brand-blue mb-1">
+                    <AnimatedCounter end={45} />
+                  </div>
+                  <div className="text-sm text-brand-gray">Days Avg. Term</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-green-600 mb-1">
+                    <AnimatedCounter end={94.7} suffix="%" decimals={1} />
+                  </div>
+                  <div className="text-sm text-brand-gray">Success Rate</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-brand-dark mb-1">
+                    <AnimatedCounter end={5000} prefix="$" />
+                  </div>
+                  <div className="text-sm text-brand-gray">Minimum Investment</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
