@@ -16,12 +16,11 @@ export default function Home() {
     option1: {
       name: "Option 1: Direct Deal Participation", 
       description: "Higher risk, direct participation in individual MCA deals",
-      factorRate: 1.49,
+      targetFactorRate: 1.49, // Target rate - actual rates vary
+      factorRateRange: "1.35x - 1.65x",
       avgTerm: 45, // days
       profitSplit: 0.50, // 50% to investor after ISO commission
-      grossROI: 0.49, // 49% gross return (1.49 - 1)
-      netROI: 0.208, // ~20.8% net after ISO commission and profit split
-      annualizedROI: 1.664, // ~166.4% annualized (20.8% * 8 cycles/year)
+      targetROI: 0.208, // ~20.8% target per deal
       minInvestment: 5000,
       riskLevel: "Higher Risk",
       color: "text-orange-600"
@@ -29,19 +28,18 @@ export default function Home() {
     option2: {
       name: "Option 2: Diversified Portfolio",
       description: "Lower risk through portfolio diversification across multiple deals", 
-      factorRate: 1.49,
+      targetFactorRate: 1.49, // Target rate - actual rates vary
+      factorRateRange: "1.35x - 1.65x",
       avgTerm: 45, // days
       profitSplit: 0.45, // 45% to investor (Fund takes 55% including 10% management fee)
-      grossROI: 0.49, // 49% gross return
-      netROI: 0.187, // ~18.7% net after ISO commission, profit split, and management fee  
-      annualizedROI: 1.496, // ~149.6% annualized (18.7% * 8 cycles/year)
+      targetROI: 0.187, // ~18.7% target per deal
       minInvestment: 25000,
       riskLevel: "Moderate Risk",
       color: "text-brand-blue"
     }
   };
 
-  // Calculate returns based on InvestoFund business logic
+  // Calculate returns based on InvestoFund business logic (using target scenarios)
   const calculateInvestoFundReturns = (investment: number, months: number, option: 'option1' | 'option2') => {
     const optionData = investmentOptions[option];
     const dealsPerYear = Math.floor(365 / optionData.avgTerm); // ~8 deals per year
@@ -51,8 +49,8 @@ export default function Home() {
     const dealBreakdown = [];
     
     for (let deal = 1; deal <= totalDeals; deal++) {
-      // InvestoFund calculation: repayment = investment * factorRate
-      const repayment = currentValue * optionData.factorRate;
+      // Using target factor rate for projections
+      const repayment = currentValue * optionData.targetFactorRate;
       const grossProfit = repayment - currentValue;
       
       // ISO Commission (15% of gross profit)
@@ -81,7 +79,8 @@ export default function Home() {
       totalROI,
       annualizedROI,
       totalDeals,
-      dealBreakdown
+      dealBreakdown,
+      perDealROI: optionData.targetROI * 100 // Per deal target ROI percentage
     };
   };
 
@@ -105,11 +104,15 @@ export default function Home() {
             </h1>
             <p className="text-xl text-brand-gray mb-8 max-w-3xl mx-auto">
               <span className="font-semibold text-brand-dark">Transform your portfolio</span> with InvestoFund's 
-              exclusive Merchant Cash Advance opportunities. Join successful investors earning 
+              exclusive Merchant Cash Advance opportunities. Join successful investors targeting 
               <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold mx-1">
-                20.8% per deal (45 days)
+                up to 20.8% per deal (45 days)*
               </span>
               through our proven profit-sharing model.
+            </p>
+            <p className="text-sm text-gray-500 max-w-2xl mx-auto mb-8">
+              *Returns vary based on available deal opportunities. Factor rates typically range from 1.35x to 1.65x. 
+              Projections shown are based on target scenarios and are not guaranteed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link href="/investors">
@@ -296,7 +299,10 @@ export default function Home() {
                             <span className="text-brand-gray">{option.riskLevel}</span>
                           </div>
                           <div className="text-brand-gray">
-                            Factor Rate: {option.factorRate}x
+                            Target Rate: {option.targetFactorRate}x
+                          </div>
+                          <div className="text-brand-gray">
+                            Range: {option.factorRateRange}
                           </div>
                           <div className="text-brand-gray">
                             Avg Term: {option.avgTerm} days
@@ -307,38 +313,38 @@ export default function Home() {
                       {/* Results Grid */}
                       <div className="grid md:grid-cols-4 gap-6">
                         <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200">
-                          <CardContent className="p-6 text-center">
-                            <div className="text-2xl font-bold text-green-600 mb-1">
-                              ${returns.totalProfit.toLocaleString()}
+                          <CardContent className="p-4 text-center">
+                            <div className="text-lg sm:text-xl font-bold text-green-600 mb-1 break-words">
+                              ${Math.round(returns.totalProfit).toLocaleString()}
                             </div>
-                            <div className="text-sm text-green-700">Total Profit</div>
+                            <div className="text-xs sm:text-sm text-green-700">Total Profit</div>
                           </CardContent>
                         </Card>
 
                         <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
-                          <CardContent className="p-6 text-center">
-                            <div className="text-2xl font-bold text-blue-600 mb-1">
-                              ${returns.totalReturn.toLocaleString()}
+                          <CardContent className="p-4 text-center">
+                            <div className="text-lg sm:text-xl font-bold text-blue-600 mb-1 break-words">
+                              ${Math.round(returns.totalReturn).toLocaleString()}
                             </div>
-                            <div className="text-sm text-blue-700">Total Value</div>
+                            <div className="text-xs sm:text-sm text-blue-700">Total Value</div>
                           </CardContent>
                         </Card>
 
                         <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
-                          <CardContent className="p-6 text-center">
-                            <div className="text-2xl font-bold text-purple-600 mb-1">
-                              {returns.annualizedROI.toFixed(1)}%
+                          <CardContent className="p-4 text-center">
+                            <div className="text-lg sm:text-xl font-bold text-purple-600 mb-1">
+                              {returns.perDealROI.toFixed(1)}%
                             </div>
-                            <div className="text-sm text-purple-700">Annualized ROI</div>
+                            <div className="text-xs sm:text-sm text-purple-700">Per Deal ROI</div>
                           </CardContent>
                         </Card>
 
                         <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
-                          <CardContent className="p-6 text-center">
-                            <div className="text-2xl font-bold text-orange-600 mb-1">
+                          <CardContent className="p-4 text-center">
+                            <div className="text-lg sm:text-xl font-bold text-orange-600 mb-1">
                               {returns.totalDeals}
                             </div>
-                            <div className="text-sm text-orange-700">Total Deals</div>
+                            <div className="text-xs sm:text-sm text-orange-700">Total Deals</div>
                           </CardContent>
                         </Card>
                       </div>
@@ -385,15 +391,32 @@ export default function Home() {
                           <h4 className="font-semibold text-brand-dark mb-3">InvestoFund Business Logic</h4>
                           <div className="grid md:grid-cols-2 gap-4 text-sm">
                             <div>
-                              <div className="text-brand-gray">• Factor Rate: {option.factorRate}x</div>
+                              <div className="text-brand-gray">• Target Factor Rate: {option.targetFactorRate}x</div>
+                              <div className="text-brand-gray">• Factor Range: {option.factorRateRange}</div>
                               <div className="text-brand-gray">• ISO Commission: 15% of gross profit</div>
                               <div className="text-brand-gray">• Investor Share: {(option.profitSplit * 100).toFixed(0)}% of net profit</div>
                             </div>
                             <div>
                               <div className="text-brand-gray">• Average Term: {option.avgTerm} days</div>
                               <div className="text-brand-gray">• Expected Deals/Year: ~8</div>
-                              <div className="text-brand-gray">• Per Deal ROI: {(option.netROI * 100).toFixed(1)}%</div>
+                              <div className="text-brand-gray">• Target Per Deal ROI: {(option.targetROI * 100).toFixed(1)}%</div>
                             </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      {/* Important Disclaimer */}
+                      <Card className="bg-yellow-50 border-yellow-200">
+                        <CardContent className="p-6">
+                          <h4 className="font-semibold text-orange-600 mb-3 flex items-center">
+                            <Shield className="w-4 h-4 mr-2" />
+                            Important Disclaimer
+                          </h4>
+                          <div className="text-sm text-gray-700 space-y-2">
+                            <p>• <strong>Variable Returns:</strong> Factor rates and returns vary based on available deal opportunities and market conditions.</p>
+                            <p>• <strong>Target Scenarios:</strong> Calculations shown are based on target factor rates of 1.49x. Actual deals typically range from 1.35x to 1.65x.</p>
+                            <p>• <strong>Deal Availability:</strong> While we target specific factor rates, final terms depend on merchant negotiations and market conditions.</p>
+                            <p>• <strong>Risk Notice:</strong> All investments carry risk. Past performance does not guarantee future results.</p>
                           </div>
                         </CardContent>
                       </Card>
@@ -434,24 +457,38 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-brand-dark mb-12">Portfolio Performance</h2>
+            <h2 className="text-3xl font-bold text-brand-dark mb-12">Per Deal Performance Example</h2>
             <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+              <div className="mb-6 text-center">
+                <div className="text-lg text-brand-gray mb-2">Target Scenario - Direct Deal Participation</div>
+                <div className="text-sm text-gray-500">
+                  *Actual results vary based on deal terms and market conditions
+                </div>
+              </div>
               <div className="grid grid-cols-2 gap-8">
                 <div>
                   <div className="text-sm text-brand-gray mb-1">Initial Investment</div>
                   <div className="text-2xl font-bold text-brand-dark">$25,000</div>
                 </div>
                 <div>
-                  <div className="text-sm text-brand-gray mb-1">Total Repayment</div>
+                  <div className="text-sm text-brand-gray mb-1">Merchant Repayment (1.49x)</div>
                   <div className="text-2xl font-bold text-brand-dark">$37,250</div>
                 </div>
                 <div>
-                  <div className="text-sm text-brand-gray mb-1">Your Share (50%)</div>
+                  <div className="text-sm text-brand-gray mb-1">Your Share (50% after ISO comm.)</div>
                   <div className="text-2xl font-bold text-brand-teal">$5,206.25</div>
                 </div>
                 <div>
-                  <div className="text-sm text-brand-gray mb-1">Net Return</div>
-                  <div className="text-2xl font-bold text-green-600">20.83%</div>
+                  <div className="text-sm text-brand-gray mb-1">Return on Investment</div>
+                  <div className="text-2xl font-bold text-green-600">20.8%</div>
+                </div>
+              </div>
+              <div className="mt-6 pt-6 border-t border-gray-200 text-center">
+                <div className="text-sm text-brand-gray">
+                  45-day term • Target factor rate 1.49x • Range: 1.35x - 1.65x
+                </div>
+                <div className="text-xs text-gray-500 mt-2">
+                  We share the same incentive to maximize factor rates, but final terms depend on merchant negotiations
                 </div>
               </div>
             </div>
