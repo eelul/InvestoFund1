@@ -212,6 +212,9 @@ export default function MerchantApplicationForm() {
     }
   };
 
+  // Watch form values for validation
+  const watchedValues = form.watch();
+
   // Update step validation
   useEffect(() => {
     const isValid = validateCurrentStep();
@@ -219,7 +222,7 @@ export default function MerchantApplicationForm() {
       ...prev,
       [currentStep]: isValid
     }));
-  }, [currentStep, form.watch()]);
+  }, [currentStep, watchedValues]);
 
   const nextStep = () => {
     if (currentStep < steps.length && validateCurrentStep()) {

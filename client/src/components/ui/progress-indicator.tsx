@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { Check, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -16,14 +16,11 @@ interface ProgressIndicatorProps {
 }
 
 export default function ProgressIndicator({ steps, currentStep, className }: ProgressIndicatorProps) {
-  const [animatedSteps, setAnimatedSteps] = useState<Step[]>(steps);
-
-  useEffect(() => {
-    setAnimatedSteps(steps.map((step, index) => ({
+  const animatedSteps = useMemo(() => 
+    steps.map((step, index) => ({
       ...step,
       active: index + 1 === currentStep
-    })));
-  }, [steps, currentStep]);
+    })), [currentStep, steps.length]);
 
   const getStepStatus = (stepNumber: number) => {
     if (stepNumber < currentStep) return "completed";
@@ -59,13 +56,13 @@ export default function ProgressIndicator({ steps, currentStep, className }: Pro
                     "w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-500 ease-in-out transform",
                     {
                       "bg-gradient-to-r from-brand-teal to-brand-blue border-brand-teal text-white scale-110 shadow-lg": status === "active",
-                      "bg-gradient-to-r from-brand-teal to-brand-blue border-brand-teal text-white": status === "completed",
+                      "bg-green-500 border-green-500 text-white shadow-lg shadow-green-500/30 scale-105": status === "completed",
                       "bg-white border-gray-300 text-gray-500": status === "upcoming",
                     }
                   )}
                 >
                   {status === "completed" ? (
-                    <Check className="w-5 h-5 animate-in zoom-in duration-300" />
+                    <Check className="w-6 h-6 text-white animate-in zoom-in duration-500 drop-shadow-sm" strokeWidth={3} />
                   ) : status === "active" ? (
                     <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
                   ) : (
@@ -99,8 +96,8 @@ export default function ProgressIndicator({ steps, currentStep, className }: Pro
                   )}
                   
                   {status === "completed" && (
-                    <div className="mt-1 text-xs text-green-600 font-medium animate-in fade-in duration-500">
-                      Complete
+                    <div className="mt-1 text-xs text-green-500 font-semibold animate-in fade-in duration-500">
+                      ✓ Complete
                     </div>
                   )}
                 </div>
