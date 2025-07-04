@@ -2,12 +2,15 @@ import { Link, useLocation } from "wouter";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logoPath from "@assets/IF Logo 1.1_1751571539944.png";
+import UserTypeModal from "./UserTypeModal";
 
 export default function Header() {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [showUserTypeModal, setShowUserTypeModal] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false); // This would come from auth context in real app
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -23,8 +26,39 @@ export default function Header() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleGetStarted = () => {
+    if (isSignedIn) {
+      // Navigate to dashboard or user-specific page
+      window.location.href = '/dashboard';
+    } else {
+      setShowUserTypeModal(true);
+    }
+  };
+
+  const handleUserTypeSelect = (userType: 'investor' | 'broker' | 'merchant') => {
+    setShowUserTypeModal(false);
+    // Navigate to appropriate page based on user type
+    switch (userType) {
+      case 'investor':
+        window.location.href = '/investors';
+        break;
+      case 'broker':
+        window.location.href = '/brokers';
+        break;
+      case 'merchant':
+        window.location.href = '/merchants';
+        break;
+    }
+  };
+
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+    <>
+      <UserTypeModal 
+        isOpen={showUserTypeModal}
+        onClose={() => setShowUserTypeModal(false)}
+        onUserTypeSelect={handleUserTypeSelect}
+      />
+      <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -56,11 +90,12 @@ export default function Header() {
           
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/investors">
-              <Button className="bg-brand-blue hover:bg-brand-blue-light text-white">
-                Get Started
-              </Button>
-            </Link>
+            <Button 
+              onClick={handleGetStarted}
+              className="bg-brand-blue hover:bg-brand-blue-light text-white"
+            >
+              Get Started
+            </Button>
           </div>
 
           {/* Mobile Menu */}
@@ -87,11 +122,15 @@ export default function Header() {
                   </Link>
                 ))}
                 <div className="pt-4 border-t">
-                  <Link href="/investors" onClick={closeSheet}>
-                    <Button className="w-full bg-brand-blue hover:bg-brand-blue-light text-white">
-                      Get Started
-                    </Button>
-                  </Link>
+                  <Button 
+                    onClick={() => {
+                      closeSheet();
+                      handleGetStarted();
+                    }}
+                    className="w-full bg-brand-blue hover:bg-brand-blue-light text-white"
+                  >
+                    Get Started
+                  </Button>
                 </div>
               </div>
             </SheetContent>
@@ -99,5 +138,6 @@ export default function Header() {
         </div>
       </div>
     </header>
+    </>
   );
 }
