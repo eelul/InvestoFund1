@@ -275,6 +275,37 @@ export default function PrivacyPolicy() {
               </CardContent>
             </Card>
 
+            {/* Consent and Authorization */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Lock className="w-6 h-6 text-brand-blue" />
+                  Consent to Electronic Communications and Authorization to Obtain Information
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-3">Electronic Communications Consent</h4>
+                  <p className="text-brand-gray leading-relaxed">
+                    By providing your contact information and proceeding with this application, you expressly authorize InvestoFund LLC and its representatives, successors, assigns, and designees ("InvestoFund") to communicate with you for informational, marketing, or transactional purposes. This communication may be conducted via phone calls, text messages (including through automated technology), and emails. You understand that standard message and data rates may apply. You may opt-out of these communications at any time by replying "STOP" to any text message, clicking "unsubscribe" in any email, or by contacting us directly.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-3">Authorization to Obtain Information</h4>
+                  <p className="text-brand-gray leading-relaxed mb-4">
+                    Furthermore, you authorize InvestoFund and its third-party designees to obtain consumer, personal, business, and investigative reports about you from consumer reporting agencies (including, but not limited to, TransUnion, Experian, Equifax, and Identity IQ), as well as from banks, creditors, government agencies, and other sources (collectively, the "Recipients").
+                  </p>
+                  <p className="text-brand-gray leading-relaxed mb-4">
+                    InvestoFund is authorized to transmit this application form, along with any other information obtained in connection with your submission, to any or all of the Recipients. This information will be used for purposes related to the purchase of future receivables or other forms of commercial financing (collectively, "Transactions").
+                  </p>
+                  <p className="text-brand-gray leading-relaxed">
+                    You also consent to the release, by any creditor or financial institution, of any information related to you or your business, to InvestoFund and to each of the Recipients. InvestoFund is authorized to communicate with the Recipients on your behalf and to represent you in matters directly related to the evaluation and processing of the Transactions.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Policy Updates */}
             <Card>
               <CardHeader>
