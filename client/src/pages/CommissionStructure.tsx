@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, TrendingUp, Award, Calculator, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Layout from "@/components/Layout";
+
 
 export default function CommissionStructure() {
   return (
-    <Layout>
+    
       <div className="min-h-screen bg-gray-50 py-16">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12">
@@ -434,6 +434,6 @@ export default function CommissionStructure() {
           </div>
         </div>
       </div>
-    </Layout>
+    
   );
 }

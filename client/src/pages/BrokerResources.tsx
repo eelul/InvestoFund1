@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, DollarSign, Target, Download, Calculator, TrendingUp, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Layout from "@/components/Layout";
+
 
 export default function BrokerResources() {
   const handleResourceDownload = (resource: string) => {
@@ -9,7 +9,7 @@ export default function BrokerResources() {
   };
 
   return (
-    <Layout>
+    
       <div className="min-h-screen bg-gray-50 py-16">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12">
@@ -382,6 +382,6 @@ export default function BrokerResources() {
           </div>
         </div>
       </div>
-    </Layout>
+    
   );
 }

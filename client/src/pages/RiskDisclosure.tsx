@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertTriangle, Shield, TrendingDown, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Layout from "@/components/Layout";
 
 export default function RiskDisclosure() {
   const handleDownload = () => {
@@ -9,8 +8,7 @@ export default function RiskDisclosure() {
   };
 
   return (
-    <Layout>
-      <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-gray-50 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-brand-dark mb-4">
@@ -230,7 +228,6 @@ export default function RiskDisclosure() {
             </Card>
           </div>
         </div>
-      </div>
-    </Layout>
+    </div>
   );
 }
