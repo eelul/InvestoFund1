@@ -909,6 +909,22 @@ export default function EnhancedMerchantApplicationForm() {
               </Card>
             </div>
 
+            {/* Consent Disclaimer */}
+            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+              <h4 className="font-semibold text-brand-dark mb-3">Consent to Electronic Communications and Authorization</h4>
+              <div className="text-sm text-brand-gray space-y-3">
+                <p>
+                  By providing your contact information and proceeding, you authorize InvestoFund LLC and its representatives to communicate with you via phone, text messages (including automated technology), and emails for informational, marketing, or transactional purposes. Standard rates may apply. You may opt-out anytime by replying "STOP" to texts, clicking "unsubscribe" in emails, or contacting us directly.
+                </p>
+                <p>
+                  You authorize InvestoFund and third-party designees to obtain consumer, personal, business, and investigative reports from consumer reporting agencies (TransUnion, Experian, Equifax, Identity IQ), banks, creditors, government agencies, and other sources.
+                </p>
+                <p>
+                  InvestoFund may transmit this application and related information to Recipients for purposes related to purchase of future receivables or commercial financing. You consent to the release of information by any creditor or financial institution to InvestoFund and Recipients, and authorize InvestoFund to communicate with Recipients on your behalf for Transaction evaluation and processing.
+                </p>
+              </div>
+            </div>
+
             <FormField
               control={form.control}
               name="termsAgreed"
@@ -922,7 +938,7 @@ export default function EnhancedMerchantApplicationForm() {
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormLabel>
-                      I agree to the terms and conditions and authorize InvestoFund to process my application *
+                      I agree to the terms and conditions above and authorize InvestoFund to process my application *
                     </FormLabel>
                   </div>
                 </FormItem>
