@@ -12,103 +12,100 @@ export default function RiskDisclosure() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-brand-dark mb-4">
-              Risk Disclosure Statement
+              Investment Risk Overview
             </h1>
             <p className="text-xl text-brand-gray max-w-2xl mx-auto">
-              Understanding the risks associated with alternative investments in merchant cash advances and business funding opportunities.
+              Understanding our calculated approach to risk management in merchant cash advance investments and the quality measures we implement.
             </p>
           </div>
 
           <div className="grid gap-8">
-            {/* Warning Banner */}
-            <Card className="border-red-200 bg-red-50">
+            {/* Calculated Risk Approach */}
+            <Card className="border-brand-teal bg-brand-teal/5">
               <CardContent className="py-6">
                 <div className="flex items-start gap-4">
-                  <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0 mt-1" />
+                  <Shield className="w-8 h-8 text-brand-teal flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-lg font-semibold text-red-800 mb-2">
-                      Important Risk Warning
+                    <h3 className="text-lg font-semibold text-brand-dark mb-2">
+                      Our Calculated Risk Approach
                     </h3>
-                    <p className="text-red-700">
-                      Investment in merchant cash advances and alternative funding involves substantial risk of loss. 
-                      These investments are suitable only for sophisticated investors who can afford to lose their entire investment. 
-                      Past performance does not guarantee future results.
+                    <p className="text-brand-gray">
+                      While all investments carry risk, InvestoFund employs rigorous quality control measures and proven risk mitigation strategies to maximize success rates. We work exclusively with verified ISOs and pre-qualified merchants to ensure deal quality.
                     </p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Primary Risk Factors */}
+            {/* Risk Mitigation Measures */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <TrendingDown className="w-6 h-6 text-red-600" />
-                  Primary Risk Factors
+                  <Shield className="w-6 h-6 text-brand-teal" />
+                  Our Risk Mitigation Measures
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid gap-6">
-                  <div className="border-l-4 border-red-500 pl-4">
-                    <h4 className="font-semibold text-brand-dark mb-2">Default Risk</h4>
+                  <div className="border-l-4 border-brand-teal pl-4">
+                    <h4 className="font-semibold text-brand-dark mb-2">Verified ISO Network</h4>
                     <p className="text-brand-gray">
-                      Merchants may fail to meet their payment obligations due to business failure, economic downturns, 
-                      or other unforeseen circumstances. Default rates in the MCA industry can range from 10-30% depending on market conditions.
+                      We work exclusively with verified, experienced ISOs who have proven track records and established relationships with quality merchants. This ensures better deal sourcing and reduced risk exposure.
                     </p>
                   </div>
                   
-                  <div className="border-l-4 border-orange-500 pl-4">
-                    <h4 className="font-semibold text-brand-dark mb-2">Liquidity Risk</h4>
+                  <div className="border-l-4 border-brand-blue pl-4">
+                    <h4 className="font-semibold text-brand-dark mb-2">Merchant Quality Standards</h4>
                     <p className="text-brand-gray">
-                      MCA investments are illiquid by nature. Investors cannot easily exit their positions and must wait 
-                      for the full repayment term (typically 12-18 months) to recover their principal and returns.
+                      All merchants undergo rigorous pre-qualification including credit checks, business verification, and cash flow analysis. We focus on established businesses with stable revenue streams.
                     </p>
                   </div>
                   
-                  <div className="border-l-4 border-yellow-500 pl-4">
-                    <h4 className="font-semibold text-brand-dark mb-2">Regulatory Risk</h4>
+                  <div className="border-l-4 border-green-500 pl-4">
+                    <h4 className="font-semibold text-brand-dark mb-2">Conservative Underwriting</h4>
                     <p className="text-brand-gray">
-                      The alternative lending industry is subject to evolving federal and state regulations. 
-                      Changes in law could impact the enforceability of agreements or the viability of the business model.
+                      We employ conservative lending ratios and careful deal structuring to minimize risk. Advance amounts are calculated based on historical cash flow patterns and conservative repayment factors.
                     </p>
                   </div>
                   
                   <div className="border-l-4 border-blue-500 pl-4">
-                    <h4 className="font-semibold text-brand-dark mb-2">Economic Risk</h4>
+                    <h4 className="font-semibold text-brand-dark mb-2">Ongoing Monitoring</h4>
                     <p className="text-brand-gray">
-                      Economic recessions, market volatility, and changes in consumer spending patterns can significantly 
-                      impact merchant performance and ability to repay advances.
+                      Our team continuously monitors merchant performance and payment patterns to identify potential issues early and take proactive measures to protect investor capital.
                     </p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Investment-Specific Risks */}
+            {/* Investment Characteristics */}
             <Card>
               <CardHeader>
-                <CardTitle>Investment-Specific Risk Considerations</CardTitle>
+                <CardTitle>Investment Characteristics</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
+                <p className="text-brand-gray leading-relaxed">
+                  InvestoFund's direct MCA funding model offers Capital Providers transparent, direct participation in merchant funding opportunities with clear risk-return profiles.
+                </p>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
-                    <h4 className="font-semibold text-brand-dark">Direct Deal Participation Risks</h4>
+                    <h4 className="font-semibold text-brand-dark">Investment Benefits</h4>
                     <ul className="space-y-2 text-brand-gray">
-                      <li>• Concentration risk in single merchant</li>
-                      <li>• No diversification benefits</li>
-                      <li>• Higher potential for total loss</li>
-                      <li>• Limited due diligence compared to institutional deals</li>
-                      <li>• Dependence on individual merchant performance</li>
+                      <li>• Direct funding of specific MCAs</li>
+                      <li>• 50% profit sharing on successful deals</li>
+                      <li>• Transparent deal selection process</li>
+                      <li>• Professional underwriting and monitoring</li>
+                      <li>• Passive investment structure</li>
                     </ul>
                   </div>
                   <div className="space-y-4">
-                    <h4 className="font-semibold text-brand-dark">Portfolio Blend Risks</h4>
+                    <h4 className="font-semibold text-brand-dark">Quality Assurance</h4>
                     <ul className="space-y-2 text-brand-gray">
-                      <li>• Correlation risk during economic downturns</li>
-                      <li>• Manager risk and selection bias</li>
-                      <li>• Fee drag on overall returns</li>
-                      <li>• Potential for systematic industry-wide defaults</li>
-                      <li>• Limited control over individual investments</li>
+                      <li>• Verified ISO network partnerships</li>
+                      <li>• Pre-qualified merchant screening</li>
+                      <li>• Conservative underwriting standards</li>
+                      <li>• Ongoing performance monitoring</li>
+                      <li>• Experienced management team</li>
                     </ul>
                   </div>
                 </div>
@@ -153,53 +150,46 @@ export default function RiskDisclosure() {
               </CardContent>
             </Card>
 
-            {/* Investor Suitability */}
+            {/* Investment Overview */}
             <Card>
               <CardHeader>
-                <CardTitle>Investor Suitability Requirements</CardTitle>
+                <CardTitle>Investment Overview</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-brand-gray leading-relaxed">
-                  These investment opportunities are suitable only for investors who meet the following criteria:
+                  InvestoFund Capital Providers participate in a calculated risk investment model with professional management and proven risk mitigation strategies.
                 </p>
-                <div className="bg-gray-50 p-6 rounded-lg">
+                <div className="bg-brand-teal/10 p-6 rounded-lg">
+                  <h4 className="font-semibold text-brand-dark mb-3">Key Investment Features</h4>
                   <ul className="space-y-2 text-brand-gray">
-                    <li>• Accredited investor status as defined by SEC regulations</li>
-                    <li>• Ability to bear the economic risk of total loss</li>
-                    <li>• Understanding of alternative investment risks and illiquidity</li>
-                    <li>• Sophisticated investment experience or professional guidance</li>
-                    <li>• Long-term investment horizon (12-18 months minimum)</li>
-                    <li>• Adequate diversification in overall portfolio</li>
+                    <li>• Minimum $5,000 investment per MCA opportunity</li>
+                    <li>• 50% profit sharing on successful collections</li>
+                    <li>• Professional underwriting and monitoring</li>
+                    <li>• Verified ISO network partnerships</li>
+                    <li>• Regular reporting and transparency</li>
+                    <li>• Passive investment structure</li>
                   </ul>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Legal Disclaimers */}
+            {/* Important Information */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <FileText className="w-6 h-6 text-brand-teal" />
-                  Legal Disclaimers
+                  Important Information
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    <strong>No Investment Advice:</strong> This disclosure does not constitute investment advice. 
-                    Investors should consult with qualified financial professionals before making any investment decisions.
-                  </p>
-                </div>
                 <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                   <p className="text-sm text-gray-700 leading-relaxed">
-                    <strong>Forward-Looking Statements:</strong> Any projections or estimates are forward-looking 
-                    statements based on current expectations and involve risks and uncertainties.
+                    <strong>Investment Understanding:</strong> Capital Providers understand this is a calculated risk investment in merchant funding opportunities. InvestoFund employs proven risk mitigation strategies and works exclusively with verified partners.
                   </p>
                 </div>
-                <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                   <p className="text-sm text-gray-700 leading-relaxed">
-                    <strong>No Guarantee:</strong> There is no guarantee that investment objectives will be achieved. 
-                    Investors may lose some or all of their investment.
+                    <strong>Professional Management:</strong> All investments are professionally managed with conservative underwriting, ongoing monitoring, and transparent reporting to maximize success rates.
                   </p>
                 </div>
               </CardContent>
@@ -209,20 +199,20 @@ export default function RiskDisclosure() {
             <Card>
               <CardContent className="text-center py-8">
                 <h3 className="text-xl font-semibold text-brand-dark mb-4">
-                  Download Complete Risk Disclosure
+                  Investment Information Package
                 </h3>
                 <p className="text-brand-gray mb-6">
-                  Access the comprehensive risk disclosure document with detailed legal terms and additional risk factors.
+                  Download complete investment details including our risk management approach, quality measures, and partnership terms.
                 </p>
                 <Button 
                   onClick={handleDownload}
                   className="bg-brand-teal hover:bg-brand-teal/90 text-white"
                 >
                   <FileText className="w-4 h-4 mr-2" />
-                  Download Full Disclosure
+                  Download Investment Guide
                 </Button>
                 <p className="text-sm text-brand-gray mt-4">
-                  This document must be reviewed and acknowledged before making any investment.
+                  Comprehensive information to help you understand our calculated risk approach.
                 </p>
               </CardContent>
             </Card>
