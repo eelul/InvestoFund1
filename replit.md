@@ -139,4 +139,3 @@ Changelog:
 - July 03, 2025. Removed Stripe integration and implemented manual wire transfer payment system with payment instruction generation and email notifications
 - July 03, 2025. Added PostgreSQL database with full CRUD operations for persistent data storage, deployed schema and converted from memory-based to database-based storage
 - July 03, 2025. Integrated clear two-prong investment model with explicit Option 1 (Direct Deal Participation) and Option 2 (Portfolio Blend) descriptions, added industry-specific business descriptions for merchants page, improved header spacing and button visibility
-- July 04, 2025. Integrated Replit Auth with OpenID Connect authentication, session management, Landing page for unauthenticated users, protected routes, user profile display with logout functionality, and hybrid user schema supporting both legacy and Replit Auth users

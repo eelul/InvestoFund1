@@ -1,26 +1,13 @@
-import { pgTable, text, serial, integer, boolean, timestamp, decimal, varchar, jsonb, index } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, boolean, timestamp, decimal, varchar, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-// Session storage table for Replit Auth
-export const sessions = pgTable(
-  "sessions",
-  {
-    sid: varchar("sid").primaryKey(),
-    sess: jsonb("sess").notNull(),
-    expire: timestamp("expire").notNull(),
-  },
-  (table) => [index("IDX_session_expire").on(table.expire)],
-);
-
-// User management - Replit Auth compatible
+// User management
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
-  replitUserId: varchar("replit_user_id").unique(), // For Replit Auth users
   email: text("email").notNull().unique(),
   firstName: text("first_name"),
   lastName: text("last_name"),
-  profileImageUrl: varchar("profile_image_url"),
   phone: text("phone"),
   userType: text("user_type").notNull(), // 'investor', 'iso', 'merchant'
   accreditedInvestor: boolean("accredited_investor").default(false),
@@ -193,7 +180,6 @@ export const insertESignatureSchema = createInsertSchema(eSignatures).pick({
 // Types
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
-export type UpsertUser = typeof users.$inferInsert;
 export type InsertInvestmentApplication = z.infer<typeof insertInvestmentApplicationSchema>;
 export type InvestmentApplication = typeof investmentApplications.$inferSelect;
 export type InsertDealSubmission = z.infer<typeof insertDealSubmissionSchema>;
