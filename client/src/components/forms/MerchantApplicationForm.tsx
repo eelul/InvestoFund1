@@ -16,18 +16,46 @@ import { BUSINESS_TYPES, YEARS_IN_BUSINESS, MONTHLY_REVENUE_RANGES, FUNDING_RANG
 import ProgressIndicator from "@/components/ui/progress-indicator";
 
 const formSchema = z.object({
+  // Personal Information
   firstName: z.string().min(2, "First name is required"),
   lastName: z.string().min(2, "Last name is required"),
+  dateOfBirth: z.string().min(1, "Date of birth is required"),
+  ssn: z.string().min(9, "Social Security Number is required"),
   email: z.string().email("Valid email is required"),
-  phone: z.string().min(10, "Valid phone number is required"),
-  businessName: z.string().min(2, "Business name is required"),
-  businessType: z.string().min(1, "Please select a business type"),
-  yearsInBusiness: z.string().min(1, "Please select years in business"),
-  monthlyRevenue: z.string().min(1, "Please select monthly revenue range"),
-  requestedFunding: z.string().min(1, "Please select funding amount"),
-  ownerName: z.string().min(2, "Owner name is required"),
-  businessAddress: z.string().min(5, "Business address is required"),
-  termsAgreed: z.boolean().refine(val => val === true, "Terms agreement required"),
+  mobilePhone: z.string().min(10, "Valid mobile phone number is required"),
+  
+  // Business Information
+  legalCompanyName: z.string().min(2, "Legal company name is required"),
+  businessStartDate: z.string().min(1, "Business start date is required"),
+  industry: z.string().min(1, "Industry is required"),
+  stateOfIncorporation: z.string().min(1, "State of incorporation is required"),
+  taxId: z.string().min(9, "Tax ID/Company Number is required"),
+  companyWebsite: z.string().optional(),
+  hasWebsite: z.boolean().default(true),
+  businessPhone: z.string().min(10, "Valid business phone number is required"),
+  
+  // Business Address
+  businessAddressLine1: z.string().min(5, "Business address is required"),
+  businessAddressLine2: z.string().optional(),
+  businessCity: z.string().min(2, "City is required"),
+  businessState: z.string().min(2, "State is required"),
+  businessZip: z.string().min(5, "ZIP code is required"),
+  
+  // Business Details
+  ficoScore: z.number().min(250).max(900),
+  ownershipPercentage: z.number().min(1).max(100),
+  numberOfEmployees: z.number().min(0),
+  entityType: z.string().min(1, "Entity type is required"),
+  processCreditCards: z.boolean(),
+  ownMultipleBusinesses: z.boolean(),
+  isHomeBased: z.boolean(),
+  
+  // Funding Information
+  monthlyRevenue: z.string().min(1, "Monthly revenue is required"),
+  requestedFunding: z.string().min(1, "Requested funding is required"),
+  
+  // Terms
+  termsAgreed: z.boolean().refine(val => val === true, "You must agree to the terms"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -46,17 +74,45 @@ export default function MerchantApplicationForm() {
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      // Personal Information
       firstName: "",
       lastName: "",
+      dateOfBirth: "",
+      ssn: "",
       email: "",
-      phone: "",
-      businessName: "",
-      businessType: "",
-      yearsInBusiness: "",
+      mobilePhone: "",
+      
+      // Business Information
+      legalCompanyName: "",
+      businessStartDate: "",
+      industry: "",
+      stateOfIncorporation: "",
+      taxId: "",
+      companyWebsite: "",
+      hasWebsite: true,
+      businessPhone: "",
+      
+      // Business Address
+      businessAddressLine1: "",
+      businessAddressLine2: "",
+      businessCity: "",
+      businessState: "",
+      businessZip: "",
+      
+      // Business Details
+      ficoScore: 650,
+      ownershipPercentage: 100,
+      numberOfEmployees: 1,
+      entityType: "",
+      processCreditCards: false,
+      ownMultipleBusinesses: false,
+      isHomeBased: false,
+      
+      // Funding Information
       monthlyRevenue: "",
       requestedFunding: "",
-      ownerName: "",
-      businessAddress: "",
+      
+      // Terms
       termsAgreed: false,
     },
   });

@@ -1,7 +1,7 @@
 import { Clock, DollarSign, Shield, CheckCircle, Zap, Heart } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import MerchantApplicationForm from "@/components/forms/MerchantApplicationForm";
+import EnhancedMerchantApplicationForm from "@/components/forms/EnhancedMerchantApplicationForm";
 
 export default function Merchants() {
   return (
@@ -253,7 +253,7 @@ export default function Merchants() {
             <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
               Apply for Funding
             </h2>
-            <MerchantApplicationForm />
+            <EnhancedMerchantApplicationForm />
           </div>
         </div>
       </section>
