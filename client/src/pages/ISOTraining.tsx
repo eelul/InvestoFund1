@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Book, Video, Download, Calendar, Phone, CheckCircle, Clock, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -27,6 +27,11 @@ export default function ISOTraining() {
   const [selectedModule, setSelectedModule] = useState<number | null>(null);
   const [downloadedResources, setDownloadedResources] = useState<string[]>([]);
   const { toast } = useToast();
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const form = useForm<ExpertCallFormData>({
     resolver: zodResolver(expertCallSchema),
