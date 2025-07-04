@@ -309,6 +309,22 @@ export default function Home() {
                           {option.name}
                         </h3>
                         <p className="text-brand-gray mb-4">{option.description}</p>
+                        
+                        {/* Value Proposition Highlight */}
+                        <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg mb-6">
+                          <div className="text-lg font-semibold text-green-700 mb-2">
+                            {key === 'option1' 
+                              ? '🚀 Maximum Growth Through Reinvestment' 
+                              : '🛡️ Stability Through Diversification'
+                            }
+                          </div>
+                          <p className="text-sm text-gray-600">
+                            {key === 'option1' 
+                              ? 'Each deal\'s 20.8% profits get reinvested automatically, creating compound exponential growth over time.'
+                              : 'Spread risk across multiple merchant types while maintaining steady 20.8% per-deal returns.'
+                            }
+                          </p>
+                        </div>
                         <div className="flex items-center justify-center space-x-6 text-sm">
                           <div className="flex items-center">
                             <div className={`w-3 h-3 rounded-full mr-2 ${option.color.replace('text-', 'bg-')}`}></div>
@@ -341,29 +357,72 @@ export default function Home() {
                         </CardContent>
                       </Card>
 
-                      {/* Reinvestment Strategy Explanation */}
+                      {/* Profit Distribution Reality */}
                       <Card className="bg-orange-50 border-orange-200">
                         <CardContent className="p-6">
                           <h4 className="font-semibold text-orange-700 mb-3 flex items-center">
-                            <TrendingUp className="w-4 h-4 mr-2" />
-                            How Big Returns Are Really Made
+                            <Calculator className="w-4 h-4 mr-2" />
+                            How Deal Profits Actually Work
                           </h4>
-                          <div className="grid md:grid-cols-2 gap-6">
-                            <div>
-                              <h5 className="font-medium text-gray-800 mb-2">Single Deal Limits:</h5>
-                              <div className="text-sm text-gray-700 space-y-1">
-                                <p>• Maximum factor rate: <strong>1.49x</strong></p>
-                                <p>• Gross deal profit: <strong>49%</strong></p>
-                                <p>• After 15% broker commission: <strong>~42% net</strong></p>
-                                <p>• Your 85% share of net: <strong>~36% return max</strong></p>
+                          <div className="space-y-4">
+                            {/* Real Deal Example */}
+                            <div className="p-4 bg-white rounded-lg border">
+                              <h5 className="font-medium text-gray-800 mb-3">Example: $10,000 Deal at 1.49x Factor</h5>
+                              <div className="grid md:grid-cols-3 gap-4 text-sm">
+                                <div>
+                                  <div className="text-gray-600">Merchant Pays Back:</div>
+                                  <div className="font-semibold text-lg">$14,900</div>
+                                  <div className="text-xs text-gray-500">($10,000 × 1.49)</div>
+                                </div>
+                                <div>
+                                  <div className="text-gray-600">Gross Profit:</div>
+                                  <div className="font-semibold text-lg text-green-600">$4,900</div>
+                                  <div className="text-xs text-gray-500">(49% return)</div>
+                                </div>
+                                <div>
+                                  <div className="text-gray-600">After ISO Commission:</div>
+                                  <div className="font-semibold text-lg">$4,165</div>
+                                  <div className="text-xs text-gray-500">($4,900 - $735 = 15%)</div>
+                                </div>
+                              </div>
+                              <div className="mt-4 pt-4 border-t">
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div className="text-center p-3 bg-blue-50 rounded">
+                                    <div className="text-sm text-gray-600">InvestoFund Share (50%)</div>
+                                    <div className="font-bold text-lg text-blue-600">$2,083</div>
+                                    <div className="text-xs text-gray-500">20.8% return</div>
+                                  </div>
+                                  <div className="text-center p-3 bg-green-50 rounded">
+                                    <div className="text-sm text-gray-600">Your Share (50%)</div>
+                                    <div className="font-bold text-lg text-green-600">$2,083</div>
+                                    <div className="text-xs text-gray-500">20.8% return per deal</div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            <div>
-                              <h5 className="font-medium text-gray-800 mb-2">Reinvestment Power:</h5>
-                              <div className="text-sm text-gray-700 space-y-1">
-                                <p>• Each deal's profits reinvested</p>
-                                <p>• Compound growth over time</p>
-                                <p>• <strong>This is where massive returns come from</strong></p>
+
+                            {/* Compound Power Explanation */}
+                            <div className="p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border border-blue-200">
+                              <h5 className="font-medium text-blue-800 mb-2">The Compound Reinvestment Strategy</h5>
+                              <p className="text-sm text-gray-700 mb-3">
+                                While individual deals max at ~21% profit, <strong>reinvesting those profits</strong> creates exponential growth:
+                              </p>
+                              <div className="grid md:grid-cols-3 gap-3 text-xs">
+                                <div className="text-center">
+                                  <div className="font-medium">Deal 1: $10,000</div>
+                                  <div className="text-green-600">+$2,083 profit</div>
+                                </div>
+                                <div className="text-center">
+                                  <div className="font-medium">Deal 2: $12,083</div>
+                                  <div className="text-green-600">+$2,515 profit</div>
+                                </div>
+                                <div className="text-center">
+                                  <div className="font-medium">Deal 3: $14,598</div>
+                                  <div className="text-green-600">+$3,037 profit</div>
+                                </div>
+                              </div>
+                              <div className="mt-3 text-center text-sm font-semibold text-blue-700">
+                                This is how $10,000 becomes $100,000+ over multiple deals
                               </div>
                             </div>
                           </div>
@@ -423,7 +482,7 @@ export default function Home() {
                             <div className="text-sm">
                               <p className="font-semibold text-blue-800 mb-2">Why Reinvestment Creates Massive Returns:</p>
                               <p className="text-blue-700 mb-1">• Individual deal maximum: <strong>1.49x factor rate (49% gross profit)</strong></p>
-                              <p className="text-blue-700 mb-1">• After broker commission: <strong>~36% investor return per deal max</strong></p>
+                              <p className="text-blue-700 mb-1">• Your net share per deal: <strong>~20.8% return maximum</strong></p>
                               <p className="text-blue-700">• Reinvestment strategy: <strong>Each deal's profits become investment capital for the next</strong></p>
                             </div>
                           </div>
@@ -475,7 +534,7 @@ export default function Home() {
                               <div className="text-brand-gray">• Target Factor Rate: {option.targetFactorRate}x (49% gross)</div>
                               <div className="text-brand-gray">• Factor Range: {option.factorRateRange}</div>
                               <div className="text-brand-gray">• ISO Commission: 15% of gross profit</div>
-                              <div className="text-brand-gray">• Your Net Return: ~36% max per deal</div>
+                              <div className="text-brand-gray">• Your Net Return: ~20.8% max per deal</div>
                             </div>
                             <div>
                               <div className="text-brand-gray">• Term Range: {option.termRange}</div>
