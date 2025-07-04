@@ -3,10 +3,8 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState, useEffect } from "react";
-import logoPath from "@assets/IF Logo 1.1_1751571539944.png";
+import logoPath from "@assets/InvestoFund white background long.png";
 import UserTypeModal from "./UserTypeModal";
-
-import InvestoFund_white_background_long from "@assets/InvestoFund white background long.png";
 
 export default function Header() {
   const [location] = useLocation();
@@ -61,19 +59,19 @@ export default function Header() {
         onUserTypeSelect={handleUserTypeSelect}
       />
       <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center" onClick={handleNavClick}>
             <img 
-              src={InvestoFund_white_background_long} 
+              src={logoPath} 
               alt="InvestoFund" 
-              className="h-10 w-auto"
+              className="h-12 w-auto max-w-[200px] md:max-w-[250px]"
             />
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden lg:flex space-x-6 xl:space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -91,7 +89,7 @@ export default function Header() {
           </nav>
           
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             <Button 
               onClick={handleGetStarted}
               className="bg-brand-blue hover:bg-brand-blue-light text-white"
@@ -102,7 +100,7 @@ export default function Header() {
 
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="lg:hidden">
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
               </Button>

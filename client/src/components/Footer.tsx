@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Linkedin, Twitter, Facebook } from "lucide-react";
-import logoPath from "@assets/IF Logo 1.1_1751571539944.png";
+import logoPath from "@assets/InvestoFund long logo_1751612267821.png";
 
 export default function Footer() {
   return (
@@ -13,7 +13,7 @@ export default function Footer() {
               <img 
                 src={logoPath} 
                 alt="InvestoFund" 
-                className="h-12 w-auto filter brightness-0 invert"
+                className="h-10 w-auto max-w-[200px]"
               />
             </div>
             <p className="text-gray-300 mb-4">
