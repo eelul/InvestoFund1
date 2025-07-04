@@ -29,10 +29,12 @@ export interface IStorage {
   getUserByEmail(email: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   updateUser(id: number, updates: Partial<User>): Promise<User>;
+  getAllUsers(): Promise<User[]>;
 
   // Investment applications
   createInvestmentApplication(application: InsertInvestmentApplication & { userId: number }): Promise<InvestmentApplication>;
   getInvestmentApplicationsByUser(userId: number): Promise<InvestmentApplication[]>;
+  getAllInvestmentApplications(): Promise<InvestmentApplication[]>;
   updateInvestmentApplication(id: number, updates: Partial<InvestmentApplication>): Promise<InvestmentApplication>;
 
   // Deal submissions
@@ -55,6 +57,7 @@ export interface IStorage {
   // Email logs
   createEmailLog(log: Omit<EmailLog, 'id' | 'sentAt'>): Promise<EmailLog>;
   getEmailLogsByUser(userId: number): Promise<EmailLog[]>;
+  getAllEmailLogs(): Promise<EmailLog[]>;
 
   // Documents
   createDocument(document: Omit<Document, 'id' | 'downloadCount' | 'createdAt'>): Promise<Document>;
@@ -94,6 +97,13 @@ export class DatabaseStorage implements IStorage {
     return user;
   }
 
+  async getAllUsers(): Promise<User[]> {
+    return await db
+      .select()
+      .from(users)
+      .orderBy(desc(users.createdAt));
+  }
+
   // Investment applications
   async createInvestmentApplication(application: InsertInvestmentApplication & { userId: number }): Promise<InvestmentApplication> {
     const [app] = await db
@@ -108,6 +118,13 @@ export class DatabaseStorage implements IStorage {
       .select()
       .from(investmentApplications)
       .where(eq(investmentApplications.userId, userId))
+      .orderBy(desc(investmentApplications.createdAt));
+  }
+
+  async getAllInvestmentApplications(): Promise<InvestmentApplication[]> {
+    return await db
+      .select()
+      .from(investmentApplications)
       .orderBy(desc(investmentApplications.createdAt));
   }
 
@@ -237,6 +254,13 @@ export class DatabaseStorage implements IStorage {
       .select()
       .from(emailLogs)
       .where(eq(emailLogs.userId, userId))
+      .orderBy(desc(emailLogs.sentAt));
+  }
+
+  async getAllEmailLogs(): Promise<EmailLog[]> {
+    return await db
+      .select()
+      .from(emailLogs)
       .orderBy(desc(emailLogs.sentAt));
   }
 

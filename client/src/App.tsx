@@ -11,6 +11,7 @@ import Merchants from "@/pages/Merchants";
 import Contact from "@/pages/Contact";
 import ISOTools from "@/pages/ISOTools";
 import ISOTraining from "@/pages/ISOTraining";
+import Admin from "@/pages/Admin";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -24,6 +25,7 @@ function Router() {
         <Route path="/contact" component={Contact} />
         <Route path="/iso-tools" component={ISOTools} />
         <Route path="/iso-training" component={ISOTraining} />
+        <Route path="/admin" component={Admin} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

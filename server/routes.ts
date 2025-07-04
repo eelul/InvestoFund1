@@ -638,6 +638,85 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Admin API endpoints
+  app.get("/api/admin/stats", async (req, res) => {
+    try {
+      // Get counts from all tables
+      const users = await storage.getUserByEmail(""); // This will return undefined, but we just need the count method
+      const totalUsers = (await storage.getAllUsers ? await storage.getAllUsers() : []).length;
+      const totalInvestmentApplications = (await storage.getAllInvestmentApplications ? await storage.getAllInvestmentApplications() : []).length;
+      const totalDealSubmissions = (await storage.getAllDealSubmissions()).length;
+      const totalMerchantApplications = (await storage.getAllMerchantApplications()).length;
+      const totalContactInquiries = (await storage.getAllContactInquiries()).length;
+      const totalEmailsSent = (await storage.getAllEmailLogs ? await storage.getAllEmailLogs() : []).length;
+
+      res.json({
+        totalUsers,
+        totalInvestmentApplications,
+        totalDealSubmissions,
+        totalMerchantApplications,
+        totalContactInquiries,
+        totalEmailsSent,
+      });
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/admin/users", async (req, res) => {
+    try {
+      const users = await storage.getAllUsers ? await storage.getAllUsers() : [];
+      res.json(users);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/admin/investment-applications", async (req, res) => {
+    try {
+      const applications = await storage.getAllInvestmentApplications ? await storage.getAllInvestmentApplications() : [];
+      res.json(applications);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/admin/deal-submissions", async (req, res) => {
+    try {
+      const deals = await storage.getAllDealSubmissions();
+      res.json(deals);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/admin/merchant-applications", async (req, res) => {
+    try {
+      const merchants = await storage.getAllMerchantApplications();
+      res.json(merchants);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/admin/contact-inquiries", async (req, res) => {
+    try {
+      const contacts = await storage.getAllContactInquiries();
+      res.json(contacts);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
+  app.get("/api/admin/email-logs", async (req, res) => {
+    try {
+      const emails = await storage.getAllEmailLogs ? await storage.getAllEmailLogs() : [];
+      res.json(emails);
+    } catch (error: any) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
