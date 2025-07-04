@@ -257,6 +257,70 @@ export default function Merchants() {
           </div>
         </div>
       </section>
+      {/* Required Documents */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+              Required Documents
+            </h2>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="bg-gray-50">
+                <CardHeader>
+                  <CardTitle className="text-brand-dark">Essential Documents</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-brand-gray">3-6 months business bank statements</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-brand-gray">Voided business check</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-brand-gray">Valid government-issued ID</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-brand-gray">Business license (if applicable)</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gray-50">
+                <CardHeader>
+                  <CardTitle className="text-brand-dark">Additional Documents</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    <li className="flex items-center space-x-3">
+                      <Clock className="w-5 h-5 text-yellow-500" />
+                      <span className="text-brand-gray">Articles of incorporation</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <Clock className="w-5 h-5 text-yellow-500" />
+                      <span className="text-brand-gray">Recent tax returns</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <Clock className="w-5 h-5 text-yellow-500" />
+                      <span className="text-brand-gray">Profit & loss statements</span>
+                    </li>
+                    <li className="flex items-center space-x-3">
+                      <Clock className="w-5 h-5 text-yellow-500" />
+                      <span className="text-brand-gray">Lease agreement (if applicable)</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* FAQ Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -336,70 +400,7 @@ export default function Merchants() {
           </div>
         </div>
       </section>
-      {/* Required Documents */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
-              Required Documents
-            </h2>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card className="bg-gray-50">
-                <CardHeader>
-                  <CardTitle className="text-brand-dark">Essential Documents</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    <li className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">3-6 months business bank statements</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Voided business check</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Valid government-issued ID</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Business license (if applicable)</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
 
-              <Card className="bg-gray-50">
-                <CardHeader>
-                  <CardTitle className="text-brand-dark">Additional Documents</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    <li className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-yellow-500" />
-                      <span className="text-brand-gray">Articles of incorporation</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-yellow-500" />
-                      <span className="text-brand-gray">Recent tax returns</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-yellow-500" />
-                      <span className="text-brand-gray">Profit & loss statements</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-yellow-500" />
-                      <span className="text-brand-gray">Lease agreement (if applicable)</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
