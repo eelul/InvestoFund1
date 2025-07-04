@@ -45,6 +45,8 @@ export default function UserTypeModal({ isOpen, onClose, onUserTypeSelect }: Use
 
   const handleUserTypeSelect = (type: 'investor' | 'broker' | 'merchant') => {
     setSelectedType(type);
+    // Store user type in localStorage for dashboard personalization
+    localStorage.setItem('userType', type);
     onUserTypeSelect(type);
   };
 

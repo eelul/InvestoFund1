@@ -13,6 +13,9 @@ import Contact from "@/pages/Contact";
 import ISOTools from "@/pages/ISOTools";
 import ISOTraining from "@/pages/ISOTraining";
 import Admin from "@/pages/Admin";
+import InvestorDashboard from "@/pages/InvestorDashboard";
+import BrokerDashboard from "@/pages/BrokerDashboard";
+import MerchantDashboard from "@/pages/MerchantDashboard";
 import ProfitSharingAgreement from "@/pages/ProfitSharingAgreement";
 import RiskDisclosure from "@/pages/RiskDisclosure";
 import InvestorResources from "@/pages/InvestorResources";
@@ -36,6 +39,11 @@ function Router() {
         <Route path="/iso-tools" component={ISOTools} />
         <Route path="/iso-training" component={ISOTraining} />
         <Route path="/admin" component={Admin} />
+        
+        {/* User Dashboards */}
+        <Route path="/dashboard/investor" component={InvestorDashboard} />
+        <Route path="/dashboard/broker" component={BrokerDashboard} />
+        <Route path="/dashboard/merchant" component={MerchantDashboard} />
         
         {/* Footer Pages */}
         <Route path="/profit-sharing-agreement" component={ProfitSharingAgreement} />
