@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { INQUIRY_TYPES } from "@/lib/constants";
+import BrandSuccess from "@/components/BrandSuccess";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
@@ -95,16 +96,15 @@ export default function Contact() {
                 <CardContent>
                   {isSubmitted ? (
                     <div className="text-center py-8">
-                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Mail className="w-8 h-8 text-green-600" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-brand-dark mb-2">Thank You!</h3>
-                      <p className="text-brand-gray">
-                        Your message has been sent successfully. We'll get back to you within 24 hours.
-                      </p>
+                      <BrandSuccess 
+                        title="Thank You!"
+                        message="Your message has been sent successfully. We'll get back to you within 24 hours."
+                        size="lg"
+                        className="mb-6"
+                      />
                       <Button 
                         onClick={() => setIsSubmitted(false)}
-                        className="mt-4 bg-brand-blue hover:bg-blue-600"
+                        className="bg-brand-blue hover:bg-blue-600"
                       >
                         Send Another Message
                       </Button>
