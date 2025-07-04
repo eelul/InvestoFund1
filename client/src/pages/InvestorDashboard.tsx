@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 
-// Mock data - would come from API in real app
+// Empty data - will populate as investments are made
 const mockInvestorData = {
   user: {
     name: "John Smith",
@@ -25,45 +25,14 @@ const mockInvestorData = {
     joinDate: "2024-01-15"
   },
   portfolio: {
-    totalInvested: 125000,
-    totalReturns: 23750,
-    activeDeals: 8,
-    completedDeals: 12,
-    averageReturn: 19.2,
-    currentYieldRate: 18.5
+    totalInvested: 0,
+    totalReturns: 0,
+    activeDeals: 0,
+    completedDeals: 0,
+    averageReturn: 0,
+    currentYieldRate: 0
   },
-  activeInvestments: [
-    {
-      id: 1,
-      merchantName: "ABC Restaurant Group",
-      amount: 25000,
-      expectedReturn: 31250,
-      progress: 65,
-      startDate: "2024-10-01",
-      expectedCompletion: "2025-04-01",
-      status: "performing"
-    },
-    {
-      id: 2,
-      merchantName: "Tech Solutions LLC",
-      amount: 15000,
-      expectedReturn: 18750,
-      progress: 45,
-      startDate: "2024-11-15",
-      expectedCompletion: "2025-05-15",
-      status: "performing"
-    },
-    {
-      id: 3,
-      merchantName: "Retail Fashion Co",
-      amount: 20000,
-      expectedReturn: 24000,
-      progress: 30,
-      startDate: "2024-12-01",
-      expectedCompletion: "2025-06-01",
-      status: "new"
-    }
-  ]
+  activeInvestments: []
 };
 
 export default function InvestorDashboard() {
@@ -172,50 +141,68 @@ export default function InvestorDashboard() {
                 </Link>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  {userData.activeInvestments.map((investment) => (
-                    <div key={investment.id} className="border rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <h4 className="font-semibold text-brand-dark">
-                          {investment.merchantName}
-                        </h4>
-                        <Badge className={getStatusColor(investment.status)}>
-                          {investment.status}
-                        </Badge>
-                      </div>
-                      
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div>
-                          <p className="text-sm text-brand-gray">Invested</p>
-                          <p className="font-semibold">${investment.amount.toLocaleString()}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-brand-gray">Expected Return</p>
-                          <p className="font-semibold text-green-600">
-                            ${investment.expectedReturn.toLocaleString()}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-brand-gray">Progress</p>
-                          <p className="font-semibold">{investment.progress}%</p>
-                        </div>
-                      </div>
-                      
-                      <div className="mb-3">
-                        <div className="flex justify-between text-sm mb-1">
-                          <span className="text-brand-gray">Collection Progress</span>
-                          <span className="text-brand-dark">{investment.progress}%</span>
-                        </div>
-                        <Progress value={investment.progress} className="h-2" />
-                      </div>
-                      
-                      <div className="flex justify-between text-xs text-brand-gray">
-                        <span>Started: {investment.startDate}</span>
-                        <span>Expected: {investment.expectedCompletion}</span>
-                      </div>
+                {userData.activeInvestments.length === 0 ? (
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Target className="w-8 h-8 text-gray-400" />
                     </div>
-                  ))}
-                </div>
+                    <h3 className="text-lg font-medium text-brand-dark mb-2">No Active Investments</h3>
+                    <p className="text-brand-gray mb-6">
+                      Your investment portfolio will populate here as we fund deals together.
+                    </p>
+                    <Link href="/investors">
+                      <Button className="bg-brand-blue hover:bg-blue-700">
+                        <PlusCircle className="w-4 h-4 mr-2" />
+                        Make Your First Investment
+                      </Button>
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {userData.activeInvestments.map((investment) => (
+                      <div key={investment.id} className="border rounded-lg p-4">
+                        <div className="flex items-center justify-between mb-3">
+                          <h4 className="font-semibold text-brand-dark">
+                            {investment.merchantName}
+                          </h4>
+                          <Badge className={getStatusColor(investment.status)}>
+                            {investment.status}
+                          </Badge>
+                        </div>
+                        
+                        <div className="grid md:grid-cols-3 gap-4 mb-4">
+                          <div>
+                            <p className="text-sm text-brand-gray">Invested</p>
+                            <p className="font-semibold">${investment.amount.toLocaleString()}</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-brand-gray">Expected Return</p>
+                            <p className="font-semibold text-green-600">
+                              ${investment.expectedReturn.toLocaleString()}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-brand-gray">Progress</p>
+                            <p className="font-semibold">{investment.progress}%</p>
+                          </div>
+                        </div>
+                        
+                        <div className="mb-3">
+                          <div className="flex justify-between text-sm mb-1">
+                            <span className="text-brand-gray">Collection Progress</span>
+                            <span className="text-brand-dark">{investment.progress}%</span>
+                          </div>
+                          <Progress value={investment.progress} className="h-2" />
+                        </div>
+                        
+                        <div className="flex justify-between text-xs text-brand-gray">
+                          <span>Started: {investment.startDate}</span>
+                          <span>Expected: {investment.expectedCompletion}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>

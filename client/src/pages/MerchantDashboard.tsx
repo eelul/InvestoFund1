@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 
-// Mock data - would come from API in real app
+// Empty data - will populate once funding is approved
 const mockMerchantData = {
   user: {
     businessName: "Downtown Coffee Co",
@@ -34,41 +34,8 @@ const mockMerchantData = {
     creditScore: 720,
     yearsInBusiness: 5
   },
-  advances: [
-    {
-      id: 1,
-      amount: 50000,
-      received: 45000, // After factor
-      factorRate: 1.11,
-      dailyPayment: 2250,
-      totalRepayment: 55500,
-      remainingBalance: 32500,
-      startDate: "2024-11-01",
-      estimatedCompletion: "2025-03-15",
-      status: "active",
-      progress: 41
-    },
-    {
-      id: 2,
-      amount: 30000,
-      received: 27000,
-      factorRate: 1.10,
-      dailyPayment: 1500,
-      totalRepayment: 33000,
-      remainingBalance: 0,
-      startDate: "2024-06-01",
-      completedDate: "2024-10-20",
-      status: "completed",
-      progress: 100
-    }
-  ],
-  paymentHistory: [
-    { date: "2025-01-03", amount: 2250, status: "paid" },
-    { date: "2025-01-02", amount: 2250, status: "paid" },
-    { date: "2025-01-01", amount: 0, status: "holiday" },
-    { date: "2024-12-31", amount: 2250, status: "paid" },
-    { date: "2024-12-30", amount: 2250, status: "paid" }
-  ]
+  advances: [],
+  paymentHistory: []
 };
 
 export default function MerchantDashboard() {
@@ -213,64 +180,83 @@ export default function MerchantDashboard() {
                 <CardTitle>Your Merchant Cash Advances</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-6">
-                  {userData.advances.map((advance) => (
-                    <div key={advance.id} className="border rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-4">
-                        <h4 className="font-semibold text-brand-dark">
-                          Advance #{advance.id}
-                        </h4>
-                        <Badge className={getStatusColor(advance.status)}>
-                          {advance.status}
-                        </Badge>
-                      </div>
-                      
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div>
-                          <p className="text-sm text-brand-gray">Amount Received</p>
-                          <p className="font-semibold text-green-600">
-                            ${advance.received.toLocaleString()}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-brand-gray">Daily Payment</p>
-                          <p className="font-semibold">
-                            ${advance.dailyPayment.toLocaleString()}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-brand-gray">Remaining Balance</p>
-                          <p className="font-semibold text-brand-dark">
-                            ${advance.remainingBalance.toLocaleString()}
-                          </p>
-                        </div>
-                      </div>
-
-                      {advance.status === 'active' && (
-                        <>
-                          <div className="mb-3">
-                            <div className="flex justify-between text-sm mb-1">
-                              <span className="text-brand-gray">Repayment Progress</span>
-                              <span className="text-brand-dark">{advance.progress}%</span>
-                            </div>
-                            <Progress value={advance.progress} className="h-2" />
-                          </div>
-                          
-                          <div className="flex justify-between text-xs text-brand-gray">
-                            <span>Started: {advance.startDate}</span>
-                            <span>Est. Completion: {advance.estimatedCompletion}</span>
-                          </div>
-                        </>
-                      )}
-
-                      {advance.status === 'completed' && (
-                        <div className="text-xs text-brand-gray">
-                          <span>Completed: {advance.completedDate}</span>
-                        </div>
-                      )}
+                {userData.advances.length === 0 ? (
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CreditCard className="w-8 h-8 text-gray-400" />
                     </div>
-                  ))}
-                </div>
+                    <h3 className="text-lg font-medium text-brand-dark mb-2">No Active Funding</h3>
+                    <p className="text-brand-gray mb-6">
+                      Your funding history will appear here once your application is approved and funding is disbursed.
+                    </p>
+                    <Button 
+                      onClick={handleApplyForFunding}
+                      className="bg-green-600 hover:bg-green-700"
+                    >
+                      <PlusCircle className="w-4 h-4 mr-2" />
+                      Apply for Business Funding
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    {userData.advances.map((advance) => (
+                      <div key={advance.id} className="border rounded-lg p-4">
+                        <div className="flex items-center justify-between mb-4">
+                          <h4 className="font-semibold text-brand-dark">
+                            Advance #{advance.id}
+                          </h4>
+                          <Badge className={getStatusColor(advance.status)}>
+                            {advance.status}
+                          </Badge>
+                        </div>
+                        
+                        <div className="grid md:grid-cols-3 gap-4 mb-4">
+                          <div>
+                            <p className="text-sm text-brand-gray">Amount Received</p>
+                            <p className="font-semibold text-green-600">
+                              ${advance.received.toLocaleString()}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-brand-gray">Daily Payment</p>
+                            <p className="font-semibold">
+                              ${advance.dailyPayment.toLocaleString()}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-brand-gray">Remaining Balance</p>
+                            <p className="font-semibold text-brand-dark">
+                              ${advance.remainingBalance.toLocaleString()}
+                            </p>
+                          </div>
+                        </div>
+
+                        {advance.status === 'active' && (
+                          <>
+                            <div className="mb-3">
+                              <div className="flex justify-between text-sm mb-1">
+                                <span className="text-brand-gray">Repayment Progress</span>
+                                <span className="text-brand-dark">{advance.progress}%</span>
+                              </div>
+                              <Progress value={advance.progress} className="h-2" />
+                            </div>
+                            
+                            <div className="flex justify-between text-xs text-brand-gray">
+                              <span>Started: {advance.startDate}</span>
+                              <span>Est. Completion: {advance.estimatedCompletion}</span>
+                            </div>
+                          </>
+                        )}
+
+                        {advance.status === 'completed' && (
+                          <div className="text-xs text-brand-gray">
+                            <span>Completed: {advance.completedDate}</span>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </CardContent>
             </Card>
 
@@ -280,26 +266,38 @@ export default function MerchantDashboard() {
                 <CardTitle>Recent Payment History</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
-                  {userData.paymentHistory.map((payment, index) => (
-                    <div key={index} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
-                      <div className="flex items-center space-x-3">
-                        {payment.status === 'paid' && <CheckCircle className="w-4 h-4 text-green-600" />}
-                        {payment.status === 'pending' && <Clock className="w-4 h-4 text-yellow-600" />}
-                        {payment.status === 'holiday' && <Calendar className="w-4 h-4 text-gray-500" />}
-                        <span className="text-sm text-brand-gray">{payment.date}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <span className={`font-semibold ${getPaymentStatusColor(payment.status)}`}>
-                          {payment.amount > 0 ? `$${payment.amount.toLocaleString()}` : 'Holiday'}
-                        </span>
-                        <span className={`text-xs capitalize ${getPaymentStatusColor(payment.status)}`}>
-                          {payment.status}
-                        </span>
-                      </div>
+                {userData.paymentHistory.length === 0 ? (
+                  <div className="text-center py-8">
+                    <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Calendar className="w-6 h-6 text-gray-400" />
                     </div>
-                  ))}
-                </div>
+                    <h4 className="text-sm font-medium text-brand-dark mb-1">No Payment History</h4>
+                    <p className="text-xs text-brand-gray">
+                      Payment records will appear here once your funding becomes active.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {userData.paymentHistory.map((payment, index) => (
+                      <div key={index} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
+                        <div className="flex items-center space-x-3">
+                          {payment.status === 'paid' && <CheckCircle className="w-4 h-4 text-green-600" />}
+                          {payment.status === 'pending' && <Clock className="w-4 h-4 text-yellow-600" />}
+                          {payment.status === 'holiday' && <Calendar className="w-4 h-4 text-gray-500" />}
+                          <span className="text-sm text-brand-gray">{payment.date}</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <span className={`font-semibold ${getPaymentStatusColor(payment.status)}`}>
+                            {payment.amount > 0 ? `$${payment.amount.toLocaleString()}` : 'Holiday'}
+                          </span>
+                          <span className={`text-xs capitalize ${getPaymentStatusColor(payment.status)}`}>
+                            {payment.status}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>

@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 
-// Mock data - would come from API in real app
+// Empty data - will populate as deals are submitted
 const mockBrokerData = {
   user: {
     name: "Sarah Johnson",
@@ -28,52 +28,15 @@ const mockBrokerData = {
     status: "Verified Partner"
   },
   performance: {
-    totalCommissions: 45750,
-    monthlyCommissions: 8200,
-    totalDealsSubmitted: 28,
-    approvedDeals: 24,
-    approvalRate: 85.7,
-    averageCommission: 1912,
-    thisMonthDeals: 6
+    totalCommissions: 0,
+    monthlyCommissions: 0,
+    totalDealsSubmitted: 0,
+    approvedDeals: 0,
+    approvalRate: 0,
+    averageCommission: 0,
+    thisMonthDeals: 0
   },
-  activeDeals: [
-    {
-      id: 1,
-      merchantName: "Downtown Coffee Co",
-      requestedAmount: 50000,
-      status: "under_review",
-      submittedDate: "2025-01-02",
-      estimatedCommission: 7500,
-      stage: "underwriting"
-    },
-    {
-      id: 2,
-      merchantName: "Metro Auto Repair",
-      requestedAmount: 30000,
-      status: "approved",
-      submittedDate: "2024-12-28",
-      estimatedCommission: 4500,
-      stage: "funding"
-    },
-    {
-      id: 3,
-      merchantName: "Fashion Forward Boutique",
-      requestedAmount: 25000,
-      status: "pending_documents",
-      submittedDate: "2025-01-03",
-      estimatedCommission: 3750,
-      stage: "documentation"
-    },
-    {
-      id: 4,
-      merchantName: "Tech Startup LLC",
-      requestedAmount: 75000,
-      status: "funded",
-      submittedDate: "2024-12-15",
-      estimatedCommission: 11250,
-      stage: "active"
-    }
-  ]
+  activeDeals: []
 };
 
 export default function BrokerDashboard() {
@@ -219,43 +182,62 @@ export default function BrokerDashboard() {
                 <CardTitle>Your Submitted Deals</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  {userData.activeDeals.map((deal) => (
-                    <div key={deal.id} className="border rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <h4 className="font-semibold text-brand-dark">
-                          {deal.merchantName}
-                        </h4>
-                        <Badge className={`${getStatusColor(deal.status)} flex items-center gap-1`}>
-                          {getStatusIcon(deal.status)}
-                          {deal.status.replace('_', ' ')}
-                        </Badge>
-                      </div>
-                      
-                      <div className="grid md:grid-cols-3 gap-4 mb-4">
-                        <div>
-                          <p className="text-sm text-brand-gray">Requested Amount</p>
-                          <p className="font-semibold">${deal.requestedAmount.toLocaleString()}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-brand-gray">Est. Commission</p>
-                          <p className="font-semibold text-green-600">
-                            ${deal.estimatedCommission.toLocaleString()}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-brand-gray">Stage</p>
-                          <p className="font-semibold capitalize">{deal.stage}</p>
-                        </div>
-                      </div>
-                      
-                      <div className="flex justify-between text-xs text-brand-gray">
-                        <span>Submitted: {deal.submittedDate}</span>
-                        <span className="font-medium">Deal #{deal.id}</span>
-                      </div>
+                {userData.activeDeals.length === 0 ? (
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <FileText className="w-8 h-8 text-gray-400" />
                     </div>
-                  ))}
-                </div>
+                    <h3 className="text-lg font-medium text-brand-dark mb-2">No Deals Submitted Yet</h3>
+                    <p className="text-brand-gray mb-6">
+                      Your submitted deals will appear here once you start partnering with merchants.
+                    </p>
+                    <Button 
+                      onClick={handleSubmitNewDeal}
+                      className="bg-brand-blue hover:bg-brand-blue/90"
+                    >
+                      <PlusCircle className="w-4 h-4 mr-2" />
+                      Submit Your First Deal
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {userData.activeDeals.map((deal) => (
+                      <div key={deal.id} className="border rounded-lg p-4">
+                        <div className="flex items-center justify-between mb-3">
+                          <h4 className="font-semibold text-brand-dark">
+                            {deal.merchantName}
+                          </h4>
+                          <Badge className={`${getStatusColor(deal.status)} flex items-center gap-1`}>
+                            {getStatusIcon(deal.status)}
+                            {deal.status.replace('_', ' ')}
+                          </Badge>
+                        </div>
+                        
+                        <div className="grid md:grid-cols-3 gap-4 mb-4">
+                          <div>
+                            <p className="text-sm text-brand-gray">Requested Amount</p>
+                            <p className="font-semibold">${deal.requestedAmount.toLocaleString()}</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-brand-gray">Est. Commission</p>
+                            <p className="font-semibold text-green-600">
+                              ${deal.estimatedCommission.toLocaleString()}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-brand-gray">Stage</p>
+                            <p className="font-semibold capitalize">{deal.stage}</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex justify-between text-xs text-brand-gray">
+                          <span>Submitted: {deal.submittedDate}</span>
+                          <span className="font-medium">Deal #{deal.id}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
