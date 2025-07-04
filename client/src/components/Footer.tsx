@@ -80,7 +80,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/brokers" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/brokers#deal-submission-portal" className="text-gray-300 hover:text-white transition-colors">
                   Submit a Deal
                 </Link>
               </li>

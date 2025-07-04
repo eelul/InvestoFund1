@@ -212,11 +212,11 @@ export default function Brokers() {
         </div>
       </section>
       {/* Deal Submission Form */}
-      <section className="py-16 bg-white">
+      <section id="deal-submission-portal" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
-              Submit Your Deal
+              Deal Submission Portal
             </h2>
             <BrokerSubmissionForm />
           </div>
