@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Linkedin, Twitter, Facebook } from "lucide-react";
-import logoPath from "@assets/InvestoFund long logo_1751612267821.png";
+import logoPath from "@assets/InvestoFund long transparant_1751612531131.png";
 
 export default function Footer() {
   return (
