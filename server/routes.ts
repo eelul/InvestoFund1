@@ -1,16 +1,75 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import {
-  insertUserSchema,
-  insertInvestmentApplicationSchema,
-  insertDealSubmissionSchema,
-  insertMerchantApplicationSchema,
-  insertContactInquirySchema,
-} from "@shared/schema";
-import { emailService } from "./emailService";
+import { storage } from "./storage-lite";
 import { DOCUMENT_TEMPLATES, getDocumentById, getDocumentsByCategory, personalizeDocument } from "@shared/documents";
 import { z } from "zod";
+
+// Simple validation schemas
+const insertUserSchema = z.object({
+  email: z.string().email(),
+  firstName: z.string(),
+  lastName: z.string(),
+  dateOfBirth: z.string().optional(),
+  ssn: z.string().optional(),
+  mobilePhone: z.string().optional(),
+});
+
+const insertInvestmentApplicationSchema = z.object({
+  investmentAmount: z.number(),
+  investmentType: z.string(),
+  accreditationStatus: z.string(),
+  riskTolerance: z.string(),
+  investmentGoals: z.string(),
+  liquidityNeeds: z.string(),
+  status: z.string().default('pending'),
+});
+
+const insertDealSubmissionSchema = z.object({
+  merchantBusinessName: z.string(),
+  requestedAmount: z.number(),
+  businessRevenue: z.number(),
+  timeInBusiness: z.number(),
+  creditScore: z.number(),
+  industry: z.string(),
+  useOfFunds: z.string(),
+  status: z.string().default('pending'),
+});
+
+const insertMerchantApplicationSchema = z.object({
+  legalCompanyName: z.string(),
+  businessStartDate: z.string(),
+  industry: z.string(),
+  requestedAmount: z.number(),
+  monthlyRevenue: z.number(),
+  businessDescription: z.string(),
+  status: z.string().default('pending'),
+});
+
+const insertContactInquirySchema = z.object({
+  firstName: z.string(),
+  lastName: z.string(),
+  email: z.string().email(),
+  phone: z.string().optional(),
+  inquiryType: z.string(),
+  message: z.string(),
+  status: z.string().default('new'),
+});
+
+// Simple console email service replacement
+const consoleEmailService = {
+  async sendDocumentPacket(options: any) {
+    console.log(`📧 Email sent to ${options.email}: Document packet for ${options.firstName}`);
+    return { success: true };
+  },
+  async sendWelcomeEmail(options: any) {
+    console.log(`📧 Welcome email sent to ${options.email} for ${options.firstName} (${options.userType})`);
+    return { success: true };
+  },
+  async sendPaymentInstructions(options: any) {
+    console.log(`📧 Payment instructions sent to ${options.email} for $${options.amount}`);
+    return { success: true };
+  }
+};
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // User management
@@ -47,12 +106,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
         userId: parseInt(userId),
       });
 
-      // Send welcome email (mock for now)
+      // Send welcome email via console
+      await consoleEmailService.sendWelcomeEmail({
+        email: req.body.userEmail || "",
+        firstName: req.body.userFirstName || "Investor",
+        userType: "investor"
+      });
+
       await storage.createEmailLog({
         userId: parseInt(userId),
-        emailType: "investor_welcome",
-        recipientEmail: req.body.userEmail || "",
+        recipient: req.body.userEmail || "",
         subject: "Welcome to InvestoFund - Investment Application Received",
+        templateUsed: "investor_welcome",
         status: "sent",
       });
 

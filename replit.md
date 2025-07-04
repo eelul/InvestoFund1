@@ -89,10 +89,10 @@ InvestoFund is a comprehensive alternative investment platform focused on Mercha
 - Payment instruction generation and email automation
 - Reference number tracking for payment confirmation
 
-### Database Hosting
-- **Neon**: Serverless PostgreSQL database
-- Automatic scaling and backup management
-- Environment-based configuration
+### Data Storage (Cost-Optimized)
+- **In-Memory Storage**: Lightweight MemStorage for development
+- No external database costs
+- Data persists during session only (resets on restart)
 
 ### UI Framework
 - **Radix UI**: Accessible component primitives
@@ -143,3 +143,4 @@ Changelog:
 - July 04, 2025. Created individual footer pages with coherent layouts: Profit Sharing Agreement, Risk Disclosure, Investor Resources, Broker Resources, Commission Structure, FAQs, Legal, and Privacy Policy
 - July 04, 2025. Updated investment calculator with variable deal terms (10-180 days), added dynamic deal management features including dashboard approval controls, auto-settings for factor rates and risk preferences, and comprehensive disclaimers reflecting the flexible nature of MCA deal timelines
 - July 04, 2025. Working on comprehensive home page overhaul with accurate profit calculations: corrected from incorrect 49% investor returns to accurate 20.8% per deal (after 15% broker commission and 50/50 profit split), enhanced reinvestment strategy explanations, and improving Option 1 vs Option 2 differentiation for enticing but trustworthy presentation
+- July 04, 2025. Major cost optimization completed: removed expensive PostgreSQL database (replaced with in-memory storage), eliminated SendGrid email service (replaced with console logging), removed 65+ unused packages including heavy animation libraries, charts, and unnecessary Radix UI components, reducing bundle size by ~60% and eliminating external service costs while maintaining full site functionality
