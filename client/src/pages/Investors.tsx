@@ -73,7 +73,7 @@ export default function Investors() {
                 <CardHeader>
                   <div className="flex items-center space-x-2">
                     <div className="w-4 h-4 bg-green-500 rounded"></div>
-                    <CardTitle className="text-brand-dark">Option 1: Direct Deal Participation</CardTitle>
+                    <CardTitle className="text-brand-dark">Direct Deal Participation</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -108,7 +108,7 @@ export default function Investors() {
                 <CardHeader>
                   <div className="flex items-center space-x-2">
                     <div className="w-4 h-4 bg-yellow-500 rounded"></div>
-                    <CardTitle className="text-brand-dark">Option 2: Portfolio Blend (Diversified Participation)</CardTitle>
+                    <CardTitle className="text-brand-dark">Portfolio Blend (Diversified Participation)</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
