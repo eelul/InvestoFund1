@@ -353,8 +353,9 @@ export default function Home() {
                               <h5 className="font-medium text-gray-800 mb-2">Single Deal Limits:</h5>
                               <div className="text-sm text-gray-700 space-y-1">
                                 <p>• Maximum factor rate: <strong>1.49x</strong></p>
-                                <p>• Maximum single deal profit: <strong>49%</strong></p>
-                                <p>• One-time return only</p>
+                                <p>• Gross deal profit: <strong>49%</strong></p>
+                                <p>• After 15% broker commission: <strong>~42% net</strong></p>
+                                <p>• Your 85% share of net: <strong>~36% return max</strong></p>
                               </div>
                             </div>
                             <div>
@@ -421,9 +422,9 @@ export default function Home() {
                           <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded">
                             <div className="text-sm">
                               <p className="font-semibold text-blue-800 mb-2">Why Reinvestment Creates Massive Returns:</p>
-                              <p className="text-blue-700 mb-1">• Individual deal maximum: <strong>1.49x factor rate</strong></p>
-                              <p className="text-blue-700 mb-1">• Single deal profit: <strong>49% return maximum</strong></p>
-                              <p className="text-blue-700">• Reinvestment strategy: <strong>Profits from each deal become investment capital for the next</strong></p>
+                              <p className="text-blue-700 mb-1">• Individual deal maximum: <strong>1.49x factor rate (49% gross profit)</strong></p>
+                              <p className="text-blue-700 mb-1">• After broker commission: <strong>~36% investor return per deal max</strong></p>
+                              <p className="text-blue-700">• Reinvestment strategy: <strong>Each deal's profits become investment capital for the next</strong></p>
                             </div>
                           </div>
 
@@ -471,10 +472,10 @@ export default function Home() {
                           <h4 className="font-semibold text-brand-dark mb-3">InvestoFund Business Logic</h4>
                           <div className="grid md:grid-cols-2 gap-4 text-sm">
                             <div>
-                              <div className="text-brand-gray">• Target Factor Rate: {option.targetFactorRate}x</div>
+                              <div className="text-brand-gray">• Target Factor Rate: {option.targetFactorRate}x (49% gross)</div>
                               <div className="text-brand-gray">• Factor Range: {option.factorRateRange}</div>
                               <div className="text-brand-gray">• ISO Commission: 15% of gross profit</div>
-                              <div className="text-brand-gray">• Investor Share: {(option.profitSplit * 100).toFixed(0)}% of net profit</div>
+                              <div className="text-brand-gray">• Your Net Return: ~36% max per deal</div>
                             </div>
                             <div>
                               <div className="text-brand-gray">• Term Range: {option.termRange}</div>
