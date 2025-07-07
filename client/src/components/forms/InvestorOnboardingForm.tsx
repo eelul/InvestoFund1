@@ -9,6 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { INVESTMENT_TIERS } from "@/lib/constants";
@@ -417,13 +418,46 @@ function InvestorForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter amount"
-                          {...field}
-                          onChange={(e) => field.onChange(Number(e.target.value))}
-                          className="text-lg"
-                        />
+                        <div className="space-y-4">
+                          {/* Text Input */}
+                          <div className="relative">
+                            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-gray">$</span>
+                            <Input
+                              type="number"
+                              placeholder="Enter amount"
+                              value={field.value || ""}
+                              onChange={(e) => {
+                                const value = Number(e.target.value);
+                                if (value >= 5000 && value <= 500000) {
+                                  field.onChange(value);
+                                }
+                              }}
+                              className="text-lg pl-8 text-center font-semibold"
+                              min={5000}
+                              max={500000}
+                              step={5000}
+                            />
+                          </div>
+                          
+                          {/* Slider */}
+                          <div className="px-2">
+                            <Slider
+                              value={[field.value || 25000]}
+                              onValueChange={(value) => field.onChange(value[0])}
+                              max={500000}
+                              min={5000}
+                              step={5000}
+                              className="w-full"
+                            />
+                            <div className="flex justify-between text-sm text-brand-gray mt-2">
+                              <span>$5,000</span>
+                              <span className="text-2xl font-bold text-brand-dark">
+                                {formatCurrency(field.value || 25000)}
+                              </span>
+                              <span>$500,000</span>
+                            </div>
+                          </div>
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
