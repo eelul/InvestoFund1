@@ -967,7 +967,7 @@ export default function Home() {
               </Tabs>
 
               {/* Call to Action */}
-              <div className="text-center mt-8 p-6 bg-gradient-to-r from-brand-blue to-brand-teal rounded-xl text-white">
+              <div className="text-center mt-8 p-6 bg-gradient-to-r from-brand-blue to-brand-teal rounded-xl text-[#000000]">
                 <h4 className="text-xl font-bold mb-2">Ready to Get Started?</h4>
                 <p className="mb-4 opacity-90">
                   Join thousands of investors already earning exceptional returns
