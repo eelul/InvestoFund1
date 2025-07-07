@@ -14,46 +14,64 @@ export default function Home() {
   const [investmentAmount, setInvestmentAmount] = useState([25000]);
   const [timeHorizon, setTimeHorizon] = useState([12]);
 
-  // InvestoFund Business Logic - Two Investment Options
+  // InvestoFund Business Logic - Two Investment Options with MCA Range Logic
   const investmentOptions = {
     option1: {
       name: "Option 1: Direct Deal Participation", 
-      description: "Higher risk, direct control over individual MCA deals with approval options",
+      description: "Higher risk, direct control over individual MCA deals with manual approval and parameter control",
       targetFactorRate: 1.49, // Target rate - actual rates vary
-      factorRateRange: "1.15x - 1.49x",
-      termRange: "25-540 days", // Variable terms based on deal type
+      factorRateRange: "1.15x - 1.49x", // Full MCA range available
+      termRange: "25-540 days", // Full MCA term range 
       avgTerm: 90, // Average for calculations
       profitSplit: 0.50, // 50% to investor after ISO commission
       targetROI: 0.208, // ~20.8% target per deal
       minInvestment: 5000,
       riskLevel: "Higher Risk",
       color: "text-orange-600",
+      mcaSpecs: {
+        dealTypes: "All MCA types including ACH and credit card holdback",
+        paymentFrequency: "Daily, weekly, bi-weekly, or monthly merchant repayments",
+        industryFocus: "Retail, restaurants, healthcare, professional services, e-commerce",
+        creditRequirements: "Flexible - low credit businesses under 1 year accepted",
+        fundingSpeed: "Same-day approval and funding available",
+        amountRange: "$2,000 - $2,000,000 per deal"
+      },
       features: [
         "Manual deal approval via dashboard",
-        "Set factor rate preferences",
-        "Choose term length limits", 
+        "Set factor rate preferences (1.15x-1.49x)",
+        "Choose term length limits (25-540 days)", 
         "Risk level selection control",
-        "Quick approval timeframes"
+        "Industry and merchant type filtering",
+        "Re-advance eligibility tracking"
       ]
     },
     option2: {
-      name: "Option 2: Diversified Portfolio",
-      description: "Lower risk through automated diversification across multiple deal terms and types", 
-      targetFactorRate: 1.49, // Target rate - actual rates vary
-      factorRateRange: "1.15x - 1.49x",
-      termRange: "25-540 days", // Diversified across all terms
+      name: "Option 2: Portfolio Blend (Diversified)",
+      description: "Moderate risk through automated diversification across multiple MCA deal terms, industries, and risk levels", 
+      targetFactorRate: 1.32, // Conservative average for portfolio
+      factorRateRange: "1.15x - 1.49x", // Diversified across full range
+      termRange: "25-540 days", // Auto-balanced term distribution
       avgTerm: 90, // Average for calculations
       profitSplit: 0.45, // 45% to investor (Fund takes 55% including 10% management fee)
-      targetROI: 0.187, // ~18.7% target per deal
+      targetROI: 0.187, // ~18.7% target per deal after management
       minInvestment: 25000,
       riskLevel: "Moderate Risk", 
       color: "text-brand-blue",
+      mcaSpecs: {
+        dealTypes: "Auto-balanced mix of ACH and credit card holdback MCAs",
+        paymentFrequency: "Diversified payment schedules for risk mitigation",
+        industryFocus: "Multi-industry spread across 8+ business sectors",
+        creditRequirements: "Risk-balanced portfolio including A-D credit grades",
+        fundingSpeed: "Automated deployment within portfolio parameters",
+        amountRange: "$2,000 - $500,000 per deal within portfolio"
+      },
       features: [
         "Auto-approval within set parameters",
-        "Diversified across deal terms",
-        "Risk-balanced deal selection",
+        "Diversified across deal terms (25-540 days)",
+        "Risk-balanced deal selection (1.15x-1.49x factors)",
         "Automated portfolio management",
-        "Professional deal curation"
+        "Professional deal curation and monitoring",
+        "Consolidated reporting and performance tracking"
       ]
     }
   };

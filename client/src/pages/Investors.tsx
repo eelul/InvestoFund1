@@ -137,27 +137,29 @@ export default function Investors() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-brand-gray mb-4">
-                    Invest into a single, fully-underwritten MCA deal. This is our most direct investment 
-                    option, with clear timelines and predictable returns.
+                    Invest into a single, fully-underwritten MCA deal with manual approval control. 
+                    Select your preferred factor rates, terms, and merchant types for targeted returns.
                   </p>
                   <div className="space-y-3">
                     <div className="bg-white/60 p-3 rounded-lg">
                       <div className="text-sm font-medium text-brand-dark">Minimum Investment: $5,000</div>
-                      <div className="text-sm text-brand-gray">Standard factor rate: 1.45x–1.49x</div>
-                      <div className="text-sm text-brand-gray">Deal timeline: 25–60 days</div>
+                      <div className="text-sm text-brand-gray">Factor rate range: 1.15x–1.49x (you choose preferences)</div>
+                      <div className="text-sm text-brand-gray">Deal terms: 25–540 days (full MCA range available)</div>
+                      <div className="text-sm text-brand-gray">Funding amounts: $2,000–$2,000,000 per deal</div>
                     </div>
                     <div className="text-sm text-brand-gray">
-                      <strong>Underwriting includes:</strong>
+                      <strong>MCA Deal Control Features:</strong>
                       <ul className="list-disc list-inside mt-1 space-y-1">
-                        <li>Bank statement analysis</li>
-                        <li>UCC search & lien analysis</li>
-                        <li>Owner background checks</li>
-                        <li>Seasonality & cash flow forecast review</li>
-                        <li>Merchant interview & reference check</li>
+                        <li>Manual deal approval via investor dashboard</li>
+                        <li>Set factor rate preferences (1.15x-1.49x range)</li>
+                        <li>Choose term length limits (25-540 days)</li>
+                        <li>Industry filtering (retail, restaurants, healthcare, etc.)</li>
+                        <li>Risk level selection control and merchant type filtering</li>
+                        <li>Re-advance eligibility tracking and same-day funding</li>
                       </ul>
                     </div>
                     <div className="bg-green-100 p-2 rounded text-sm font-medium text-green-800">
-                      You receive 50% of net profits on deal completion
+                      You receive 50% of net profits - up to 20.8% returns per deal
                     </div>
                   </div>
                 </CardContent>
@@ -178,20 +180,23 @@ export default function Investors() {
                   <div className="space-y-3">
                     <div className="bg-white/60 p-3 rounded-lg">
                       <div className="text-sm font-medium text-brand-dark">Minimum Investment: $25,000</div>
-                      <div className="text-sm text-brand-gray">Each deal receives a slice (e.g., $2,500 × 10 deals)</div>
-                      <div className="text-sm text-brand-gray">Factor rates: 1.29–1.49 depending on deal type</div>
+                      <div className="text-sm text-brand-gray">Auto-allocated across 8-12 MCA deals (e.g., $2,500 × 10 deals)</div>
+                      <div className="text-sm text-brand-gray">Factor rates: 1.15x–1.49x across diversified deal portfolio</div>
+                      <div className="text-sm text-brand-gray">Deal terms: 25-540 days (auto-balanced distribution)</div>
                     </div>
                     <div className="text-sm text-brand-gray">
-                      <strong>Key Benefits:</strong>
+                      <strong>MCA Portfolio Features:</strong>
                       <ul className="list-disc list-inside mt-1 space-y-1">
-                        <li>Payouts based on average yield across all placements</li>
-                        <li>Returns are consistent but slightly lower than single-deal highs</li>
-                        <li>Great for passive investors who want diversification</li>
-                        <li>Lower volatility through multiple deal exposure</li>
+                        <li>Multi-industry spread (retail, healthcare, restaurants, e-commerce)</li>
+                        <li>Risk-balanced credit grades (A-D) with professional monitoring</li>
+                        <li>Mixed payment schedules (daily, weekly, bi-weekly, monthly)</li>
+                        <li>Both ACH and credit card holdback funding types</li>
+                        <li>Professional deal curation and consolidated reporting</li>
+                        <li>18.7% target returns after 10% management fee</li>
                       </ul>
                     </div>
                     <div className="bg-yellow-100 p-2 rounded text-sm font-medium text-yellow-800">
-                      Lower risk through diversification across multiple deals
+                      Moderate risk through automated MCA diversification and professional management
                     </div>
                   </div>
                 </CardContent>
@@ -309,10 +314,13 @@ export default function Investors() {
                     Direct Deal Participation
                   </h3>
                   <p className="text-brand-gray text-sm mb-4">
-                    Invest in a single, fully-underwritten MCA deal
+                    Invest in a single, fully-underwritten MCA deal with factor rates 1.15x-1.49x
                   </p>
                   <div className="text-green-700 font-medium">
                     Minimum: $5,000
+                  </div>
+                  <div className="text-xs text-brand-gray mt-2">
+                    Terms: 25-540 days • Higher risk, higher control
                   </div>
                 </CardContent>
               </Card>
@@ -323,13 +331,16 @@ export default function Investors() {
                     <span className="text-white font-bold">2</span>
                   </div>
                   <h3 className="text-xl font-semibold text-brand-dark mb-2">
-                    Portfolio Blend
+                    Portfolio Blend (Diversified)
                   </h3>
                   <p className="text-brand-gray text-sm mb-4">
-                    Diversify across multiple MCA deals
+                    Diversify across multiple MCA deals with auto-balanced risk management
                   </p>
                   <div className="text-yellow-700 font-medium">
                     Minimum: $25,000
+                  </div>
+                  <div className="text-xs text-brand-gray mt-2">
+                    Mixed terms: 25-540 days • Moderate risk, professional management
                   </div>
                 </CardContent>
               </Card>
