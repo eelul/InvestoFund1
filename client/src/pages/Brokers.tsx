@@ -16,11 +16,11 @@ export default function Brokers() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl font-bold text-brand-dark mb-6">
-              We're Your Trusted Direct Funder
+              Partner with InvestoFund - Your Superior MCA Solution
             </h1>
             <p className="text-xl text-brand-gray mb-8">
-              Join Green Harvest Funding's network of ISOs and brokers. Submit deals with confidence 
-              and earn competitive commissions.
+              Tired of narrow funder criteria and shared commissions? Join InvestoFund's ISO program for 
+              better terms, faster funding, and full deal control.
             </p>
           </div>
         </div>
@@ -58,25 +58,29 @@ export default function Brokers() {
 
               <Card className="bg-brand-blue/5">
                 <CardHeader>
-                  <CardTitle className="text-brand-dark">Why Work with Green Harvest?</CardTitle>
+                  <CardTitle className="text-brand-dark">Why ISOs Choose InvestoFund</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-4">
                     <li className="flex items-start space-x-3">
                       <Star className="w-5 h-5 text-brand-blue mt-1" />
-                      <span className="text-brand-gray">15% standard commission on full packages</span>
+                      <span className="text-brand-gray">Fund deals others reject - broad acceptance criteria</span>
                     </li>
                     <li className="flex items-start space-x-3">
                       <Star className="w-5 h-5 text-brand-blue mt-1" />
-                      <span className="text-brand-gray">Volume bonuses for consistent producers</span>
+                      <span className="text-brand-gray">Up to 15% commission + 100% renewal commissions</span>
                     </li>
                     <li className="flex items-start space-x-3">
                       <Star className="w-5 h-5 text-brand-blue mt-1" />
-                      <span className="text-brand-gray">White-label tools and resources</span>
+                      <span className="text-brand-gray">Next-day payouts - no waiting months to get paid</span>
                     </li>
                     <li className="flex items-start space-x-3">
                       <Star className="w-5 h-5 text-brand-blue mt-1" />
-                      <span className="text-brand-gray">Dedicated support team</span>
+                      <span className="text-brand-gray">Zero deal leakage - your deals stay yours</span>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <Star className="w-5 h-5 text-brand-blue mt-1" />
+                      <span className="text-brand-gray">Streamlined submission process</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -159,6 +163,88 @@ export default function Brokers() {
           </div>
         </div>
       </section>
+      {/* ISO Pain Points & Solutions */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+              InvestoFund vs. Typical MCA Funders
+            </h2>
+            
+            <div className="overflow-x-auto">
+              <table className="w-full bg-white border border-gray-200 rounded-lg">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-brand-dark">Feature</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-brand-teal">InvestoFund</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Typical MCA Funders</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr>
+                    <td className="px-6 py-4 text-sm font-medium text-brand-dark">Deal Flexibility</td>
+                    <td className="px-6 py-4 text-sm text-brand-teal">Fund deals others reject</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">Narrow funder criteria</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="px-6 py-4 text-sm font-medium text-brand-dark">Commission %</td>
+                    <td className="px-6 py-4 text-sm text-brand-teal font-semibold">Up to 15% + renewals</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">Often ~10% or less</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 text-sm font-medium text-brand-dark">Payout Speed</td>
+                    <td className="px-6 py-4 text-sm text-brand-teal font-semibold">Next business day</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">Monthly or delayed</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="px-6 py-4 text-sm font-medium text-brand-dark">Underwriting</td>
+                    <td className="px-6 py-4 text-sm text-brand-teal">Decisions in 2-4 hours</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">Days or weeks</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 text-sm font-medium text-brand-dark">Deal Control for ISO</td>
+                    <td className="px-6 py-4 text-sm text-brand-teal font-semibold">Full ownership</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">Shared or bypassed deals</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="px-6 py-4 text-sm font-medium text-brand-dark">Pipeline Visibility</td>
+                    <td className="px-6 py-4 text-sm text-brand-teal">Real-time portal</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">Limited updates</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 text-sm font-medium text-brand-dark">Bonus Structure</td>
+                    <td className="px-6 py-4 text-sm text-brand-teal">Volume and performance bonuses</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">Rare or opaque</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-12 bg-brand-teal/10 p-8 rounded-lg">
+              <h3 className="text-xl font-semibold text-brand-dark mb-4">Common ISO Frustrations We Solve:</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-2">❌ Problem: Deals rejected due to funder preferences</h4>
+                  <p className="text-sm text-brand-gray">✅ Solution: InvestoFund's flexible underwriting criteria allows a wider range of deals to succeed</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-2">❌ Problem: "Cutting-in" by other brokers eats commissions</h4>
+                  <p className="text-sm text-brand-gray">✅ Solution: We honor ISO ownership—no secondary broker can override your deal</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-2">❌ Problem: Payouts are slow and confusing</h4>
+                  <p className="text-sm text-brand-gray">✅ Solution: Next-day funding model with transparent reporting ensures you're paid fast and clearly</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-2">❌ Problem: Limited relationships and narrow criteria</h4>
+                  <p className="text-sm text-brand-gray">✅ Solution: Direct funding source with consistent approval criteria across diverse industries</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Deal Submission Process */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">

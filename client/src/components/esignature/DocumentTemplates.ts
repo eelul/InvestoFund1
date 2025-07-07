@@ -72,7 +72,7 @@ DATE: {{currentDate}}
     type: 'merchant',
     content: `
 MERCHANT CASH ADVANCE AGREEMENT
-GREEN HARVEST FUNDING
+INVESTOFUND
 
 AGREEMENT DATE: {{currentDate}}
 BUSINESS NAME: {{businessName}}
@@ -81,7 +81,7 @@ EMAIL: {{email}}
 FUNDING AMOUNT: {{requestedFunding}}
 
 1. ADVANCE TERMS
-Green Harvest Funding ("Funder") agrees to provide {{businessName}} ("Merchant") with a merchant cash advance of {{requestedFunding}} in exchange for the purchase of future receivables.
+InvestoFund ("Funder") agrees to provide {{businessName}} ("Merchant") with a merchant cash advance of {{requestedFunding}} in exchange for the purchase of future receivables.
 
 2. REPAYMENT TERMS
 - Factor Rate: 1.15 - 1.49 (based on risk assessment)
@@ -125,7 +125,7 @@ TITLE: Business Owner
 DATE: {{currentDate}}
 
 FUNDER SIGNATURE: _______________________
-Green Harvest Funding Representative
+InvestoFund Representative
 DATE: {{currentDate}}
     `,
     requiredFields: ['businessName', 'ownerName', 'email', 'requestedFunding', 'businessType', 'yearsInBusiness', 'monthlyRevenue', 'businessAddress']
@@ -136,7 +136,7 @@ DATE: {{currentDate}}
     type: 'iso',
     content: `
 ISO COMMISSION & PARTNERSHIP AGREEMENT
-GREEN HARVEST FUNDING
+INVESTOFUND
 
 AGREEMENT DATE: {{currentDate}}
 ISO/BROKER: {{fullName}}
@@ -144,7 +144,7 @@ COMPANY: {{companyName}}
 EMAIL: {{email}}
 
 1. PARTNERSHIP TERMS
-Green Harvest Funding ("Company") appoints {{fullName}} ("ISO") as an Independent Sales Organization to source and submit merchant cash advance opportunities.
+InvestoFund ("Company") appoints {{fullName}} ("ISO") as an Independent Sales Organization to source and submit merchant cash advance opportunities.
 
 2. COMMISSION STRUCTURE
 - Base Commission: 2-4% of funded amount

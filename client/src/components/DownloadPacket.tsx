@@ -51,7 +51,7 @@ export default function DownloadPacket({ isOpen, onClose }: DownloadPacketProps)
   });
 
   const createPacketContent = () => {
-    return `GREEN HARVEST FUNDING
+    return `INVESTOFUND
 ISO INFORMATION PACKET
 
 ===============================
@@ -82,7 +82,7 @@ Our Mission: To provide transparent, reliable funding solutions while building l
 2. PARTNERSHIP OPPORTUNITY
 ===============================
 
-Why Partner with Green Harvest Funding?
+Why Partner with InvestoFund?
 
 ✓ DIRECT FUNDING SOURCE
 - No syndication or layering
