@@ -42,10 +42,10 @@ export const MONTHLY_REVENUE_RANGES = [
 ] as const;
 
 export const FUNDING_RANGES = [
-  "$5K - $25K",
-  "$25K - $50K",
-  "$50K - $100K",
-  "$100K+"
+  "$2K - $25K",
+  "$25K - $100K",
+  "$100K - $500K",
+  "$500K - $2M"
 ] as const;
 
 export const INQUIRY_TYPES = [

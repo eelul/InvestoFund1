@@ -84,10 +84,12 @@ FUNDING AMOUNT: {{requestedFunding}}
 Green Harvest Funding ("Funder") agrees to provide {{businessName}} ("Merchant") with a merchant cash advance of {{requestedFunding}} in exchange for the purchase of future receivables.
 
 2. REPAYMENT TERMS
-- Factor Rate: 1.2 - 1.4 (based on risk assessment)
-- Daily Collection: Percentage of daily credit card receipts
-- Term Length: 6-18 months (estimated)
-- No Fixed Payment Schedule
+- Factor Rate: 1.25 - 1.49 (based on risk assessment)
+- Advance Range: $2,000 - $2,000,000
+- Term Length: 25 days - 18 months (estimated)
+- Payment Options: Daily, weekly, bi-weekly, or monthly
+- Collection Method: ACH or credit card holdback
+- Same-day approval and funding in as fast as 1 business day
 
 3. BUSINESS INFORMATION
 - Business Type: {{businessType}}
@@ -96,10 +98,12 @@ Green Harvest Funding ("Funder") agrees to provide {{businessName}} ("Merchant")
 - Business Address: {{businessAddress}}
 
 4. COLLECTION METHOD
-Merchant agrees to:
-- Split daily credit card processing (recommended)
-- Or ACH daily collections from business account
-- Provide daily sales reports if requested
+Merchant agrees to one of the following payment structures:
+- Daily: Percentage of daily credit card sales or ACH deposits
+- Weekly: Set weekly ACH withdrawals from business account
+- Bi-weekly: Payments every two weeks via ACH
+- Monthly: Traditional monthly payment structure via ACH
+- Provide sales reports if requested for verification
 
 5. REPRESENTATIONS AND WARRANTIES
 Merchant represents that:

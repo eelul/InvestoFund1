@@ -70,22 +70,26 @@ export default function Merchants() {
                         <CardTitle className="text-brand-dark">Merchant Cash Advance (MCA)</CardTitle>
                       </div>
                       <p className="text-brand-gray">
-                        Tap into your future revenue today with a fast, flexible MCA. Perfect for businesses with strong daily sales and no time for red tape.
+                        Advance based on future sales (ACH or credit card holdback). Same-day approval and funding in as fast as 1 business day.
                       </p>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3 mb-4">
                         <div className="flex justify-between text-sm">
                           <span className="text-brand-gray">Amount Range:</span>
-                          <span className="font-semibold">$2K - $2M</span>
+                          <span className="font-semibold">$2,000 - $2,000,000</span>
                         </div>
                         <div className="flex justify-between text-sm">
                           <span className="text-brand-gray">Factor Rate:</span>
                           <span className="font-semibold">1.25x - 1.49x</span>
                         </div>
                         <div className="flex justify-between text-sm">
-                          <span className="text-brand-gray">Speed:</span>
-                          <span className="font-semibold text-green-600">Same day</span>
+                          <span className="text-brand-gray">Repayment Terms:</span>
+                          <span className="font-semibold">25 days - 18 months</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Payment Options:</span>
+                          <span className="font-semibold">Daily/Weekly/Monthly</span>
                         </div>
                       </div>
                       <Button 
@@ -397,9 +401,9 @@ export default function Merchants() {
                     <tbody>
                       <tr>
                         <td className="border border-gray-300 p-4 font-semibold text-brand-blue">Merchant Cash Advance</td>
-                        <td className="border border-gray-300 p-4">$2K - $2M</td>
+                        <td className="border border-gray-300 p-4">$2,000 - $2,000,000</td>
                         <td className="border border-gray-300 p-4">25 days - 18 months</td>
-                        <td className="border border-gray-300 p-4">Strong daily sales, quick needs</td>
+                        <td className="border border-gray-300 p-4">Future sales-based, flexible repayment</td>
                         <td className="border border-gray-300 p-4 text-green-600 font-semibold">Same day</td>
                       </tr>
                       <tr className="bg-gray-50">
@@ -698,32 +702,36 @@ export default function Merchants() {
           </div>
         </div>
       </section>
-      {/* Funding Details */}
+      {/* MCA Details Section */}
       <section className="py-16 bg-white pt-[60px] pb-[60px]">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
-              Funding Details
+              Merchant Cash Advance Details
             </h2>
             
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
               <Card className="bg-gray-50">
                 <CardHeader>
-                  <CardTitle className="text-brand-dark">Funding Amounts</CardTitle>
+                  <CardTitle className="text-brand-dark">Funding Structure</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-brand-gray">Minimum Advance</span>
-                      <span className="font-bold text-brand-dark">$5,000</span>
+                      <span className="font-bold text-brand-dark">$2,000</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-brand-gray">Maximum Advance</span>
-                      <span className="font-bold text-brand-dark">$250,000+</span>
+                      <span className="font-bold text-brand-dark">$2,000,000</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-brand-gray">Typical Range</span>
-                      <span className="font-bold text-brand-teal">$15,000 - $50,000</span>
+                      <span className="text-brand-gray">Factor Rates</span>
+                      <span className="font-bold text-brand-teal">1.25x - 1.49x</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-brand-gray">Funding Speed</span>
+                      <span className="font-bold text-green-600">Same day</span>
                     </div>
                   </div>
                 </CardContent>
@@ -731,28 +739,149 @@ export default function Merchants() {
 
               <Card className="bg-gray-50">
                 <CardHeader>
-                  <CardTitle className="text-brand-dark">Repayment Terms</CardTitle>
+                  <CardTitle className="text-brand-dark">Repayment Options</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-brand-gray">Factor Rates</span>
-                      <span className="font-bold text-brand-dark">1.25x - 1.49x</span>
+                      <span className="text-brand-gray">Repayment Terms</span>
+                      <span className="font-bold text-brand-dark">25 days - 18 months</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-brand-gray">Repayment Period</span>
-                      <span className="font-bold text-brand-dark">Up to 18 months</span>
+                      <span className="text-brand-gray">Daily Payments</span>
+                      <span className="font-bold text-brand-teal">Available</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-brand-gray">Daily Collection</span>
-                      <span className="font-bold text-brand-teal">% of daily sales</span>
+                      <span className="text-brand-gray">Weekly Payments</span>
+                      <span className="font-bold text-brand-teal">Available</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-brand-gray">Monthly Payments</span>
+                      <span className="font-bold text-brand-teal">Available</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gray-50">
+                <CardHeader>
+                  <CardTitle className="text-brand-dark">Rate Factors</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-sm text-brand-gray">Time in business</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-sm text-brand-gray">Monthly revenue</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-sm text-brand-gray">Industry type</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-sm text-brand-gray">Credit history</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-sm text-brand-gray">Financial health</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </div>
 
-            
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="bg-gradient-to-br from-blue-50 to-teal-50 border-blue-200">
+                <CardHeader>
+                  <CardTitle className="text-brand-dark">Required Documents</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
+                      <span className="text-brand-gray">Simple 1-page application</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
+                      <span className="text-brand-gray">3-6 months business bank statements</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
+                      <span className="text-brand-gray">Voided check</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
+                      <span className="text-brand-gray">Driver's license</span>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-blue-200">
+                      <p className="text-sm text-brand-gray mb-2"><strong>Optional Documents:</strong></p>
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                          <span className="text-sm text-brand-gray">P&L statements</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                          <span className="text-sm text-brand-gray">Tax returns</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                          <span className="text-sm text-brand-gray">Proof of ownership</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-green-50 to-blue-50 border-green-200">
+                <CardHeader>
+                  <CardTitle className="text-brand-dark">Good to Know</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="p-3 bg-green-100 rounded-lg">
+                      <p className="text-sm text-green-800 font-medium mb-1">Low Credit Friendly</p>
+                      <p className="text-xs text-green-700">Available to businesses with low credit or under 1 year in business</p>
+                    </div>
+                    <div className="p-3 bg-blue-100 rounded-lg">
+                      <p className="text-sm text-blue-800 font-medium mb-1">Consolidation Options</p>
+                      <p className="text-xs text-blue-700">Consolidation available to lower payments and increase cash flow</p>
+                    </div>
+                    <div className="p-3 bg-purple-100 rounded-lg">
+                      <p className="text-sm text-purple-800 font-medium mb-1">Re-advance Eligibility</p>
+                      <p className="text-xs text-purple-700">Qualify for additional funding once 50% of balance is paid off</p>
+                    </div>
+                    <div className="p-3 bg-orange-100 rounded-lg">
+                      <p className="text-sm text-orange-800 font-medium mb-1">Future Sales Based</p>
+                      <p className="text-xs text-orange-700">Advance based on future sales (ACH or credit card holdback)</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="text-center mt-8 p-6 bg-gradient-to-r from-brand-blue to-brand-teal rounded-xl text-white">
+              <h3 className="text-xl font-bold mb-3">Ask Yourself These Questions:</h3>
+              <div className="grid md:grid-cols-3 gap-4 text-left">
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm font-medium mb-2">Timeline</p>
+                  <p className="text-xs text-blue-100">How quickly do I need funding?</p>
+                </div>
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm font-medium mb-2">Current Status</p>
+                  <p className="text-xs text-blue-100">Do I already have any open MCAs?</p>
+                </div>
+                <div className="bg-white/10 rounded-lg p-4">
+                  <p className="text-sm font-medium mb-2">Goals</p>
+                  <p className="text-xs text-blue-100">What will this capital allow me to achieve?</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -898,7 +1027,7 @@ export default function Merchants() {
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
                   <div className="space-y-3">
-                    <p><strong>Merchant Cash Advance (MCA):</strong> We purchase a portion of your future sales at a discount. Repayment is based on a percentage of your daily sales, so it fluctuates with your business performance. No fixed monthly payments.</p>
+                    <p><strong>Merchant Cash Advance (MCA):</strong> We purchase a portion of your future sales at a discount through ACH or credit card holdback. Repayment is based on a percentage of your daily sales, so it fluctuates with your business performance. Available with daily, weekly, bi-weekly, or monthly repayment options.</p>
                     <p><strong>Traditional Loan:</strong> Fixed monthly payments regardless of business performance, typically requires excellent credit, longer approval process, and more stringent requirements.</p>
                     <p><strong>Why Choose MCA:</strong> Faster approval (same day), flexible repayment tied to your sales, and approval based on business performance rather than just credit score.</p>
                   </div>
@@ -911,15 +1040,16 @@ export default function Merchants() {
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
                   <div className="space-y-3">
-                    <p><strong>Basic Requirements:</strong></p>
+                    <p><strong>MCA Basic Requirements:</strong></p>
                     <ul className="list-disc list-inside space-y-1 ml-4">
-                      <li>Minimum 3 months in business (some solutions accept newer businesses)</li>
+                      <li>Minimum 3 months in business (available to businesses under 1 year)</li>
                       <li>Consistent monthly revenue (varies by solution, typically $10K+ for MCA)</li>
                       <li>Business bank account in company name</li>
                       <li>Valid business registration</li>
+                      <li>Credit card processing or regular ACH deposits</li>
                     </ul>
-                    <p><strong>Good Candidates:</strong> Businesses with steady sales, seasonal businesses needing working capital, companies with growth opportunities, or those needing to manage cash flow gaps.</p>
-                    <p><strong>Credit Flexibility:</strong> We work with businesses that have been declined by banks. Your business performance matters more than perfect credit.</p>
+                    <p><strong>Good Candidates:</strong> Businesses with steady sales, seasonal businesses needing working capital, companies with growth opportunities, or those needing to manage cash flow gaps. MCA funding ranges from $2,000 to $2,000,000.</p>
+                    <p><strong>Credit Flexibility:</strong> Available to businesses with low credit scores. Your business performance and revenue consistency matter more than perfect credit history.</p>
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -983,12 +1113,14 @@ export default function Merchants() {
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
                   <div className="space-y-3">
-                    <p><strong>Flexible Repayment Options:</strong></p>
-                    <p><strong>1. Percentage of Daily Sales:</strong> We collect a fixed percentage (typically 10-20%) of your daily credit card sales. If you have slow days, you pay less. If you have great days, you pay more but repay faster.</p>
-                    <p><strong>2. Fixed Daily/Weekly ACH:</strong> Set amount withdrawn regardless of sales volume. More predictable but less flexible.</p>
+                    <p><strong>Multiple Repayment Options Available:</strong></p>
+                    <p><strong>1. Daily Payments:</strong> Automatic collection from daily credit card sales or ACH deposits. Typically 10-20% of daily sales volume.</p>
+                    <p><strong>2. Weekly Payments:</strong> Set weekly ACH withdrawals from your business account, providing more predictable cash flow management.</p>
+                    <p><strong>3. Bi-weekly Payments:</strong> Payments every two weeks, aligned with typical business cycles and payroll schedules.</p>
+                    <p><strong>4. Monthly Payments:</strong> Traditional monthly payment structure for businesses preferring fixed monthly obligations.</p>
+                    <p><strong>Repayment Terms:</strong> Terms range from 25 days to 18 months depending on your business profile and funding amount.</p>
                     <p><strong>Seasonal Business Protections:</strong> We understand business cycles. Many agreements include provisions for seasonal businesses or temporary slowdowns.</p>
-                    <p><strong>Early Payoff Benefits:</strong> No prepayment penalties. Pay off early to save on total cost.</p>
-                    <p><strong>Renewal Options:</strong> Once you've paid back 50-75%, you may qualify for additional funding or refinancing options.</p>
+                    <p><strong>Re-advance Eligibility:</strong> Once you've paid back 50% of your balance, you may qualify for additional funding or refinancing options.</p>
                   </div>
                 </AccordionContent>
               </AccordionItem>
