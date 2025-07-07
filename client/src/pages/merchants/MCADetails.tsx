@@ -206,32 +206,96 @@ export default function MCADetails() {
         </div>
       </section>
 
-      {/* Rate Factors */}
+      {/* What is an MCA */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
-              Rates Are Based On
+              What is a Merchant Cash Advance?
+            </h2>
+            
+            <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-8 mb-8">
+              <p className="text-lg text-brand-dark leading-relaxed mb-6">
+                A <strong>Merchant Cash Advance (MCA)</strong> is a financing solution that gives your business a lump sum of capital today — in exchange for a portion of your future sales. It's not a loan, but an advance on future revenue. MCAs are ideal for businesses that need quick funding without the hassle of traditional loan requirements.
+              </p>
+              <p className="text-lg text-brand-gray leading-relaxed">
+                Whether you experience seasonal dips, sudden expenses, or rapid opportunities for growth, an MCA helps you move fast and stay in control.
+              </p>
+            </div>
+
+            <h3 className="text-2xl font-bold text-brand-dark mb-6">How Does an MCA Work?</h3>
+            
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-xl font-bold text-brand-blue">1</span>
+                  </div>
+                  <h4 className="font-semibold text-brand-dark mb-2">Receive Capital</h4>
+                  <p className="text-brand-gray text-sm">You receive a lump sum of working capital upfront</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-xl font-bold text-green-600">2</span>
+                  </div>
+                  <h4 className="font-semibold text-brand-dark mb-2">Fixed Factor Rate</h4>
+                  <p className="text-brand-gray text-sm">Repay the advance plus a fixed factor rate (no APR or compounding interest)</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-xl font-bold text-purple-600">3</span>
+                  </div>
+                  <h4 className="font-semibold text-brand-dark mb-2">Flexible Repayment</h4>
+                  <p className="text-brand-gray text-sm">Fixed daily, weekly, bi-weekly, or monthly ACH withdrawal</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
+              <p className="text-brand-dark">
+                <strong>Cash Flow Alignment:</strong> The repayment method is designed to align with your cash flow. Slower days mean smaller repayments, helping you manage operations smoothly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Is MCA Right for You */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+              Is an MCA Right for Your Business?
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-brand-dark">Business Factors</CardTitle>
+                  <CardTitle className="text-brand-dark">Perfect for Businesses That:</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Time in business</span>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+                      <span className="text-brand-gray">Have <strong>steady daily or weekly sales</strong></span>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Monthly revenue</span>
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+                      <span className="text-brand-gray">Need funding quickly (within 24–48 hours)</span>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Industry type</span>
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+                      <span className="text-brand-gray">Don't want to deal with lengthy bank applications</span>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+                      <span className="text-brand-gray">May not qualify for traditional loans due to <strong>credit score or time in business</strong></span>
                     </div>
                   </div>
                 </CardContent>
@@ -239,32 +303,50 @@ export default function MCADetails() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-brand-dark">Financial Factors</CardTitle>
+                  <CardTitle className="text-brand-dark">Common Use Cases:</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Credit history</span>
+                      <ArrowRight className="w-4 h-4 text-brand-blue" />
+                      <span className="text-brand-gray">Cover urgent expenses</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Financial health</span>
+                      <ArrowRight className="w-4 h-4 text-brand-blue" />
+                      <span className="text-brand-gray">Buy inventory for peak seasons</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Cash flow consistency</span>
+                      <ArrowRight className="w-4 h-4 text-brand-blue" />
+                      <span className="text-brand-gray">Launch new marketing campaigns</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <ArrowRight className="w-4 h-4 text-brand-blue" />
+                      <span className="text-brand-gray">Pay down higher-cost debt</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <ArrowRight className="w-4 h-4 text-brand-blue" />
+                      <span className="text-brand-gray">Bridge cash flow gaps</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <ArrowRight className="w-4 h-4 text-brand-blue" />
+                      <span className="text-brand-gray">Renovate or expand your location</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
+            </div>
+
+            <div className="mt-8 bg-green-50 border border-green-200 rounded-lg p-6">
+              <p className="text-center text-brand-dark">
+                <strong>Good News:</strong> Even if your business is under 1 year old or you have a low credit score, you may still qualify.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Required Documents */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
@@ -280,19 +362,19 @@ export default function MCADetails() {
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
-                      <span className="text-brand-gray">Simple 1-page application</span>
+                      <span className="text-brand-gray">1-page data form (application)</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
-                      <span className="text-brand-gray">3-6 months of business bank statements</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
-                      <span className="text-brand-gray">Voided check</span>
+                      <span className="text-brand-gray">3–6 months of business bank statements</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
                       <span className="text-brand-gray">Driver's license</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
+                      <span className="text-brand-gray">Voided check</span>
                     </div>
                   </div>
                 </CardContent>
@@ -300,21 +382,25 @@ export default function MCADetails() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-brand-dark">Optional Documents</CardTitle>
+                  <CardTitle className="text-brand-dark">Additional Documents</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-yellow-500" />
-                      <span className="text-brand-gray">P&L statements</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-yellow-500" />
-                      <span className="text-brand-gray">Tax returns</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-yellow-500" />
+                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                       <span className="text-brand-gray">Proof of ownership</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                      <span className="text-brand-gray">P&L statement</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                      <span className="text-brand-gray">Balance sheet</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                      <span className="text-brand-gray">Tax returns</span>
                     </div>
                   </div>
                 </CardContent>
@@ -324,88 +410,141 @@ export default function MCADetails() {
         </div>
       </section>
 
-      {/* Ask Yourself Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-brand-dark mb-12">
-              Ask Yourself
-            </h2>
-            
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="text-center">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Timeline</h3>
-                  <p className="text-brand-gray">
-                    How quickly do I need funding?
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Current Status</h3>
-                  <p className="text-brand-gray">
-                    Do I already have any open MCAs?
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Goals</h3>
-                  <p className="text-brand-gray">
-                    What will this capital allow me to achieve?
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Good to Know */}
+      {/* How Rates Are Determined */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
-              Good to Know
+              How Rates Are Determined
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="bg-green-50 border-green-200">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-green-800 mb-3">Low Credit Friendly</h3>
-                  <p className="text-green-700">
-                    Available to businesses with low credit or under 1 year in business. Your business performance matters more than perfect credit.
-                  </p>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-brand-dark">Business Factors</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-brand-gray">Time in business</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-brand-gray">Average monthly revenue</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-brand-gray">Industry risk level</span>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-blue-50 border-blue-200">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-blue-800 mb-3">Consolidation Options</h3>
-                  <p className="text-blue-700">
-                    Consolidation options available to lower payments and increase cash flow from multiple existing advances.
-                  </p>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-brand-dark">Financial Factors</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-brand-gray">Credit profile</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-brand-gray">Overall financial health</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span className="text-brand-gray">Financial trends</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <p className="text-center text-brand-dark">
+                Your custom factor rate and repayment structure are based on a comprehensive evaluation of your business profile.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MCA vs Loan Comparison */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+              What's the Difference Between a Loan and an MCA?
+            </h2>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="border-l-4 border-red-400">
+                <CardHeader>
+                  <CardTitle className="text-brand-dark flex items-center">
+                    <span className="text-red-500 mr-2">×</span>
+                    Term Loan
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      <span className="text-brand-gray">Fixed monthly payments</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      <span className="text-brand-gray">Interest-bearing with APR</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      <span className="text-brand-gray">Longer approval times</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      <span className="text-brand-gray">Often requires collateral</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      <span className="text-brand-gray">High credit scores required</span>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-purple-50 border-purple-200">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-purple-800 mb-3">Re-advance Eligibility</h3>
-                  <p className="text-purple-700">
-                    Re-advance eligibility once 50% of your balance is paid off. Get additional funding as your business grows.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-orange-50 border-orange-200">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-orange-800 mb-3">No Fixed Payments</h3>
-                  <p className="text-orange-700">
-                    Repayment fluctuates with your business performance. Slow days mean lower payments, busy days mean faster payoff.
-                  </p>
+              <Card className="border-l-4 border-green-400">
+                <CardHeader>
+                  <CardTitle className="text-brand-dark flex items-center">
+                    <span className="text-green-500 mr-2">✓</span>
+                    Merchant Cash Advance
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-brand-gray">Flexible daily/weekly repayments</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-brand-gray">Based on future sales, not collateral</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-brand-gray">Quick approval and funding</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-brand-gray">No collateral required</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-brand-gray">Works with lower credit scores</span>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -413,31 +552,263 @@ export default function MCADetails() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section id="apply-now" className="py-16 bg-gradient-to-r from-brand-blue to-brand-teal text-white">
+      {/* Factor Rate vs Holdback */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+              MCA Holdback vs. Factor Rate
+            </h2>
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-brand-dark">Holdback Rate</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-brand-gray mb-4">
+                    The <strong>% of daily sales</strong> (credit/debit) used to repay the advance. This fluctuates with your revenue.
+                  </p>
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <p className="text-sm text-brand-dark">
+                      <strong>Benefit:</strong> Slower sales days = smaller payments
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-brand-dark">Factor Rate</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-brand-gray mb-4">
+                    A <strong>one-time cost multiplier</strong> (e.g., 1.3 = 30% total repayment above principal). No APR or compound interest involved.
+                  </p>
+                  <div className="bg-green-50 p-4 rounded-lg">
+                    <p className="text-sm text-brand-dark">
+                      <strong>Example:</strong> $100,000 advance × 1.3 factor rate = $130,000 total repayment
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+              Benefits of Choosing InvestoFund for Your MCA
+            </h2>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-1">Fast, Same-Day Funding</h4>
+                  <p className="text-brand-gray text-sm">Get your capital when you need it most</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-1">Revenue-Based Approval</h4>
+                  <p className="text-brand-gray text-sm">Not just credit score dependent</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-1">Sales Cycle Alignment</h4>
+                  <p className="text-brand-gray text-sm">Repayment matches your business flow</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-1">Streamlined Application</h4>
+                  <p className="text-brand-gray text-sm">No lengthy bank paperwork</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-1">Consolidation Available</h4>
+                  <p className="text-brand-gray text-sm">For existing MCAs with better terms</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-brand-dark mb-1">Re-advances Available</h4>
+                  <p className="text-brand-gray text-sm">Once 50% repaid, get additional capital</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Simple Steps */}
+      <section className="py-16 bg-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+              Get Started in 3 Simple Steps
+            </h2>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-white">1</span>
+                </div>
+                <h3 className="text-xl font-bold text-brand-dark mb-2">Apply Online</h3>
+                <p className="text-brand-gray">Takes just minutes to complete our secure MCA application.</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-white">2</span>
+                </div>
+                <h3 className="text-xl font-bold text-brand-dark mb-2">Receive Your Offer</h3>
+                <p className="text-brand-gray">Get matched with an offer tailored to your revenue and repayment preference.</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-white">3</span>
+                </div>
+                <h3 className="text-xl font-bold text-brand-dark mb-2">Get Funded Fast</h3>
+                <p className="text-brand-gray">Once approved, receive your funding within 24–48 hours.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+              MCA FAQs
+            </h2>
+            
+            <div className="space-y-6">
+              <Card>
+                <CardContent className="pt-6">
+                  <h4 className="font-semibold text-brand-dark mb-2">Q: Can I qualify with bad credit?</h4>
+                  <p className="text-brand-gray">Yes — we focus on cash flow, not just your FICO score.</p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardContent className="pt-6">
+                  <h4 className="font-semibold text-brand-dark mb-2">Q: Will this hurt my credit score?</h4>
+                  <p className="text-brand-gray">No hard pull is required during initial prequalification.</p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardContent className="pt-6">
+                  <h4 className="font-semibold text-brand-dark mb-2">Q: Can I repay early?</h4>
+                  <p className="text-brand-gray">Yes. Some of our MCA programs include early payment discounts.</p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardContent className="pt-6">
+                  <h4 className="font-semibold text-brand-dark mb-2">Q: Can I consolidate other MCAs?</h4>
+                  <p className="text-brand-gray">Yes — and we can structure better terms to improve cash flow.</p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardContent className="pt-6">
+                  <h4 className="font-semibold text-brand-dark mb-2">Q: How soon can I re-apply for funding?</h4>
+                  <p className="text-brand-gray">Once 50% of your balance is repaid, you're eligible for additional capital.</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Default Information */}
+      <section className="py-16 bg-red-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-8">
+              What Happens if You Default?
+            </h2>
+            
+            <Card className="border-l-4 border-red-400">
+              <CardContent className="pt-6">
+                <p className="text-brand-gray mb-4">
+                  Failure to meet your MCA obligations can result in:
+                </p>
+                <div className="space-y-2 mb-6">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-brand-gray">Additional fees or penalties</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-brand-gray">Collection activity or legal action (depending on your agreement)</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-brand-gray">Business cash flow restrictions</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-brand-gray">Possible personal guarantees (depending on structure)</span>
+                  </div>
+                </div>
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                  <p className="text-brand-dark">
+                    <strong>Important:</strong> If you're struggling to meet payments, <strong>contact InvestoFund early</strong> to explore modification or consolidation options.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Apply Section */}
+      <section id="apply-now" className="py-16 bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">
-              Ready to Get Started?
+              Ready to Unlock Flexible Funding?
             </h2>
             <p className="text-xl mb-8 text-blue-100">
-              Apply for your Merchant Cash Advance today and get funded in as little as 1 business day.
+              An InvestoFund MCA can be the bridge between now and your next major milestone. Whether you're growing fast or just need a quick infusion of capital — we're here to help you move forward with confidence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="bg-white text-brand-blue hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+                className="bg-white text-blue-600 hover:bg-gray-100 px-12 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 onClick={() => window.location.href = '/merchants#apply-funding'}
               >
                 Apply Now
               </Button>
               <Button 
                 size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-brand-blue px-8 py-4 text-lg font-semibold"
-                onClick={() => window.location.href = '/merchants'}
+                className="bg-white/20 backdrop-blur-sm border-white/40 text-white hover:bg-white/30 hover:border-white/60 px-12 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => window.location.href = '/contact'}
               >
-                Back to All Solutions
+                Talk to a Funding Specialist
               </Button>
             </div>
           </div>
