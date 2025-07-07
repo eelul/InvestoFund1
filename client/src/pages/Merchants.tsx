@@ -1,22 +1,471 @@
-import { Clock, DollarSign, Shield, CheckCircle, Zap, Heart } from "lucide-react";
+import { Clock, DollarSign, Shield, CheckCircle, Zap, Heart, ArrowRight, CreditCard, Building, Truck, FileText, TrendingUp, Receipt, ShoppingCart, Landmark } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import EnhancedMerchantApplicationForm from "@/components/forms/EnhancedMerchantApplicationForm";
 
 export default function Merchants() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="bg-gradient-to-br from-brand-blue via-brand-teal to-brand-blue pt-20 pb-16 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl font-bold text-brand-dark mb-6">
-              Fast Capital. Simple Terms. Fair Offers.
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Unlock Capital. Fuel Growth. <br />
+              <span className="text-yellow-300">Succeed with Confidence.</span>
             </h1>
-            <p className="text-xl text-brand-gray mb-8">
-              Get the working capital your business needs with our streamlined Merchant Cash Advance process.
+            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+              Explore fast, flexible funding solutions built for small business owners. Whether you're expanding, upgrading, or navigating cash flow gaps, InvestoFund empowers you with the right financing at the right time.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-white text-brand-blue hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-xl"
+                onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Get Funded Today →
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white hover:text-brand-blue px-8 py-4 text-lg font-semibold"
+                onClick={() => document.getElementById('financing-solutions')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Explore Solutions
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Financing Solutions Section */}
+      <section id="financing-solutions" className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-brand-dark mb-4">
+              Complete Financing Solutions
+            </h2>
+            <p className="text-xl text-center text-brand-gray mb-12">
+              Choose from 8 powerful funding options designed to meet your unique business needs
+            </p>
+            
+            <Tabs defaultValue="overview" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 mb-8">
+                <TabsTrigger value="overview">All Solutions</TabsTrigger>
+                <TabsTrigger value="details">Detailed Comparison</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="overview" className="space-y-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+                  {/* MCA */}
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-brand-blue">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className="p-2 bg-blue-100 rounded-lg">
+                          <CreditCard className="w-6 h-6 text-brand-blue" />
+                        </div>
+                        <CardTitle className="text-brand-dark">Merchant Cash Advance (MCA)</CardTitle>
+                      </div>
+                      <p className="text-brand-gray">
+                        Tap into your future revenue today with a fast, flexible MCA. Perfect for businesses with strong daily sales and no time for red tape.
+                      </p>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Amount Range:</span>
+                          <span className="font-semibold">$2K - $2M</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Factor Rate:</span>
+                          <span className="font-semibold">1.25x - 1.49x</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Speed:</span>
+                          <span className="font-semibold text-green-600">Same day</span>
+                        </div>
+                      </div>
+                      <Button 
+                        className="w-full bg-brand-blue hover:bg-brand-dark text-white"
+                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        Learn How MCA Works <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  {/* Line of Credit */}
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-green-500">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className="p-2 bg-green-100 rounded-lg">
+                          <TrendingUp className="w-6 h-6 text-green-600" />
+                        </div>
+                        <CardTitle className="text-brand-dark">Business Line of Credit</CardTitle>
+                      </div>
+                      <p className="text-brand-gray">
+                        Access capital when you need it, without reapplying. Draw, repay, and reuse with a revolving business line of credit.
+                      </p>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Limit:</span>
+                          <span className="font-semibold">Up to $250K</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Rates:</span>
+                          <span className="font-semibold">4.8% - 24.99%</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Terms:</span>
+                          <span className="font-semibold">6-18 months</span>
+                        </div>
+                      </div>
+                      <Button 
+                        className="w-full bg-green-600 hover:bg-green-700 text-white"
+                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        See How Credit Line Works <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  {/* Equipment Financing */}
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-orange-500">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className="p-2 bg-orange-100 rounded-lg">
+                          <Truck className="w-6 h-6 text-orange-600" />
+                        </div>
+                        <CardTitle className="text-brand-dark">Equipment Financing</CardTitle>
+                      </div>
+                      <p className="text-brand-gray">
+                        Finance new or used equipment with flexible plans. Use your equipment as collateral to fuel business growth.
+                      </p>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Financing:</span>
+                          <span className="font-semibold">Up to 100%</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Collateral:</span>
+                          <span className="font-semibold">Equipment</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Speed:</span>
+                          <span className="font-semibold text-green-600">Fast approval</span>
+                        </div>
+                      </div>
+                      <Button 
+                        className="w-full bg-orange-600 hover:bg-orange-700 text-white"
+                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        Get Equipment Financing <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  {/* Commercial Mortgage */}
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-purple-500">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className="p-2 bg-purple-100 rounded-lg">
+                          <Building className="w-6 h-6 text-purple-600" />
+                        </div>
+                        <CardTitle className="text-brand-dark">Commercial Mortgage</CardTitle>
+                      </div>
+                      <p className="text-brand-gray">
+                        Tap into your property's equity or finance new real estate. Empower your business through smart property-backed lending.
+                      </p>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Collateral:</span>
+                          <span className="font-semibold">Real Estate</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Types:</span>
+                          <span className="font-semibold">Fixed/Adjustable</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Use:</span>
+                          <span className="font-semibold">Equity/Purchase</span>
+                        </div>
+                      </div>
+                      <Button 
+                        className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        Explore Mortgage Options <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  {/* Term Loans */}
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-brand-teal">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className="p-2 bg-teal-100 rounded-lg">
+                          <FileText className="w-6 h-6 text-brand-teal" />
+                        </div>
+                        <CardTitle className="text-brand-dark">Term Loans</CardTitle>
+                      </div>
+                      <p className="text-brand-gray">
+                        Secure a lump sum with fixed payments and terms. Ideal for planned projects, expansion, or refinancing high-interest debt.
+                      </p>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Terms:</span>
+                          <span className="font-semibold">1-5 years</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Rates:</span>
+                          <span className="font-semibold">7.9% - 24.99%</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Payment:</span>
+                          <span className="font-semibold">Monthly</span>
+                        </div>
+                      </div>
+                      <Button 
+                        className="w-full bg-brand-teal hover:bg-teal-700 text-white"
+                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        See Term Loan Qualification <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  {/* Invoice Factoring */}
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-yellow-500">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className="p-2 bg-yellow-100 rounded-lg">
+                          <Receipt className="w-6 h-6 text-yellow-600" />
+                        </div>
+                        <CardTitle className="text-brand-dark">Invoice Factoring</CardTitle>
+                      </div>
+                      <p className="text-brand-gray">
+                        Convert unpaid invoices into immediate working capital. Eliminate the wait and stay cash-flow positive.
+                      </p>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Type:</span>
+                          <span className="font-semibold">No debt incurred</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Eligibility:</span>
+                          <span className="font-semibold">B2B invoices</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Speed:</span>
+                          <span className="font-semibold text-green-600">Immediate</span>
+                        </div>
+                      </div>
+                      <Button 
+                        className="w-full bg-yellow-600 hover:bg-yellow-700 text-white"
+                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        Start Factoring Invoices <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  {/* P.O. Financing */}
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-red-500">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className="p-2 bg-red-100 rounded-lg">
+                          <ShoppingCart className="w-6 h-6 text-red-600" />
+                        </div>
+                        <CardTitle className="text-brand-dark">Purchase Order Financing</CardTitle>
+                      </div>
+                      <p className="text-brand-gray">
+                        Got orders you can't fulfill due to cash constraints? Use P.O. financing to cover supplier costs and deliver with confidence.
+                      </p>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Based on:</span>
+                          <span className="font-semibold">Purchase Orders</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Payment:</span>
+                          <span className="font-semibold">Direct to suppliers</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Type:</span>
+                          <span className="font-semibold">Not a loan</span>
+                        </div>
+                      </div>
+                      <Button 
+                        className="w-full bg-red-600 hover:bg-red-700 text-white"
+                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        Discover P.O. Financing <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  {/* SBA Loans */}
+                  <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-indigo-500">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className="p-2 bg-indigo-100 rounded-lg">
+                          <Landmark className="w-6 h-6 text-indigo-600" />
+                        </div>
+                        <CardTitle className="text-brand-dark">SBA 7(a) Loans</CardTitle>
+                      </div>
+                      <p className="text-brand-gray">
+                        The SBA 7(a) loan is ideal for major expansions, acquisitions, and long-term working capital. Enjoy favorable rates and extended terms.
+                      </p>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Amount:</span>
+                          <span className="font-semibold">Up to $5M</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Terms:</span>
+                          <span className="font-semibold">Up to 25 years</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-brand-gray">Backing:</span>
+                          <span className="font-semibold text-green-600">Government</span>
+                        </div>
+                      </div>
+                      <Button 
+                        className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        Learn About SBA Loans <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="text-center mt-12 p-8 bg-gradient-to-r from-brand-blue to-brand-teal rounded-xl text-white">
+                  <h3 className="text-2xl font-bold mb-4">Let's Find the Right Fit</h3>
+                  <p className="text-lg mb-6 text-blue-100">
+                    Need help deciding which solution is right for your business? Speak with an InvestoFund Advisor today — no obligation, just answers.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button 
+                      size="lg" 
+                      className="bg-white text-brand-blue hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+                      onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    >
+                      Apply Now
+                    </Button>
+                    <Button 
+                      size="lg" 
+                      variant="outline" 
+                      className="border-white text-white hover:bg-white hover:text-brand-blue px-8 py-4 text-lg font-semibold"
+                      onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    >
+                      Get Free Consultation
+                    </Button>
+                  </div>
+                </div>
+              </TabsContent>
+              
+              <TabsContent value="details" className="space-y-6">
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse border border-gray-300">
+                    <thead>
+                      <tr className="bg-gray-50">
+                        <th className="border border-gray-300 p-4 text-left font-semibold">Solution</th>
+                        <th className="border border-gray-300 p-4 text-left font-semibold">Amount Range</th>
+                        <th className="border border-gray-300 p-4 text-left font-semibold">Terms</th>
+                        <th className="border border-gray-300 p-4 text-left font-semibold">Best For</th>
+                        <th className="border border-gray-300 p-4 text-left font-semibold">Speed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-4 font-semibold text-brand-blue">Merchant Cash Advance</td>
+                        <td className="border border-gray-300 p-4">$2K - $2M</td>
+                        <td className="border border-gray-300 p-4">25 days - 18 months</td>
+                        <td className="border border-gray-300 p-4">Strong daily sales, quick needs</td>
+                        <td className="border border-gray-300 p-4 text-green-600 font-semibold">Same day</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 p-4 font-semibold text-green-600">Line of Credit</td>
+                        <td className="border border-gray-300 p-4">Up to $250K</td>
+                        <td className="border border-gray-300 p-4">6-18 months</td>
+                        <td className="border border-gray-300 p-4">Flexible access, good credit</td>
+                        <td className="border border-gray-300 p-4">2-3 days</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-4 font-semibold text-orange-600">Equipment Financing</td>
+                        <td className="border border-gray-300 p-4">Up to 100% of value</td>
+                        <td className="border border-gray-300 p-4">Varies by equipment</td>
+                        <td className="border border-gray-300 p-4">Equipment purchase/upgrade</td>
+                        <td className="border border-gray-300 p-4">Fast approval</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 p-4 font-semibold text-purple-600">Commercial Mortgage</td>
+                        <td className="border border-gray-300 p-4">Based on property value</td>
+                        <td className="border border-gray-300 p-4">Varies by loan type</td>
+                        <td className="border border-gray-300 p-4">Real estate investment</td>
+                        <td className="border border-gray-300 p-4">2-4 weeks</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-4 font-semibold text-brand-teal">Term Loans</td>
+                        <td className="border border-gray-300 p-4">Based on cash flow</td>
+                        <td className="border border-gray-300 p-4">1-5 years</td>
+                        <td className="border border-gray-300 p-4">Stable businesses, expansion</td>
+                        <td className="border border-gray-300 p-4">2-3 weeks</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 p-4 font-semibold text-yellow-600">Invoice Factoring</td>
+                        <td className="border border-gray-300 p-4">Based on invoice value</td>
+                        <td className="border border-gray-300 p-4">Until payment received</td>
+                        <td className="border border-gray-300 p-4">B2B with slow-paying clients</td>
+                        <td className="border border-gray-300 p-4 text-green-600 font-semibold">Immediate</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-4 font-semibold text-red-600">P.O. Financing</td>
+                        <td className="border border-gray-300 p-4">Based on order value</td>
+                        <td className="border border-gray-300 p-4">Until order fulfillment</td>
+                        <td className="border border-gray-300 p-4">Large orders, supplier payment</td>
+                        <td className="border border-gray-300 p-4">Quick approval</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 p-4 font-semibold text-indigo-600">SBA 7(a) Loans</td>
+                        <td className="border border-gray-300 p-4">Up to $5M</td>
+                        <td className="border border-gray-300 p-4">Up to 25 years</td>
+                        <td className="border border-gray-300 p-4">Major expansion, acquisition</td>
+                        <td className="border border-gray-300 p-4">10-15 business days</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+                <div className="text-center mt-8">
+                  <Button 
+                    size="lg" 
+                    className="bg-brand-blue hover:bg-brand-dark text-white px-8 py-4 text-lg"
+                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Started with Any Solution →
+                  </Button>
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </section>
@@ -288,7 +737,7 @@ export default function Merchants() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-brand-gray">Factor Rates</span>
-                      <span className="font-bold text-brand-dark">1.2x - 1.5x</span>
+                      <span className="font-bold text-brand-dark">1.25x - 1.49x</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-brand-gray">Repayment Period</span>
@@ -445,67 +894,155 @@ export default function Merchants() {
             <Accordion type="single" collapsible className="space-y-4">
               <AccordionItem value="item-1" className="bg-white rounded-lg px-6">
                 <AccordionTrigger className="text-left font-semibold text-brand-dark">
-                  Is this a loan?
+                  What's the difference between an MCA and a traditional business loan?
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
-                  No, this is a merchant cash advance. We purchase a portion of your future sales at a discount, 
-                  not a traditional loan. This means no fixed monthly payments and repayment is based on your actual sales performance.
+                  <div className="space-y-3">
+                    <p><strong>Merchant Cash Advance (MCA):</strong> We purchase a portion of your future sales at a discount. Repayment is based on a percentage of your daily sales, so it fluctuates with your business performance. No fixed monthly payments.</p>
+                    <p><strong>Traditional Loan:</strong> Fixed monthly payments regardless of business performance, typically requires excellent credit, longer approval process, and more stringent requirements.</p>
+                    <p><strong>Why Choose MCA:</strong> Faster approval (same day), flexible repayment tied to your sales, and approval based on business performance rather than just credit score.</p>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2" className="bg-white rounded-lg px-6">
                 <AccordionTrigger className="text-left font-semibold text-brand-dark">
-                  What are the fees?
+                  How do I know if my business qualifies?
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
-                  We use a factor rate system (typically 1.2x to 1.5x) with no hidden fees. The factor rate depends on 
-                  your business's performance, industry, and credit profile. You'll know the total cost upfront before signing.
+                  <div className="space-y-3">
+                    <p><strong>Basic Requirements:</strong></p>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>Minimum 3 months in business (some solutions accept newer businesses)</li>
+                      <li>Consistent monthly revenue (varies by solution, typically $10K+ for MCA)</li>
+                      <li>Business bank account in company name</li>
+                      <li>Valid business registration</li>
+                    </ul>
+                    <p><strong>Good Candidates:</strong> Businesses with steady sales, seasonal businesses needing working capital, companies with growth opportunities, or those needing to manage cash flow gaps.</p>
+                    <p><strong>Credit Flexibility:</strong> We work with businesses that have been declined by banks. Your business performance matters more than perfect credit.</p>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3" className="bg-white rounded-lg px-6">
                 <AccordionTrigger className="text-left font-semibold text-brand-dark">
-                  Do I need good credit?
+                  What are the real costs and are there hidden fees?
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
-                  Credit is considered, but we focus more on your business's cash flow and daily sales performance. 
-                  Many businesses with less-than-perfect credit can still qualify based on their revenue and business strength.
+                  <div className="space-y-3">
+                    <p><strong>Transparent Pricing:</strong> We use a factor rate system (1.25x - 1.49x) with NO hidden fees. If you receive $10,000 with a 1.30x factor rate, you repay $13,000 total.</p>
+                    <p><strong>What Affects Your Rate:</strong></p>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>Time in business and revenue consistency</li>
+                      <li>Industry type and business model</li>
+                      <li>Credit profile and financial strength</li>
+                      <li>Repayment timeline preference</li>
+                    </ul>
+                    <p><strong>No Surprises:</strong> Your total cost is calculated upfront. No prepayment penalties, no application fees, no closing costs.</p>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-4" className="bg-white rounded-lg px-6">
                 <AccordionTrigger className="text-left font-semibold text-brand-dark">
-                  How fast can I get funded?
+                  How quickly can I actually get funded and what's the process?
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
-                  Most applications are reviewed within 24 hours. Once approved, funding typically occurs within 
-                  1-3 business days depending on your bank and the completeness of your documentation.
+                  <div className="space-y-3">
+                    <p><strong>Timeline Breakdown:</strong></p>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li><strong>Application:</strong> 10 minutes online</li>
+                      <li><strong>Initial Review:</strong> 2-4 hours during business hours</li>
+                      <li><strong>Document Review:</strong> Same day with complete docs</li>
+                      <li><strong>Approval Decision:</strong> Within 24 hours</li>
+                      <li><strong>Funding:</strong> Same day to 48 hours after approval</li>
+                    </ul>
+                    <p><strong>Speed Tips:</strong> Have your bank statements ready, respond quickly to any requests, and ensure your bank account information is accurate.</p>
+                    <p><strong>Documentation:</strong> Most approvals only need 3-6 months of bank statements and basic business information.</p>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-5" className="bg-white rounded-lg px-6">
                 <AccordionTrigger className="text-left font-semibold text-brand-dark">
-                  What documents do I need?
+                  Will this help or hurt my business credit?
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
-                  Typically, we need 3-6 months of bank statements, a voided business check, and basic business 
-                  information. Additional documents may be required depending on your specific situation.
+                  <div className="space-y-3">
+                    <p><strong>Credit Impact:</strong> MCAs typically don't report to business credit bureaus like traditional loans, so they won't directly build your business credit score.</p>
+                    <p><strong>Soft Credit Pull:</strong> Our initial review uses a soft pull that doesn't affect your credit score. Hard pulls only occur for certain term loan products.</p>
+                    <p><strong>Building Relationships:</strong> Successful repayment builds a funding relationship with us, making future funding easier and potentially offering better terms.</p>
+                    <p><strong>Cash Flow Benefits:</strong> By improving your cash flow and business stability, you'll be in a better position for traditional credit products in the future.</p>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-6" className="bg-white rounded-lg px-6">
                 <AccordionTrigger className="text-left font-semibold text-brand-dark">
-                  How does repayment work?
+                  How does repayment work and what if my sales fluctuate?
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
-                  <div className="space-y-4">
-                    <p><strong>Percentage of Daily Sales (Split or ACH)</strong> – A fixed percentage is automatically collected from your daily credit card sales or total business deposits. This continues until the full advance, plus agreed-upon fees (called a "factor rate"), is repaid.</p>
-                    
-                    <p><strong>Fixed Daily or Weekly Debits</strong> – Some agreements use set daily or weekly ACH withdrawals from your business bank account, regardless of sales volume. This option is more predictable, though it may not adjust with fluctuating revenue.</p>
-                    
-                    <p>It's important to note that repayment terms can vary based on the structure of the deal, the merchant's industry, sales consistency, and the specific funder. The payback duration is typically up to 18 months, but it can change depending on your business performance and the terms negotiated at funding.</p>
-                    
-                    <p>Always review your agreement carefully, and feel free to contact us if you'd like help understanding your options.</p>
+                  <div className="space-y-3">
+                    <p><strong>Flexible Repayment Options:</strong></p>
+                    <p><strong>1. Percentage of Daily Sales:</strong> We collect a fixed percentage (typically 10-20%) of your daily credit card sales. If you have slow days, you pay less. If you have great days, you pay more but repay faster.</p>
+                    <p><strong>2. Fixed Daily/Weekly ACH:</strong> Set amount withdrawn regardless of sales volume. More predictable but less flexible.</p>
+                    <p><strong>Seasonal Business Protections:</strong> We understand business cycles. Many agreements include provisions for seasonal businesses or temporary slowdowns.</p>
+                    <p><strong>Early Payoff Benefits:</strong> No prepayment penalties. Pay off early to save on total cost.</p>
+                    <p><strong>Renewal Options:</strong> Once you've paid back 50-75%, you may qualify for additional funding or refinancing options.</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-7" className="bg-white rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-brand-dark">
+                  Can I get multiple funding solutions or refinance existing debt?
+                </AccordionTrigger>
+                <AccordionContent className="text-brand-gray">
+                  <div className="space-y-3">
+                    <p><strong>Multiple Solutions:</strong> Yes! Many businesses use different funding types for different needs - MCA for immediate working capital, equipment financing for new machinery, and lines of credit for ongoing flexibility.</p>
+                    <p><strong>Debt Consolidation:</strong> We can help consolidate multiple high-cost MCAs into a single, more manageable payment with better terms.</p>
+                    <p><strong>Stacking Restrictions:</strong> We evaluate your total debt load to ensure any new funding won't strain your business. Responsible lending is our priority.</p>
+                    <p><strong>Refinancing Options:</strong> If you have expensive existing funding, we may be able to offer refinancing options to reduce your total cost and improve cash flow.</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-8" className="bg-white rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-brand-dark">
+                  What happens if I can't make payments or my business struggles?
+                </AccordionTrigger>
+                <AccordionContent className="text-brand-gray">
+                  <div className="space-y-3">
+                    <p><strong>Communication is Key:</strong> Contact us immediately if you're experiencing difficulties. We have multiple options to help struggling businesses rather than pursuing aggressive collection.</p>
+                    <p><strong>Workout Options:</strong></p>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>Payment restructuring or temporary reductions</li>
+                      <li>Extended repayment timelines</li>
+                      <li>Seasonal adjustment programs</li>
+                      <li>Settlement options in extreme cases</li>
+                    </ul>
+                    <p><strong>Legal Protections:</strong> MCAs have different legal protections than traditional loans. We work within the UCC framework and focus on commercial resolution rather than personal liability.</p>
+                    <p><strong>Business Counseling:</strong> We can connect you with business advisory services to help improve operations and cash flow management.</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-9" className="bg-white rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-brand-dark">
+                  Is InvestoFund legitimate and how do I know this isn't a scam?
+                </AccordionTrigger>
+                <AccordionContent className="text-brand-gray">
+                  <div className="space-y-3">
+                    <p><strong>Legitimacy Indicators:</strong></p>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>No upfront fees - legitimate funders never charge application fees</li>
+                      <li>Transparent terms provided in writing before you sign</li>
+                      <li>Licensed and compliant with state and federal regulations</li>
+                      <li>Physical business address and verified contact information</li>
+                      <li>Clear communication about costs, terms, and processes</li>
+                    </ul>
+                    <p><strong>Red Flags to Avoid:</strong> Be wary of companies demanding upfront fees, guaranteeing approval, pressuring immediate decisions, or being vague about costs.</p>
+                    <p><strong>Verification:</strong> Check our business registration, read all documents carefully, and never sign blank contracts or documents with missing information.</p>
                   </div>
                 </AccordionContent>
               </AccordionItem>
