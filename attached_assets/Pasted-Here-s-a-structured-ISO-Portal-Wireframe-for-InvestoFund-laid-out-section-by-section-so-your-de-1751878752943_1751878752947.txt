@@ -1,0 +1,156 @@
+Here’s a structured **ISO Portal Wireframe** for InvestoFund, laid out section by section so your developer or designer can build it into your system (web app, Notion, Webflow, or Replit backend):
+
+---
+
+## 🧱 INVESTOFUND ISO PORTAL WIREFRAME STRUCTURE
+
+---
+
+### 🏠 1. **Dashboard (Home)**
+
+> Overview of all your deals, commissions, and key updates.
+
+**Components:**
+
+* Welcome message (“Welcome back, \[Broker Name]!”)
+* Snapshot tiles:
+
+  * **Deals Submitted:** X total | Y funded | Z pending
+  * **Commission Earned:** \$X this month | \$Y lifetime
+  * **Next Payout:** \$Z → \[Date]
+* CTA: \[Submit New Deal] button
+* Notifications feed (e.g., “ABC Bakery is 50% paid off — eligible for renewal”)
+
+---
+
+### 📁 2. **My Deals**
+
+> Real-time pipeline view of all deal submissions.
+
+**Filters:**
+
+* Status (Submitted, In Review, Approved, Funded, Declined)
+* Deal Type (MCA, LOC, Term Loan, SBA, Equipment)
+* Date range
+
+**Table Format:**
+
+| Merchant Name | Amount Requested | Product | Status    | Last Update | Commission   | Actions      |
+| ------------- | ---------------- | ------- | --------- | ----------- | ------------ | ------------ |
+| Jane's Cafe   | \$45,000         | MCA     | In Review | 1h ago      | \$2,700 est. | View Details |
+
+**Inside “View Details”:**
+
+* Deal details + underwriting notes
+* Upload missing documents
+* Underwriter contact info
+* Status timeline (visual tracker: Submitted → Docs Received → Approved → Funded)
+
+---
+
+### 💰 3. **Commission Center**
+
+> Track all payments, pending amounts, and bonuses.
+
+**Components:**
+
+* Total Commissions (monthly, quarterly, lifetime)
+* Breakdown per deal (click to expand)
+* Payment schedule:
+
+  * “You will receive \$2,700 on 07/12/25”
+* Volume bonus tracker:
+
+  * “Fund \$100,000 more this month to unlock 2% bonus!”
+
+---
+
+### 📄 4. **Submit a Deal**
+
+> Fast-entry form for new merchant submissions.
+
+**Form fields:**
+
+* Business Name
+* Requested Amount
+* Monthly Revenue
+* Time in Business
+* Credit Score (est.)
+* Product Type (MCA, LOC, etc.)
+* Upload: App, Bank Statements, DL, Voided Check
+* Notes for underwriter (optional)
+
+CTA: **\[Submit Deal]**
+
+---
+
+### 📚 5. **Resources & Sales Tools**
+
+> Empower your ISO partners to close more deals.
+
+**Sections:**
+
+* Co-branded pitch decks (PDFs)
+* Merchant-facing app links
+* Commission table (e.g. 12%–15% breakdown)
+* Email templates (cold email, follow-ups, renewal pitch)
+* Scripts: “How to explain MCA vs Term Loan”
+* Deal calculator (“Estimate your merchant’s offer”)
+
+---
+
+### 🔄 6. **Renewal Opportunities**
+
+> Merchants that are eligible for a second round of funding.
+
+**Table view:**
+
+| Merchant    | % Paid | Next Eligible | Est. Renewal | Action        |
+| ----------- | ------ | ------------- | ------------ | ------------- |
+| Tom’s Tires | 65%    | Now           | \$30,000     | Request Offer |
+
+---
+
+### 👤 7. **Profile & Settings**
+
+> ISO account management.
+
+**Options:**
+
+* Personal & company info
+* W9 upload
+* Payout method (ACH, wire, etc.)
+* Update password
+* Notifications preferences
+
+---
+
+### 🛠️ 8. **Support & Help**
+
+> Get answers or request a callback.
+
+**Components:**
+
+* Contact your ISO manager
+* Submit support ticket
+* Chat support window (if available)
+* FAQ links (commission timing, renewal policy, file upload issues)
+
+---
+
+## 🔑 UX Principles to Follow:
+
+* **Sticky navigation bar** with links: Dashboard | Deals | Submit | Commissions | Resources | Support
+* **Mobile-first design**
+* **Real-time feedback** (“Upload received,” “Deal submitted successfully”)
+* **Clear visual statuses** with color coding (Red = Missing Docs, Green = Funded, Yellow = Review)
+
+---
+
+Would you like this wireframe translated into:
+
+* A visual mockup (Figma-style format)?
+* A Notion doc for your dev team?
+* A working prototype in Replit?
+
+Just say the word and I’ll prepare the next step.

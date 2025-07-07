@@ -33,6 +33,8 @@ import TermLoansDetails from "@/pages/merchants/TermLoansDetails";
 import InvoiceFactoringDetails from "@/pages/merchants/InvoiceFactoringDetails";
 import POFinancingDetails from "@/pages/merchants/POFinancingDetails";
 import SBALoansDetails from "@/pages/merchants/SBALoansDetails";
+import BrokerLogin from "@/pages/dashboard/BrokerLogin";
+import BrokerPortal from "@/pages/dashboard/BrokerPortal";
 
 function Router() {
   return (
@@ -52,6 +54,8 @@ function Router() {
         <Route path="/merchants/po-financing-details" component={POFinancingDetails} />
         <Route path="/merchants/sba-loans-details" component={SBALoansDetails} />
         <Route path="/contact" component={Contact} />
+        <Route path="/broker-login" component={BrokerLogin} />
+        <Route path="/dashboard/broker" component={BrokerPortal} />
         <Route path="/iso-tools" component={ISOTools} />
         <Route path="/iso-training" component={ISOTraining} />
         <Route path="/admin" component={Admin} />

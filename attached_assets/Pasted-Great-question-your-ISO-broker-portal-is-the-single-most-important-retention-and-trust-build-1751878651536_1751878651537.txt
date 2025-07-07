@@ -1,0 +1,124 @@
+Great question — your **ISO/broker portal** is the **single most important retention and trust-building tool** you have. Most funders under-deliver here. If you build a best-in-class experience, you’ll become the **go-to funding partner** ISOs talk about and refer.
+
+---
+
+## ✅ Must-Have Features for a Winning ISO Portal
+
+### 1. **Live Deal Tracking Dashboard**
+
+Show each submitted deal in a clear pipeline with:
+
+* Merchant name & business info
+* Deal status (e.g. *Submitted → Under Review → Approved → Funded*)
+* Assigned underwriter/contact
+* Requested vs approved amount
+* Commission preview (est. payout)
+* Time-stamped updates on every movement
+* Document status (e.g. “Bank statements missing”)
+
+**Bonus:** Color-coded stages + filters for deal age, amount, and type (MCA, LOC, SBA, etc.)
+
+---
+
+### 2. **Commission Center**
+
+Show the ISO exactly how much they’ve earned and what’s pending.
+
+* **Paid vs unpaid commissions**
+* Commission % per deal
+* **Next payout date**
+* Monthly, quarterly, and lifetime earnings breakdown
+* Bonus tracker: “You’re \$X away from your monthly volume bonus!”
+
+---
+
+### 3. **Document & Submission Hub**
+
+Let ISOs:
+
+* Upload merchant documents directly
+* Send secure deal links to merchants
+* See which docs are missing or expired
+* Access ready-to-use templates (e.g. application, sample offer, P\&L request)
+
+**Pro Tip:** Integrate secure cloud upload (like Dropbox, Google Drive, or direct link bank account options via DecisionLogic or Plaid).
+
+---
+
+### 4. **Live Chat & Support Access**
+
+ISOs want fast answers — offer:
+
+* Live chat during business hours (staffed or AI-assisted)
+* Contact underwriter directly
+* Request a callback
+* Dedicated support tab with your ISO manager’s info
+
+---
+
+### 5. **Marketing Materials & Sales Tools**
+
+Empower them to sell more:
+
+* Downloadable **co-branded PDFs** (MCA pitch decks, industry-specific flyers)
+* Customizable email templates
+* Case studies of funded deals
+* Calculator tools (e.g. **“Estimate Your Merchant’s Advance & Commission”**)
+* Link to a branded merchant application they can send out
+
+---
+
+### 6. **Submit-a-Deal Button**
+
+Quick access on every page. ISO clicks → fill short form → upload docs or paste a link.
+
+---
+
+### 7. **Renewal Reminders & Notifications**
+
+* “Your merchant is 60% paid off — eligible for a re-up!”
+* “Re-engage: This merchant was approved 30 days ago and didn’t sign.”
+* “Follow up: Your deal was stalled due to missing documents.”
+
+---
+
+### 8. **Leaderboard or Performance Tracker (Optional Gamification)**
+
+* Show top ISOs by volume, approvals, speed
+* Badges or rankings (e.g., *Silver, Gold, Platinum Partner*)
+* Trigger bonuses or increased splits for hitting goals
+
+---
+
+### 9. **Quick ISO Tools**
+
+* Commission Estimator
+* Document checklist generator
+* Industry-specific deal guidance (e.g. “What we look for in auto shops vs restaurants”)
+
+---
+
+## 🧠 How to Make It the Best ISO Portal in the Industry
+
+1. **Mobile-Optimized:** Make it easy to use from phones/tablets
+2. **Fast Loading:** Deal flow should be snappy and smooth
+3. **No Login Fatigue:** Allow autosave sessions or 1-click login via verified email
+4. **Real-Time Transparency:** Never make the ISO guess what’s happening
+5. **Personal Touch:** Name the underwriter or funding advisor on each deal thread
+
+---
+
+## 🧰 Optional but Powerful Additions
+
+* **Instant Prequal Tools** for ISOs to run light-decision logic before submission
+* **White-labeled deal page** for ISOs with their own brand
+* **CRM integration** (or export options) so they can sync their own system
+* **API Access** for high-volume ISOs who want to push data directly
+
+---
+
+## Final Thought:
+
+Your ISO portal should feel like a **command center + commission engine** — not a black box. If you give them speed, visibility, payout clarity, and tools to close faster, they’ll stick with you over any competitor.
+
+Would you like me to mock up the **wireframe** or **Notion portal flow** next? Or generate sample portal copy/logins?

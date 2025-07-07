@@ -22,6 +22,18 @@ export default function Brokers() {
               Tired of narrow funder criteria and shared commissions? Join InvestoFund's ISO program for 
               better terms, faster funding, and full deal control.
             </p>
+            <div className="flex gap-4 justify-center">
+              <Link href="/broker-login">
+                <Button className="bg-brand-teal hover:bg-brand-teal/90">
+                  🔐 ISO Portal Login
+                </Button>
+              </Link>
+              <Link href="#apply">
+                <Button variant="outline" className="border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white">
+                  Apply to Become a Partner
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
