@@ -1386,23 +1386,23 @@ export default function Home() {
                 <ul className="space-y-3 mb-8 text-sm text-white">
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    <span className="text-white">Everything in $5,000 plan</span>
+                    <span className="text-[#000000]">Everything in $5,000 plan</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    <span className="text-white">Risk diversification across sectors</span>
+                    <span className="text-[#000000]">Risk diversification across sectors</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    <span className="text-white">Priority deal access</span>
+                    <span className="text-[#000000]">Priority deal access</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    <span className="text-white">Dedicated account manager</span>
+                    <span className="text-[#000000]">Dedicated account manager</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    <span className="text-white">Weekly strategy calls</span>
+                    <span className="text-[#000000]">Weekly strategy calls</span>
                   </li>
                 </ul>
                 <Link href="/investors">
