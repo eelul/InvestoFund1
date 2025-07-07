@@ -9,7 +9,7 @@ export default function Merchants() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative pt-20 pb-20 overflow-hidden">
+      <section className="relative pt-14 pb-14 overflow-hidden">
         {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900"></div>
         
@@ -18,21 +18,21 @@ export default function Merchants() {
         
         {/* Animated Background Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-400/10 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute top-32 right-20 w-48 h-48 bg-teal-400/10 rounded-full blur-xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-purple-400/10 rounded-full blur-xl animate-pulse delay-2000"></div>
+          <div className="absolute top-7 left-7 w-21 h-21 bg-blue-400/10 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute top-21 right-14 w-32 h-32 bg-teal-400/10 rounded-full blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-14 left-1/4 w-27 h-27 bg-purple-400/10 rounded-full blur-xl animate-pulse delay-2000"></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="mb-8">
-              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-200 border border-blue-400/30 mb-6">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="mb-5">
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-blue-500/20 text-blue-200 border border-blue-400/30 mb-4">
+                <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-1.5 animate-pulse"></span>
                 8 Financing Solutions Available
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold mb-5 leading-tight">
               <span className="bg-gradient-to-r from-white via-blue-100 to-teal-200 bg-clip-text text-transparent">
                 Unlock Capital.
               </span>
@@ -46,19 +46,19 @@ export default function Merchants() {
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl mb-10 text-blue-100 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg md:text-xl mb-7 text-blue-100 leading-relaxed max-w-2xl mx-auto">
               Explore fast, flexible funding solutions built for small business owners. Whether you're expanding, upgrading, or navigating cash flow gaps, InvestoFund empowers you with the right financing at the right time.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-10 py-5 text-lg font-semibold shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border-0"
+                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-7 py-3.5 text-base font-semibold shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border-0"
                 onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <span className="flex items-center">
                   Get Funded Today
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </span>
@@ -66,34 +66,34 @@ export default function Merchants() {
               
               <Button 
                 size="lg" 
-                className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/40 px-10 py-5 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/40 px-7 py-3.5 text-base font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 onClick={() => document.getElementById('financing-solutions')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <span className="flex items-center">
                   Explore Solutions
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </span>
               </Button>
             </div>
             
-            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-5 max-w-2xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">$2M+</div>
-                <div className="text-blue-200 text-sm">Maximum Funding</div>
+                <div className="text-2xl font-bold text-white mb-1">$2M+</div>
+                <div className="text-blue-200 text-xs">Maximum Funding</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">24hr</div>
-                <div className="text-blue-200 text-sm">Fast Approval</div>
+                <div className="text-2xl font-bold text-white mb-1">24hr</div>
+                <div className="text-blue-200 text-xs">Fast Approval</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">1.25x</div>
-                <div className="text-blue-200 text-sm">Starting Rate</div>
+                <div className="text-2xl font-bold text-white mb-1">1.15x</div>
+                <div className="text-blue-200 text-xs">Starting Rate</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">8</div>
-                <div className="text-blue-200 text-sm">Funding Options</div>
+                <div className="text-2xl font-bold text-white mb-1">8</div>
+                <div className="text-blue-200 text-xs">Funding Options</div>
               </div>
             </div>
           </div>
