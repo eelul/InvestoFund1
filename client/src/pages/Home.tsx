@@ -1330,7 +1330,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-[#050404]">Choose Your Investment Level</h2>
+              <h2 className="text-4xl font-bold mb-4 text-[#050404] bg-[#3d445c]">Choose Your Investment Level</h2>
               <p className="text-xl max-w-3xl mx-auto text-[#65758b]">
                 Start with as little as $5,000 or diversify with our premium portfolio options
               </p>
