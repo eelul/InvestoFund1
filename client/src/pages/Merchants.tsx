@@ -240,7 +240,7 @@ export default function Merchants() {
               </p>
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-brand-blue to-brand-teal hover:from-brand-dark hover:to-brand-blue text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                className="hover:bg-primary/90 h-11 rounded-md from-brand-blue to-brand-teal hover:from-brand-dark hover:to-brand-blue px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 bg-[#15b8a6] text-[#15b8a6]"
                 onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Apply for Funding Today →
