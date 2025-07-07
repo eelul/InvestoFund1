@@ -100,63 +100,80 @@ export default function Brokers() {
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <Card className="bg-gray-50">
                 <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-brand-blue mb-2">15%</div>
-                  <div className="text-sm text-brand-gray mb-4">Standard Commission</div>
+                  <div className="text-3xl font-bold text-brand-blue mb-2">12-15%</div>
+                  <div className="text-sm text-brand-gray mb-4">Base Commission</div>
                   <p className="text-xs text-brand-gray">
-                    Full packages with complete documentation and verified information
+                    Industry-leading commission on all funded deals with next-day payout
                   </p>
                 </CardContent>
               </Card>
 
               <Card className="bg-gray-50">
                 <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-brand-teal mb-2">20%</div>
-                  <div className="text-sm text-brand-gray mb-4">Premium Commission</div>
+                  <div className="text-3xl font-bold text-brand-teal mb-2">2-4%</div>
+                  <div className="text-sm text-brand-gray mb-4">Volume Bonuses</div>
                   <p className="text-xs text-brand-gray">
-                    High-quality deals with exceptional documentation and merchant verification
+                    Monthly bonuses for hitting funding thresholds and performance targets
                   </p>
                 </CardContent>
               </Card>
 
               <Card className="bg-gray-50">
                 <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-brand-dark mb-2">25%</div>
-                  <div className="text-sm text-brand-gray mb-4">Volume Bonus</div>
+                  <div className="text-3xl font-bold text-brand-dark mb-2">100%</div>
+                  <div className="text-sm text-brand-gray mb-4">Renewal Commission</div>
                   <p className="text-xs text-brand-gray">
-                    Consistent producers with 10+ successful deals per month
+                    Full commission payout when merchants re-fund or refinance
                   </p>
                 </CardContent>
               </Card>
             </div>
 
-            <Card className="bg-yellow-50 border-yellow-200">
+            <Card className="bg-brand-teal/5 border-brand-teal/20">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-brand-dark mb-4">Commission Guidelines</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <ul className="space-y-2">
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-brand-gray">Full packages: 15% base commission</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-brand-gray">Quality bonus: Additional 5% for verified deals</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-brand-gray">Volume bonus: Additional 10% for high producers</span>
-                    </li>
-                  </ul>
-                  <ul className="space-y-2">
-                    <li className="flex items-center space-x-2">
-                      <div className="w-4 h-4 bg-yellow-500 rounded-full" />
-                      <span className="text-sm text-brand-gray">Incomplete packages: Reduced commission</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <div className="w-4 h-4 bg-red-500 rounded-full" />
-                      <span className="text-sm text-brand-gray">Unverified deals: Commission subject to review</span>
-                    </li>
-                  </ul>
+                <h3 className="font-semibold text-brand-dark mb-4">Enhanced Rewards & Payment Terms</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-brand-dark mb-3">Commission Structure</h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 text-brand-teal" />
+                        <span className="text-sm text-brand-gray">12-15% on all funded deals</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 text-brand-teal" />
+                        <span className="text-sm text-brand-gray">2-4% monthly volume bonuses</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 text-brand-teal" />
+                        <span className="text-sm text-brand-gray">100% renewal commissions</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-brand-dark mb-3">Payment Benefits</h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 text-brand-teal" />
+                        <span className="text-sm text-brand-gray">Next business day payouts</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 text-brand-teal" />
+                        <span className="text-sm text-brand-gray">No waiting months to get paid</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 text-brand-teal" />
+                        <span className="text-sm text-brand-gray">Deal exclusivity guaranteed</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="mt-6 p-4 bg-white rounded-lg border border-brand-teal/10">
+                  <h4 className="font-semibold text-brand-dark mb-2">Commission Example</h4>
+                  <p className="text-sm text-brand-gray mb-2">Deal Amount: $50,000 | Factor Rate: 1.3x | Total Repayment: $65,000</p>
+                  <p className="text-sm text-brand-gray mb-1">Gross Profit: $15,000</p>
+                  <p className="text-sm font-semibold text-brand-teal">Your Commission (15%): $2,250 - Paid Next Day</p>
                 </div>
               </CardContent>
             </Card>
