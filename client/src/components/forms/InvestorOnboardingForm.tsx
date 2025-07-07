@@ -369,7 +369,7 @@ function InvestorForm() {
       ...prev,
       [currentStep]: isCurrentStepValid
     }));
-  }, [currentStep, watchedValues]);
+  }, [currentStep, form.watch("firstName"), form.watch("lastName"), form.watch("email"), form.watch("phone"), form.watch("documentsAgreed"), riskPreference.selectedRate]);
 
   return (
     <Form {...form}>
