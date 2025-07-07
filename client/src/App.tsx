@@ -26,21 +26,50 @@ import Legal from "@/pages/Legal";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import NotFound from "@/pages/not-found";
 
+// New V2 Pages
+import MerchantApply from "@/pages/merchants/MerchantApply";
+import MerchantHowItWorks from "@/pages/merchants/MerchantHowItWorks";
+import MerchantFAQ from "@/pages/merchants/MerchantFAQ";
+import BrokerSubmitDeal from "@/pages/brokers/BrokerSubmitDeal";
+
 function Router() {
   return (
     <Layout>
       <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
-        <Route path="/investors" component={Investors} />
-        <Route path="/brokers" component={Brokers} />
+        
+        {/* V2 Navigation Structure */}
+        {/* Merchants */}
         <Route path="/merchants" component={Merchants} />
+        <Route path="/merchants/apply" component={MerchantApply} />
+        <Route path="/merchants/how-it-works" component={MerchantHowItWorks} />
+        <Route path="/merchants/faq" component={MerchantFAQ} />
+        
+        {/* Brokers */}
+        <Route path="/brokers" component={Brokers} />
+        <Route path="/brokers/submit-deal" component={BrokerSubmitDeal} />
+        <Route path="/brokers/requirements" component={BrokerResources} />
+        <Route path="/brokers/iso-faq" component={FAQs} />
+        
+        {/* Investors */}
+        <Route path="/investors" component={Investors} />
+        <Route path="/investors/why-investofund" component={InvestorResources} />
+        <Route path="/investors/example-returns" component={CommissionStructure} />
+        <Route path="/investors/request-info" component={Investors} />
+        
+        {/* About Us - will create later */}
+        <Route path="/about" component={Contact} />
+        
         <Route path="/contact" component={Contact} />
+        
+        {/* Legacy routes for backward compatibility */}
         <Route path="/iso-tools" component={ISOTools} />
         <Route path="/iso-training" component={ISOTraining} />
         <Route path="/admin" component={Admin} />
         
         {/* User Dashboards */}
+        <Route path="/investor-dashboard" component={InvestorDashboard} />
         <Route path="/dashboard/investor" component={InvestorDashboard} />
         <Route path="/dashboard/broker" component={BrokerDashboard} />
         <Route path="/dashboard/merchant" component={MerchantDashboard} />
