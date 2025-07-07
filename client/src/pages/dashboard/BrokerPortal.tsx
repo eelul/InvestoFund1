@@ -170,26 +170,70 @@ export default function BrokerPortal() {
           {/* Dashboard Tab */}
           <TabsContent value="dashboard" className="space-y-8">
             {/* Welcome Section */}
-            <div className="bg-gradient-to-r from-brand-teal to-brand-blue text-white p-6 rounded-lg">
-              <h2 className="text-2xl font-bold mb-2">👋 Welcome, {brokerData.name}!</h2>
-              <p className="text-brand-teal-light mb-4">You're in the driver's seat. Submit deals, track commissions, and access resources 24/7.</p>
+            <div className="bg-gradient-to-br from-emerald-50 to-sky-50 border border-emerald-200/50 p-8 rounded-xl shadow-sm">
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-800 mb-3">👋 Welcome, {brokerData.name}!</h2>
+                  <p className="text-lg text-gray-600 mb-6">You're in the driver's seat. Submit deals, track commissions, and access resources 24/7.</p>
+                </div>
+                <div className="hidden md:block w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center">
+                  <DollarSign className="w-8 h-8 text-emerald-600" />
+                </div>
+              </div>
               
-              <div className="grid md:grid-cols-3 gap-4 mb-6">
-                <div className="bg-white/10 p-4 rounded">
-                  <p className="text-sm opacity-90">🔹 Approved ISO Partner</p>
+              <div className="grid md:grid-cols-3 gap-4 mb-8">
+                <div className="bg-white/80 backdrop-blur-sm border border-emerald-200/30 p-5 rounded-lg shadow-sm">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                      <CheckCircle className="w-5 h-5 text-emerald-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-500">Status</p>
+                      <p className="font-semibold text-gray-800">Approved ISO Partner</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-white/10 p-4 rounded">
-                  <p className="text-sm opacity-90">🔹 Commission Tier: {brokerData.tier} ({brokerData.commissionRate})</p>
+                <div className="bg-white/80 backdrop-blur-sm border border-sky-200/30 p-5 rounded-lg shadow-sm">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center">
+                      <Star className="w-5 h-5 text-sky-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-500">Commission Tier</p>
+                      <p className="font-semibold text-gray-800">{brokerData.tier} ({brokerData.commissionRate})</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-white/10 p-4 rounded">
-                  <p className="text-sm opacity-90">🔹 Funding Manager: {brokerData.manager.name}</p>
+                <div className="bg-white/80 backdrop-blur-sm border border-purple-200/30 p-5 rounded-lg shadow-sm">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                      <Users className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-500">Funding Manager</p>
+                      <p className="font-semibold text-gray-800">{brokerData.manager.name}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <Button className="bg-white text-brand-teal hover:bg-gray-100">
-                <Upload className="w-4 h-4 mr-2" />
-                Submit a New Deal
-              </Button>
+              <div className="flex gap-4">
+                <Button 
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white shadow-md hover:shadow-lg transition-all duration-200"
+                  onClick={() => setActiveTab("submit")}
+                >
+                  <Upload className="w-4 h-4 mr-2" />
+                  Submit a New Deal
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 shadow-sm"
+                  onClick={() => setActiveTab("deals")}
+                >
+                  <Eye className="w-4 h-4 mr-2" />
+                  View My Deals
+                </Button>
+              </div>
             </div>
 
             {/* Quick Stats */}
