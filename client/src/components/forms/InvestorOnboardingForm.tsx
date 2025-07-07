@@ -351,7 +351,7 @@ function InvestorForm() {
         const { firstName, lastName, email, phone } = form.getValues();
         return firstName && lastName && email && phone;
       case 3:
-        return form.getValues("documentsAgreed");
+        return form.getValues("documentsAgreed") && riskPreference.selectedRate;
       case 4:
         return true; // Review step
       default:

@@ -62,7 +62,9 @@ const consoleEmailService = {
     return { success: true };
   },
   async sendWelcomeEmail(options: any) {
-    console.log(`📧 Welcome email sent to ${options.email} for ${options.firstName} (${options.userType})`);
+    const riskInfo = options.riskPreference ? 
+      ` - Risk Strategy: ${options.riskPreference.riskBand} (${options.riskPreference.selectedRate.toFixed(2)}x factor rate)` : '';
+    console.log(`📧 Welcome email sent to ${options.email} for ${options.firstName} (${options.userType})${riskInfo}`);
     return { success: true };
   },
   async sendPaymentInstructions(options: any) {
@@ -110,7 +112,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await consoleEmailService.sendWelcomeEmail({
         email: req.body.userEmail || "",
         firstName: req.body.userFirstName || "Investor",
-        userType: "investor"
+        userType: "investor",
+        riskPreference: req.body.riskPreference
       });
 
       await storage.createEmailLog({
