@@ -1,5 +1,6 @@
 import { Clock, DollarSign, Shield, CheckCircle, Zap, Heart } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import EnhancedMerchantApplicationForm from "@/components/forms/EnhancedMerchantApplicationForm";
 
@@ -67,71 +68,183 @@ export default function Merchants() {
         </div>
       </section>
       {/* Industries We Serve */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-br from-blue-50 via-teal-50 to-green-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-brand-dark mb-8">
-              Industries We Serve — And Why It Works
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-center text-brand-dark mb-6">
+              🚀 Industries We Love to Fund
             </h2>
-            <p className="text-center text-brand-gray mb-12">
-              MCA funding gives these businesses fast, flexible access to capital when banks say no — 
-              without waiting, paperwork, or collateral.
+            <p className="text-center text-brand-gray mb-12 text-lg">
+              Fast, flexible capital for businesses that banks overlook — 
+              no endless paperwork, no collateral headaches, just solutions that work!
             </p>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-brand-dark mb-2">Retail & E-commerce</h3>
-                  <p className="text-sm text-brand-gray">
-                    Need funding to restock inventory, launch marketing, or cover seasonal dips.
+              <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-3">🛍️</div>
+                  <h3 className="font-bold text-orange-700 mb-3 text-lg">Retail & E-commerce</h3>
+                  <p className="text-sm text-orange-600 mb-4">
+                    Restock inventory, launch marketing campaigns, or bridge seasonal cash flow gaps.
                   </p>
+                  <Button 
+                    size="sm" 
+                    className="bg-orange-500 hover:bg-orange-600 text-white"
+                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Funded Now
+                  </Button>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-brand-dark mb-2">Restaurants</h3>
-                  <p className="text-sm text-brand-gray">
-                    Cash flow gaps from delayed invoices, equipment breakdowns, or unexpected repairs.
+              <Card className="bg-gradient-to-br from-red-50 to-red-100 border-red-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-3">🍽️</div>
+                  <h3 className="font-bold text-red-700 mb-3 text-lg">Restaurants & Food</h3>
+                  <p className="text-sm text-red-600 mb-4">
+                    Equipment repairs, kitchen upgrades, or covering slow periods between busy seasons.
                   </p>
+                  <Button 
+                    size="sm" 
+                    className="bg-red-500 hover:bg-red-600 text-white"
+                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Funded Now
+                  </Button>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-brand-dark mb-2">Auto & Transportation</h3>
-                  <p className="text-sm text-brand-gray">
-                    Vehicle repairs, fuel costs, or parts purchases before reimbursement.
+              <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-3">🚗</div>
+                  <h3 className="font-bold text-blue-700 mb-3 text-lg">Auto & Transportation</h3>
+                  <p className="text-sm text-blue-600 mb-4">
+                    Vehicle repairs, fuel costs, parts inventory, or fleet expansion needs.
                   </p>
+                  <Button 
+                    size="sm" 
+                    className="bg-blue-500 hover:bg-blue-600 text-white"
+                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Funded Now
+                  </Button>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-brand-dark mb-2">Construction & Trades</h3>
-                  <p className="text-sm text-brand-gray">
-                    Bridge financing while awaiting project payment or to purchase materials.
+              <Card className="bg-gradient-to-br from-yellow-50 to-yellow-100 border-yellow-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-3">🔨</div>
+                  <h3 className="font-bold text-yellow-700 mb-3 text-lg">Construction & Trades</h3>
+                  <p className="text-sm text-yellow-600 mb-4">
+                    Bridge financing for materials, equipment purchases, or payroll between projects.
                   </p>
+                  <Button 
+                    size="sm" 
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white"
+                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Funded Now
+                  </Button>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-brand-dark mb-2">Health & Wellness</h3>
-                  <p className="text-sm text-brand-gray">
-                    Investing in new equipment, staff, or location upgrades.
+              <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-3">🏥</div>
+                  <h3 className="font-bold text-green-700 mb-3 text-lg">Health & Medical</h3>
+                  <p className="text-sm text-green-600 mb-4">
+                    New equipment, staff expansion, facility upgrades, or technology investments.
                   </p>
+                  <Button 
+                    size="sm" 
+                    className="bg-green-500 hover:bg-green-600 text-white"
+                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Funded Now
+                  </Button>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 hover:bg-gray-100 transition-colors">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-brand-dark mb-2">Beauty & Salons</h3>
-                  <p className="text-sm text-brand-gray">
-                    Slow seasons or one-time needs like expansion or rebranding.
+              <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-3">💄</div>
+                  <h3 className="font-bold text-purple-700 mb-3 text-lg">Beauty & Wellness</h3>
+                  <p className="text-sm text-purple-600 mb-4">
+                    Salon expansions, new equipment, product inventory, or location remodeling.
                   </p>
+                  <Button 
+                    size="sm" 
+                    className="bg-purple-500 hover:bg-purple-600 text-white"
+                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Funded Now
+                  </Button>
                 </CardContent>
               </Card>
+
+              <Card className="bg-gradient-to-br from-pink-50 to-pink-100 border-pink-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-3">🏪</div>
+                  <h3 className="font-bold text-pink-700 mb-3 text-lg">Professional Services</h3>
+                  <p className="text-sm text-pink-600 mb-4">
+                    Marketing campaigns, office upgrades, technology investments, or staff training.
+                  </p>
+                  <Button 
+                    size="sm" 
+                    className="bg-pink-500 hover:bg-pink-600 text-white"
+                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Funded Now
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-3">🏨</div>
+                  <h3 className="font-bold text-indigo-700 mb-3 text-lg">Hospitality & Tourism</h3>
+                  <p className="text-sm text-indigo-600 mb-4">
+                    Property improvements, marketing for peak seasons, or equipment upgrades.
+                  </p>
+                  <Button 
+                    size="sm" 
+                    className="bg-indigo-500 hover:bg-indigo-600 text-white"
+                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Funded Now
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-teal-50 to-teal-100 border-teal-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-3">🏃</div>
+                  <h3 className="font-bold text-teal-700 mb-3 text-lg">Fitness & Recreation</h3>
+                  <p className="text-sm text-teal-600 mb-4">
+                    New equipment, facility expansion, membership drive marketing, or class programs.
+                  </p>
+                  <Button 
+                    size="sm" 
+                    className="bg-teal-500 hover:bg-teal-600 text-white"
+                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Funded Now
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="text-center mt-12">
+              <p className="text-brand-gray mb-6 text-lg">
+                Don't see your industry? We fund <span className="font-semibold text-brand-blue">all types of businesses</span> with consistent revenue!
+              </p>
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-brand-blue to-brand-teal hover:from-brand-dark hover:to-brand-blue text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Apply for Funding Today →
+              </Button>
             </div>
           </div>
         </div>
@@ -247,7 +360,7 @@ export default function Merchants() {
         </div>
       </section>
       {/* Application Form */}
-      <section className="py-16 bg-gray-50">
+      <section id="apply-funding" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
