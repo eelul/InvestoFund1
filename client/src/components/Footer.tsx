@@ -33,61 +33,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* For Merchants */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4">For Merchants</h4>
-            <div className="mb-4">
-              <Link href="/merchants#apply-funding" className="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
-                Apply Now
-              </Link>
-            </div>
-            <div className="mb-3">
-              <span className="text-sm font-medium text-gray-400 uppercase tracking-wide">Financing Solutions</span>
-            </div>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/merchants/mca-details" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  Merchant Cash Advance
-                </Link>
-              </li>
-              <li>
-                <Link href="/merchants/line-of-credit-details" className="text-gray-300 hover:text-green-400 transition-colors">
-                  Business Line of Credit
-                </Link>
-              </li>
-              <li>
-                <Link href="/merchants/equipment-financing-details" className="text-gray-300 hover:text-orange-400 transition-colors">
-                  Equipment Financing
-                </Link>
-              </li>
-              <li>
-                <Link href="/merchants/commercial-mortgage-details" className="text-gray-300 hover:text-purple-400 transition-colors">
-                  Commercial Mortgage
-                </Link>
-              </li>
-              <li>
-                <Link href="/merchants/term-loans-details" className="text-gray-300 hover:text-teal-400 transition-colors">
-                  Term Loans
-                </Link>
-              </li>
-              <li>
-                <Link href="/merchants/invoice-factoring-details" className="text-gray-300 hover:text-yellow-400 transition-colors">
-                  Invoice Factoring
-                </Link>
-              </li>
-              <li>
-                <Link href="/merchants/po-financing-details" className="text-gray-300 hover:text-red-400 transition-colors">
-                  P.O. Financing
-                </Link>
-              </li>
-              <li>
-                <Link href="/merchants/sba-loans-details" className="text-gray-300 hover:text-indigo-400 transition-colors">
-                  SBA 7(a) Loans
-                </Link>
-              </li>
-            </ul>
-          </div>
-
           {/* For Investors */}
           <div>
             <h4 className="font-semibold text-lg mb-4">For Investors</h4>
@@ -137,6 +82,61 @@ export default function Footer() {
               <li>
                 <Link href="/brokers#deal-submission-portal" className="text-gray-300 hover:text-white transition-colors">
                   Submit a Deal
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* For Merchants */}
+          <div>
+            <h4 className="font-semibold text-lg mb-4">For Merchants</h4>
+            <div className="mb-4">
+              <Link href="/merchants#apply-funding" className="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                Apply Now
+              </Link>
+            </div>
+            <div className="mb-3">
+              <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">Financing Solutions</span>
+            </div>
+            <ul className="space-y-1.5">
+              <li>
+                <Link href="/merchants/mca-details" className="text-gray-300 hover:text-blue-400 transition-colors text-sm">
+                  Merchant Cash Advance
+                </Link>
+              </li>
+              <li>
+                <Link href="/merchants/line-of-credit-details" className="text-gray-300 hover:text-green-400 transition-colors text-sm">
+                  Business Line of Credit
+                </Link>
+              </li>
+              <li>
+                <Link href="/merchants/equipment-financing-details" className="text-gray-300 hover:text-orange-400 transition-colors text-sm">
+                  Equipment Financing
+                </Link>
+              </li>
+              <li>
+                <Link href="/merchants/commercial-mortgage-details" className="text-gray-300 hover:text-purple-400 transition-colors text-sm">
+                  Commercial Mortgage
+                </Link>
+              </li>
+              <li>
+                <Link href="/merchants/term-loans-details" className="text-gray-300 hover:text-teal-400 transition-colors text-sm">
+                  Term Loans
+                </Link>
+              </li>
+              <li>
+                <Link href="/merchants/invoice-factoring-details" className="text-gray-300 hover:text-yellow-400 transition-colors text-sm">
+                  Invoice Factoring
+                </Link>
+              </li>
+              <li>
+                <Link href="/merchants/po-financing-details" className="text-gray-300 hover:text-red-400 transition-colors text-sm">
+                  P.O. Financing
+                </Link>
+              </li>
+              <li>
+                <Link href="/merchants/sba-loans-details" className="text-gray-300 hover:text-indigo-400 transition-colors text-sm">
+                  SBA 7(a) Loans
                 </Link>
               </li>
             </ul>
