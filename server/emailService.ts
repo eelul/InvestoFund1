@@ -101,7 +101,7 @@ export class EmailService {
           content: this.getISOWelcomeTemplate(options.firstName)
         },
         merchant: {
-          subject: 'Welcome to Green Harvest Funding - Fast Business Capital',
+          subject: 'We\'ve Received Your Application – Next Steps from InvestoFund',
           content: this.getMerchantWelcomeTemplate(options.firstName)
         }
       };

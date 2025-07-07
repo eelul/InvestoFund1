@@ -667,6 +667,11 @@ function InvestorForm() {
                                 <li>Risk disclosure statements</li>
                                 <li>Regulatory compliance information</li>
                               </ul>
+                              <div className="mt-4 p-3 bg-blue-50 rounded border border-blue-200">
+                                <p className="text-xs text-blue-800 font-medium">
+                                  Consent to Communication: By submitting, you consent to investment-related communications from InvestoFund and agree to receive our investor documents and updates via phone, email, and SMS. You may opt out of marketing communications at any time.
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>

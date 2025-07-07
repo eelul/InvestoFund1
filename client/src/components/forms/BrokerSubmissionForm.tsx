@@ -434,6 +434,13 @@ export default function BrokerSubmissionForm() {
                       </FormItem>
                     )}
                   />
+                  
+                  {/* Consent to Communication */}
+                  <div className="mt-4 p-3 bg-yellow-50 rounded border border-yellow-200">
+                    <p className="text-xs text-yellow-800 font-medium">
+                      <strong>Consent to Communication:</strong> By submitting this form, you authorize InvestoFund to communicate with you regarding merchant deals and acknowledge our broker terms via phone, email, and SMS regarding merchant submissions, underwriting feedback, and commission updates. You may opt out of non-essential communications at any time.
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
 
