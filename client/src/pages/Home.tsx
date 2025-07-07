@@ -22,7 +22,7 @@ export default function Home() {
       name: "Option 1: Direct Deal Participation", 
       description: "Higher risk, direct control over individual MCA deals with approval options",
       targetFactorRate: 1.49, // Target rate - actual rates vary
-      factorRateRange: "1.35x - 1.65x",
+      factorRateRange: "1.35x - 1.49x",
       termRange: "25-540 days", // Variable terms based on deal type
       avgTerm: 90, // Average for calculations
       profitSplit: 0.50, // 50% to investor after ISO commission
@@ -42,7 +42,7 @@ export default function Home() {
       name: "Option 2: Diversified Portfolio",
       description: "Lower risk through automated diversification across multiple deal terms and types", 
       targetFactorRate: 1.49, // Target rate - actual rates vary
-      factorRateRange: "1.35x - 1.65x",
+      factorRateRange: "1.35x - 1.49x",
       termRange: "25-540 days", // Diversified across all terms
       avgTerm: 90, // Average for calculations
       profitSplit: 0.45, // 45% to investor (Fund takes 55% including 10% management fee)
@@ -132,7 +132,7 @@ export default function Home() {
               through our proven profit-sharing model.
             </p>
             <p className="text-sm text-gray-500 max-w-2xl mx-auto mb-8">
-              *Returns vary based on available deal opportunities. Factor rates typically range from 1.35x to 1.65x. 
+              *Returns vary based on available deal opportunities. Factor rates typically range from 1.35x to 1.49x. 
               Projections shown are based on target scenarios and are not guaranteed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -911,7 +911,7 @@ export default function Home() {
                             How InvestoFund Manages Your Deals
                           </h4>
                           <div className="text-sm text-gray-700 space-y-2">
-                            <p>• <strong>Variable Terms:</strong> Deal terms range from 10 days to 6 months based on merchant needs and market conditions.</p>
+                            <p>• <strong>Variable Terms:</strong> Deal terms range from 25 days to 18 months based on merchant needs and market conditions.</p>
                             <p>• <strong>Dashboard Control:</strong> Receive deal notifications via your investor dashboard with short approval timeframes.</p>
                             <p>• <strong>Auto-Settings:</strong> Set preferences for factor rate ranges, term limits, and risk levels for automatic deal matching.</p>
                             <p>• <strong>Deal Prioritization:</strong> InvestoFund curates deals to match your selected risk level and investment goals.</p>
@@ -928,7 +928,7 @@ export default function Home() {
                             Important Disclaimer
                           </h4>
                           <div className="text-sm text-gray-700 space-y-2">
-                            <p>• <strong>Variable Deal Terms:</strong> Deal terms range from 10 days to 6 months with factor rates from 1.35x to 1.65x based on market conditions.</p>
+                            <p>• <strong>Variable Deal Terms:</strong> Deal terms range from 25 days to 18 months with factor rates from 1.35x to 1.49x based on market conditions.</p>
                             <p>• <strong>Target Scenarios:</strong> Calculations shown use target factor rates of 1.49x. Actual deals vary based on merchant negotiations.</p>
                             <p>• <strong>Deal Approval:</strong> Investors control deal participation through dashboard settings or manual approval for each opportunity.</p>
                             <p>• <strong>Timeline Variability:</strong> While some deals close in 10-15 days, others may take months - InvestoFund manages this based on your preferences.</p>
@@ -1001,7 +1001,7 @@ export default function Home() {
               </div>
               <div className="mt-6 pt-6 border-t border-gray-200 text-center">
                 <div className="text-sm text-brand-gray">
-                  25-540 day terms • Target factor rate 1.49x • Range: 1.35x - 1.65x
+                  25-540 day terms • Target factor rate 1.49x • Range: 1.35x - 1.49x
                 </div>
                 <div className="text-xs text-gray-500 mt-2">
                   We share the same incentive to maximize factor rates, but final terms depend on merchant negotiations

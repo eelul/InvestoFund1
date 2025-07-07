@@ -18,9 +18,9 @@ export default function EnhancedCalculatorSection() {
       name: "Option 1: Direct Deal Participation",
       description: "Higher risk, direct control over individual MCA deals",
       targetFactorRate: 1.49,
-      factorRateRange: "1.35x - 1.65x",
-      termRange: "10-180 days",
-      avgTerm: 45,
+      factorRateRange: "1.35x - 1.49x",
+      termRange: "25-540 days",
+      avgTerm: 90,
       profitSplit: 0.50,
       targetROI: 0.208,
       minInvestment: 5000,
@@ -33,9 +33,9 @@ export default function EnhancedCalculatorSection() {
       name: "Option 2: Diversified Portfolio",
       description: "Lower risk through automated diversification",
       targetFactorRate: 1.49,
-      factorRateRange: "1.35x - 1.65x",
-      termRange: "10-180 days",
-      avgTerm: 45,
+      factorRateRange: "1.35x - 1.49x",
+      termRange: "25-540 days",
+      avgTerm: 90,
       profitSplit: 0.45,
       targetROI: 0.187,
       minInvestment: 25000,
@@ -267,7 +267,7 @@ export default function EnhancedCalculatorSection() {
                       <h4 className="font-semibold text-yellow-800 mb-1">Important Disclaimer</h4>
                       <p className="text-sm text-yellow-700">
                         Returns are projections based on target scenarios and are not guaranteed. 
-                        Factor rates vary from 1.35x to 1.65x based on deal quality and market conditions.
+                        Factor rates vary from 1.35x to 1.49x based on deal quality and market conditions.
                       </p>
                     </div>
                   </div>

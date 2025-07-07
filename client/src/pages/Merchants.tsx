@@ -179,7 +179,7 @@ export default function Merchants() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-brand-gray">Repayment Period</span>
-                      <span className="font-bold text-brand-dark">Up to 6 months</span>
+                      <span className="font-bold text-brand-dark">Up to 18 months</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-brand-gray">Daily Collection</span>
@@ -390,7 +390,7 @@ export default function Merchants() {
                     
                     <p><strong>Fixed Daily or Weekly Debits</strong> – Some agreements use set daily or weekly ACH withdrawals from your business bank account, regardless of sales volume. This option is more predictable, though it may not adjust with fluctuating revenue.</p>
                     
-                    <p>It's important to note that repayment terms can vary based on the structure of the deal, the merchant's industry, sales consistency, and the specific funder. The payback duration is typically up to 6 months, but it can change depending on your business performance and the terms negotiated at funding.</p>
+                    <p>It's important to note that repayment terms can vary based on the structure of the deal, the merchant's industry, sales consistency, and the specific funder. The payback duration is typically up to 18 months, but it can change depending on your business performance and the terms negotiated at funding.</p>
                     
                     <p>Always review your agreement carefully, and feel free to contact us if you'd like help understanding your options.</p>
                   </div>
