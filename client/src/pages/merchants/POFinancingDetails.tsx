@@ -1,163 +1,104 @@
-import { CheckCircle, ArrowRight, ShoppingCart, DollarSign, TrendingUp } from "lucide-react";
+import { CheckCircle, Clock, ArrowRight, ShoppingCart, DollarSign, Shield } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function POFinancingDetails() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="bg-gradient-to-br from-red-600 via-red-500 to-pink-600 pt-20 pb-16 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      {/* Hero Section */}
+      <section className="relative pt-20 pb-20 overflow-hidden">
+        {/* Red Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-red-900 via-red-700 to-pink-800"></div>
+        
+        {/* Overlay Pattern */}
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600/30 via-pink-600/20 to-red-600/30"></div>
+        
+        {/* Animated Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-red-400/20 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute top-32 right-20 w-48 h-48 bg-pink-400/15 rounded-full blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-red-500/25 rounded-full blur-xl animate-pulse delay-2000"></div>
+        </div>
+        
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Easy Purchase Order Financing</h1>
-            <p className="text-xl md:text-2xl mb-8 text-red-100">
+            <div className="mb-6">
+              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-500/30 text-red-100 border border-red-400/40 mb-4">
+                <span className="w-2 h-2 bg-pink-400 rounded-full mr-2 animate-pulse"></span>
+                Not a Loan
+              </span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-red-100 to-pink-200 bg-clip-text text-transparent">
+                Purchase Order Financing
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-pink-200 via-red-200 to-white bg-clip-text text-transparent">
+                Orders. Filled. Delivered.
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl mb-8 text-red-100 leading-relaxed max-w-3xl mx-auto">
               Got orders you can't fulfill due to cash constraints? Use P.O. financing to cover supplier costs and deliver with confidence.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-pink-500/25 transform hover:scale-105 transition-all duration-300"
+                onClick={() => document.getElementById('apply-now')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Get P.O. Financing
+              </Button>
+              <Button 
+                size="lg" 
+                className="bg-white/15 backdrop-blur-sm border-white/40 text-white hover:bg-white/25 hover:border-white/60 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => window.location.href = '/merchants'}
+              >
+                Compare All Options
+              </Button>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">Purchase</div>
+                <div className="text-red-200 text-sm">Orders</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">Direct</div>
+                <div className="text-red-200 text-sm">To Suppliers</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">Not</div>
+                <div className="text-red-200 text-sm">A Loan</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">Fulfill</div>
+                <div className="text-red-200 text-sm">Orders</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Apply Section */}
+      <section id="apply-now" className="py-16 bg-red-50">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-brand-dark mb-6">
+              Don't Lose Orders Due to Cash Flow
+            </h2>
+            <p className="text-xl text-brand-gray mb-8">
+              Transform purchase orders into fulfilled orders. We pay suppliers directly so you can deliver on time.
             </p>
             <Button 
               size="lg" 
-              className="bg-white text-red-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-xl"
-              onClick={() => document.getElementById('apply-now')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-red-600 hover:bg-red-700 text-white px-12 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              onClick={() => window.location.href = '/merchants#apply-funding'}
             >
-              Apply Now →
+              Apply for P.O. Financing
             </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">P.O. Financing Features</h2>
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <ShoppingCart className="w-8 h-8 text-red-600" />
-                  </div>
-                  <CardTitle className="text-brand-dark">Order-Based Funding</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-brand-gray">Advance based on confirmed purchase orders. Funds go directly to suppliers for fulfillment.</p>
-                </CardContent>
-              </Card>
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <DollarSign className="w-8 h-8 text-green-600" />
-                  </div>
-                  <CardTitle className="text-brand-dark">Not a Loan</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-brand-gray">Not a loan — no long-term debt added. Quick and simple approval process.</p>
-                </CardContent>
-              </Card>
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <TrendingUp className="w-8 h-8 text-brand-blue" />
-                  </div>
-                  <CardTitle className="text-brand-dark">Growth Focused</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-brand-gray">Perfect for growth-stage businesses landing big deals they can't finance themselves.</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-brand-dark">Rates Are Based On</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="p-3 bg-red-50 rounded-lg border-l-4 border-red-400">
-                      <h4 className="font-semibold text-brand-dark mb-1">Order Quality and Risk</h4>
-                      <p className="text-sm text-brand-gray">Purchase order legitimacy and fulfillment complexity</p>
-                    </div>
-                    <div className="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-400">
-                      <h4 className="font-semibold text-brand-dark mb-1">Customer Reliability</h4>
-                      <p className="text-sm text-brand-gray">Your customer's payment history and creditworthiness</p>
-                    </div>
-                    <div className="p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
-                      <h4 className="font-semibold text-brand-dark mb-1">Funding Timeline</h4>
-                      <p className="text-sm text-brand-gray">Expected delivery and payment schedule</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-brand-dark">Required Documents</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">List of active/unfulfilled purchase orders</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Financials</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-brand-dark mb-12">Ask Yourself</h2>
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <Card className="text-center">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Order Status</h3>
-                  <p className="text-brand-gray">Do you have unfulfilled orders?</p>
-                </CardContent>
-              </Card>
-              <Card className="text-center">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Delivery Capability</h3>
-                  <p className="text-brand-gray">Can you deliver on-time with outside help?</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="apply-now" className="py-16 bg-gradient-to-r from-red-600 to-pink-600 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Fulfill Your Orders?</h2>
-            <p className="text-xl mb-8 text-red-100">Apply for P.O. Financing and turn your big opportunities into delivered results.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-white text-red-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
-                onClick={() => window.location.href = '/merchants#apply-funding'}
-              >
-                Apply Now
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold"
-                onClick={() => window.location.href = '/merchants'}
-              >
-                Back to All Solutions
-              </Button>
-            </div>
           </div>
         </div>
       </section>

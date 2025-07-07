@@ -6,23 +6,78 @@ export default function MCADetails() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-brand-blue via-brand-teal to-brand-blue pt-20 pb-16 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <section className="relative pt-20 pb-20 overflow-hidden">
+        {/* Blue Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900"></div>
+        
+        {/* Overlay Pattern */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 via-cyan-600/20 to-blue-600/30"></div>
+        
+        {/* Animated Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-400/20 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute top-32 right-20 w-48 h-48 bg-cyan-400/15 rounded-full blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-blue-500/25 rounded-full blur-xl animate-pulse delay-2000"></div>
+        </div>
+        
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              How MCA Funding Works
+            <div className="mb-6">
+              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-500/30 text-blue-100 border border-blue-400/40 mb-4">
+                <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
+                Most Popular Financing Solution
+              </span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent">
+                Merchant Cash Advance
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-cyan-200 via-blue-200 to-white bg-clip-text text-transparent">
+                Fast. Flexible. Funded.
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Advance based on future sales (ACH or credit card holdback). Quick working capital without the hassle.
+            
+            <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed max-w-3xl mx-auto">
+              Get an advance based on your future sales with same-day approval and funding as fast as 1 business day. No fixed monthly payments - repay as you earn.
             </p>
-            <Button 
-              size="lg" 
-              className="bg-white text-brand-blue hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-xl"
-              onClick={() => document.getElementById('apply-now')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Apply Now →
-            </Button>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-300"
+                onClick={() => document.getElementById('apply-now')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Apply for MCA Funding
+              </Button>
+              <Button 
+                size="lg" 
+                className="bg-white/15 backdrop-blur-sm border-white/40 text-white hover:bg-white/25 hover:border-white/60 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => window.location.href = '/merchants'}
+              >
+                Compare All Options
+              </Button>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">$2M</div>
+                <div className="text-blue-200 text-sm">Max Funding</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">24hr</div>
+                <div className="text-blue-200 text-sm">Approval</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">1.15x</div>
+                <div className="text-blue-200 text-sm">Starting Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">Same Day</div>
+                <div className="text-blue-200 text-sm">Funding</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

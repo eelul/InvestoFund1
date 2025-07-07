@@ -1,163 +1,104 @@
-import { CheckCircle, ArrowRight, Receipt, DollarSign, Clock } from "lucide-react";
+import { CheckCircle, Clock, ArrowRight, Receipt, DollarSign, Shield } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function InvoiceFactoringDetails() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="bg-gradient-to-br from-yellow-600 via-yellow-500 to-orange-600 pt-20 pb-16 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      {/* Hero Section */}
+      <section className="relative pt-20 pb-20 overflow-hidden">
+        {/* Yellow Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-800 via-yellow-600 to-amber-700"></div>
+        
+        {/* Overlay Pattern */}
+        <div className="absolute inset-0 bg-gradient-to-r from-yellow-600/30 via-amber-600/20 to-yellow-600/30"></div>
+        
+        {/* Animated Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-yellow-400/20 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute top-32 right-20 w-48 h-48 bg-amber-400/15 rounded-full blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-yellow-500/25 rounded-full blur-xl animate-pulse delay-2000"></div>
+        </div>
+        
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Factoring Made Simple</h1>
-            <p className="text-xl md:text-2xl mb-8 text-yellow-100">
-              Convert unpaid invoices into immediate working capital. Eliminate the wait and stay cash-flow positive.
+            <div className="mb-6">
+              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-yellow-500/30 text-yellow-100 border border-yellow-400/40 mb-4">
+                <span className="w-2 h-2 bg-amber-400 rounded-full mr-2 animate-pulse"></span>
+                No Debt Incurred
+              </span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-yellow-100 to-amber-200 bg-clip-text text-transparent">
+                Invoice Factoring
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-amber-200 via-yellow-200 to-white bg-clip-text text-transparent">
+                Cash Now. No Wait.
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl mb-8 text-yellow-100 leading-relaxed max-w-3xl mx-auto">
+              Convert unpaid invoices into immediate working capital. Eliminate the wait and stay cash-flow positive with B2B invoice factoring.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-amber-500/25 transform hover:scale-105 transition-all duration-300"
+                onClick={() => document.getElementById('apply-now')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Start Factoring Invoices
+              </Button>
+              <Button 
+                size="lg" 
+                className="bg-white/15 backdrop-blur-sm border-white/40 text-white hover:bg-white/25 hover:border-white/60 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => window.location.href = '/merchants'}
+              >
+                Compare All Options
+              </Button>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">No Debt</div>
+                <div className="text-yellow-200 text-sm">Created</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">B2B</div>
+                <div className="text-yellow-200 text-sm">Invoices</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">Immediate</div>
+                <div className="text-yellow-200 text-sm">Cash</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">Cash Flow</div>
+                <div className="text-yellow-200 text-sm">Positive</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Apply Section */}
+      <section id="apply-now" className="py-16 bg-yellow-50">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-brand-dark mb-6">
+              Turn Invoices Into Instant Cash
+            </h2>
+            <p className="text-xl text-brand-gray mb-8">
+              Stop waiting 30-90 days for payments. Get cash for your outstanding B2B invoices today.
             </p>
             <Button 
               size="lg" 
-              className="bg-white text-yellow-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-xl"
-              onClick={() => document.getElementById('apply-now')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-yellow-600 hover:bg-yellow-700 text-white px-12 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              onClick={() => window.location.href = '/merchants#apply-funding'}
             >
-              Apply Now →
+              Apply for Invoice Factoring
             </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">Invoice Factoring Features</h2>
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Receipt className="w-8 h-8 text-yellow-600" />
-                  </div>
-                  <CardTitle className="text-brand-dark">Immediate Cash</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-brand-gray">Sell eligible invoices for immediate cash. No debt incurred — just faster access to funds.</p>
-                </CardContent>
-              </Card>
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <DollarSign className="w-8 h-8 text-green-600" />
-                  </div>
-                  <CardTitle className="text-brand-dark">Client-Based Approval</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-brand-gray">Approval based on invoice quality and client creditworthiness, not just your credit.</p>
-                </CardContent>
-              </Card>
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Clock className="w-8 h-8 text-brand-blue" />
-                  </div>
-                  <CardTitle className="text-brand-dark">B2B Focus</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-brand-gray">Only available for B2B invoices. Residual option for repeat factoring needs.</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-brand-dark">Rates Are Based On</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
-                      <h4 className="font-semibold text-brand-dark mb-1">Invoice Value</h4>
-                      <p className="text-sm text-brand-gray">Size and amount of individual invoices</p>
-                    </div>
-                    <div className="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-400">
-                      <h4 className="font-semibold text-brand-dark mb-1">Time Until Payment</h4>
-                      <p className="text-sm text-brand-gray">Expected payment timeline from clients</p>
-                    </div>
-                    <div className="p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
-                      <h4 className="font-semibold text-brand-dark mb-1">Debtor Creditworthiness</h4>
-                      <p className="text-sm text-brand-gray">Your client's credit strength and payment history</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-brand-dark">Required Documents</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Sample invoice</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                      <span className="text-brand-gray">Accounts receivable aging report</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-brand-dark mb-12">Ask Yourself</h2>
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <Card className="text-center">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Payment Timeline</h3>
-                  <p className="text-brand-gray">Are your customers taking too long to pay?</p>
-                </CardContent>
-              </Card>
-              <Card className="text-center">
-                <CardContent className="p-8">
-                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Cash Flow Needs</h3>
-                  <p className="text-brand-gray">Do you need funds to keep operations moving?</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="apply-now" className="py-16 bg-gradient-to-r from-yellow-600 to-orange-600 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Get Paid Now?</h2>
-            <p className="text-xl mb-8 text-yellow-100">Apply for Invoice Factoring and convert your receivables into immediate working capital.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-white text-yellow-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
-                onClick={() => window.location.href = '/merchants#apply-funding'}
-              >
-                Apply Now
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-yellow-600 px-8 py-4 text-lg font-semibold"
-                onClick={() => window.location.href = '/merchants'}
-              >
-                Back to All Solutions
-              </Button>
-            </div>
           </div>
         </div>
       </section>
