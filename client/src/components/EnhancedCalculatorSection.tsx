@@ -149,14 +149,14 @@ export default function EnhancedCalculatorSection() {
                     <Slider
                       value={timeHorizon}
                       onValueChange={setTimeHorizon}
-                      max={36}
-                      min={6}
+                      max={18}
+                      min={1}
                       step={1}
                       className="w-full"
                     />
                     <div className="flex justify-between text-xs text-brand-gray mt-1">
-                      <span>6 months</span>
-                      <span>3 years</span>
+                      <span>1 month</span>
+                      <span>18 months</span>
                     </div>
                   </div>
 

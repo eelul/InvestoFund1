@@ -162,7 +162,7 @@ export const DOCUMENT_TEMPLATES: DocumentTemplate[] = [
     
     <p><strong>What are the risks?</strong> The primary risk is merchant default. We mitigate this through careful underwriting and legal filings. Please review our full Risk Disclosure Summary.</p>
     
-    <p><strong>Is my money locked up?</strong> Only for the short term of the deal (average 45 days). If we can't find a suitable deal within 60 days, we return your capital in full.</p>
+    <p><strong>Is my money locked up?</strong> Only for the short term of the deal (25-540 days range). If we can't find a suitable deal within 60 days, we return your capital in full.</p>
     
     <h2>HAVE MORE QUESTIONS?</h2>
     

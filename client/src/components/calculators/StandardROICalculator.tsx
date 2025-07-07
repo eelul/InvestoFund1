@@ -105,15 +105,15 @@ export default function StandardROICalculator() {
                 <Slider
                   value={[termDays]}
                   onValueChange={(value) => setTermDays(value[0])}
-                  min={30}
-                  max={90}
+                  min={25}
+                  max={540}
                   step={5}
                   className="calculator-slider"
                 />
                 <div className="flex justify-between text-sm text-brand-gray mt-1">
-                  <span>30</span>
+                  <span>25</span>
                   <span className="font-bold text-brand-blue">{termDays}</span>
-                  <span>90</span>
+                  <span>540</span>
                 </div>
               </div>
             </div>

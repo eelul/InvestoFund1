@@ -221,8 +221,8 @@ export default function Investors() {
                     <div className="text-2xl font-bold text-brand-dark">50/50 Split</div>
                   </div>
                   <div>
-                    <div className="text-sm text-brand-gray">Average Term</div>
-                    <div className="text-2xl font-bold text-brand-dark">45 Days</div>
+                    <div className="text-sm text-brand-gray">Term Range</div>
+                    <div className="text-2xl font-bold text-brand-dark">25-540 Days</div>
                   </div>
                   <div>
                     <div className="text-sm text-brand-gray">Factor Rate</div>

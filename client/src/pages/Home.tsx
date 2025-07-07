@@ -23,8 +23,8 @@ export default function Home() {
       description: "Higher risk, direct control over individual MCA deals with approval options",
       targetFactorRate: 1.49, // Target rate - actual rates vary
       factorRateRange: "1.35x - 1.65x",
-      termRange: "10-180 days", // Variable terms based on deal type
-      avgTerm: 45, // Average for calculations
+      termRange: "25-540 days", // Variable terms based on deal type
+      avgTerm: 90, // Average for calculations
       profitSplit: 0.50, // 50% to investor after ISO commission
       targetROI: 0.208, // ~20.8% target per deal
       minInvestment: 5000,
@@ -43,8 +43,8 @@ export default function Home() {
       description: "Lower risk through automated diversification across multiple deal terms and types", 
       targetFactorRate: 1.49, // Target rate - actual rates vary
       factorRateRange: "1.35x - 1.65x",
-      termRange: "10-180 days", // Diversified across all terms
-      avgTerm: 45, // Average for calculations
+      termRange: "25-540 days", // Diversified across all terms
+      avgTerm: 90, // Average for calculations
       profitSplit: 0.45, // 45% to investor (Fund takes 55% including 10% management fee)
       targetROI: 0.187, // ~18.7% target per deal
       minInvestment: 25000,
@@ -513,7 +513,7 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                       <span className="text-brand-gray">Deal Duration:</span>
-                      <span className="font-semibold text-brand-dark">45 days</span>
+                      <span className="font-semibold text-brand-dark">25-540 days</span>
                     </div>
                   </div>
                 </div>
@@ -606,17 +606,17 @@ export default function Home() {
                     <Slider
                       value={timeHorizon}
                       onValueChange={setTimeHorizon}
-                      max={36}
-                      min={3}
-                      step={3}
+                      max={18}
+                      min={1}
+                      step={1}
                       className="w-full"
                     />
                     <div className="flex justify-between text-sm text-brand-gray">
-                      <span>3 months</span>
+                      <span>1 month</span>
                       <span className="text-2xl font-bold text-brand-dark">
                         {timeHorizon[0]} months
                       </span>
-                      <span>36 months</span>
+                      <span>18 months</span>
                     </div>
                   </div>
                 </div>
@@ -1001,7 +1001,7 @@ export default function Home() {
               </div>
               <div className="mt-6 pt-6 border-t border-gray-200 text-center">
                 <div className="text-sm text-brand-gray">
-                  45-day term • Target factor rate 1.49x • Range: 1.35x - 1.65x
+                  25-540 day terms • Target factor rate 1.49x • Range: 1.35x - 1.65x
                 </div>
                 <div className="text-xs text-gray-500 mt-2">
                   We share the same incentive to maximize factor rates, but final terms depend on merchant negotiations
