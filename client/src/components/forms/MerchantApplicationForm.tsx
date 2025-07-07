@@ -145,24 +145,24 @@ export default function MerchantApplicationForm() {
   // Calculate pre-qualification when monthly revenue changes
   const calculatePreQualification = (monthlyRevenue: string) => {
     let estimatedFunding = { min: 5000, max: 25000 };
-    let factorRate = { min: 1.25, max: 1.35 };
+    let factorRate = { min: 1.15, max: 1.25 };
 
     switch (monthlyRevenue) {
       case "$5,000 - $15,000":
         estimatedFunding = { min: 5000, max: 25000 };
-        factorRate = { min: 1.25, max: 1.35 };
+        factorRate = { min: 1.15, max: 1.25 };
         break;
       case "$15,000 - $30,000":
         estimatedFunding = { min: 15000, max: 45000 };
-        factorRate = { min: 1.20, max: 1.30 };
+        factorRate = { min: 1.15, max: 1.22 };
         break;
       case "$30,000 - $50,000":
         estimatedFunding = { min: 25000, max: 75000 };
-        factorRate = { min: 1.15, max: 1.25 };
+        factorRate = { min: 1.15, max: 1.20 };
         break;
       case "$50,000+":
         estimatedFunding = { min: 50000, max: 150000 };
-        factorRate = { min: 1.10, max: 1.20 };
+        factorRate = { min: 1.15, max: 1.18 };
         break;
     }
 

@@ -193,17 +193,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Generate pre-qualification results
       const monthlyRevenue = applicationData.monthlyRevenue;
       let estimatedFunding = { min: 5000, max: 25000 };
-      let factorRate = { min: 1.35, max: 1.45 };
+      let factorRate = { min: 1.15, max: 1.25 };
 
       if (monthlyRevenue === "$15,000 - $30,000") {
         estimatedFunding = { min: 15000, max: 45000 };
-        factorRate = { min: 1.30, max: 1.40 };
+        factorRate = { min: 1.15, max: 1.22 };
       } else if (monthlyRevenue === "$30,000 - $50,000") {
         estimatedFunding = { min: 25000, max: 75000 };
-        factorRate = { min: 1.25, max: 1.35 };
+        factorRate = { min: 1.15, max: 1.20 };
       } else if (monthlyRevenue === "$50,000+") {
         estimatedFunding = { min: 50000, max: 150000 };
-        factorRate = { min: 1.20, max: 1.30 };
+        factorRate = { min: 1.15, max: 1.18 };
       }
 
       const preQualificationResults = {

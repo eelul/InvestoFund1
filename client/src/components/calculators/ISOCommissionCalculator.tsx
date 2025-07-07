@@ -69,7 +69,7 @@ export default function ISOCommissionCalculator() {
               <Slider
                 value={[factorRate]}
                 onValueChange={(value) => setFactorRate(value[0])}
-                min={1.25}
+                min={1.15}
                 max={1.49}
                 step={0.01}
                 className="calculator-slider"

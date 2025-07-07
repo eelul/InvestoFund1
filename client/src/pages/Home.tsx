@@ -20,7 +20,7 @@ export default function Home() {
       name: "Option 1: Direct Deal Participation", 
       description: "Higher risk, direct control over individual MCA deals with approval options",
       targetFactorRate: 1.49, // Target rate - actual rates vary
-      factorRateRange: "1.25x - 1.49x",
+      factorRateRange: "1.15x - 1.49x",
       termRange: "25-540 days", // Variable terms based on deal type
       avgTerm: 90, // Average for calculations
       profitSplit: 0.50, // 50% to investor after ISO commission
@@ -40,7 +40,7 @@ export default function Home() {
       name: "Option 2: Diversified Portfolio",
       description: "Lower risk through automated diversification across multiple deal terms and types", 
       targetFactorRate: 1.49, // Target rate - actual rates vary
-      factorRateRange: "1.25x - 1.49x",
+      factorRateRange: "1.15x - 1.49x",
       termRange: "25-540 days", // Diversified across all terms
       avgTerm: 90, // Average for calculations
       profitSplit: 0.45, // 45% to investor (Fund takes 55% including 10% management fee)

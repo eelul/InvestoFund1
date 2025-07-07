@@ -84,7 +84,7 @@ FUNDING AMOUNT: {{requestedFunding}}
 Green Harvest Funding ("Funder") agrees to provide {{businessName}} ("Merchant") with a merchant cash advance of {{requestedFunding}} in exchange for the purchase of future receivables.
 
 2. REPAYMENT TERMS
-- Factor Rate: 1.25 - 1.49 (based on risk assessment)
+- Factor Rate: 1.15 - 1.49 (based on risk assessment)
 - Advance Range: $2,000 - $2,000,000
 - Term Length: 25 days - 18 months (estimated)
 - Payment Options: Daily, weekly, bi-weekly, or monthly

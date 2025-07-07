@@ -139,7 +139,7 @@ export default function Merchants() {
                         </div>
                         <div className="flex justify-between text-sm">
                           <span className="text-brand-gray">Factor Rate:</span>
-                          <span className="font-semibold">1.25x - 1.49x</span>
+                          <span className="font-semibold">1.15x - 1.49x</span>
                         </div>
                         <div className="flex justify-between text-sm">
                           <span className="text-brand-gray">Repayment Terms:</span>
@@ -849,7 +849,7 @@ export default function Merchants() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-brand-gray">Factor Rates</span>
-                      <span className="font-bold text-brand-teal">1.25x - 1.49x</span>
+                      <span className="font-bold text-brand-teal">1.15x - 1.49x</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-brand-gray">Funding Speed</span>
@@ -1182,7 +1182,7 @@ export default function Merchants() {
                 </AccordionTrigger>
                 <AccordionContent className="text-brand-gray">
                   <div className="space-y-3">
-                    <p><strong>Transparent Pricing:</strong> We use a factor rate system (1.25x - 1.49x) with NO hidden fees. If you receive $10,000 with a 1.30x factor rate, you repay $13,000 total.</p>
+                    <p><strong>Transparent Pricing:</strong> We use a factor rate system (1.15x - 1.49x) with NO hidden fees. If you receive $10,000 with a 1.30x factor rate, you repay $13,000 total.</p>
                     <p><strong>What Affects Your Rate:</strong></p>
                     <ul className="list-disc list-inside space-y-1 ml-4">
                       <li>Time in business and revenue consistency</li>

@@ -103,7 +103,7 @@ export default function MCADetails() {
                     </div>
                     <div className="flex justify-between items-center border-b pb-2">
                       <span className="text-brand-gray">Factor Rate</span>
-                      <span className="font-bold text-brand-dark">1.25x - 1.49x</span>
+                      <span className="font-bold text-brand-dark">1.15x - 1.49x</span>
                     </div>
                     <div className="flex justify-between items-center border-b pb-2">
                       <span className="text-brand-gray">Repayment Terms</span>

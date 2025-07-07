@@ -20,7 +20,7 @@ const formSchema = z.object({
   isoName: z.string().min(2, "ISO/Broker name is required"),
   merchantBusinessName: z.string().min(2, "Merchant business name is required"),
   requestedAmount: z.number().min(5000, "Minimum amount is $5,000"),
-  factorRate: z.number().min(1.25).max(1.49),
+  factorRate: z.number().min(1.15).max(1.49),
   qualityChecklist: z.object({
     bankStatements: z.boolean(),
     voidedCheck: z.boolean(),

@@ -97,7 +97,7 @@ export default function PortfolioBlendCalculator() {
               <Slider
                 value={[avgFactorRate]}
                 onValueChange={(value) => setAvgFactorRate(value[0])}
-                min={1.25}
+                min={1.15}
                 max={1.49}
                 step={0.01}
                 className="calculator-slider"
