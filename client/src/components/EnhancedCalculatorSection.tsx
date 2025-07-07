@@ -18,7 +18,7 @@ export default function EnhancedCalculatorSection() {
       name: "Option 1: Direct Deal Participation",
       description: "Quality underwritten merchants for consistent returns",
       targetFactorRate: 1.49,
-      factorRateRange: "1.35x - 1.49x",
+      factorRateRange: "1.25x - 1.49x",
       termRange: "25-540 days",
       avgTerm: 90,
       profitSplit: 0.50,
@@ -33,7 +33,7 @@ export default function EnhancedCalculatorSection() {
       name: "Option 2: Diversified Portfolio",
       description: "Vetted opportunities through automated diversification",
       targetFactorRate: 1.49,
-      factorRateRange: "1.35x - 1.49x",
+      factorRateRange: "1.25x - 1.49x",
       termRange: "25-540 days",
       avgTerm: 90,
       profitSplit: 0.45,
@@ -267,7 +267,7 @@ export default function EnhancedCalculatorSection() {
                       <h4 className="font-semibold text-yellow-800 mb-1">Important Disclaimer</h4>
                       <p className="text-sm text-yellow-700">
                         Returns are projections based on target scenarios and are not guaranteed. 
-                        Factor rates vary from 1.35x to 1.49x based on deal quality and market conditions.
+                        Factor rates vary from 1.25x to 1.49x based on deal quality and market conditions.
                       </p>
                     </div>
                   </div>

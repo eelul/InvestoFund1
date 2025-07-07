@@ -58,17 +58,17 @@ export const INQUIRY_TYPES = [
 export const CALCULATOR_DEFAULTS = {
   standard: {
     investment: 25000,
-    factorRate: 1.49,
+    factorRate: 1.37, // Updated to mid-range of 1.25-1.49
     termDays: 45
   },
   portfolio: {
     investment: 50000,
     dealCount: 4,
-    avgFactorRate: 1.45
+    avgFactorRate: 1.37 // Updated to mid-range of 1.25-1.49
   },
   iso: {
     dealAmount: 25000,
-    factorRate: 1.45,
+    factorRate: 1.37, // Updated to mid-range of 1.25-1.49
     commissionRate: 0.15
   }
 } as const;

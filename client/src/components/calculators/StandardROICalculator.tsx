@@ -84,13 +84,13 @@ export default function StandardROICalculator() {
                 <Slider
                   value={[factorRate]}
                   onValueChange={(value) => setFactorRate(value[0])}
-                  min={1.10}
+                  min={1.25}
                   max={1.49}
                   step={0.01}
                   className="calculator-slider"
                 />
                 <div className="flex justify-between text-sm text-brand-gray mt-1">
-                  <span>1.10</span>
+                  <span>1.25</span>
                   <span className="font-bold text-brand-blue">
                     {factorRate.toFixed(2)}
                   </span>
