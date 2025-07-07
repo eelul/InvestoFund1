@@ -16,7 +16,7 @@ export default function EnhancedCalculatorSection() {
   const investmentOptions = {
     option1: {
       name: "Option 1: Direct Deal Participation",
-      description: "Higher risk, direct control over individual MCA deals",
+      description: "Quality underwritten merchants for consistent returns",
       targetFactorRate: 1.49,
       factorRateRange: "1.35x - 1.49x",
       termRange: "25-540 days",
@@ -24,14 +24,14 @@ export default function EnhancedCalculatorSection() {
       profitSplit: 0.50,
       targetROI: 0.208,
       minInvestment: 5000,
-      riskLevel: "Higher Risk",
-      color: "text-orange-600",
-      bgColor: "bg-orange-50",
-      borderColor: "border-orange-200"
+      riskLevel: "Quality Merchants",
+      color: "text-blue-600",
+      bgColor: "bg-blue-50",
+      borderColor: "border-blue-200"
     },
     option2: {
       name: "Option 2: Diversified Portfolio",
-      description: "Lower risk through automated diversification",
+      description: "Vetted opportunities through automated diversification",
       targetFactorRate: 1.49,
       factorRateRange: "1.35x - 1.49x",
       termRange: "25-540 days",
@@ -39,7 +39,7 @@ export default function EnhancedCalculatorSection() {
       profitSplit: 0.45,
       targetROI: 0.187,
       minInvestment: 25000,
-      riskLevel: "Moderate Risk",
+      riskLevel: "Vetted Portfolio",
       color: "text-brand-blue",
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200"

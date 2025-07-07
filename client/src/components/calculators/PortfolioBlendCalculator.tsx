@@ -148,11 +148,11 @@ export default function PortfolioBlendCalculator() {
           </div>
 
           {/* Investor Notice */}
-          <div className="bg-red-50 border-l-4 border-red-400 p-4 mt-4">
+          <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mt-4">
             <div className="flex">
               <div className="ml-3">
-                <p className="text-sm text-red-700">
-                  <span className="font-semibold">Investor Notice:</span> Higher yield potential (up to 1.49 factor rates) often comes with fewer available deals and longer turnaround times. To access consistent, high-return opportunities, we recommend allowing InvestoFund to diversify across deals on your behalf with short-notice access. This strategy helps you earn faster, stay fully deployed, and maintain positive returns — even as individual deal availability fluctuates.
+                <p className="text-sm text-blue-700">
+                  <span className="font-semibold">Investor Notice:</span> Our underwritten, quality merchants are selected for mutual success and consistent returns. InvestoFund's diversified portfolio approach ensures continuous deployment across vetted opportunities, maximizing your earning potential while maintaining steady cash flow through our proven profit-sharing model.
                 </p>
               </div>
             </div>
