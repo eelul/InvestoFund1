@@ -1384,7 +1384,7 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-r from-brand-dark to-brand-blue text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-4xl font-bold mb-4 text-[#000000]">
               Ready to Start Earning 20.8%+ Returns?
             </h2>
             <p className="text-xl mb-8 opacity-90 text-[#000000]">
