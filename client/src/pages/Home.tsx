@@ -201,6 +201,159 @@ export default function Home() {
         </div>
       </section>
 
+      {/* The InvestoFund Opportunity */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
+            The InvestoFund Opportunity
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="bg-white shadow-sm">
+                <CardContent className="p-8 text-center">
+                  <div className="w-20 h-20 bg-brand-teal/10 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                    <TrendingUp className="w-10 h-10 text-brand-teal" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Market Opportunity</h3>
+                  <p className="text-brand-gray">
+                    Small and medium businesses need fast, flexible working capital. Traditional banks are 
+                    too slow and rigid for their urgent financing needs.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white shadow-sm">
+                <CardContent className="p-8 text-center">
+                  <div className="w-20 h-20 bg-brand-blue/10 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                    <Target className="w-10 h-10 text-brand-blue" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Our Solution</h3>
+                  <p className="text-brand-gray">
+                    InvestoFund provides efficient Merchant Cash Advances, purchasing future receivables 
+                    to deliver immediate funding to businesses.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white shadow-sm">
+                <CardContent className="p-8 text-center">
+                  <div className="w-20 h-20 bg-green-500/10 rounded-lg flex items-center justify-center mb-6 mx-auto">
+                    <Shield className="w-10 h-10 text-green-500" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Competitive Edge</h3>
+                  <p className="text-brand-gray">
+                    Strong ISO relationships, rigorous underwriting, streamlined operations, and transparent 
+                    partnerships delivering $5K-$1M deals.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How InvestoFund Works */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-brand-dark mb-4">
+                How InvestoFund Works
+              </h2>
+              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
+                Our proven 4-step process turns your investment into compound returns
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-6 mb-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="text-2xl font-bold text-blue-600">1</div>
+                </div>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2">You Invest</h3>
+                <p className="text-sm text-brand-gray">Choose your investment amount and strategy</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="text-2xl font-bold text-green-600">2</div>
+                </div>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2">We Fund Merchants</h3>
+                <p className="text-sm text-brand-gray">Your capital helps businesses grow through MCAs</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="text-2xl font-bold text-purple-600">3</div>
+                </div>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2">Merchants Repay</h3>
+                <p className="text-sm text-brand-gray">Daily payments generate 20.8% returns per deal</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="text-2xl font-bold text-orange-600">4</div>
+                </div>
+                <h3 className="text-lg font-semibold text-brand-dark mb-2">Automatic Reinvestment</h3>
+                <p className="text-sm text-brand-gray">Profits compound into exponential growth</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Risk Mitigation & Transparency */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-brand-dark mb-4">
+                Risk Mitigation & Transparency
+              </h2>
+              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
+                We protect your investment through rigorous due diligence and transparent processes
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-xl p-6">
+                <div className="text-center mb-4">
+                  <Shield className="w-12 h-12 text-blue-600 mx-auto mb-2" />
+                  <h3 className="text-lg font-semibold text-brand-dark">Due Diligence</h3>
+                </div>
+                <ul className="text-sm text-brand-gray space-y-2">
+                  <li>• Credit checks on all merchants</li>
+                  <li>• Bank statement verification</li>
+                  <li>• Revenue analysis & projections</li>
+                  <li>• Industry risk assessment</li>
+                </ul>
+              </div>
+              <div className="bg-white rounded-xl p-6">
+                <div className="text-center mb-4">
+                  <BarChart3 className="w-12 h-12 text-green-600 mx-auto mb-2" />
+                  <h3 className="text-lg font-semibold text-brand-dark">Performance Tracking</h3>
+                </div>
+                <ul className="text-sm text-brand-gray space-y-2">
+                  <li>• Real-time deal monitoring</li>
+                  <li>• Daily payment tracking</li>
+                  <li>• Automated alerts for issues</li>
+                  <li>• Transparent reporting dashboard</li>
+                </ul>
+              </div>
+              <div className="bg-white rounded-xl p-6">
+                <div className="text-center mb-4">
+                  <CheckCircle className="w-12 h-12 text-purple-600 mx-auto mb-2" />
+                  <h3 className="text-lg font-semibold text-brand-dark">Legal Protection</h3>
+                </div>
+                <ul className="text-sm text-brand-gray space-y-2">
+                  <li>• UCC filings on all advances</li>
+                  <li>• Personal guarantees from owners</li>
+                  <li>• Collection agency partnerships</li>
+                  <li>• Legal recovery procedures</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 1. Discover Your Profit Potential */}
       <section id="discover" className="py-20 bg-gradient-to-br from-brand-blue/5 to-brand-teal/5">
         <div className="container mx-auto px-4">
@@ -375,107 +528,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. How InvestoFund Works */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-brand-dark mb-4">
-                How InvestoFund Works
-              </h2>
-              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
-                Our proven 4-step process turns your investment into compound returns
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-4 gap-6 mb-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-2xl font-bold text-blue-600">1</div>
-                </div>
-                <h3 className="text-lg font-semibold text-brand-dark mb-2">You Invest</h3>
-                <p className="text-sm text-brand-gray">Choose your investment amount and strategy</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-2xl font-bold text-green-600">2</div>
-                </div>
-                <h3 className="text-lg font-semibold text-brand-dark mb-2">We Fund Merchants</h3>
-                <p className="text-sm text-brand-gray">Your capital helps businesses grow through MCAs</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-2xl font-bold text-purple-600">3</div>
-                </div>
-                <h3 className="text-lg font-semibold text-brand-dark mb-2">Merchants Repay</h3>
-                <p className="text-sm text-brand-gray">Daily payments generate 20.8% returns per deal</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-2xl font-bold text-orange-600">4</div>
-                </div>
-                <h3 className="text-lg font-semibold text-brand-dark mb-2">Automatic Reinvestment</h3>
-                <p className="text-sm text-brand-gray">Profits compound into exponential growth</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Risk Mitigation & Transparency */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-brand-dark mb-4">
-                Risk Mitigation & Transparency
-              </h2>
-              <p className="text-xl text-brand-gray max-w-3xl mx-auto">
-                We protect your investment through rigorous due diligence and transparent processes
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white rounded-xl p-6">
-                <div className="text-center mb-4">
-                  <Shield className="w-12 h-12 text-blue-600 mx-auto mb-2" />
-                  <h3 className="text-lg font-semibold text-brand-dark">Due Diligence</h3>
-                </div>
-                <ul className="text-sm text-brand-gray space-y-2">
-                  <li>• Credit checks on all merchants</li>
-                  <li>• Bank statement verification</li>
-                  <li>• Revenue analysis & projections</li>
-                  <li>• Industry risk assessment</li>
-                </ul>
-              </div>
-              <div className="bg-white rounded-xl p-6">
-                <div className="text-center mb-4">
-                  <BarChart3 className="w-12 h-12 text-green-600 mx-auto mb-2" />
-                  <h3 className="text-lg font-semibold text-brand-dark">Performance Tracking</h3>
-                </div>
-                <ul className="text-sm text-brand-gray space-y-2">
-                  <li>• Real-time deal monitoring</li>
-                  <li>• Daily payment tracking</li>
-                  <li>• Automated alerts for issues</li>
-                  <li>• Transparent reporting dashboard</li>
-                </ul>
-              </div>
-              <div className="bg-white rounded-xl p-6">
-                <div className="text-center mb-4">
-                  <CheckCircle className="w-12 h-12 text-purple-600 mx-auto mb-2" />
-                  <h3 className="text-lg font-semibold text-brand-dark">Legal Protection</h3>
-                </div>
-                <ul className="text-sm text-brand-gray space-y-2">
-                  <li>• UCC filings on all advances</li>
-                  <li>• Personal guarantees from owners</li>
-                  <li>• Collection agency partnerships</li>
-                  <li>• Legal recovery procedures</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 4. Per Deal Performance Example */}
 
       {/* 6. Per Deal Performance Example */}
       <section className="py-16 bg-white">
@@ -1112,57 +1165,6 @@ export default function Home() {
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The InvestoFund Opportunity */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-brand-dark mb-12">
-            The InvestoFund Opportunity
-          </h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="bg-white shadow-sm">
-                <CardContent className="p-8 text-center">
-                  <div className="w-20 h-20 bg-brand-teal/10 rounded-lg flex items-center justify-center mb-6 mx-auto">
-                    <TrendingUp className="w-10 h-10 text-brand-teal" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Market Opportunity</h3>
-                  <p className="text-brand-gray">
-                    Small and medium businesses need fast, flexible working capital. Traditional banks are 
-                    too slow and rigid for their urgent financing needs.
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-white shadow-sm">
-                <CardContent className="p-8 text-center">
-                  <div className="w-20 h-20 bg-brand-blue/10 rounded-lg flex items-center justify-center mb-6 mx-auto">
-                    <Target className="w-10 h-10 text-brand-blue" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Our Solution</h3>
-                  <p className="text-brand-gray">
-                    InvestoFund provides efficient Merchant Cash Advances, purchasing future receivables 
-                    to deliver immediate funding to businesses.
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-white shadow-sm">
-                <CardContent className="p-8 text-center">
-                  <div className="w-20 h-20 bg-green-500/10 rounded-lg flex items-center justify-center mb-6 mx-auto">
-                    <Shield className="w-10 h-10 text-green-500" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-brand-dark mb-4">Competitive Edge</h3>
-                  <p className="text-brand-gray">
-                    Strong ISO relationships, rigorous underwriting, streamlined operations, and transparent 
-                    partnerships delivering $5K-$1M deals.
-                  </p>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
