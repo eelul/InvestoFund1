@@ -12,31 +12,78 @@ import {
   Calendar,
   ArrowUpRight,
   ArrowDownRight,
-  Target
+  Target,
+  Lock,
+  Users,
+  CheckCircle,
+  Star
 } from "lucide-react";
 import { Link } from "wouter";
 
-// Empty data - will populate as investments are made
-const mockInvestorData = {
+// Sample data for the blurred preview
+const previewData = {
   user: {
-    name: "John Smith",
-    email: "john.smith@email.com",
-    accountStatus: "Active",
-    joinDate: "2024-01-15"
+    name: "Sample Investor",
+    email: "investor@example.com",
+    accountStatus: "Preview Mode",
+    joinDate: "2024-07-01"
   },
   portfolio: {
-    totalInvested: 0,
-    totalReturns: 0,
-    activeDeals: 0,
-    completedDeals: 0,
-    averageReturn: 0,
-    currentYieldRate: 0
+    totalInvested: 25000,
+    totalReturns: 5200,
+    activeDeals: 4,
+    completedDeals: 12,
+    averageReturn: 20.8,
+    currentYieldRate: 94,
+    totalCommissions: 3850
   },
-  activeInvestments: []
+  activeInvestments: [
+    {
+      id: 1,
+      merchantName: "Tech Retail Solutions",
+      amount: 8500,
+      factorRate: 1.45,
+      daysRemaining: 28,
+      expectedReturn: 1768,
+      status: "performing",
+      industry: "Retail Technology"
+    },
+    {
+      id: 2,
+      merchantName: "Urban Food Distribution",
+      amount: 6200,
+      factorRate: 1.42,
+      daysRemaining: 15,
+      expectedReturn: 1290,
+      status: "performing",
+      industry: "Food & Beverage"
+    },
+    {
+      id: 3,
+      merchantName: "Professional Services LLC",
+      amount: 7800,
+      factorRate: 1.38,
+      daysRemaining: 42,
+      expectedReturn: 1624,
+      status: "new",
+      industry: "Professional Services"
+    },
+    {
+      id: 4,
+      merchantName: "Healthcare Equipment Co",
+      amount: 2500,
+      factorRate: 1.49,
+      daysRemaining: 8,
+      expectedReturn: 520,
+      status: "performing",
+      industry: "Healthcare"
+    }
+  ]
 };
 
 export default function InvestorDashboard() {
-  const [userData, setUserData] = useState(mockInvestorData);
+  const [userData, setUserData] = useState(previewData);
+  const [isPartner, setIsPartner] = useState(false);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -48,254 +95,390 @@ export default function InvestorDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-8">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-brand-dark mb-2">
-            Welcome back, {userData.user.name}
-          </h1>
-          <p className="text-brand-gray">
-            Investor Portal - Track your MCA investments and returns
-          </p>
+          <div className="flex justify-between items-start">
+            <div>
+              <h1 className="text-3xl font-bold text-brand-dark mb-2">
+                Investment Dashboard
+              </h1>
+              <p className="text-brand-gray">
+                {!isPartner ? "Preview of Active Investment Opportunities" : "Manage your portfolio and track performance"}
+              </p>
+            </div>
+            <Badge 
+              variant="outline" 
+              className={`px-3 py-1 ${!isPartner ? 'bg-orange-50 text-orange-700 border-orange-200' : 'bg-green-50 text-green-700 border-green-200'}`}
+            >
+              {userData.user.accountStatus}
+            </Badge>
+          </div>
         </div>
 
-        {/* Overview Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-brand-gray">Total Invested</p>
-                  <p className="text-2xl font-bold text-brand-dark">
-                    ${userData.portfolio.totalInvested.toLocaleString()}
-                  </p>
-                </div>
-                <div className="p-3 bg-brand-teal/10 rounded-full">
-                  <DollarSign className="w-6 h-6 text-brand-teal" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-brand-gray">Total Returns</p>
-                  <p className="text-2xl font-bold text-green-600">
-                    ${userData.portfolio.totalReturns.toLocaleString()}
-                  </p>
-                </div>
-                <div className="p-3 bg-green-100 rounded-full">
-                  <TrendingUp className="w-6 h-6 text-green-600" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-brand-gray">Active Deals</p>
-                  <p className="text-2xl font-bold text-brand-blue">
-                    {userData.portfolio.activeDeals}
-                  </p>
-                </div>
-                <div className="p-3 bg-brand-blue/10 rounded-full">
-                  <BarChart3 className="w-6 h-6 text-brand-blue" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-brand-gray">Avg Return</p>
-                  <p className="text-2xl font-bold text-brand-dark">
-                    {userData.portfolio.averageReturn}%
-                  </p>
-                </div>
-                <div className="p-3 bg-yellow-100 rounded-full">
-                  <Target className="w-6 h-6 text-yellow-600" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Active Investments */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>Active Investments</CardTitle>
-                <Link href="/investors">
-                  <Button className="bg-brand-teal hover:bg-brand-teal/90">
-                    <PlusCircle className="w-4 h-4 mr-2" />
-                    New Investment
-                  </Button>
-                </Link>
-              </CardHeader>
-              <CardContent>
-                {userData.activeInvestments.length === 0 ? (
-                  <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Target className="w-8 h-8 text-gray-400" />
+        {/* Partner Access Overlay */}
+        {!isPartner && (
+          <div className="relative">
+            {/* Blurred Background Content */}
+            <div className="filter blur-sm pointer-events-none">
+              {/* Portfolio Overview Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-brand-gray">Total Invested</p>
+                        <p className="text-2xl font-bold text-brand-dark">
+                          ${userData.portfolio.totalInvested.toLocaleString()}
+                        </p>
+                      </div>
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                        <DollarSign className="w-6 h-6 text-blue-600" />
+                      </div>
                     </div>
-                    <h3 className="text-lg font-medium text-brand-dark mb-2">No Active Investments</h3>
-                    <p className="text-brand-gray mb-6">
-                      Your investment portfolio will populate here as we fund deals together.
-                    </p>
-                    <Link href="/investors">
-                      <Button className="bg-brand-blue hover:bg-blue-700">
-                        <PlusCircle className="w-4 h-4 mr-2" />
-                        Make Your First Investment
-                      </Button>
-                    </Link>
+                    <div className="mt-2 flex items-center text-sm">
+                      <ArrowUpRight className="w-4 h-4 text-green-500 mr-1" />
+                      <span className="text-green-600">This month</span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-brand-gray">Total Returns</p>
+                        <p className="text-2xl font-bold text-brand-dark">
+                          ${userData.portfolio.totalReturns.toLocaleString()}
+                        </p>
+                      </div>
+                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                        <TrendingUp className="w-6 h-6 text-green-600" />
+                      </div>
+                    </div>
+                    <div className="mt-2 flex items-center text-sm">
+                      <span className="text-green-600">
+                        {userData.portfolio.averageReturn}% avg return
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-brand-gray">Active Deals</p>
+                        <p className="text-2xl font-bold text-brand-dark">
+                          {userData.portfolio.activeDeals}
+                        </p>
+                      </div>
+                      <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                        <BarChart3 className="w-6 h-6 text-orange-600" />
+                      </div>
+                    </div>
+                    <div className="mt-2 flex items-center text-sm">
+                      <span className="text-brand-gray">
+                        {userData.portfolio.completedDeals} completed
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-brand-gray">Approval Rate</p>
+                        <p className="text-2xl font-bold text-brand-dark">
+                          {userData.portfolio.currentYieldRate}%
+                        </p>
+                      </div>
+                      <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Target className="w-6 h-6 text-purple-600" />
+                      </div>
+                    </div>
+                    <div className="mt-2 flex items-center text-sm">
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-1" />
+                      <span className="text-green-600">High success rate</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Active Investments */}
+              <Card className="mb-8">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-xl font-semibold">Active Investments</CardTitle>
+                    <Button size="sm" className="bg-brand-blue hover:bg-brand-blue/90">
+                      <PlusCircle className="w-4 h-4 mr-2" />
+                      New Investment
+                    </Button>
                   </div>
-                ) : (
+                </CardHeader>
+                <CardContent>
                   <div className="space-y-4">
                     {userData.activeInvestments.map((investment) => (
-                      <div key={investment.id} className="border rounded-lg p-4">
+                      <div key={investment.id} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
                         <div className="flex items-center justify-between mb-3">
-                          <h4 className="font-semibold text-brand-dark">
-                            {investment.merchantName}
-                          </h4>
+                          <div className="flex items-center space-x-3">
+                            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                              {investment.merchantName.charAt(0)}
+                            </div>
+                            <div>
+                              <h3 className="font-semibold text-brand-dark">{investment.merchantName}</h3>
+                              <p className="text-sm text-brand-gray">{investment.industry}</p>
+                            </div>
+                          </div>
                           <Badge className={getStatusColor(investment.status)}>
                             {investment.status}
                           </Badge>
                         </div>
                         
-                        <div className="grid md:grid-cols-3 gap-4 mb-4">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                           <div>
-                            <p className="text-sm text-brand-gray">Invested</p>
+                            <p className="text-brand-gray">Investment</p>
                             <p className="font-semibold">${investment.amount.toLocaleString()}</p>
                           </div>
                           <div>
-                            <p className="text-sm text-brand-gray">Expected Return</p>
-                            <p className="font-semibold text-green-600">
-                              ${investment.expectedReturn.toLocaleString()}
-                            </p>
+                            <p className="text-brand-gray">Factor Rate</p>
+                            <p className="font-semibold">{investment.factorRate}x</p>
                           </div>
                           <div>
-                            <p className="text-sm text-brand-gray">Progress</p>
-                            <p className="font-semibold">{investment.progress}%</p>
+                            <p className="text-brand-gray">Days Remaining</p>
+                            <p className="font-semibold">{investment.daysRemaining} days</p>
+                          </div>
+                          <div>
+                            <p className="text-brand-gray">Expected Return</p>
+                            <p className="font-semibold text-green-600">+${investment.expectedReturn.toLocaleString()}</p>
                           </div>
                         </div>
                         
-                        <div className="mb-3">
-                          <div className="flex justify-between text-sm mb-1">
-                            <span className="text-brand-gray">Collection Progress</span>
-                            <span className="text-brand-dark">{investment.progress}%</span>
+                        <div className="mt-3">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-xs text-brand-gray">Progress</span>
+                            <span className="text-xs text-brand-gray">
+                              {Math.round(((45 - investment.daysRemaining) / 45) * 100)}%
+                            </span>
                           </div>
-                          <Progress value={investment.progress} className="h-2" />
-                        </div>
-                        
-                        <div className="flex justify-between text-xs text-brand-gray">
-                          <span>Started: {investment.startDate}</span>
-                          <span>Expected: {investment.expectedCompletion}</span>
+                          <Progress 
+                            value={((45 - investment.daysRemaining) / 45) * 100} 
+                            className="h-2"
+                          />
                         </div>
                       </div>
                     ))}
                   </div>
-                )}
-              </CardContent>
-            </Card>
-          </div>
+                </CardContent>
+              </Card>
 
-          {/* Resources & Quick Actions */}
-          <div className="space-y-6">
-            {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Link href="/investors" className="block">
-                  <Button variant="outline" className="w-full justify-start">
-                    <PlusCircle className="w-4 h-4 mr-2" />
-                    New Investment
-                  </Button>
-                </Link>
-                <Link href="/profit-sharing-agreement" className="block">
-                  <Button variant="outline" className="w-full justify-start">
-                    <FileText className="w-4 h-4 mr-2" />
-                    View Agreement
-                  </Button>
-                </Link>
-                <Link href="/investor-resources" className="block">
-                  <Button variant="outline" className="w-full justify-start">
-                    <BarChart3 className="w-4 h-4 mr-2" />
-                    Resources & Tools
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+              {/* Performance Charts Placeholder */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Monthly Performance</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-64 bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg flex items-center justify-center">
+                      <div className="text-center">
+                        <BarChart3 className="w-12 h-12 text-brand-blue mx-auto mb-2" />
+                        <p className="text-brand-gray">Performance Analytics</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
 
-            {/* Performance Summary */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Performance Summary</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-brand-gray">Current Yield</span>
-                    <span className="font-semibold text-green-600 flex items-center">
-                      <ArrowUpRight className="w-4 h-4 mr-1" />
-                      {userData.portfolio.currentYieldRate}%
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-brand-gray">Total ROI</span>
-                    <span className="font-semibold text-green-600">
-                      {((userData.portfolio.totalReturns / userData.portfolio.totalInvested) * 100).toFixed(1)}%
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-brand-gray">Completed Deals</span>
-                    <span className="font-semibold text-brand-dark">
-                      {userData.portfolio.completedDeals}
-                    </span>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Recent Activity</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      {[
+                        { action: "Investment completed", merchant: "Tech Retail Solutions", amount: "+$1,768", time: "2 hours ago" },
+                        { action: "New investment", merchant: "Healthcare Equipment Co", amount: "$2,500", time: "1 day ago" },
+                        { action: "Payment received", merchant: "Urban Food Distribution", amount: "+$1,290", time: "3 days ago" }
+                      ].map((activity, index) => (
+                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                          <div>
+                            <p className="font-medium text-sm">{activity.action}</p>
+                            <p className="text-xs text-brand-gray">{activity.merchant}</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="font-semibold text-sm">{activity.amount}</p>
+                            <p className="text-xs text-brand-gray">{activity.time}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* Overlay with Call to Action */}
+            <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm">
+              <div className="text-center max-w-lg mx-auto p-8">
+                <div className="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Lock className="w-8 h-8 text-white" />
+                </div>
+                
+                <h2 className="text-3xl font-bold text-brand-dark mb-4">
+                  Become an Investing Partner
+                </h2>
+                
+                <p className="text-lg text-brand-gray mb-6">
+                  Unlock access to exclusive high-yield investment opportunities. 
+                  Join our community of successful investors earning 20.8%+ returns.
+                </p>
+
+                <div className="bg-blue-50 rounded-lg p-4 mb-6">
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div className="text-center">
+                      <div className="font-bold text-brand-blue text-xl">$3,850</div>
+                      <div className="text-brand-gray">Total Commissions</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-brand-blue text-xl">94%</div>
+                      <div className="text-brand-gray">Approval Rate</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-brand-blue text-xl">$25k</div>
+                      <div className="text-brand-gray">Invested This Month</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-brand-blue text-xl">4</div>
+                      <div className="text-brand-gray">Active Deals</div>
+                    </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
 
-            {/* Investor Resources */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Investor Resources</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Link href="/investor-resources" className="block">
-                  <Button variant="ghost" className="w-full justify-start text-sm">
-                    Investment Calculator
+                <div className="space-y-3">
+                  <Link href="/investors">
+                    <Button 
+                      size="lg" 
+                      className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white font-semibold py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                    >
+                      <Star className="w-5 h-5 mr-2" />
+                      Become an Investing Partner
+                    </Button>
+                  </Link>
+                  
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="w-full border-2 border-gray-300 text-gray-500 cursor-not-allowed py-4 text-lg"
+                    disabled
+                  >
+                    <Users className="w-5 h-5 mr-2" />
+                    Access Dashboard (After Approval)
                   </Button>
-                </Link>
-                <Link href="/risk-disclosure" className="block">
-                  <Button variant="ghost" className="w-full justify-start text-sm">
-                    Risk Information
-                  </Button>
-                </Link>
-                <Link href="/faqs" className="block">
-                  <Button variant="ghost" className="w-full justify-start text-sm">
-                    Investor FAQs
-                  </Button>
-                </Link>
-                <Link href="/contact" className="block">
-                  <Button variant="ghost" className="w-full justify-start text-sm">
-                    Contact Support
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+                </div>
+
+                <p className="text-xs text-brand-gray mt-4">
+                  * Dashboard preview shows sample investment opportunities. Actual returns may vary.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* Full Dashboard for Partners */}
+        {isPartner && (
+          <div>
+            {/* Portfolio Overview Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-brand-gray">Total Invested</p>
+                      <p className="text-2xl font-bold text-brand-dark">
+                        ${userData.portfolio.totalInvested.toLocaleString()}
+                      </p>
+                    </div>
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                      <DollarSign className="w-6 h-6 text-blue-600" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center text-sm">
+                    <ArrowUpRight className="w-4 h-4 text-green-500 mr-1" />
+                    <span className="text-green-600">This month</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-brand-gray">Total Returns</p>
+                      <p className="text-2xl font-bold text-brand-dark">
+                        ${userData.portfolio.totalReturns.toLocaleString()}
+                      </p>
+                    </div>
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-green-600" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center text-sm">
+                    <span className="text-green-600">
+                      {userData.portfolio.averageReturn}% avg return
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-brand-gray">Active Deals</p>
+                      <p className="text-2xl font-bold text-brand-dark">
+                        {userData.portfolio.activeDeals}
+                      </p>
+                    </div>
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                      <BarChart3 className="w-6 h-6 text-orange-600" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center text-sm">
+                    <span className="text-brand-gray">
+                      {userData.portfolio.completedDeals} completed
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-brand-gray">Approval Rate</p>
+                      <p className="text-2xl font-bold text-brand-dark">
+                        {userData.portfolio.currentYieldRate}%
+                      </p>
+                    </div>
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                      <Target className="w-6 h-6 text-purple-600" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center text-sm">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-1" />
+                    <span className="text-green-600">High success rate</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Rest of dashboard content for actual partners */}
+            <div className="text-center py-12">
+              <p className="text-brand-gray">Full dashboard functionality will be available once you become an investing partner.</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

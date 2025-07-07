@@ -1533,7 +1533,7 @@ export default function Home() {
               ]}
               primaryAction={{
                 label: "View Active Deals",
-                onClick: () => window.location.href = "/investors"
+                onClick: () => window.location.href = "/investor-dashboard"
               }}
             />
             
