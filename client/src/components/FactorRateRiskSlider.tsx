@@ -1,0 +1,249 @@
+import { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Slider } from '@/components/ui/slider';
+import { Badge } from '@/components/ui/badge';
+import { AlertCircle, TrendingUp, Shield, Target } from 'lucide-react';
+
+interface FactorRateRiskSliderProps {
+  value: number;
+  onChange: (value: number) => void;
+  onRiskDataChange?: (riskData: RiskData) => void;
+}
+
+interface RiskData {
+  selectedRate: number;
+  riskBand: string;
+  color: string;
+  notes: string;
+}
+
+export default function FactorRateRiskSlider({ 
+  value, 
+  onChange, 
+  onRiskDataChange 
+}: FactorRateRiskSliderProps) {
+  const [currentValue, setCurrentValue] = useState(value);
+  const [animationClass, setAnimationClass] = useState('');
+
+  // Determine risk zone based on factor rate
+  const getRiskZone = (rate: number) => {
+    if (rate >= 1.15 && rate <= 1.24) {
+      return {
+        level: 'Low',
+        color: 'green',
+        bgColor: 'bg-green-50',
+        borderColor: 'border-green-200',
+        textColor: 'text-green-800',
+        sliderColor: 'slider-green',
+        icon: Shield,
+        animation: 'animate-pulse'
+      };
+    } else if (rate >= 1.25 && rate <= 1.38) {
+      return {
+        level: 'Medium',
+        color: 'orange',
+        bgColor: 'bg-orange-50',
+        borderColor: 'border-orange-200',
+        textColor: 'text-orange-800',
+        sliderColor: 'slider-orange',
+        icon: Target,
+        animation: 'animate-bounce'
+      };
+    } else {
+      return {
+        level: 'High',
+        color: 'red',
+        bgColor: 'bg-red-50',
+        borderColor: 'border-red-200',
+        textColor: 'text-red-800',
+        sliderColor: 'slider-red',
+        icon: TrendingUp,
+        animation: 'animate-shake'
+      };
+    }
+  };
+
+  const zone = getRiskZone(currentValue);
+
+  // Get risk prompt content
+  const getRiskPrompt = (rate: number) => {
+    if (rate >= 1.15 && rate <= 1.24) {
+      return {
+        title: "🟢 You've selected a Conservative Risk Strategy",
+        subtitle: "Expect lower yield, slower deal flow, but more stable merchant profiles.",
+        pros: [
+          "Lower merchant default risk",
+          "Ideal for longer-term investors",
+          "Good for portfolio anchoring",
+          "Predictable returns"
+        ],
+        cons: [
+          "Lower ROI (under 15% average)",
+          "Slower capital deployment",
+          "Fewer deal opportunities",
+          "Limited growth potential"
+        ]
+      };
+    } else if (rate >= 1.25 && rate <= 1.38) {
+      return {
+        title: "🟠 You've selected a Balanced Risk Strategy",
+        subtitle: "This tier aims to deliver stronger returns while maintaining underwriting standards.",
+        pros: [
+          "Moderate ROI (15–18%)",
+          "More deal flow than low risk",
+          "Well-diversified merchant pool",
+          "Balanced risk/reward profile"
+        ],
+        cons: [
+          "Slightly increased default possibility",
+          "May require slightly longer underwriting",
+          "Moderate volatility",
+          "Requires active monitoring"
+        ]
+      };
+    } else {
+      return {
+        title: "🔴 You've selected an Aggressive Growth Strategy",
+        subtitle: "Expect the fastest capital use and highest possible returns—but higher volatility.",
+        pros: [
+          "Highest ROI (18–21%)",
+          "Fastest deal allocation",
+          "Ideal for short-term, high-volume investors",
+          "Maximum growth potential"
+        ],
+        cons: [
+          "Increased merchant volatility",
+          "More underwriting oversight",
+          "Cashflow may be lumpy",
+          "Higher risk of losses"
+        ]
+      };
+    }
+  };
+
+  const prompt = getRiskPrompt(currentValue);
+  const IconComponent = zone.icon;
+
+  // Handle value change
+  const handleValueChange = (newValue: number[]) => {
+    const rate = newValue[0];
+    setCurrentValue(rate);
+    onChange(rate);
+    
+    // Trigger animation
+    setAnimationClass(zone.animation);
+    setTimeout(() => setAnimationClass(''), 1000);
+
+    // Send risk data to parent if callback provided
+    if (onRiskDataChange) {
+      onRiskDataChange({
+        selectedRate: rate,
+        riskBand: zone.level,
+        color: zone.color,
+        notes: `${zone.level} Risk Strategy`
+      });
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Slider Section */}
+      <Card className={`${zone.bgColor} ${zone.borderColor} border-2 transition-all duration-300`}>
+        <CardHeader>
+          <CardTitle className="flex items-center space-x-2">
+            <IconComponent className={`w-5 h-5 ${zone.textColor} ${animationClass}`} />
+            <span className="text-brand-dark">Factor Rate Risk Preference</span>
+            <Badge variant="outline" className={`${zone.textColor} ${zone.borderColor}`}>
+              {zone.level} Risk
+            </Badge>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-brand-gray">Factor Rate Range</span>
+              <span className="text-lg font-bold text-brand-dark">
+                {currentValue.toFixed(2)}x
+              </span>
+            </div>
+            <Slider
+              value={[currentValue]}
+              onValueChange={handleValueChange}
+              min={1.15}
+              max={1.49}
+              step={0.01}
+              className={`w-full ${zone.sliderColor}`}
+            />
+            <div className="flex justify-between text-xs text-brand-gray">
+              <span>1.15x (Conservative)</span>
+              <span>1.32x (Balanced)</span>
+              <span>1.49x (Aggressive)</span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Risk Prompt Section */}
+      <Card className={`${zone.bgColor} ${zone.borderColor} border transition-all duration-500`}>
+        <CardContent className="p-6">
+          <div className="space-y-4">
+            <div className="text-center">
+              <h3 className={`text-lg font-semibold ${zone.textColor} mb-2`}>
+                {prompt.title}
+              </h3>
+              <p className="text-brand-gray text-sm">
+                {prompt.subtitle}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {/* Pros */}
+              <div className="space-y-2">
+                <h4 className="font-medium text-brand-dark flex items-center">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Pros
+                </h4>
+                <ul className="space-y-1">
+                  {prompt.pros.map((pro, index) => (
+                    <li key={index} className="text-sm text-brand-gray flex items-start">
+                      <span className="text-green-500 mr-2">•</span>
+                      {pro}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Cons */}
+              <div className="space-y-2">
+                <h4 className="font-medium text-brand-dark flex items-center">
+                  <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                  Cons
+                </h4>
+                <ul className="space-y-1">
+                  {prompt.cons.map((con, index) => (
+                    <li key={index} className="text-sm text-brand-gray flex items-start">
+                      <span className="text-red-500 mr-2">•</span>
+                      {con}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className={`${zone.bgColor} p-3 rounded-lg border ${zone.borderColor} mt-4`}>
+              <div className="flex items-center space-x-2">
+                <AlertCircle className={`w-4 h-4 ${zone.textColor}`} />
+                <span className={`text-sm font-medium ${zone.textColor}`}>
+                  Selected Strategy: {zone.level} Risk ({currentValue.toFixed(2)}x factor rate)
+                </span>
+              </div>
+              <p className="text-xs text-brand-gray mt-1">
+                You can update this preference anytime via your investor dashboard.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}

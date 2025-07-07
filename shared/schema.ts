@@ -24,6 +24,7 @@ export const investmentApplications = pgTable("investment_applications", {
   investmentType: text("investment_type").notNull(), // 'single', 'portfolio'
   accreditedStatus: boolean("accredited_status").default(false),
   documentsAgreed: boolean("documents_agreed").default(false),
+  riskPreference: jsonb("risk_preference"), // Factor rate risk preference object
   paymentIntentId: text("payment_intent_id"),
   status: text("status").default("pending"), // 'pending', 'approved', 'funded', 'rejected'
   createdAt: timestamp("created_at").defaultNow(),

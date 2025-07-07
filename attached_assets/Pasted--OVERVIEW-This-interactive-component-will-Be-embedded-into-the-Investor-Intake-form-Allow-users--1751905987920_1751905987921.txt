@@ -1,0 +1,142 @@
+✅ OVERVIEW
+This interactive component will:
+
+Be embedded into the Investor Intake form
+
+Allow users to adjust their acceptable factor rate range
+
+Dynamically change colors and display animated prompts with pros and cons
+
+Store their chosen risk appetite with their submission and associate it with their profile (editable later)
+
+📊 LOGIC + UI DETAILS
+🔧 COMPONENT: FactorRateRiskSlider
+Slider Range:
+Min: 1.15
+
+Max: 1.49
+
+Step: 0.01
+
+Risk Zones & Colors:
+Factor Rate Range	Risk Level	Slider Color	Prompt Animation	Notes
+1.15 – 1.24	Low	Green	🟢 Calm Pulse	Very conservative deals
+1.25 – 1.38	Medium	Orange	🟠 Balanced Glow	Balanced risk/reward
+1.39 – 1.49	High	Red	🔴 Subtle Shake	Higher risk / higher return
+
+🔄 DISPLAY PROMPTS (Animated w/ Pros & Cons)
+1️⃣ Low Risk Zone: 1.15 – 1.24
+Color: Green
+Prompt:
+
+🟢 You’ve selected a Conservative Risk Strategy.
+Expect lower yield, slower deal flow, but more stable merchant profiles.
+
+Pros:
+
+Lower merchant default risk
+
+Ideal for longer-term investors
+
+Good for portfolio anchoring
+
+Cons:
+
+Lower ROI (under 15% average)
+
+Slower capital deployment
+
+Fewer deal opportunities
+
+2️⃣ Medium Risk Zone: 1.25 – 1.38
+Color: Orange
+Prompt:
+
+🟠 You’ve selected a Balanced Risk Strategy.
+This tier aims to deliver stronger returns while maintaining underwriting standards.
+
+Pros:
+
+Moderate ROI (15–18%)
+
+More deal flow than low risk
+
+Well-diversified merchant pool
+
+Cons:
+
+Slightly increased default possibility
+
+May require slightly longer underwriting
+
+3️⃣ High Risk Zone: 1.39 – 1.49
+Color: Red
+Prompt:
+
+🔴 You’ve selected an Aggressive Growth Strategy.
+Expect the fastest capital use and highest possible returns—but higher volatility.
+
+Pros:
+
+Highest ROI (18–21%)
+
+Fastest deal allocation
+
+Ideal for short-term, high-volume investors
+
+Cons:
+
+Increased merchant volatility
+
+More underwriting oversight
+
+Cashflow may be lumpy
+
+🧠 BACK-END LOGIC TO STORE:
+json
+Copy
+Edit
+{
+  "investor_profile": {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "factor_rate_approval": {
+      "selected_rate": 1.38,
+      "risk_band": "Medium",
+      "color": "Orange",
+      "notes": "Balanced Risk Strategy"
+    }
+  }
+}
+✉️ AUTOMATED FOLLOW-UP EMAIL
+Subject: Your Selected Investment Strategy with InvestoFund
+Body:
+
+Thank you for completing your intake form. You selected a [Medium Risk Strategy] with a preferred Factor Rate of 1.38.
+We'll prioritize deals within your approved range and notify you as opportunities align.
+You may update this preference at any time via your investor dashboard.
+
+✅ FINAL PROMPT FOR REPLIT AI
+Prompt to copy/paste into Replit AI:
+
+markdown
+Copy
+Edit
+Create an interactive slider component called `FactorRateRiskSlider` to be embedded into the Investor Intake form for InvestoFund. The slider should:
+
+- Range from 1.15 to 1.49 (step = 0.01)
+- Dynamically change color based on selected value:
+   - Green for 1.15–1.24 (Low Risk)
+   - Orange for 1.25–1.38 (Medium Risk)
+   - Red for 1.39–1.49 (High Risk)
+- Trigger a visual prompt on selection with pros and cons listed clearly in a 2-column format
+- Include subtle animation for each risk tier (pulse for green, glow for orange, shake for red)
+- When submitted, store:
+   - The selected factor rate
+   - Risk band label
+   - Notes for internal reference
+   - Attach to the investor profile submission
+- This data should be editable later via dashboard
+- Once user completes the intake, send an automatic confirmation email summarizing their choice
+
+Also include styling consistent with InvestoFund’s UI and prepare the component for embedding inside the full intake wizard flow.

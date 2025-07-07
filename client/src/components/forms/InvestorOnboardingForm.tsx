@@ -18,6 +18,7 @@ import PortfolioBlendCalculator from "../calculators/PortfolioBlendCalculator";
 import ProgressIndicator from "../ui/progress-indicator";
 import ESignatureModal from "../esignature/ESignatureModal";
 import { getDocumentTemplate, processDocumentTemplate } from "../esignature/DocumentTemplates";
+import FactorRateRiskSlider from "../FactorRateRiskSlider";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
@@ -28,6 +29,12 @@ const formSchema = z.object({
   investmentType: z.enum(["single", "portfolio"]),
   accreditedStatus: z.boolean().optional(),
   documentsAgreed: z.boolean().refine(val => val === true, "Document agreement required"),
+  riskPreference: z.object({
+    selectedRate: z.number(),
+    riskBand: z.string(),
+    color: z.string(),
+    notes: z.string()
+  }).optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -41,6 +48,12 @@ function InvestorForm() {
   const [documentToSign, setDocumentToSign] = useState<any>(null);
   const [signatureCompleted, setSignatureCompleted] = useState(false);
   const [applicationData, setApplicationData] = useState<any>(null);
+  const [riskPreference, setRiskPreference] = useState({
+    selectedRate: 1.32,
+    riskBand: "Medium",
+    color: "orange",
+    notes: "Balanced Risk Strategy"
+  });
   const [stepValidation, setStepValidation] = useState({
     1: false,
     2: false,
@@ -106,6 +119,12 @@ function InvestorForm() {
       investmentType: "single",
       accreditedStatus: false,
       documentsAgreed: false,
+      riskPreference: {
+        selectedRate: 1.32,
+        riskBand: "Medium",
+        color: "orange",
+        notes: "Balanced Risk Strategy"
+      },
     },
   });
 
@@ -549,6 +568,42 @@ function InvestorForm() {
               <CardTitle>Step 3: Investment Verification</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
+              {/* Factor Rate Risk Preference Slider */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-brand-dark">Select Your Risk Preference</h3>
+                <p className="text-brand-gray text-sm">
+                  Choose your preferred factor rate range to match your risk tolerance and return expectations.
+                </p>
+                <FormField
+                  control={form.control}
+                  name="riskPreference"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <FactorRateRiskSlider
+                          value={riskPreference.selectedRate}
+                          onChange={(value) => {
+                            const newRiskPreference = {
+                              selectedRate: value,
+                              riskBand: value <= 1.24 ? "Low" : value <= 1.38 ? "Medium" : "High",
+                              color: value <= 1.24 ? "green" : value <= 1.38 ? "orange" : "red",
+                              notes: `${value <= 1.24 ? "Conservative" : value <= 1.38 ? "Balanced" : "Aggressive"} Risk Strategy`
+                            };
+                            setRiskPreference(newRiskPreference);
+                            field.onChange(newRiskPreference);
+                          }}
+                          onRiskDataChange={(riskData) => {
+                            setRiskPreference(riskData);
+                            field.onChange(riskData);
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
               <FormField
                 control={form.control}
                 name="accreditedStatus"
@@ -651,6 +706,7 @@ function InvestorForm() {
                       <p>Type: {form.watch("investmentType") === "single" ? "Direct Deal Participation" : "Portfolio Blend"}</p>
                       <p>Amount: {formatCurrency(form.watch("investmentAmount"))}</p>
                       <p>Accredited: {form.watch("accreditedStatus") ? "Yes" : "No"}</p>
+                      <p>Risk Strategy: {riskPreference.riskBand} Risk ({riskPreference.selectedRate.toFixed(2)}x factor rate)</p>
                     </div>
                   </div>
                 </div>

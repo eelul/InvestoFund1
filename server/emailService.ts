@@ -78,6 +78,12 @@ export class EmailService {
     firstName: string;
     lastName: string;
     userType: 'investor' | 'iso' | 'merchant';
+    riskPreference?: {
+      selectedRate: number;
+      riskBand: string;
+      color: string;
+      notes: string;
+    };
   }): Promise<boolean> {
     try {
       if (!process.env.SENDGRID_API_KEY) {
@@ -88,7 +94,7 @@ export class EmailService {
       const templates = {
         investor: {
           subject: 'Welcome to InvestoFund - Your Investment Journey Begins',
-          content: this.getInvestorWelcomeTemplate(options.firstName)
+          content: this.getInvestorWelcomeTemplate(options.firstName, options.riskPreference)
         },
         iso: {
           subject: 'Welcome to InvestoFund - Partner Program',
@@ -214,7 +220,7 @@ export class EmailService {
 </html>`;
   }
 
-  private getInvestorWelcomeTemplate(firstName: string): string {
+  private getInvestorWelcomeTemplate(firstName: string, riskPreference?: any): string {
     return `
 <!DOCTYPE html>
 <html>
@@ -240,6 +246,22 @@ export class EmailService {
             <h2>Hello ${firstName},</h2>
             
             <p>Welcome to InvestoFund, where sophisticated investors discover high-yield alternative investment opportunities in the Merchant Cash Advance market.</p>
+            
+            ${riskPreference ? `
+            <div style="background: #e8f4fd; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #4ECDC4;">
+                <h3 style="color: #2B4A66; margin-top: 0;">Your Selected Investment Strategy</h3>
+                <p style="color: #666; margin-bottom: 10px;">
+                    <strong>Risk Level:</strong> ${riskPreference.riskBand} Risk Strategy
+                </p>
+                <p style="color: #666; margin-bottom: 10px;">
+                    <strong>Factor Rate Preference:</strong> ${riskPreference.selectedRate.toFixed(2)}x
+                </p>
+                <p style="color: #666; margin-bottom: 0;">
+                    We'll prioritize deals within your approved range and notify you as opportunities align. 
+                    You may update this preference at any time via your investor dashboard.
+                </p>
+            </div>
+            ` : ''}
             
             <div class="highlight">
                 <h3>What's Next?</h3>

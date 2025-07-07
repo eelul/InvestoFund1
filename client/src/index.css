@@ -291,3 +291,41 @@ html {
     border-color: hsl(177, 61%, 54%);
   }
 }
+
+/* Factor Rate Risk Slider Styles */
+.slider-green [data-radix-slider-thumb] {
+  background-color: #16a34a;
+  border-color: #16a34a;
+}
+
+.slider-green [data-radix-slider-range] {
+  background-color: #16a34a;
+}
+
+.slider-orange [data-radix-slider-thumb] {
+  background-color: #ea580c;
+  border-color: #ea580c;
+}
+
+.slider-orange [data-radix-slider-range] {
+  background-color: #ea580c;
+}
+
+.slider-red [data-radix-slider-thumb] {
+  background-color: #dc2626;
+  border-color: #dc2626;
+}
+
+.slider-red [data-radix-slider-range] {
+  background-color: #dc2626;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
