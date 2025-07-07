@@ -1360,43 +1360,43 @@ export default function Home() {
       </section>
 
       {/* 9. Investment Amount Options */}
-      <section className="py-20 bg-gradient-to-br from-brand-blue to-brand-teal text-white">
+      <section className="py-20 bg-gradient-to-br from-brand-blue to-brand-teal">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Choose Your Investment Level</h2>
-              <p className="text-xl max-w-3xl mx-auto">
+              <h2 className="text-4xl font-bold mb-4 text-white">Choose Your Investment Level</h2>
+              <p className="text-xl max-w-3xl mx-auto text-white">
                 Start with as little as $5,000 or diversify with our premium portfolio options
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* $5,000 Minimum */}
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 text-white">
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold mb-2">$5,000</div>
-                  <div className="text-lg opacity-90">Starting Investment</div>
+                  <div className="text-3xl font-bold mb-2 text-white">$5,000</div>
+                  <div className="text-lg opacity-90 text-white">Starting Investment</div>
                 </div>
-                <ul className="space-y-3 mb-8 text-sm">
+                <ul className="space-y-3 mb-8 text-sm text-white">
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Access to all deal opportunities
+                    <span className="text-white">Access to all deal opportunities</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    20.8% maximum returns per deal
+                    <span className="text-white">20.8% maximum returns per deal</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Automatic reinvestment strategy
+                    <span className="text-white">Automatic reinvestment strategy</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Direct deal participation
+                    <span className="text-white">Direct deal participation</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Monthly performance reports
+                    <span className="text-white">Monthly performance reports</span>
                   </li>
                 </ul>
                 <Link href="/investors">
@@ -1407,36 +1407,36 @@ export default function Home() {
               </div>
 
               {/* $25,000 Portfolio */}
-              <div className="bg-white/15 backdrop-blur-md rounded-2xl p-8 border-2 border-yellow-300/50 relative">
+              <div className="bg-white/15 backdrop-blur-md rounded-2xl p-8 border-2 border-yellow-300/50 relative text-white">
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <div className="bg-yellow-400 text-brand-dark px-4 py-1 rounded-full text-sm font-semibold">
                     Most Popular
                   </div>
                 </div>
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold mb-2">$25,000</div>
-                  <div className="text-lg opacity-90">Diversified Portfolio</div>
+                  <div className="text-3xl font-bold mb-2 text-white">$25,000</div>
+                  <div className="text-lg opacity-90 text-white">Diversified Portfolio</div>
                 </div>
-                <ul className="space-y-3 mb-8 text-sm">
+                <ul className="space-y-3 mb-8 text-sm text-white">
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Everything in $5,000 plan
+                    <span className="text-white">Everything in $5,000 plan</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Risk diversification across sectors
+                    <span className="text-white">Risk diversification across sectors</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Priority deal access
+                    <span className="text-white">Priority deal access</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Dedicated account manager
+                    <span className="text-white">Dedicated account manager</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Weekly strategy calls
+                    <span className="text-white">Weekly strategy calls</span>
                   </li>
                 </ul>
                 <Link href="/investors">
@@ -1447,31 +1447,31 @@ export default function Home() {
               </div>
 
               {/* $500,000 Premium */}
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 text-white">
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold mb-2">$500,000</div>
-                  <div className="text-lg opacity-90">Premium Access</div>
+                  <div className="text-3xl font-bold mb-2 text-white">$500,000</div>
+                  <div className="text-lg opacity-90 text-white">Premium Access</div>
                 </div>
-                <ul className="space-y-3 mb-8 text-sm">
+                <ul className="space-y-3 mb-8 text-sm text-white">
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Everything in lower tiers
+                    <span className="text-white">Everything in lower tiers</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Exclusive high-value deals
+                    <span className="text-white">Exclusive high-value deals</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Custom investment strategies
+                    <span className="text-white">Custom investment strategies</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Direct CEO access
+                    <span className="text-white">Direct CEO access</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    Quarterly strategy reviews
+                    <span className="text-white">Quarterly strategy reviews</span>
                   </li>
                 </ul>
                 <Link href="/contact">
@@ -1484,31 +1484,31 @@ export default function Home() {
 
             {/* Time Horizon Options */}
             <div className="mt-16 text-center">
-              <h3 className="text-2xl font-bold mb-8">Choose Your Time Horizon</h3>
+              <h3 className="text-2xl font-bold mb-8 text-white">Choose Your Time Horizon</h3>
               <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
-                  <div className="text-2xl font-bold mb-2">3 months</div>
-                  <div className="text-sm opacity-90">Short-term gains</div>
-                  <div className="text-xs mt-2">~2-3 deals</div>
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-white">
+                  <div className="text-2xl font-bold mb-2 text-white">3 months</div>
+                  <div className="text-sm opacity-90 text-white">Short-term gains</div>
+                  <div className="text-xs mt-2 text-white">~2-3 deals</div>
                 </div>
-                <div className="bg-white/15 backdrop-blur-md rounded-xl p-6 border border-white/30">
-                  <div className="text-2xl font-bold mb-2">12 months</div>
-                  <div className="text-sm opacity-90">Optimal compounding</div>
-                  <div className="text-xs mt-2">~8-10 deals</div>
+                <div className="bg-white/15 backdrop-blur-md rounded-xl p-6 border border-white/30 text-white">
+                  <div className="text-2xl font-bold mb-2 text-white">12 months</div>
+                  <div className="text-sm opacity-90 text-white">Optimal compounding</div>
+                  <div className="text-xs mt-2 text-white">~8-10 deals</div>
                 </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
-                  <div className="text-2xl font-bold mb-2">36 months</div>
-                  <div className="text-sm opacity-90">Maximum growth</div>
-                  <div className="text-xs mt-2">~24-30 deals</div>
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-white">
+                  <div className="text-2xl font-bold mb-2 text-white">36 months</div>
+                  <div className="text-sm opacity-90 text-white">Maximum growth</div>
+                  <div className="text-xs mt-2 text-white">~24-30 deals</div>
                 </div>
               </div>
             </div>
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto">
-                <h3 className="text-3xl font-bold mb-4">Ready to Start Investing?</h3>
-                <p className="text-xl mb-8 opacity-90">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto text-white">
+                <h3 className="text-3xl font-bold mb-4 text-white">Ready to Start Investing?</h3>
+                <p className="text-xl mb-8 opacity-90 text-white">
                   Join InvestoFund and access high-yield alternative investments with our proven profit-sharing model.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
