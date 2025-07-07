@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import StandardROICalculator from "@/components/calculators/StandardROICalculator";
-import StatsSection from "@/components/StatsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import EnhancedCalculatorSection from "@/components/EnhancedCalculatorSection";
 import FeatureCard from "@/components/FeatureCard";
 import AnimatedCounter from "@/components/AnimatedCounter";
@@ -154,23 +152,7 @@ export default function Home() {
               </Button>
             </div>
 
-            {/* Excitement Bar */}
-            <div className="bg-white rounded-full shadow-lg p-4 max-w-4xl mx-auto">
-              <div className="flex flex-wrap justify-center items-center gap-6 text-sm">
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                  <span className="text-brand-gray">Live: <strong className="text-brand-dark">$2.3M</strong> invested this month</span>
-                </div>
-                <div className="flex items-center">
-                  <Clock className="w-4 h-4 text-brand-blue mr-2" />
-                  <span className="text-brand-gray">Avg Deal Term: <strong className="text-brand-dark">45 days</strong></span>
-                </div>
-                <div className="flex items-center">
-                  <Shield className="w-4 h-4 text-brand-teal mr-2" />
-                  <span className="text-brand-gray">Success Rate: <strong className="text-brand-dark">94.7%</strong></span>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -1538,14 +1520,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* Enhanced Stats Section */}
-      <StatsSection />
-
       {/* Enhanced Calculator Section */}
       <EnhancedCalculatorSection />
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
 
       {/* Feature Highlights */}
       <section className="py-20 bg-gradient-to-br from-brand-blue/5 to-brand-teal/5">
@@ -1596,23 +1572,7 @@ export default function Home() {
               }}
             />
             
-            <FeatureCard
-              icon={Award}
-              title="Proven Track Record"
-              description="94.7% success rate with consistent returns"
-              badge="Verified"
-              badgeVariant="outline"
-              features={[
-                "Audited performance data",
-                "1,250+ satisfied investors",
-                "$50M+ successfully invested",
-                "98% investor satisfaction"
-              ]}
-              primaryAction={{
-                label: "See Results",
-                onClick: () => document.getElementById('stats')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-            />
+
           </div>
         </div>
       </section>
