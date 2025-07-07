@@ -92,12 +92,20 @@ export default function Merchants() {
                           <span className="font-semibold">Daily/Weekly/Monthly</span>
                         </div>
                       </div>
-                      <Button 
-                        className="w-full bg-brand-blue hover:bg-brand-dark text-white"
-                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
-                      >
-                        Learn How MCA Works <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1 bg-brand-blue hover:bg-brand-dark text-white"
+                          onClick={() => window.location.href = '/merchants/mca-details'}
+                        >
+                          Learn How MCA Works <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                        <Button 
+                          className="px-6 bg-green-600 hover:bg-green-700 text-white"
+                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          Apply
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
 
@@ -129,12 +137,20 @@ export default function Merchants() {
                           <span className="font-semibold">6-18 months</span>
                         </div>
                       </div>
-                      <Button 
-                        className="w-full bg-green-600 hover:bg-green-700 text-white"
-                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
-                      >
-                        See How Credit Line Works <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+                          onClick={() => window.location.href = '/merchants/line-of-credit-details'}
+                        >
+                          See How Credit Line Works <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                        <Button 
+                          className="px-6 bg-green-600 hover:bg-green-700 text-white"
+                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          Apply
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
 
@@ -166,12 +182,20 @@ export default function Merchants() {
                           <span className="font-semibold text-green-600">Fast approval</span>
                         </div>
                       </div>
-                      <Button 
-                        className="w-full bg-orange-600 hover:bg-orange-700 text-white"
-                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
-                      >
-                        Get Equipment Financing <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1 bg-orange-600 hover:bg-orange-700 text-white"
+                          onClick={() => window.location.href = '/merchants/equipment-financing-details'}
+                        >
+                          Get Equipment Financing <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                        <Button 
+                          className="px-6 bg-green-600 hover:bg-green-700 text-white"
+                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          Apply
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
 
@@ -203,12 +227,20 @@ export default function Merchants() {
                           <span className="font-semibold">Equity/Purchase</span>
                         </div>
                       </div>
-                      <Button 
-                        className="w-full bg-purple-600 hover:bg-purple-700 text-white"
-                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
-                      >
-                        Explore Mortgage Options <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1 bg-purple-600 hover:bg-purple-700 text-white"
+                          onClick={() => window.location.href = '/merchants/commercial-mortgage-details'}
+                        >
+                          Explore Mortgage Options <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                        <Button 
+                          className="px-6 bg-green-600 hover:bg-green-700 text-white"
+                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          Apply
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
 
@@ -240,12 +272,20 @@ export default function Merchants() {
                           <span className="font-semibold">Monthly</span>
                         </div>
                       </div>
-                      <Button 
-                        className="w-full bg-brand-teal hover:bg-teal-700 text-white"
-                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
-                      >
-                        See Term Loan Qualification <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1 bg-brand-teal hover:bg-teal-700 text-white"
+                          onClick={() => window.location.href = '/merchants/term-loans-details'}
+                        >
+                          See Term Loan Qualification <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                        <Button 
+                          className="px-6 bg-green-600 hover:bg-green-700 text-white"
+                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          Apply
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
 
@@ -277,12 +317,20 @@ export default function Merchants() {
                           <span className="font-semibold text-green-600">Immediate</span>
                         </div>
                       </div>
-                      <Button 
-                        className="w-full bg-yellow-600 hover:bg-yellow-700 text-white"
-                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
-                      >
-                        Start Factoring Invoices <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white"
+                          onClick={() => window.location.href = '/merchants/invoice-factoring-details'}
+                        >
+                          Start Factoring Invoices <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                        <Button 
+                          className="px-6 bg-green-600 hover:bg-green-700 text-white"
+                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          Apply
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
 
@@ -314,12 +362,20 @@ export default function Merchants() {
                           <span className="font-semibold">Not a loan</span>
                         </div>
                       </div>
-                      <Button 
-                        className="w-full bg-red-600 hover:bg-red-700 text-white"
-                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
-                      >
-                        Discover P.O. Financing <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1 bg-red-600 hover:bg-red-700 text-white"
+                          onClick={() => window.location.href = '/merchants/po-financing-details'}
+                        >
+                          Discover P.O. Financing <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                        <Button 
+                          className="px-6 bg-green-600 hover:bg-green-700 text-white"
+                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          Apply
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
 
@@ -351,12 +407,20 @@ export default function Merchants() {
                           <span className="font-semibold text-green-600">Government</span>
                         </div>
                       </div>
-                      <Button 
-                        className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
-                        onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
-                      >
-                        Learn About SBA Loans <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white"
+                          onClick={() => window.location.href = '/merchants/sba-loans-details'}
+                        >
+                          Learn About SBA Loans <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                        <Button 
+                          className="px-6 bg-green-600 hover:bg-green-700 text-white"
+                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          Apply
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 </div>

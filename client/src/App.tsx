@@ -25,6 +25,14 @@ import FAQs from "@/pages/FAQs";
 import Legal from "@/pages/Legal";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import NotFound from "@/pages/not-found";
+import MCADetails from "@/pages/merchants/MCADetails";
+import LineOfCreditDetails from "@/pages/merchants/LineOfCreditDetails";
+import EquipmentFinancingDetails from "@/pages/merchants/EquipmentFinancingDetails";
+import CommercialMortgageDetails from "@/pages/merchants/CommercialMortgageDetails";
+import TermLoansDetails from "@/pages/merchants/TermLoansDetails";
+import InvoiceFactoringDetails from "@/pages/merchants/InvoiceFactoringDetails";
+import POFinancingDetails from "@/pages/merchants/POFinancingDetails";
+import SBALoansDetails from "@/pages/merchants/SBALoansDetails";
 
 function Router() {
   return (
@@ -35,6 +43,14 @@ function Router() {
         <Route path="/investors" component={Investors} />
         <Route path="/brokers" component={Brokers} />
         <Route path="/merchants" component={Merchants} />
+        <Route path="/merchants/mca-details" component={MCADetails} />
+        <Route path="/merchants/line-of-credit-details" component={LineOfCreditDetails} />
+        <Route path="/merchants/equipment-financing-details" component={EquipmentFinancingDetails} />
+        <Route path="/merchants/commercial-mortgage-details" component={CommercialMortgageDetails} />
+        <Route path="/merchants/term-loans-details" component={TermLoansDetails} />
+        <Route path="/merchants/invoice-factoring-details" component={InvoiceFactoringDetails} />
+        <Route path="/merchants/po-financing-details" component={POFinancingDetails} />
+        <Route path="/merchants/sba-loans-details" component={SBALoansDetails} />
         <Route path="/contact" component={Contact} />
         <Route path="/iso-tools" component={ISOTools} />
         <Route path="/iso-training" component={ISOTraining} />
