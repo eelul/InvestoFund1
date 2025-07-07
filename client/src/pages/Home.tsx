@@ -1325,7 +1325,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
       {/* Enhanced Calculator Section */}
       <EnhancedCalculatorSection />
       {/* Feature Highlights */}
@@ -1388,7 +1387,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-4">
               Ready to Start Earning 20.8%+ Returns?
             </h2>
-            <p className="text-xl mb-8 opacity-90">
+            <p className="text-xl mb-8 opacity-90 text-[#000000]">
               Join successful investors who've already discovered the power of MCA investments
             </p>
             
