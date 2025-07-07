@@ -37,16 +37,16 @@ export default function Header() {
 
   const handleUserTypeSelect = (userType: 'investor' | 'broker' | 'merchant') => {
     setShowUserTypeModal(false);
-    // Navigate to appropriate dashboard based on user type
+    // Navigate to appropriate preview dashboard based on user type
     switch (userType) {
       case 'investor':
         window.location.href = '/dashboard/investor';
         break;
       case 'broker':
-        window.location.href = '/dashboard/broker';
+        window.location.href = '/dashboard/broker-preview';
         break;
       case 'merchant':
-        window.location.href = '/dashboard/merchant';
+        window.location.href = '/dashboard/merchant-preview';
         break;
     }
   };

@@ -356,7 +356,7 @@ export default function InvestorDashboard() {
                 </div>
 
                 <div className="space-y-3">
-                  <Link href="/investors">
+                  <Link href="/investors#start-investing">
                     <Button 
                       size="lg" 
                       className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white font-semibold py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
