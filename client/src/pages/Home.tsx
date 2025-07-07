@@ -294,8 +294,8 @@ export default function Home() {
 
               <div className="mt-4 p-3 bg-green-50 rounded-lg">
                 <div className="text-sm text-green-800 text-center">
-                  <strong>Compound Effect:</strong> Starting with $10,000, reinvestment creates exponential growth. 
-                  After 8 deals, your investment could exceed $25,000 - that's 150%+ total return through compound reinvestment!
+                  <strong>Compound Effect:</strong> Starting with ${investmentAmount[0].toLocaleString()}, reinvestment creates exponential growth. 
+                  After {Math.min(8, timeHorizon[0] * 2)} deals, your investment could exceed ${(investmentAmount[0] * Math.pow(1.208, Math.min(8, timeHorizon[0] * 2))).toLocaleString()} - that's {(((Math.pow(1.208, Math.min(8, timeHorizon[0] * 2))) - 1) * 100).toFixed(0)}%+ total return through compound reinvestment!
                 </div>
               </div>
             </div>
@@ -351,21 +351,21 @@ export default function Home() {
                 </div>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between items-center p-2 bg-white rounded">
-                    <span>Deal 1: $10,000</span>
-                    <span className="text-green-600">+$2,083</span>
+                    <span>Deal 1: ${investmentAmount[0].toLocaleString()}</span>
+                    <span className="text-green-600">+${(investmentAmount[0] * 0.208).toLocaleString()}</span>
                   </div>
                   <div className="text-center text-green-600 font-semibold">
                     🔄 Reinvest all profits
                   </div>
                   <div className="flex justify-between items-center p-2 bg-white rounded">
-                    <span>Deal 2: $12,083</span>
-                    <span className="text-green-600">+$2,515</span>
+                    <span>Deal 2: ${(investmentAmount[0] * 1.208).toLocaleString()}</span>
+                    <span className="text-green-600">+${(investmentAmount[0] * 1.208 * 0.208).toLocaleString()}</span>
                   </div>
                   <div className="text-center text-green-600 font-semibold">
                     🔄 Reinvest all profits
                   </div>
                   <div className="text-center pt-2 border-t">
-                    <div className="text-lg font-bold text-green-700">After 8 deals: $50,000+ total</div>
+                    <div className="text-lg font-bold text-green-700">After {Math.min(8, timeHorizon[0] * 2)} deals: ${(investmentAmount[0] * Math.pow(1.208, Math.min(8, timeHorizon[0] * 2))).toLocaleString()}+ total</div>
                     <div className="text-sm text-green-600">Exponential compound growth!</div>
                   </div>
                 </div>
@@ -483,10 +483,10 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-brand-dark mb-4">
-                Per Deal Performance Example
+                How Your Investment Generates Returns
               </h2>
               <p className="text-xl text-brand-gray max-w-3xl mx-auto">
-                See exactly how a typical merchant cash advance generates your 20.8% return
+                See exactly how your ${investmentAmount[0].toLocaleString()} investment generates profits per deal
               </p>
             </div>
 
@@ -496,8 +496,8 @@ export default function Home() {
                   <h3 className="text-xl font-semibold text-brand-dark mb-4">Deal Structure</h3>
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between items-center p-3 bg-white rounded-lg">
-                      <span className="text-brand-gray">Merchant Advance:</span>
-                      <span className="font-semibold text-brand-dark">$10,000</span>
+                      <span className="text-brand-gray">Your Investment:</span>
+                      <span className="font-semibold text-brand-dark">${investmentAmount[0].toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                       <span className="text-brand-gray">Factor Rate:</span>
@@ -505,11 +505,11 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                       <span className="text-brand-gray">Total Repayment:</span>
-                      <span className="font-semibold text-brand-dark">$14,900</span>
+                      <span className="font-semibold text-brand-dark">${(investmentAmount[0] * 1.49).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                       <span className="text-brand-gray">Gross Profit:</span>
-                      <span className="font-semibold text-green-600">$4,900</span>
+                      <span className="font-semibold text-green-600">${(investmentAmount[0] * 0.49).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                       <span className="text-brand-gray">Deal Duration:</span>
@@ -523,23 +523,23 @@ export default function Home() {
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                       <span className="text-brand-gray">Gross Profit:</span>
-                      <span className="font-semibold text-brand-dark">$4,900</span>
+                      <span className="font-semibold text-brand-dark">${(investmentAmount[0] * 0.49).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-orange-100 rounded-lg">
                       <span className="text-orange-700">ISO Commission (15%):</span>
-                      <span className="font-semibold text-orange-700">-$735</span>
+                      <span className="font-semibold text-orange-700">-${(investmentAmount[0] * 0.49 * 0.15).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-blue-100 rounded-lg">
                       <span className="text-blue-700">Net Profit:</span>
-                      <span className="font-semibold text-blue-700">$4,165</span>
+                      <span className="font-semibold text-blue-700">${(investmentAmount[0] * 0.49 * 0.85).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg">
                       <span className="text-gray-700">InvestoFund Share (50%):</span>
-                      <span className="font-semibold text-gray-700">$2,082</span>
+                      <span className="font-semibold text-gray-700">${(investmentAmount[0] * 0.49 * 0.85 * 0.5).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-green-100 rounded-lg border-2 border-green-300">
                       <span className="text-green-700 font-semibold">Your Return:</span>
-                      <span className="font-bold text-green-700">$2,083 (20.8%)</span>
+                      <span className="font-bold text-green-700">${(investmentAmount[0] * 0.208).toLocaleString()} (20.8%)</span>
                     </div>
                   </div>
                 </div>
@@ -767,16 +767,16 @@ export default function Home() {
                               </p>
                               <div className="grid md:grid-cols-3 gap-3 text-xs">
                                 <div className="text-center">
-                                  <div className="font-medium">Deal 1: $10,000</div>
-                                  <div className="text-green-600">+$2,083 profit</div>
+                                  <div className="font-medium">Deal 1: ${investmentAmount[0].toLocaleString()}</div>
+                                  <div className="text-green-600">+${(investmentAmount[0] * 0.208).toLocaleString()} profit</div>
                                 </div>
                                 <div className="text-center">
-                                  <div className="font-medium">Deal 2: $12,083</div>
-                                  <div className="text-green-600">+$2,515 profit</div>
+                                  <div className="font-medium">Deal 2: ${(investmentAmount[0] * 1.208).toLocaleString()}</div>
+                                  <div className="text-green-600">+${(investmentAmount[0] * 1.208 * 0.208).toLocaleString()} profit</div>
                                 </div>
                                 <div className="text-center">
-                                  <div className="font-medium">Deal 3: $14,598</div>
-                                  <div className="text-green-600">+$3,037 profit</div>
+                                  <div className="font-medium">Deal 3: ${(investmentAmount[0] * 1.208 * 1.208).toLocaleString()}</div>
+                                  <div className="text-green-600">+${(investmentAmount[0] * 1.208 * 1.208 * 0.208).toLocaleString()} profit</div>
                                 </div>
                               </div>
                               <div className="mt-3 text-center text-sm font-semibold text-blue-700">
@@ -984,15 +984,15 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-8">
                 <div>
                   <div className="text-sm text-brand-gray mb-1">Initial Investment</div>
-                  <div className="text-2xl font-bold text-brand-dark">$25,000</div>
+                  <div className="text-2xl font-bold text-brand-dark">${investmentAmount[0].toLocaleString()}</div>
                 </div>
                 <div>
                   <div className="text-sm text-brand-gray mb-1">Merchant Repayment (1.49x)</div>
-                  <div className="text-2xl font-bold text-brand-dark">$37,250</div>
+                  <div className="text-2xl font-bold text-brand-dark">${(investmentAmount[0] * 1.49).toLocaleString()}</div>
                 </div>
                 <div>
                   <div className="text-sm text-brand-gray mb-1">Your Share (50% after ISO comm.)</div>
-                  <div className="text-2xl font-bold text-brand-teal">$5,206.25</div>
+                  <div className="text-2xl font-bold text-brand-teal">${(investmentAmount[0] * 0.208).toLocaleString()}</div>
                 </div>
                 <div>
                   <div className="text-sm text-brand-gray mb-1">Return on Investment</div>
@@ -1033,8 +1033,8 @@ export default function Home() {
                     <DollarSign className="w-8 h-8 text-blue-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-brand-dark mb-2">1. Merchant Repays</h3>
-                  <div className="text-2xl font-bold text-blue-600 mb-2">$14,900</div>
-                  <p className="text-sm text-brand-gray">From $10,000 advance at 1.49x factor rate</p>
+                  <div className="text-2xl font-bold text-blue-600 mb-2">${(investmentAmount[0] * 1.49).toLocaleString()}</div>
+                  <p className="text-sm text-brand-gray">From ${investmentAmount[0].toLocaleString()} advance at 1.49x factor rate</p>
                 </div>
 
                 {/* Step 2: ISO Commission */}
@@ -1043,8 +1043,8 @@ export default function Home() {
                     <Users className="w-8 h-8 text-orange-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-brand-dark mb-2">2. ISO Commission</h3>
-                  <div className="text-2xl font-bold text-orange-600 mb-2">-$735</div>
-                  <p className="text-sm text-brand-gray">15% of $4,900 gross profit goes to ISO partner</p>
+                  <div className="text-2xl font-bold text-orange-600 mb-2">-${(investmentAmount[0] * 0.49 * 0.15).toLocaleString()}</div>
+                  <p className="text-sm text-brand-gray">15% of ${(investmentAmount[0] * 0.49).toLocaleString()} gross profit goes to ISO partner</p>
                 </div>
 
                 {/* Step 3: Profit Split */}
@@ -1053,8 +1053,8 @@ export default function Home() {
                     <PieChart className="w-8 h-8 text-green-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-brand-dark mb-2">3. 50/50 Split</h3>
-                  <div className="text-2xl font-bold text-green-600 mb-2">$2,083</div>
-                  <p className="text-sm text-brand-gray">Your 50% share of $4,165 net profit</p>
+                  <div className="text-2xl font-bold text-green-600 mb-2">${(investmentAmount[0] * 0.208).toLocaleString()}</div>
+                  <p className="text-sm text-brand-gray">Your 50% share of ${(investmentAmount[0] * 0.49 * 0.85).toLocaleString()} net profit</p>
                 </div>
               </div>
 
@@ -1067,7 +1067,7 @@ export default function Home() {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                       <span className="text-brand-gray">Merchant Advance:</span>
-                      <span className="font-semibold text-brand-dark">$10,000</span>
+                      <span className="font-semibold text-brand-dark">${investmentAmount[0].toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                       <span className="text-brand-gray">Factor Rate:</span>
@@ -1075,29 +1075,29 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-center p-3 bg-blue-100 rounded-lg">
                       <span className="text-blue-700 font-semibold">Total Repayment:</span>
-                      <span className="font-bold text-blue-700">$14,900</span>
+                      <span className="font-bold text-blue-700">${(investmentAmount[0] * 1.49).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-green-100 rounded-lg">
                       <span className="text-green-700 font-semibold">Gross Profit:</span>
-                      <span className="font-bold text-green-700">$4,900</span>
+                      <span className="font-bold text-green-700">${(investmentAmount[0] * 0.49).toLocaleString()}</span>
                     </div>
                   </div>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center p-3 bg-orange-100 rounded-lg">
                       <span className="text-orange-700">ISO Commission (15%):</span>
-                      <span className="font-semibold text-orange-700">-$735</span>
+                      <span className="font-semibold text-orange-700">-${(investmentAmount[0] * 0.49 * 0.15).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-blue-100 rounded-lg">
                       <span className="text-blue-700">Net Profit Available:</span>
-                      <span className="font-semibold text-blue-700">$4,165</span>
+                      <span className="font-semibold text-blue-700">${(investmentAmount[0] * 0.49 * 0.85).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg">
                       <span className="text-gray-700">InvestoFund Share (50%):</span>
-                      <span className="font-semibold text-gray-700">$2,082</span>
+                      <span className="font-semibold text-gray-700">${(investmentAmount[0] * 0.49 * 0.85 * 0.5).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-green-200 rounded-lg border-2 border-green-400">
                       <span className="text-green-800 font-bold">Your Return:</span>
-                      <span className="font-bold text-green-800">$2,083 (20.8%)</span>
+                      <span className="font-bold text-green-800">${(investmentAmount[0] * 0.208).toLocaleString()} (20.8%)</span>
                     </div>
                   </div>
                 </div>
