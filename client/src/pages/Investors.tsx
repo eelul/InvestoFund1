@@ -288,7 +288,7 @@ export default function Investors() {
         </div>
       </section>
       {/* Investment Onboarding Form */}
-      <section className="py-16 bg-white">
+      <section id="start-investing" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-brand-dark mb-8">

@@ -274,7 +274,7 @@ export default function EnhancedCalculatorSection() {
                 </div>
 
                 <div className="mt-6 space-y-3">
-                  <Link href="/investors">
+                  <Link href="/investors#start-investing">
                     <Button className="w-full bg-gradient-to-r from-brand-blue to-brand-teal hover:from-brand-dark hover:to-brand-blue text-white shadow-lg hover:shadow-xl transition-all duration-300">
                       <PieChart className="w-4 h-4 mr-2" />
                       Start Investing Today

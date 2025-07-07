@@ -136,10 +136,10 @@ export default function Home() {
               Projections shown are based on target scenarios and are not guaranteed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link href="/investors">
+              <Link href="/investors#start-investing">
                 <Button className="bg-gradient-to-r from-brand-blue to-brand-teal hover:from-brand-dark hover:to-brand-blue text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                   <TrendingUp className="w-5 h-5 mr-2" />
-                  Start Earning 20.8%+ Returns
+                  Start Investing Today
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
@@ -149,7 +149,7 @@ export default function Home() {
                 onClick={() => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <Calculator className="w-5 h-5 mr-2" />
-                Calculate My Returns
+                Try Advanced Calculator
                 <BarChart3 className="w-5 h-5 ml-2" />
               </Button>
             </div>
@@ -948,7 +948,7 @@ export default function Home() {
                   Join thousands of investors already earning exceptional returns
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Link href="/investors">
+                  <Link href="/investors#start-investing">
                     <Button className="bg-white text-brand-blue hover:bg-gray-100">
                       Start Investing Today
                       <ArrowRight className="w-4 h-4 ml-2" />
@@ -956,7 +956,7 @@ export default function Home() {
                   </Link>
                   <Button 
                     variant="outline" 
-                    className="border-white text-white hover:bg-white hover:text-brand-blue"
+                    className="border-white text-white hover:bg-white hover:text-brand-blue transform hover:scale-105 transition-all duration-300"
                     onClick={() => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })}
                   >
                     <Calculator className="w-4 h-4 mr-2" />
@@ -1510,7 +1510,7 @@ export default function Home() {
                   Join InvestoFund and access high-yield alternative investments with our proven profit-sharing model.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/investors">
+                  <Link href="/investors#start-investing">
                     <Button className="bg-white text-brand-blue hover:bg-gray-100 px-8 py-3 text-lg">
                       <Calculator className="w-5 h-5 mr-2" />
                       Start Investing Today
