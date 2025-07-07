@@ -156,7 +156,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Enhanced Key Metrics */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -182,7 +181,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* The InvestoFund Opportunity */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -233,7 +231,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* How InvestoFund Works */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -280,7 +277,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Risk Mitigation & Transparency */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -335,7 +331,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 1. Discover Your Profit Potential */}
       <section id="discover" className="py-20 bg-gradient-to-br from-brand-blue/5 to-brand-teal/5">
         <div className="container mx-auto px-4">
@@ -374,7 +369,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 2. Deal-by-Deal Breakdown */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -437,7 +431,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 3. How Big Returns Are Really Made */}
       <section className="py-16 bg-gradient-to-br from-orange-50 to-yellow-50">
         <div className="container mx-auto px-4">
@@ -509,9 +502,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 4. Per Deal Performance Example */}
-
       {/* 6. Per Deal Performance Example */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -583,7 +574,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 7. Calculate Your Potential Returns */}
       <section id="calculator" className="py-20 bg-gradient-to-br from-brand-blue/5 to-brand-teal/5">
         <div className="container mx-auto px-4">
@@ -1003,7 +993,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Portfolio Performance */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -1046,7 +1035,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 8. How Deal Profits Actually Work */}
       <section className="py-16 bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="container mx-auto px-4">
@@ -1151,7 +1139,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* How It Works */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -1215,7 +1202,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Risk Mitigation */}
       <section className="py-16 bg-brand-light">
         <div className="container mx-auto px-4">
@@ -1297,7 +1283,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Leadership Team */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -1340,13 +1325,12 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 9. Investment Amount Options */}
       <section className="py-20 bg-gradient-to-br from-brand-blue to-brand-teal">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-white">Choose Your Investment Level</h2>
+              <h2 className="text-4xl font-bold mb-4 text-[#050404]">Choose Your Investment Level</h2>
               <p className="text-xl max-w-3xl mx-auto text-white">
                 Start with as little as $5,000 or diversify with our premium portfolio options
               </p>
@@ -1522,7 +1506,6 @@ export default function Home() {
       </section>
       {/* Enhanced Calculator Section */}
       <EnhancedCalculatorSection />
-
       {/* Feature Highlights */}
       <section className="py-20 bg-gradient-to-br from-brand-blue/5 to-brand-teal/5">
         <div className="container mx-auto px-4">
@@ -1576,7 +1559,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Final Call to Action */}
       <section className="py-20 bg-gradient-to-r from-brand-dark to-brand-blue text-white">
         <div className="container mx-auto px-4">
