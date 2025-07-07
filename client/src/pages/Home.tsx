@@ -1331,7 +1331,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-[#050404]">Choose Your Investment Level</h2>
-              <p className="text-xl max-w-3xl mx-auto text-white">
+              <p className="text-xl max-w-3xl mx-auto text-[#65758b]">
                 Start with as little as $5,000 or diversify with our premium portfolio options
               </p>
             </div>
@@ -1340,29 +1340,29 @@ export default function Home() {
               {/* $5,000 Minimum */}
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 text-white">
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold mb-2 text-white">$5,000</div>
-                  <div className="text-lg opacity-90 text-white">Starting Investment</div>
+                  <div className="text-3xl font-bold mb-2 text-[#000000]">$5,000</div>
+                  <div className="text-lg opacity-90 text-[#000000]">Starting Investment</div>
                 </div>
                 <ul className="space-y-3 mb-8 text-sm text-white">
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    <span className="text-white">Access to all deal opportunities</span>
+                    <span className="text-[#0f0f0f]">Access to all deal opportunities</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    <span className="text-white">20.8% maximum returns per deal</span>
+                    <span className="text-[#0f0f0f]">20.8% maximum returns per deal</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    <span className="text-white">Automatic reinvestment strategy</span>
+                    <span className="text-[#000000]">Automatic reinvestment strategy</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    <span className="text-white">Direct deal participation</span>
+                    <span className="text-[#000000]">Direct deal participation</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="w-4 h-4 mr-2 text-green-300" />
-                    <span className="text-white">Monthly performance reports</span>
+                    <span className="text-[#000000]">Monthly performance reports</span>
                   </li>
                 </ul>
                 <Link href="/investors">
@@ -1380,8 +1380,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold mb-2 text-white">$25,000</div>
-                  <div className="text-lg opacity-90 text-white">Diversified Portfolio</div>
+                  <div className="text-3xl font-bold mb-2 text-[#000000]">$25,000</div>
+                  <div className="text-lg opacity-90 text-[#000000]">Diversified Portfolio</div>
                 </div>
                 <ul className="space-y-3 mb-8 text-sm text-white">
                   <li className="flex items-center">
@@ -1415,8 +1415,8 @@ export default function Home() {
               {/* $500,000 Premium */}
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 text-white">
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold mb-2 text-white">$500,000</div>
-                  <div className="text-lg opacity-90 text-white">Premium Access</div>
+                  <div className="text-3xl font-bold mb-2 text-[#000000]">$500,000</div>
+                  <div className="text-lg opacity-90 text-[#000000]">Premium Access</div>
                 </div>
                 <ul className="space-y-3 mb-8 text-sm text-white">
                   <li className="flex items-center">
