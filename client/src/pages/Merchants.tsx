@@ -99,7 +99,6 @@ export default function Merchants() {
           </div>
         </div>
       </section>
-
       {/* Financing Solutions Section */}
       <section id="financing-solutions" className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -485,8 +484,8 @@ export default function Merchants() {
                 </div>
 
                 <div className="text-center mt-12 p-8 bg-gradient-to-r from-brand-blue to-brand-teal rounded-xl text-white">
-                  <h3 className="text-2xl font-bold mb-4">Let's Find the Right Fit</h3>
-                  <p className="text-lg mb-6 text-blue-100">
+                  <h3 className="text-2xl font-bold mb-4 text-[#000000]">Let's Find the Right Fit</h3>
+                  <p className="text-lg mb-6 text-[#3e70af]">
                     Need help deciding which solution is right for your business? Speak with an InvestoFund Advisor today — no obligation, just answers.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -1305,7 +1304,6 @@ export default function Merchants() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }
