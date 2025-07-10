@@ -21,8 +21,11 @@ import {
   Briefcase,
   BarChart3,
   Shield,
-  Zap
+  Zap,
+  Settings,
+  AlertCircle
 } from "lucide-react";
+import FactorRateRiskSlider from "@/components/FactorRateRiskSlider";
 
 // Mock data for demo deals
 const mockDeals = [
@@ -158,6 +161,14 @@ export default function InvestorV1Demo() {
   const [investmentAmount, setInvestmentAmount] = useState([15000]);
   const [isFirstLogin, setIsFirstLogin] = useState(true);
   const [showWelcome, setShowWelcome] = useState(true);
+  const [demoMode, setDemoMode] = useState(false);
+  const [factorRateRange, setFactorRateRange] = useState<[number, number]>([1.25, 1.40]);
+  const [riskData, setRiskData] = useState({
+    selectedRange: [1.25, 1.40] as [number, number],
+    riskBand: "Medium",
+    color: "orange",
+    notes: "Balanced Risk Strategy"
+  });
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [advancedMode, setAdvancedMode] = useState(false);
   const [showTutorial, setShowTutorial] = useState(false);
@@ -236,15 +247,26 @@ export default function InvestorV1Demo() {
             <span className="font-medium">🚀 Soft Testing Phase</span>
             <span className="text-blue-100">Learn how each section works</span>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={startTutorial}
-            className="text-white hover:bg-blue-700"
-          >
-            <HelpCircle className="w-4 h-4 mr-2" />
-            How It Works
-          </Button>
+          <div className="flex items-center space-x-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={startTutorial}
+              className="text-white hover:bg-blue-700"
+            >
+              <HelpCircle className="w-4 h-4 mr-2" />
+              How It Works
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setDemoMode(!demoMode)}
+              className="text-white hover:bg-blue-700 border border-blue-400"
+            >
+              <Settings className="w-4 h-4 mr-2" />
+              {demoMode ? 'Exit Demo' : 'Demo'}
+            </Button>
+          </div>
         </div>
       )}
 
@@ -307,6 +329,9 @@ export default function InvestorV1Demo() {
           <Card className="w-full max-w-md">
             <CardHeader>
               <CardTitle className="text-center">Set Up Your Investment Preference</CardTitle>
+              <p className="text-sm text-center text-gray-600 mt-2">
+                Choose your investment amount to unlock platform features
+              </p>
             </CardHeader>
             <CardContent className="space-y-6">
               <div id="investment-range">
@@ -370,10 +395,14 @@ export default function InvestorV1Demo() {
                   variant="ghost" 
                   size="sm"
                   onClick={() => setShowTutorial(false)}
+                  aria-label="Close tutorial"
                 >
                   <X className="w-4 h-4" />
                 </Button>
               </div>
+              <p className="text-sm text-gray-600 mt-2">
+                Interactive walkthrough of your investor dashboard
+              </p>
             </CardHeader>
             <CardContent className="space-y-4">
               <h3 className="font-semibold text-brand-dark">
@@ -471,20 +500,194 @@ export default function InvestorV1Demo() {
           </Card>
         </div>
 
+        {/* Demo Investment Configuration */}
+        {demoMode && (
+          <Card className="border-2 border-blue-200 bg-blue-50">
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Settings className="w-5 h-5 text-blue-600" />
+                <span>Demo Investment Configuration</span>
+                <Badge variant="outline" className="bg-blue-100 text-blue-800">
+                  Live Preview
+                </Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Investment Amount Adjuster */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Adjust Investment Amount
+                </label>
+                <Slider
+                  value={investmentAmount}
+                  onValueChange={setInvestmentAmount}
+                  max={250000}
+                  min={5000}
+                  step={1000}
+                  className="w-full"
+                />
+                <div className="flex justify-between text-sm text-gray-500 mt-2">
+                  <span>$5,000</span>
+                  <span className="font-medium text-lg text-brand-dark">
+                    ${investmentAmount[0].toLocaleString()}
+                  </span>
+                  <span>$250,000</span>
+                </div>
+              </div>
+
+              {/* Factor Rate Range Selector */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-brand-dark">
+                  Set Your Factor Rate Range Preference
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Select your preferred factor rate range to filter deals. Only deals within your range will be shown.
+                </p>
+                <FactorRateRiskSlider
+                  value={factorRateRange}
+                  onChange={(range) => {
+                    setFactorRateRange(range);
+                    const midpoint = (range[0] + range[1]) / 2;
+                    const newRiskData = {
+                      selectedRange: range,
+                      riskBand: midpoint <= 1.24 ? "Low" : midpoint <= 1.38 ? "Medium" : "High",
+                      color: midpoint <= 1.24 ? "green" : midpoint <= 1.38 ? "orange" : "red",
+                      notes: `${midpoint <= 1.24 ? "Conservative" : midpoint <= 1.38 ? "Balanced" : "Aggressive"} Risk Strategy (${range[0].toFixed(2)}x - ${range[1].toFixed(2)}x)`
+                    };
+                    setRiskData(newRiskData);
+                  }}
+                  onRiskDataChange={(data) => setRiskData(data)}
+                />
+              </div>
+
+              {/* Current Configuration Summary */}
+              <div className="bg-white rounded-lg p-4 border border-blue-200">
+                <h4 className="font-medium text-brand-dark mb-2">Current Demo Configuration</h4>
+                <div className="grid md:grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <span className="text-gray-600">Investment Amount:</span>
+                    <div className="font-medium">${investmentAmount[0].toLocaleString()}</div>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">Factor Rate Range:</span>
+                    <div className="font-medium">{factorRateRange[0].toFixed(2)}x - {factorRateRange[1].toFixed(2)}x</div>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">Risk Level:</span>
+                    <div className="font-medium">{riskData.riskBand} Risk</div>
+                  </div>
+                </div>
+                
+                {/* Expected Yield Calculation */}
+                <div className="mt-4 p-3 bg-green-50 rounded border border-green-200">
+                  <div className="flex items-center space-x-2">
+                    <TrendingUp className="w-4 h-4 text-green-600" />
+                    <span className="text-sm font-medium text-green-800">
+                      Expected Yield Range: {((factorRateRange[0] - 1) * 100).toFixed(1)}% - {((factorRateRange[1] - 1) * 100).toFixed(1)}%
+                    </span>
+                  </div>
+                  <p className="text-xs text-green-700 mt-1">
+                    Based on your selected factor rate range. Actual returns may vary.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Live Deals Section */}
         <div id="deals-grid">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-brand-dark">Live Investment Opportunities</h2>
-            <Badge variant="secondary" className="bg-green-100 text-green-800">
-              {mockDeals.length} Active Deals
-            </Badge>
+            <div className="flex items-center space-x-3">
+              {demoMode && (
+                <Badge variant="outline" className="bg-blue-100 text-blue-800 border-blue-300">
+                  Filtered by Range: {factorRateRange[0].toFixed(2)}x - {factorRateRange[1].toFixed(2)}x
+                </Badge>
+              )}
+              <Badge variant="secondary" className="bg-green-100 text-green-800">
+                {(() => {
+                  const filteredDeals = demoMode 
+                    ? mockDeals.filter(deal => deal.factorRate >= factorRateRange[0] && deal.factorRate <= factorRateRange[1])
+                    : (completedOnboarding ? mockDeals : []);
+                  return filteredDeals.length;
+                })()} Active Deals
+              </Badge>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {mockDeals.map((deal, index) => {
-              const isLocked = maxDealsAllowed !== "unlimited" && index > 0;
+            {(() => {
+              const filteredDeals = demoMode 
+                ? mockDeals.filter(deal => deal.factorRate >= factorRateRange[0] && deal.factorRate <= factorRateRange[1])
+                : (completedOnboarding ? mockDeals : []);
               
-              return (
+              // Empty state for non-demo mode when onboarding not completed
+              if (!demoMode && !completedOnboarding) {
+                return (
+                  <div className="col-span-full">
+                    <Card className="border-2 border-gray-200 bg-gray-50">
+                      <CardContent className="p-12 text-center">
+                        <div className="w-16 h-16 bg-brand-blue/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                          <Briefcase className="w-8 h-8 text-brand-blue" />
+                        </div>
+                        <h3 className="text-xl font-semibold text-brand-dark mb-4">
+                          Welcome to InvestoFund
+                        </h3>
+                        <p className="text-gray-600 mb-6 max-w-md mx-auto">
+                          Your dashboard is ready! Complete the onboarding process to access live deals and investment opportunities.
+                        </p>
+                        <div className="space-y-3">
+                          <p className="text-sm font-medium text-gray-700">Available Investment Options:</p>
+                          <div className="grid md:grid-cols-2 gap-4 max-w-lg mx-auto text-sm">
+                            <div className="bg-white p-4 rounded-lg border">
+                              <h4 className="font-medium text-brand-dark mb-2">Direct Deal Participation</h4>
+                              <p className="text-gray-600">Choose specific deals with full control over your investments</p>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border">
+                              <h4 className="font-medium text-brand-dark mb-2">InvestoBlend™ Portfolio</h4>
+                              <p className="text-gray-600">Diversified portfolios managed by our expert team ($25K+)</p>
+                            </div>
+                          </div>
+                        </div>
+                        <Button 
+                          onClick={() => setShowOnboarding(true)}
+                          className="mt-6 bg-brand-blue hover:bg-blue-600"
+                        >
+                          <Play className="w-4 h-4 mr-2" />
+                          Start Investing
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </div>
+                );
+              }
+              
+              if (demoMode && filteredDeals.length === 0) {
+                return (
+                  <div className="col-span-full">
+                    <Card className="border-2 border-orange-200 bg-orange-50">
+                      <CardContent className="p-8 text-center">
+                        <AlertCircle className="w-12 h-12 text-orange-600 mx-auto mb-4" />
+                        <h3 className="text-lg font-semibold text-orange-800 mb-2">
+                          No Deals Match Your Factor Rate Range
+                        </h3>
+                        <p className="text-orange-700 mb-4">
+                          There are currently no deals available within your selected range of {factorRateRange[0].toFixed(2)}x - {factorRateRange[1].toFixed(2)}x.
+                        </p>
+                        <p className="text-sm text-orange-600">
+                          Try adjusting your factor rate range in the Demo Configuration above to see more deals.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                );
+              }
+              
+              return filteredDeals.map((deal, index) => {
+                const isLocked = maxDealsAllowed !== "unlimited" && index > 0;
+                
+                return (
                 <Card 
                   key={deal.id} 
                   className={`relative transition-all duration-300 hover:shadow-lg ${
@@ -588,21 +791,31 @@ export default function InvestorV1Demo() {
                     </Button>
                   </CardContent>
                 </Card>
-              );
-            })}
+                );
+              });
+            })()}
           </div>
         </div>
 
         {/* InvestoBlend Section */}
-        {isEligibleForAdvanced && (
+        {(isEligibleForAdvanced || demoMode) && (
           <div id="blend-section">
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-brand-dark mb-2">
-                InvestoBlend™ Diversified Options
-              </h2>
-              <p className="text-gray-600">
-                Prefer simplicity? Try our professionally managed blends that spread your investment across multiple deals.
-              </p>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-2xl font-bold text-brand-dark mb-2">
+                    InvestoBlend™ Diversified Options
+                  </h2>
+                  <p className="text-gray-600">
+                    Prefer simplicity? Try our professionally managed blends that spread your investment across multiple deals.
+                  </p>
+                </div>
+                {demoMode && (
+                  <Badge variant="outline" className="bg-purple-100 text-purple-800 border-purple-300">
+                    Demo Mode Active
+                  </Badge>
+                )}
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
