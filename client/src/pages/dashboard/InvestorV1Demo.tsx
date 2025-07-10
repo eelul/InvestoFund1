@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import FactorRateRiskSlider from "@/components/FactorRateRiskSlider";
 
-// Mock data for demo deals
+// Mock data for demo deals - 6 diverse investment opportunities
 const mockDeals = [
   {
     id: 1,
@@ -40,7 +40,7 @@ const mockDeals = [
     totalAmount: 125000,
     investorsJoined: 8,
     timeLeft: "2d 14h",
-    factorRate: 1.28,
+    factorRate: 1.18,
     merchantRevenue: 95000,
     underwritingScore: 92
   },
@@ -49,13 +49,13 @@ const mockDeals = [
     name: "TechStart Solutions",
     industry: "Technology",
     riskRating: "Medium",
-    estimatedReturn: 22.3,
+    estimatedReturn: 32.5,
     termDuration: 65,
     amountLeft: 142000,
     totalAmount: 180000,
     investorsJoined: 12,
     timeLeft: "4d 8h",
-    factorRate: 1.35,
+    factorRate: 1.33,
     merchantRevenue: 120000,
     underwritingScore: 87
   },
@@ -64,13 +64,13 @@ const mockDeals = [
     name: "Elite Auto Repair",
     industry: "Automotive",
     riskRating: "Low",
-    estimatedReturn: 16.8,
+    estimatedReturn: 15.2,
     termDuration: 38,
     amountLeft: 32000,
     totalAmount: 75000,
     investorsJoined: 15,
     timeLeft: "1d 6h",
-    factorRate: 1.25,
+    factorRate: 1.15,
     merchantRevenue: 85000,
     underwritingScore: 94
   },
@@ -78,8 +78,8 @@ const mockDeals = [
     id: 4,
     name: "Urban Fitness Center",
     industry: "Health & Fitness",
-    riskRating: "Medium",
-    estimatedReturn: 24.1,
+    riskRating: "High",
+    estimatedReturn: 41.8,
     termDuration: 72,
     amountLeft: 198000,
     totalAmount: 250000,
@@ -88,6 +88,36 @@ const mockDeals = [
     factorRate: 1.42,
     merchantRevenue: 140000,
     underwritingScore: 89
+  },
+  {
+    id: 5,
+    name: "Pacific Logistics Hub",
+    industry: "Transportation",
+    riskRating: "Medium",
+    estimatedReturn: 28.7,
+    termDuration: 58,
+    amountLeft: 67000,
+    totalAmount: 150000,
+    investorsJoined: 11,
+    timeLeft: "3d 22h",
+    factorRate: 1.29,
+    merchantRevenue: 185000,
+    underwritingScore: 88
+  },
+  {
+    id: 6,
+    name: "Apex Manufacturing Co",
+    industry: "Manufacturing",
+    riskRating: "High",
+    estimatedReturn: 48.2,
+    termDuration: 89,
+    amountLeft: 275000,
+    totalAmount: 350000,
+    investorsJoined: 7,
+    timeLeft: "8d 5h",
+    factorRate: 1.48,
+    merchantRevenue: 290000,
+    underwritingScore: 82
   }
 ];
 
@@ -233,6 +263,8 @@ export default function InvestorV1Demo() {
       "Technology": "bg-purple-100 text-purple-800",
       "Automotive": "bg-orange-100 text-orange-800",
       "Health & Fitness": "bg-green-100 text-green-800",
+      "Transportation": "bg-cyan-100 text-cyan-800",
+      "Manufacturing": "bg-slate-100 text-slate-800",
       "Retail": "bg-pink-100 text-pink-800"
     };
     return colors[industry as keyof typeof colors] || "bg-gray-100 text-gray-800";
