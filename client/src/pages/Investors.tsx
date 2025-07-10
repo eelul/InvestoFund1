@@ -1,4 +1,4 @@
-import { CheckCircle, DollarSign, TrendingUp, Shield, Target, BarChart3, Clock, Award, Star, ArrowRight } from "lucide-react";
+import { CheckCircle, DollarSign, TrendingUp, Shield, Target, BarChart3, Clock, Award, Star, ArrowRight, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import InvestorOnboardingForm from "@/components/forms/InvestorOnboardingForm";
