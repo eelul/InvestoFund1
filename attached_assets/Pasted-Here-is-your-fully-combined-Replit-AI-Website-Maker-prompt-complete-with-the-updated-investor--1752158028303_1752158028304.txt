@@ -1,0 +1,222 @@
+Here is your **fully combined Replit AI Website Maker prompt** — complete with the updated investor logic (no blended access or multi-deal access under \$25K), advanced dashboard toggles, onboarding behavior, legal disclosures, and responsive design specs.
+
+---
+
+### ✅ **Full Prompt for Replit AI Website Maker (Copy & Paste Ready)**
+
+````
+Create a modern, responsive, and animated Investor Dashboard Page for InvestoFund, designed for the soft launch of active funding deals in a merchant cash advance (MCA) investment platform.
+
+🧩 INTENDED USE:
+This dashboard is designed for **passive investors**. It should be intuitive, professional, and calming. Apply a fintech-style UI (light background, soft green/blue-gray palette, elegant typography, soft card shadows, and transitions).
+
+🧠 GENERAL BEHAVIOR LOGIC:
+- This page loads immediately after sign-in.
+- First-time users see onboarding prompts (disappear after completion).
+- Returning users skip onboarding, go straight to their personalized dashboard (cached state).
+- Users must **select their investment amount using a range bar**, which then limits access:
+  - **$5K–$24,999**: Can only invest in **1 live deal**, no access to blends, advanced dashboard, or analytics.
+  - **$25K+**: Full access to **all live deals**, **InvestoBlend™**, and **advanced dashboard features**.
+- All selections (range bar amount, mode toggle, view preferences) should be stored locally or represented in mocked JSON logic.
+
+💡 KEY BEHAVIOR:
+- Blurred/disabled cards appear for users with <$25K if they've already funded one deal.
+- Advanced Dashboard toggle only appears for $25K+ users.
+
+🎨 STYLING:
+- Subtle animations (CSS or GSAP) — not distracting.
+- Responsive design for desktop, tablet, and mobile.
+- Accessibility-ready and screen-reader friendly.
+- Use TailwindCSS or modern CSS grid/flexbox.
+- JS: React preferred; vanilla JS acceptable.
+- Use semantic HTML elements.
+
+---
+
+## 🧠 1. HEADER & NAVIGATION
+Sticky top bar containing:
+- InvestoFund logo (placeholder)
+- Navigation: Dashboard (active), Legal & Terms, FAQs, Contact
+- Right-side dropdown: My Account, Settings, Sign Out
+
+---
+
+## 🧩 2. DASHBOARD BODY
+
+### A. Welcome Experience
+- Full-width animated banner that disappears after 4 seconds.
+- Shows:
+  > "Welcome! Ready to fund your first deal? Let's go 🚀"
+- Then reveals onboarding card:
+  - “Set up your first funding preference”
+  - “Choose from live deals or InvestoBlend™ options” *(if eligible)*
+
+---
+
+### B. Investment Range Bar (1st login only)
+- Range: $5,000 to $250,000
+- Below the bar, dynamic note:
+  - “This amount gives access to 1 live deal.” (if <$25K)
+  - “Full platform access unlocked.” (if $25K+)
+- Value is saved to mocked user profile
+
+---
+
+### C. Live Deals Feed
+Grid layout:
+Each deal card includes:
+- Deal Name
+- Industry (colored badge)
+- Risk Rating (Low/Med/High)
+- Estimated Return %
+- Term Duration
+- Amount Left to Fund
+- Countdown Timer (grey-toned, subtle)
+- Investors Joined (e.g., "💼 12 backers")
+- CTA: [Fund Now]
+- If deal is locked (due to $<25K limits), show blurred card with message:
+  > “Add $25,000+ to unlock multiple deal access.”
+
+**[Advanced View] toggle** on each card (only if Advanced Dashboard is enabled):
+- Repayment Schedule
+- Underwriting Notes Preview
+- Documents Ready? (✔/✖)
+- Merchant Risk Profile Summary
+
+---
+
+### D. InvestoBlend™ Deal Options (Only $25K+)
+Section title: _“Prefer Simplicity? Try Our Diversified Blends”_
+
+Show 2–3 blends:
+- Conservative Blend
+- Balanced Blend
+- Aggressive Blend
+
+Each tile shows:
+- Avg Return %
+- Avg Term Duration
+- Liquidity Window
+- CTA: [Invest Now] + [View Details]
+
+**Not visible to <$25K investors**
+
+---
+
+### E. Advanced Dashboard Toggle (Only $25K+)
+If unlocked, user can toggle between:
+- Standard View: Simplified returns + deal summary
+- Advanced View:
+  - Historical deal performance
+  - Risk category breakdown
+  - Default rates by industry
+  - Estimated recoveries
+  - CSV export
+  - Auto-reinvest switch
+  - Tooltips for every term
+
+---
+
+## ⚖️ 3. LEGAL, PAYMENTS & OFFRAMPS
+Sticky footer (or side-drawer):
+- Terms & Conditions
+- Risks & Disclosures
+- Accredited Investor Form
+- Payment Processing Info
+- Withdrawal Policy
+- FAQs
+Each deal card also includes italic note:
+> _"Returns are not guaranteed. Read full disclosures before investing."_
+
+Footer disclaimer:
+> _“InvestoFund is not a bank or licensed financial advisor. All investments carry risk.”_
+
+---
+
+## 📚 4. FAQ & ONBOARDING POPUP
+Floating ❓ button (bottom right or left):
+Common questions (click expands answers):
+- How do I know which deals are real?
+- Can I exit early?
+- What’s the difference between individual and blend investing?
+- Are you regulated?
+
+---
+
+## 💾 5. MOBILE OPTIMIZATION
+- Sticky nav bar collapses for mobile
+- Deal cards convert to swipeable vertical format
+- Countdown timers become tap-to-expand icons
+- InvestoBlend tiles: tappable summaries
+
+---
+
+## 🧠 6. BACKEND MOCK LOGIC (NO API YET)
+Include placeholder logic only:
+- On “Fund Now” click:
+  - Modal pops up
+  - Select investment amount
+  - Payment Method (mocked input)
+  - Confirm
+- Save state to placeholder JSON or local state
+
+---
+
+## 🧠 7. MOCKED INVESTOR DATA LOGIC (JSON Representation)
+
+```json
+{
+  "user_profile": {
+    "first_login": true,
+    "investment_range_selected": null,
+    "max_active_deals_allowed": 1,
+    "dashboard_mode": "standard",
+    "features_unlocked": ["basic_summary"],
+    "eligible_for_blended": false,
+    "last_login": null
+  },
+  "investment_tiers": [
+    {
+      "range": "$5000-$24999",
+      "max_deals": 1,
+      "advanced_dashboard": false,
+      "features_unlocked": ["basic_summary"],
+      "blended_deal_access": false
+    },
+    {
+      "range": "$25000+",
+      "max_deals": "unlimited",
+      "advanced_dashboard": true,
+      "features_unlocked": [
+        "basic_summary",
+        "multiple_deal_tracking",
+        "advanced_dashboard",
+        "blended_deal_access",
+        "auto_reinvest",
+        "risk_metrics",
+        "csv_export"
+      ],
+      "blended_deal_access": true
+    }
+  ]
+}
+````
+
+---
+
+## 🛠 TECHNICAL SUMMARY
+
+* HTML5 / CSS3 (TailwindCSS preferred)
+* JavaScript (React preferred or clean JS)
+* Responsive grid
+* Mobile-first structure
+* Subtle animation with GSAP or CSS
+* Accessibility-compliant with semantic tags
+* Mocked deal JSON file (optional for testing UI)
+
+```
+
+---
+
+✅ Let me know if you'd like me to format this into a downloadable `.md` or `.txt` file, or to help generate a working Replit shell.
+```
