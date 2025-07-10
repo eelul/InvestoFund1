@@ -328,9 +328,14 @@ export default function InvestorV1Demo() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <Card className="w-full max-w-md">
             <CardHeader>
-              <CardTitle className="text-center">Set Up Your Investment Preference</CardTitle>
+              <CardTitle className="text-center">
+                {completedOnboarding ? "Edit Investment Amount" : "Set Up Your Investment Preference"}
+              </CardTitle>
               <p className="text-sm text-center text-gray-600 mt-2">
-                Choose your investment amount to unlock platform features
+                {completedOnboarding 
+                  ? "Adjust your available balance for demo testing (up to $500,000)"
+                  : "Choose your investment amount to unlock platform features"
+                }
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -341,7 +346,7 @@ export default function InvestorV1Demo() {
                 <Slider
                   value={investmentAmount}
                   onValueChange={setInvestmentAmount}
-                  max={250000}
+                  max={500000}
                   min={5000}
                   step={1000}
                   className="w-full"
@@ -351,7 +356,7 @@ export default function InvestorV1Demo() {
                   <span className="font-medium text-lg text-brand-dark">
                     ${investmentAmount[0].toLocaleString()}
                   </span>
-                  <span>$250,000</span>
+                  <span>$500,000</span>
                 </div>
               </div>
 
@@ -373,7 +378,7 @@ export default function InvestorV1Demo() {
                   onClick={handleOnboardingComplete}
                   className="w-full bg-brand-blue hover:bg-blue-600"
                 >
-                  Continue to Dashboard
+                  {completedOnboarding ? "Update Balance" : "Continue to Dashboard"}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
@@ -449,13 +454,22 @@ export default function InvestorV1Demo() {
       <main className="container mx-auto px-4 py-8 space-y-8">
         {/* Portfolio Summary */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card>
+          <Card 
+            className="cursor-pointer hover:shadow-lg transition-shadow duration-200 border-2 border-transparent hover:border-blue-200"
+            onClick={() => setShowOnboarding(true)}
+          >
             <CardContent className="p-6">
-              <div className="flex items-center space-x-2">
-                <DollarSign className="w-5 h-5 text-green-600" />
-                <div>
-                  <p className="text-sm text-gray-600">Available Balance</p>
-                  <p className="text-2xl font-bold">${investmentAmount[0].toLocaleString()}</p>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <DollarSign className="w-5 h-5 text-green-600" />
+                  <div>
+                    <p className="text-sm text-gray-600">Available Balance</p>
+                    <p className="text-2xl font-bold">${investmentAmount[0].toLocaleString()}</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-1 text-xs text-gray-500">
+                  <Settings className="w-3 h-3" />
+                  <span>Edit</span>
                 </div>
               </div>
             </CardContent>
@@ -521,7 +535,7 @@ export default function InvestorV1Demo() {
                 <Slider
                   value={investmentAmount}
                   onValueChange={setInvestmentAmount}
-                  max={250000}
+                  max={500000}
                   min={5000}
                   step={1000}
                   className="w-full"
@@ -531,7 +545,7 @@ export default function InvestorV1Demo() {
                   <span className="font-medium text-lg text-brand-dark">
                     ${investmentAmount[0].toLocaleString()}
                   </span>
-                  <span>$250,000</span>
+                  <span>$500,000</span>
                 </div>
               </div>
 
