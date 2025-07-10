@@ -174,7 +174,7 @@ export default function FactorRateRiskSlider({
               min={1.15}
               max={1.49}
               step={0.01}
-              className={`w-full ${zone.sliderColor}`}
+              className={`w-full dual-range-slider ${zone.sliderColor}`}
             />
             <div className="flex justify-between text-xs text-brand-gray">
               <span>1.15x (Conservative)</span>
