@@ -5,13 +5,13 @@ import { Badge } from '@/components/ui/badge';
 import { AlertCircle, TrendingUp, Shield, Target } from 'lucide-react';
 
 interface FactorRateRiskSliderProps {
-  value: number;
-  onChange: (value: number) => void;
+  value: [number, number];
+  onChange: (value: [number, number]) => void;
   onRiskDataChange?: (riskData: RiskData) => void;
 }
 
 interface RiskData {
-  selectedRate: number;
+  selectedRange: [number, number];
   riskBand: string;
   color: string;
   notes: string;
@@ -22,12 +22,13 @@ export default function FactorRateRiskSlider({
   onChange, 
   onRiskDataChange 
 }: FactorRateRiskSliderProps) {
-  const [currentValue, setCurrentValue] = useState(value);
+  const [currentRange, setCurrentRange] = useState(value);
   const [animationClass, setAnimationClass] = useState('');
 
-  // Determine risk zone based on factor rate
-  const getRiskZone = (rate: number) => {
-    if (rate >= 1.15 && rate <= 1.24) {
+  // Determine risk zone based on factor rate range (using midpoint)
+  const getRiskZone = (range: [number, number]) => {
+    const midpoint = (range[0] + range[1]) / 2;
+    if (midpoint >= 1.15 && midpoint <= 1.24) {
       return {
         level: 'Low',
         color: 'green',
@@ -38,7 +39,7 @@ export default function FactorRateRiskSlider({
         icon: Shield,
         animation: 'animate-pulse'
       };
-    } else if (rate >= 1.25 && rate <= 1.38) {
+    } else if (midpoint >= 1.25 && midpoint <= 1.38) {
       return {
         level: 'Medium',
         color: 'orange',
@@ -63,11 +64,12 @@ export default function FactorRateRiskSlider({
     }
   };
 
-  const zone = getRiskZone(currentValue);
+  const zone = getRiskZone(currentRange);
 
   // Get risk prompt content
-  const getRiskPrompt = (rate: number) => {
-    if (rate >= 1.15 && rate <= 1.24) {
+  const getRiskPrompt = (range: [number, number]) => {
+    const midpoint = (range[0] + range[1]) / 2;
+    if (midpoint >= 1.15 && midpoint <= 1.24) {
       return {
         title: "🟢 You've selected a Conservative Risk Strategy",
         subtitle: "Expect lower yield, slower deal flow, but more stable merchant profiles.",
@@ -84,7 +86,7 @@ export default function FactorRateRiskSlider({
           "Limited growth potential"
         ]
       };
-    } else if (rate >= 1.25 && rate <= 1.38) {
+    } else if (midpoint >= 1.25 && midpoint <= 1.38) {
       return {
         title: "🟠 You've selected a Balanced Risk Strategy",
         subtitle: "This tier aims to deliver stronger returns while maintaining underwriting standards.",
@@ -121,14 +123,14 @@ export default function FactorRateRiskSlider({
     }
   };
 
-  const prompt = getRiskPrompt(currentValue);
+  const prompt = getRiskPrompt(currentRange);
   const IconComponent = zone.icon;
 
   // Handle value change
   const handleValueChange = (newValue: number[]) => {
-    const rate = newValue[0];
-    setCurrentValue(rate);
-    onChange(rate);
+    const range: [number, number] = [newValue[0], newValue[1]];
+    setCurrentRange(range);
+    onChange(range);
     
     // Trigger animation
     setAnimationClass(zone.animation);
@@ -137,10 +139,10 @@ export default function FactorRateRiskSlider({
     // Send risk data to parent if callback provided
     if (onRiskDataChange) {
       onRiskDataChange({
-        selectedRate: rate,
+        selectedRange: range,
         riskBand: zone.level,
         color: zone.color,
-        notes: `${zone.level} Risk Strategy`
+        notes: `${zone.level} Risk Strategy (${range[0].toFixed(2)}x - ${range[1].toFixed(2)}x)`
       });
     }
   };
@@ -163,11 +165,11 @@ export default function FactorRateRiskSlider({
             <div className="flex justify-between items-center">
               <span className="text-sm text-brand-gray">Factor Rate Range</span>
               <span className="text-lg font-bold text-brand-dark">
-                {currentValue.toFixed(2)}x
+                {currentRange[0].toFixed(2)}x - {currentRange[1].toFixed(2)}x
               </span>
             </div>
             <Slider
-              value={[currentValue]}
+              value={currentRange}
               onValueChange={handleValueChange}
               min={1.15}
               max={1.49}
@@ -234,7 +236,7 @@ export default function FactorRateRiskSlider({
               <div className="flex items-center space-x-2">
                 <AlertCircle className={`w-4 h-4 ${zone.textColor}`} />
                 <span className={`text-sm font-medium ${zone.textColor}`}>
-                  Selected Strategy: {zone.level} Risk ({currentValue.toFixed(2)}x factor rate)
+                  Selected Strategy: {zone.level} Risk ({currentRange[0].toFixed(2)}x - {currentRange[1].toFixed(2)}x factor rate range)
                 </span>
               </div>
               <p className="text-xs text-brand-gray mt-1">

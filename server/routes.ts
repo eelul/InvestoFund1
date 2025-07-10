@@ -63,7 +63,7 @@ const consoleEmailService = {
   },
   async sendWelcomeEmail(options: any) {
     const riskInfo = options.riskPreference ? 
-      ` - Risk Strategy: ${options.riskPreference.riskBand} (${options.riskPreference.selectedRate.toFixed(2)}x factor rate)` : '';
+      ` - Risk Strategy: ${options.riskPreference.riskBand} (${options.riskPreference.selectedRange[0].toFixed(2)}x - ${options.riskPreference.selectedRange[1].toFixed(2)}x factor rate range)` : '';
     console.log(`📧 Welcome email sent to ${options.email} for ${options.firstName} (${options.userType})${riskInfo}`);
     return { success: true };
   },

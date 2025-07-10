@@ -79,7 +79,7 @@ export class EmailService {
     lastName: string;
     userType: 'investor' | 'iso' | 'merchant';
     riskPreference?: {
-      selectedRate: number;
+      selectedRange: [number, number];
       riskBand: string;
       color: string;
       notes: string;
@@ -254,7 +254,7 @@ export class EmailService {
                     <strong>Risk Level:</strong> ${riskPreference.riskBand} Risk Strategy
                 </p>
                 <p style="color: #666; margin-bottom: 10px;">
-                    <strong>Factor Rate Preference:</strong> ${riskPreference.selectedRate.toFixed(2)}x
+                    <strong>Factor Rate Preference:</strong> ${riskPreference.selectedRange[0].toFixed(2)}x - ${riskPreference.selectedRange[1].toFixed(2)}x
                 </p>
                 <p style="color: #666; margin-bottom: 0;">
                     We'll prioritize deals within your approved range and notify you as opportunities align. 

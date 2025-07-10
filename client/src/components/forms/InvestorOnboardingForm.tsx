@@ -30,7 +30,7 @@ const formSchema = z.object({
   accreditedStatus: z.boolean().optional(),
   documentsAgreed: z.boolean().refine(val => val === true, "Document agreement required"),
   riskPreference: z.object({
-    selectedRate: z.number(),
+    selectedRange: z.tuple([z.number(), z.number()]),
     riskBand: z.string(),
     color: z.string(),
     notes: z.string()
@@ -49,7 +49,7 @@ function InvestorForm() {
   const [signatureCompleted, setSignatureCompleted] = useState(false);
   const [applicationData, setApplicationData] = useState<any>(null);
   const [riskPreference, setRiskPreference] = useState({
-    selectedRate: 1.32,
+    selectedRange: [1.25, 1.40] as [number, number],
     riskBand: "Medium",
     color: "orange",
     notes: "Balanced Risk Strategy"
@@ -120,7 +120,7 @@ function InvestorForm() {
       accreditedStatus: false,
       documentsAgreed: false,
       riskPreference: {
-        selectedRate: 1.32,
+        selectedRange: [1.25, 1.40] as [number, number],
         riskBand: "Medium",
         color: "orange",
         notes: "Balanced Risk Strategy"
@@ -351,7 +351,7 @@ function InvestorForm() {
         const { firstName, lastName, email, phone } = form.getValues();
         return firstName && lastName && email && phone;
       case 3:
-        return form.getValues("documentsAgreed") && riskPreference.selectedRate;
+        return form.getValues("documentsAgreed") && riskPreference.selectedRange;
       case 4:
         return true; // Review step
       default:
@@ -369,7 +369,7 @@ function InvestorForm() {
       ...prev,
       [currentStep]: isCurrentStepValid
     }));
-  }, [currentStep, form.watch("firstName"), form.watch("lastName"), form.watch("email"), form.watch("phone"), form.watch("documentsAgreed"), riskPreference.selectedRate]);
+  }, [currentStep, form.watch("firstName"), form.watch("lastName"), form.watch("email"), form.watch("phone"), form.watch("documentsAgreed"), riskPreference.selectedRange]);
 
   return (
     <Form {...form}>
@@ -581,13 +581,14 @@ function InvestorForm() {
                     <FormItem>
                       <FormControl>
                         <FactorRateRiskSlider
-                          value={riskPreference.selectedRate}
-                          onChange={(value) => {
+                          value={riskPreference.selectedRange}
+                          onChange={(range) => {
+                            const midpoint = (range[0] + range[1]) / 2;
                             const newRiskPreference = {
-                              selectedRate: value,
-                              riskBand: value <= 1.24 ? "Low" : value <= 1.38 ? "Medium" : "High",
-                              color: value <= 1.24 ? "green" : value <= 1.38 ? "orange" : "red",
-                              notes: `${value <= 1.24 ? "Conservative" : value <= 1.38 ? "Balanced" : "Aggressive"} Risk Strategy`
+                              selectedRange: range,
+                              riskBand: midpoint <= 1.24 ? "Low" : midpoint <= 1.38 ? "Medium" : "High",
+                              color: midpoint <= 1.24 ? "green" : midpoint <= 1.38 ? "orange" : "red",
+                              notes: `${midpoint <= 1.24 ? "Conservative" : midpoint <= 1.38 ? "Balanced" : "Aggressive"} Risk Strategy (${range[0].toFixed(2)}x - ${range[1].toFixed(2)}x)`
                             };
                             setRiskPreference(newRiskPreference);
                             field.onChange(newRiskPreference);
@@ -711,7 +712,7 @@ function InvestorForm() {
                       <p>Type: {form.watch("investmentType") === "single" ? "Direct Deal Participation" : "Portfolio Blend"}</p>
                       <p>Amount: {formatCurrency(form.watch("investmentAmount"))}</p>
                       <p>Accredited: {form.watch("accreditedStatus") ? "Yes" : "No"}</p>
-                      <p>Risk Strategy: {riskPreference.riskBand} Risk ({riskPreference.selectedRate.toFixed(2)}x factor rate)</p>
+                      <p>Risk Strategy: {riskPreference.riskBand} Risk ({riskPreference.selectedRange[0].toFixed(2)}x - {riskPreference.selectedRange[1].toFixed(2)}x factor rate range)</p>
                     </div>
                   </div>
                 </div>
