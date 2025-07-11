@@ -520,7 +520,20 @@ export default function InvestoScore() {
 
                   <Button 
                     className="w-full bg-blue-600 hover:bg-blue-700"
-                    onClick={() => window.location.href = '/merchant-application'}
+                    onClick={() => {
+                      const params = new URLSearchParams({
+                        businessName: businessName || '',
+                        industry: industry || '',
+                        monthlyRevenue: detailedRevenue[0].toString(),
+                        timeInBusiness: detailedTime[0].toString(),
+                        creditScore: detailedCredit[0].toString(),
+                        bankBalance: bankBalance[0].toString(),
+                        paymentHistory: paymentHistory || '',
+                        documentation: documentation.toString(),
+                        investoScore: currentScore.toString()
+                      });
+                      window.location.href = `/merchant-application?${params.toString()}`;
+                    }}
                   >
                     Apply for Funding with This Score
                     <ArrowRight className="w-4 h-4 ml-2" />
