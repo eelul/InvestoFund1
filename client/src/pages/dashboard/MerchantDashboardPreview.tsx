@@ -89,7 +89,11 @@ export default function MerchantDashboardPreview() {
                 Apply for Funding
               </Button>
             </Link>
-            <Button variant="outline" className="border-blue-200 text-blue-700 hover:bg-blue-50">
+            <Button 
+              variant="outline" 
+              className="border-blue-200 text-blue-700 hover:bg-blue-50"
+              onClick={() => window.location.href = '/merchant-dashboard-learn-more'}
+            >
               Learn More
             </Button>
           </div>

@@ -1,0 +1,107 @@
+Perfect — here's the **updated Replit AI Website Maker prompt** with everything, including instructions for **interactive sliders**, **animated transitions**, and an **engaging, intelligent experience** tailored to your **InvestoFund merchant Learn More page**.
+
+---
+
+### ✅ Replit AI Prompt: "Merchant Learn More" Page for InvestoFund
+
+> **Prompt for Replit AI Website Maker:**
+
+Build a modern, responsive, and professional **"Learn More" page** for merchants on the **InvestoFund** platform. This page will explain how InvestoFund provides fast, structured, and transparent funding to business owners, while highlighting the benefits of building long-term capital relationships through the platform.
+
+---
+
+### 🧩 Design & Layout:
+
+* **Fintech design style** (white/light background, soft green and blue-gray accents, smooth cards, rounded corners)
+* **Sticky top navigation bar** with smooth scroll to jump to key sections
+* **Elegant, readable typography** (like Inter or Open Sans)
+* Sections should appear with **animated fade-in or slide-up effects** as the user scrolls
+* Include **a large "Apply Now" button** at multiple points throughout the page
+* Use **interactive sliders or reveal sections** for client engagement (see below)
+
+---
+
+### 📚 Page Sections to Include (In Order):
+
+1. **Headline Block**
+
+   * Title: “InvestoFund for Merchants”
+   * Subtitle: “Real Capital. Real Relationships. Real Fast.”
+   * Short intro paragraph about funding that’s fast, structured, and built for real business needs.
+
+2. **Timing, Trust, and Traction Block**
+
+   * Use a short story-style card: “48 hours can change everything…”
+   * Add visual cue or subtle animated background here for attention
+
+3. **What Makes InvestoFund Different**
+
+   * Grid layout with icons or sliders for:
+
+     * Direct capital (not brokered)
+     * Customized structures
+     * Fast approvals
+     * Clear repayment terms
+
+4. **InvestoScore™ Section**
+
+   * Include visual of a score meter
+   * Add short CTA block:
+
+     > “Get your InvestoScore™ today — and unlock faster approvals, better terms, and long-term funding relationships.”
+   * Add animated chart or number counter for merchant score progression if possible
+
+5. **Interactive Funding Options Slider**
+
+   * Horizontal or tabbed slider to preview different funding types:
+
+     * Revenue-Based Advance
+     * SBA 7(a) Loan Prep
+     * Equipment Capital
+     * MCA (only when aligned)
+   * Include icons or card layouts with dynamic reveal
+
+6. **What’s Needed to Apply**
+
+   * Checklist style layout (clean, visual)
+   * Smooth animation for each item when scrolled into view
+
+7. **Real Merchant Story: Bob’s Journey**
+
+   * Use a testimonial-style section with a portrait or icon of Bob
+   * Add storytelling copy block in a bordered card
+   * Optional: slider to expand and read full story
+
+8. **How It Works – Step-by-Step Flow**
+
+   * Visual horizontal or vertical timeline
+   * Subtle hover/animated transitions for each step:
+
+     1. Submit Documents
+     2. Receive Offers
+     3. Select Terms
+     4. Sign
+     5. Funded
+
+9. **Final CTA Block**
+
+   * Strong closing CTA:
+
+     > “Ready to get started? Begin your application, receive your InvestoScore™, and explore tailored offers in minutes.”
+   * Button: **\[Apply Now – No Obligation]**
+
+---
+
+### 🎯 Advanced Functionality:
+
+* Use **Replit’s interactive tools and frontend logic** to enable:
+
+  * Animated sliders for funding products
+  * Interactive InvestoScore meter or calculator
+  * Scroll-triggered CTA banners
+  * Dynamic transitions between sections
+* Ensure **smooth page transitions** and minimal clutter for a fast, optimized merchant experience
+
+---
+
+Let me know when you're ready to run this in Replit or if you'd like a preview mockup or Notion draft to organize your visual feedback.
