@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage-lite";
-import { DOCUMENT_TEMPLATES, getDocumentById, getDocumentsByCategory, personalizeDocument } from "@shared/documents";
+import { legalDocuments, generateDocument, getDocumentsByCategory, getAllDocuments } from "@shared/documents";
 import { z } from "zod";
 
 // Simple validation schemas
@@ -428,7 +428,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Document template endpoints
   app.get("/api/documents/templates", async (req, res) => {
     try {
-      res.json(DOCUMENT_TEMPLATES);
+      res.json(legalDocuments);
     } catch (error: any) {
       res.status(500).json({ message: error.message });
     }
@@ -445,7 +445,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/documents/templates/:id", async (req, res) => {
     try {
-      const document = getDocumentById(req.params.id);
+      const document = legalDocuments.find(doc => doc.id === req.params.id);
       if (!document) {
         return res.status(404).json({ message: "Document not found" });
       }

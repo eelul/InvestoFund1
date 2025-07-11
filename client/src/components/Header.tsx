@@ -18,6 +18,7 @@ export default function Header() {
     { href: "/brokers", label: "For ISOs & Brokers" },
     { href: "/merchants", label: "For Merchants" },
     { href: "/contact", label: "Contact" },
+    { href: "/legal-documents", label: "Legal Documents" },
   ];
 
   const closeSheet = () => setIsOpen(false);

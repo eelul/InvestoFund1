@@ -38,6 +38,7 @@ import BrokerPortal from "@/pages/dashboard/BrokerPortal";
 import BrokerDashboardPreview from "@/pages/dashboard/BrokerDashboardPreview";
 import MerchantDashboardPreview from "@/pages/dashboard/MerchantDashboardPreview";
 import InvestorV1Demo from "@/pages/dashboard/InvestorV1Demo";
+import LegalDocuments from "@/pages/LegalDocuments";
 
 function Router() {
   return (
@@ -62,6 +63,7 @@ function Router() {
         <Route path="/dashboard/broker-preview" component={BrokerDashboardPreview} />
         <Route path="/dashboard/merchant-preview" component={MerchantDashboardPreview} />
         <Route path="/dashboard/investor-v1-demo" component={InvestorV1Demo} />
+        <Route path="/legal-documents" component={LegalDocuments} />
         <Route path="/iso-tools" component={ISOTools} />
         <Route path="/iso-training" component={ISOTraining} />
         <Route path="/admin" component={Admin} />

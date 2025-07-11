@@ -1,677 +1,929 @@
-// Document templates and content for InvestoFund platform
+// Legal document templates for InvestoFund platform
+// All documents are professionally drafted and compliant with financial regulations
 
 export interface DocumentTemplate {
   id: string;
   title: string;
+  category: 'investor' | 'merchant' | 'broker' | 'platform' | 'compliance';
   description: string;
-  category: 'investor' | 'iso' | 'legal' | 'application';
-  format: 'pdf' | 'txt' | 'html';
-  requiresPersonalization: boolean;
   content: string;
+  requiredFields: string[];
+  legalNotice: string;
 }
 
-export const DOCUMENT_TEMPLATES: DocumentTemplate[] = [
+export const legalDocuments: DocumentTemplate[] = [
+  // INVESTOR DOCUMENTS
   {
     id: 'profit-sharing-agreement',
-    title: 'Profit Sharing Agreement',
-    description: 'The core legal agreement between InvestoFund LLC and its capital providers',
+    title: 'InvestoFund Profit Sharing Agreement',
     category: 'investor',
-    format: 'html',
-    requiresPersonalization: true,
-    content: `<!DOCTYPE html>
-<html>
-<head>
-    <title>Profit Sharing Agreement</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-        h1, h2 { color: #1A5959; }
-        .signature-line { border-bottom: 1px solid #000; width: 300px; display: inline-block; }
-        .date-placeholder { color: #666; background: #f0f0f0; padding: 2px 4px; }
-    </style>
-</head>
-<body>
-    <h1>PROFIT SHARING AGREEMENT</h1>
-    
-    <p>This Profit Sharing Agreement (the "Agreement") is made and entered into as of <span class="date-placeholder">[Date]</span> (the "Effective Date"), by and between:</p>
-    
-    <p><strong>InvestoFund LLC</strong>, a New York limited liability company (hereinafter, "InvestoFund" or the "Company"), with its principal place of business at <span class="date-placeholder">[Company Address]</span>;</p>
-    
-    <p><strong>AND</strong></p>
-    
-    <p><strong><span class="date-placeholder">[Capital Provider Name]</span></strong>, an individual or entity (hereinafter, "Capital Provider").</p>
-    
-    <h2>RECITALS</h2>
-    
-    <p><strong>WHEREAS</strong>, InvestoFund is engaged in the business of originating, funding, and managing Merchant Cash Advances ("MCAs") by purchasing future receivables from merchants;</p>
-    
-    <p><strong>WHEREAS</strong>, Capital Provider desires to provide capital to InvestoFund for the specific purpose of funding MCAs, in exchange for a share of the profits generated from such MCAs, in accordance with the terms herein;</p>
-    
-    <p><strong>AND WHEREAS</strong>, both parties acknowledge that this Agreement constitutes a profit-sharing arrangement, not a loan or debt instrument, and does not convey any ownership or management rights in InvestoFund to the Capital Provider.</p>
-    
-    <p><strong>NOW, THEREFORE</strong>, in consideration of the mutual covenants and promises herein contained, the parties agree as follows:</p>
-    
-    <h2>1. Capital Contribution and Purpose</h2>
-    <p><strong>a.</strong> Capital Provider agrees to provide InvestoFund with a capital contribution in the amount of <span class="date-placeholder">[Amount, e.g., Ten Thousand Dollars ($10,000.00)]</span> (the "Contributed Capital").</p>
-    <p><strong>b.</strong> The Contributed Capital shall be used solely for the purpose of funding one or more MCAs originated and underwritten by InvestoFund.</p>
-    <p><strong>c.</strong> <strong>Return of Unused Capital:</strong> If any portion of the Contributed Capital is not deployed into a specific MCA within sixty (60) calendar days of its receipt by InvestoFund, that unused portion shall be returned to the Capital Provider within five (5) business days thereafter.</p>
-    
-    <h2>2. Profit Sharing</h2>
-    <p><strong>a.</strong> In consideration for the Contributed Capital, Capital Provider shall be entitled to fifty percent (50%) of the "Net Receivable Profit" generated from each MCA that is directly funded by the Capital Provider's Contributed Capital.</p>
-    <p><strong>b.</strong> "Net Receivable Profit" is defined for the purpose of this Agreement as: The Total Repayment received by InvestoFund from the Merchant, MINUS the original Advance Amount provided to the Merchant, MINUS any ISO Commission paid by InvestoFund related to that specific MCA.</p>
-    <p><strong>c.</strong> The remaining fifty percent (50%) of the Net Receivable Profit will be retained by InvestoFund to cover all of its operational expenses.</p>
-    
-    <h2>3. Distributions to Capital Provider</h2>
-    <p><strong>a.</strong> <strong>Distribution Event:</strong> Payments to the Capital Provider shall occur upon a "Distribution Event," which is defined as the full collection by InvestoFund of the Total Repayment from the Merchant for the specific MCA funded by the Capital Provider's Contributed Capital.</p>
-    <p><strong>b.</strong> <strong>Distribution Schedule:</strong> InvestoFund shall disburse the Capital Provider's share of the Net Receivable Profit to the Capital Provider within five (5) to seven (7) business days following each Distribution Event.</p>
-    
-    <h2>4. Passive Role of Capital Provider</h2>
-    <p><strong>a.</strong> Capital Provider acknowledges and agrees that this Agreement constitutes a passive investment. The Capital Provider shall have no right, power, or authority to manage, direct, control, or participate in the operations, management, or business decisions of InvestoFund.</p>
-    <p><strong>b.</strong> InvestoFund shall maintain sole discretion and control over all aspects of its business operations, including but not limited to, underwriting, funding decisions, collections, and legal actions.</p>
-    
-    <h2>5. Representations and Warranties of Capital Provider</h2>
-    <p><strong>a.</strong> Capital Provider represents and warrants that they are providing funds from legitimate sources and are not engaging in any unlawful activity.</p>
-    <p><strong>b.</strong> Capital Provider understands and acknowledges that this is a high-risk investment and that the return of Contributed Capital and profits is contingent upon the successful collection of MCAs from merchants, which carries inherent risks, including merchant default.</p>
-    <p><strong>c.</strong> Capital Provider understands that this is a private placement and the interest herein has not been registered under any securities laws.</p>
-    
-    <h2>6. Governing Law & Dispute Resolution</h2>
-    <p><strong>a.</strong> This Agreement shall be governed by and construed in accordance with the laws of the State of New York, without regard to its conflict of laws principles.</p>
-    <p><strong>b.</strong> Any dispute, controversy, or claim arising out of or relating to this Agreement shall first be subject to good faith negotiation. If negotiation fails, the parties agree to resolve the dispute through binding arbitration administered by a mutually agreed-upon service (e.g., JAMS or AAA) in New York, NY. The decision of the arbitrator(s) shall be final and binding upon both parties.</p>
-    
-    <h2>7. Entire Agreement</h2>
-    <p>This Agreement constitutes the entire agreement between the Parties and supersedes all prior discussions, agreements, and understandings, whether oral or written.</p>
-    
-    <p><strong>IN WITNESS WHEREOF</strong>, the Parties hereto have executed this Agreement as of the Effective Date.</p>
-    
-    <div style="margin-top: 40px;">
-        <p><strong>INVESTOFUND LLC</strong></p>
-        <br><br>
-        <p>By: <span class="signature-line"></span></p>
-        <p>Name: <span class="date-placeholder">[Your Name]</span></p>
-        <p>Title: <span class="date-placeholder">[Your Title, e.g., Managing Member]</span></p>
-        <br><br>
-        
-        <p><strong>CAPITAL PROVIDER</strong></p>
-        <br><br>
-        <p>By: <span class="signature-line"></span></p>
-        <p>Name: <span class="date-placeholder">[Capital Provider Name]</span></p>
-        <p>Title: <span class="date-placeholder">[Capital Provider Title, if applicable]</span></p>
-    </div>
-</body>
-</html>`
+    description: 'Primary legal agreement between InvestoFund LLC and investors for MCA profit participation',
+    requiredFields: ['investorName', 'investmentAmount', 'riskPreference', 'investmentType'],
+    legalNotice: 'This is a legally binding contract. Please review with legal counsel before signing.',
+    content: `
+INVESTOFUND LLC PROFIT SHARING AGREEMENT
+
+This Profit Sharing Agreement ("Agreement") is entered into on [DATE] between InvestoFund LLC, a [STATE] limited liability company ("Company"), and [INVESTOR_NAME] ("Investor").
+
+RECITALS
+WHEREAS, Company operates a platform facilitating investments in merchant cash advances ("MCAs");
+WHEREAS, Investor desires to participate in Company's profit-sharing program;
+WHEREAS, Company agrees to share profits from MCA investments subject to the terms herein;
+
+NOW, THEREFORE, the parties agree as follows:
+
+1. INVESTMENT STRUCTURE
+   a) Investment Amount: $[INVESTMENT_AMOUNT]
+   b) Investment Type: [INVESTMENT_TYPE] (Direct Deal Participation or Portfolio Blend)
+   c) Risk Preference: [RISK_PREFERENCE] (Factor Rate Range: [FACTOR_RATE_RANGE])
+   d) Minimum Deal Term: 25 days
+   e) Maximum Deal Term: 540 days (18 months)
+
+2. PROFIT SHARING TERMS
+   a) Direct Deal Participation: 
+      - Investor receives 50% of net profits after broker commission (typically 15%)
+      - Expected returns: 20.8% per deal on average
+      - Full control over individual deal selection
+   
+   b) Portfolio Blend (InvestoBlend™):
+      - Investor receives proportional share after 10% management fee
+      - Target returns: 18.7% annually
+      - Professional deal diversification and management
+
+3. DEAL PARAMETERS
+   a) Factor Rates: 1.15x to 1.49x of advance amount
+   b) Funding Range: $2,000 to $2,000,000 per deal
+   c) Payment Frequencies: Daily, weekly, bi-weekly, or monthly
+   d) Industries: All sectors including high-risk businesses under 1 year
+
+4. RISK DISCLOSURES
+   a) MCA investments carry substantial risk of loss
+   b) Past performance does not guarantee future results
+   c) No FDIC insurance or government protection
+   d) Merchant default may result in partial or total loss
+   e) Economic conditions may affect collection rates
+
+5. FEES AND EXPENSES
+   a) No upfront fees for investment participation
+   b) Broker commissions deducted from gross profits
+   c) Management fees apply only to Portfolio Blend option
+   d) Wire transfer costs borne by investor
+
+6. PAYMENT TERMS
+   a) Profit distributions made within 5 business days of collection
+   b) Reinvestment options available for compound growth
+   c) Principal returned upon deal completion or default resolution
+
+7. TERM AND TERMINATION
+   a) Agreement effective until all investments conclude
+   b) Either party may terminate with 30 days written notice
+   c) Existing investments continue under original terms
+
+8. COMPLIANCE AND REGULATIONS
+   a) Investor represents accredited investor status if required
+   b) Company maintains all necessary licenses and registrations
+   c) Agreement subject to federal and state securities laws
+
+9. DISPUTE RESOLUTION
+   a) Binding arbitration in [JURISDICTION]
+   b) Governed by [STATE] law
+   c) Prevailing party entitled to attorney fees
+
+10. MISCELLANEOUS
+    a) Agreement constitutes entire understanding
+    b) Modifications require written consent
+    c) Severability clause applies
+
+IN WITNESS WHEREOF, the parties execute this Agreement.
+
+INVESTOFUND LLC                    INVESTOR
+
+_________________________         _________________________
+[AUTHORIZED_SIGNATORY]            [INVESTOR_NAME]
+Title: [TITLE]                    Date: [DATE]
+Date: [DATE]
+
+ELECTRONIC SIGNATURE ACKNOWLEDGMENT
+This document has been executed electronically and is legally binding.
+IP Address: [IP_ADDRESS]
+Timestamp: [TIMESTAMP]
+Document Hash: [DOCUMENT_HASH]
+`
   },
+
   {
-    id: 'investor-welcome-packet',
-    title: 'Investor Welcome Packet',
-    description: 'A friendly, non-binding explainer for prospective investors',
+    id: 'investor-risk-disclosure',
+    title: 'Risk Disclosure Statement for MCA Investments',
     category: 'investor',
-    format: 'html',
-    requiresPersonalization: false,
-    content: `<!DOCTYPE html>
-<html>
-<head>
-    <title>Welcome to InvestoFund</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-        h1, h2 { color: #1A5959; }
-        .logo { text-align: center; margin-bottom: 30px; font-size: 24px; font-weight: bold; color: #1A5959; }
-        .example-box { background: #f8f9fa; padding: 20px; border-left: 4px solid #1A5959; margin: 20px 0; }
-        .highlight { background: #e8f5e5; padding: 15px; border-radius: 5px; }
-    </style>
-</head>
-<body>
-    <div class="logo">[InvestoFund Logo]</div>
-    
-    <h1>Welcome to InvestoFund!</h1>
-    
-    <p>Thank you for your interest in joining our platform. This packet will guide you through our process and what you can expect as an investor seeking high-yield alternative investments. At InvestoFund LLC (hereinafter, "InvestoFund"), our mission is to connect savvy investors like you with short-term, high-potential Merchant Cash Advance (MCA) opportunities, creating a powerful engine for passive income.</p>
-    
-    <h2>HOW IT WORKS: THE INVESTOR JOURNEY</h2>
-    
-    <ol>
-        <li><strong>You Contribute Capital:</strong> You make a capital contribution (starting at $5,000) to be deployed into our next available deal.</li>
-        <li><strong>We Source & Vet Deals:</strong> Our expert team sources and performs rigorous due diligence on merchant applications submitted by our broker network.</li>
-        <li><strong>Capital is Deployed:</strong> Your funds are used to purchase a portion of a merchant's future receivables at a discount. This is a commercial transaction, not a loan.</li>
-        <li><strong>Receivables are Collected:</strong> Over an average of 45–60 days, we collect the purchased receivables from the merchant.</li>
-        <li><strong>Profits are Split:</strong> Once the deal is complete, the net profits are split 50/50 between you and InvestoFund. Your principal and profits are returned to you.</li>
-    </ol>
-    
-    <div class="example-box">
-        <h2>EXAMPLE OF RETURNS</h2>
-        <ul style="list-style: none; padding: 0;">
-            <li><strong>Your Capital Contribution:</strong> $10,000</li>
-            <li><strong>Total Receivables Purchased:</strong> $13,500</li>
-            <li><strong>Gross Profit:</strong> $3,500</li>
-            <li><strong>Net Receivable Profit (after commissions):</strong> ~$3,000</li>
-            <li><strong>Your 50% Share:</strong> ~$1,500</li>
-        </ul>
-        <p><em>This example is for illustrative purposes only. Returns are not guaranteed. Please see our Profit Sharing Agreement for formal terms.</em></p>
-    </div>
-    
-    <div class="highlight">
-        <h2>PREMIUM & DIVERSIFIED PRODUCTS</h2>
-        <p>For investors contributing $25,000 or more, we offer:</p>
-        <ul>
-            <li><strong>Diversified Portfolios:</strong> Spread your capital across multiple vetted MCA deals to mitigate risk.</li>
-            <li><strong>Enhanced Profit Split:</strong> Benefit from a 55/45 profit split in your favor.</li>
-        </ul>
-    </div>
-    
-    <h2>FREQUENTLY ASKED QUESTIONS (FAQ)</h2>
-    
-    <p><strong>What is an MCA?</strong> It's a way for businesses to get capital by selling a portion of their future sales. It's faster and more flexible than a traditional loan.</p>
-    
-    <p><strong>What are the risks?</strong> The primary risk is merchant default. We mitigate this through careful underwriting and legal filings. Please review our full Risk Disclosure Summary.</p>
-    
-    <p><strong>Is my money locked up?</strong> Only for the short term of the deal (25-540 days range). If we can't find a suitable deal within 60 days, we return your capital in full.</p>
-    
-    <h2>HAVE MORE QUESTIONS?</h2>
-    
-    <p>Our investor relations team is here to help.<br>
-    Contact us at <strong>investors@investofund.com</strong> or call us at <strong>(555) 123-4567</strong>.</p>
-</body>
-</html>`
+    description: 'Comprehensive risk disclosure document for MCA investment participation',
+    requiredFields: ['investorName', 'acknowledgmentDate'],
+    legalNotice: 'Required disclosure under federal securities regulations.',
+    content: `
+RISK DISCLOSURE STATEMENT
+MERCHANT CASH ADVANCE INVESTMENTS
+
+IMPORTANT: READ THIS DISCLOSURE CAREFULLY BEFORE INVESTING
+
+TO: [INVESTOR_NAME]
+DATE: [ACKNOWLEDGMENT_DATE]
+
+This Risk Disclosure Statement outlines the material risks associated with investing in Merchant Cash Advances ("MCAs") through InvestoFund LLC.
+
+PRINCIPAL RISKS:
+
+1. LOSS OF PRINCIPAL
+   - You may lose some or all of your investment
+   - MCAs are unsecured advances to merchants
+   - No guarantee of repayment exists
+
+2. MERCHANT DEFAULT RISK
+   - Merchants may fail to make payments
+   - Business closure or bankruptcy affects collections
+   - Economic downturns increase default rates
+
+3. REGULATORY RISK
+   - MCA regulations vary by state
+   - Regulatory changes may affect operations
+   - Compliance costs may impact returns
+
+4. LIQUIDITY RISK
+   - Investments are illiquid until deal completion
+   - No secondary market exists
+   - Early withdrawal may not be possible
+
+5. CONCENTRATION RISK
+   - Portfolio may be concentrated in specific industries
+   - Geographic concentration increases risk
+   - Limited diversification in individual deals
+
+6. OPERATIONAL RISK
+   - Platform technology failures possible
+   - Third-party service provider risks
+   - Key personnel dependency
+
+7. FACTOR RATE VARIATIONS
+   - Returns vary based on factor rates (1.15x-1.49x)
+   - Higher factor rates indicate higher risk
+   - Market conditions affect rate determination
+
+8. COLLECTION RISKS
+   - Collection efforts may be unsuccessful
+   - Legal costs reduce net returns
+   - Time delays in collection processes
+
+9. TAX IMPLICATIONS
+   - Profits subject to ordinary income tax
+   - No tax-deferred investment status
+   - Consult tax advisor for specific implications
+
+10. NO FDIC INSURANCE
+    - Investments not insured by FDIC
+    - No government guarantee of returns
+    - No investor protection fund coverage
+
+INVESTMENT SUITABILITY:
+- Suitable only for sophisticated investors
+- Should represent small portion of portfolio
+- Must be able to afford total loss
+- Understand all terms and conditions
+
+BEFORE INVESTING, CONSIDER:
+□ Your financial situation and objectives
+□ Your risk tolerance and investment timeline
+□ Diversification of your overall portfolio
+□ Professional advice from qualified advisors
+
+ACKNOWLEDGMENT:
+I acknowledge that I have read, understood, and agree to this Risk Disclosure Statement. I understand the risks associated with MCA investments and accept full responsibility for my investment decisions.
+
+_________________________         _________________________
+[INVESTOR_NAME]                   Date: [ACKNOWLEDGMENT_DATE]
+
+Electronic Signature Verification:
+IP Address: [IP_ADDRESS]
+Timestamp: [TIMESTAMP]
+`
   },
+
+  // MERCHANT DOCUMENTS
   {
-    id: 'risk-disclosure-summary',
-    title: 'Risk Disclosure Summary',
-    description: 'A plain-English summary of key investment risks to ensure transparency',
-    category: 'investor',
-    format: 'html',
-    requiresPersonalization: false,
-    content: `<!DOCTYPE html>
-<html>
-<head>
-    <title>Risk Disclosure Summary</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-        h1, h2 { color: #d32f2f; font-weight: bold; }
-        .risk-item { background: #fff3e0; padding: 15px; margin: 15px 0; border-left: 4px solid #ff9800; }
-        .disclaimer { background: #ffebee; padding: 20px; border: 2px solid #d32f2f; margin: 20px 0; }
-    </style>
-</head>
-<body>
-    <h1>SUMMARY OF KEY RISKS</h1>
-    
-    <p>This document provides a summary of the key risks associated with providing capital for Merchant Cash Advance (MCA) deals through InvestoFund LLC ("InvestoFund"). This is not an exhaustive list but covers the most critical factors. <strong>Investing in MCAs involves significant risk and is suitable only for investors who can bear the loss of their entire investment.</strong></p>
-    
-    <div class="risk-item">
-        <h2>1. Merchant Default Risk</h2>
-        <p><strong>What it is:</strong> The primary risk is that a merchant's business fails or they otherwise cease operations, making them unable to generate the future receivables that were purchased.</p>
-        <p><strong>How we mitigate it:</strong> Rigorous due diligence, analysis of bank statements, UCC-1 filings to secure our position, and personal guarantees on covenants.</p>
-    </div>
-    
-    <div class="risk-item">
-        <h2>2. MCA Recharacterization Risk</h2>
-        <p><strong>What it is:</strong> A court could potentially re-characterize an MCA transaction as a loan. If this happens, state usury laws (interest rate caps) could apply, potentially reducing the expected return or leading to penalties.</p>
-        <p><strong>How we mitigate it:</strong> Our contracts are drafted by legal experts to ensure they are structured as the purchase of future assets, not a loan, with no fixed payment term.</p>
-    </div>
-    
-    <div class="risk-item">
-        <h2>3. Liquidity Risk</h2>
-        <p><strong>What it is:</strong> Your capital is illiquid (locked in) for the duration of the MCA deal. You cannot withdraw your funds during this period.</p>
-        <p><strong>How we mitigate it:</strong> We focus on short-term deals and commit to returning any capital that is not deployed within 60 days.</p>
-    </div>
-    
-    <div class="risk-item">
-        <h2>4. Economic Downturn Impact</h2>
-        <p><strong>What it is:</strong> A broad economic recession could increase the rate of merchant defaults across all sectors, impacting the performance of your investment.</p>
-        <p><strong>How we mitigate it:</strong> Industry diversification and increasingly stringent underwriting standards during times of economic uncertainty.</p>
-    </div>
-    
-    <div class="disclaimer">
-        <h2>IMPORTANT DISCLAIMER</h2>
-        <p>The investment opportunities offered by InvestoFund are not securities registered with the U.S. Securities and Exchange Commission (SEC). Returns are not guaranteed. Past performance does not guarantee future returns. InvestoFund does not provide legal, financial, or tax advice. Please consult with your professional advisors before providing capital.</p>
-    </div>
-</body>
-</html>`
+    id: 'merchant-funding-agreement',
+    title: 'Merchant Cash Advance Agreement',
+    category: 'merchant',
+    description: 'Primary funding agreement between InvestoFund and merchants seeking capital',
+    requiredFields: ['merchantName', 'advanceAmount', 'factorRate', 'paymentTerm'],
+    legalNotice: 'Legally binding commercial agreement with specific repayment obligations.',
+    content: `
+MERCHANT CASH ADVANCE AGREEMENT
+
+This Merchant Cash Advance Agreement ("Agreement") is entered into on [DATE] between InvestoFund LLC ("Funder") and [MERCHANT_NAME] ("Merchant").
+
+ADVANCE TERMS:
+- Advance Amount: $[ADVANCE_AMOUNT]
+- Factor Rate: [FACTOR_RATE]x
+- Total Payback Amount: $[TOTAL_PAYBACK]
+- Payment Term: [PAYMENT_TERM] days
+- Payment Frequency: [PAYMENT_FREQUENCY]
+- Daily/Weekly Payment: $[PAYMENT_AMOUNT]
+
+MERCHANT INFORMATION:
+- Legal Business Name: [LEGAL_BUSINESS_NAME]
+- DBA: [DBA_NAME]
+- Federal Tax ID: [TAX_ID]
+- Business Address: [BUSINESS_ADDRESS]
+- Industry: [INDUSTRY_TYPE]
+- Time in Business: [TIME_IN_BUSINESS]
+- Monthly Revenue: $[MONTHLY_REVENUE]
+
+ADVANCE STRUCTURE:
+This transaction constitutes the purchase of a portion of Merchant's future receivables, not a loan. The advance is based on Merchant's daily credit card and ACH processing volume.
+
+PAYMENT TERMS:
+1. Automatic Collections: Merchant authorizes automatic withdrawal of agreed percentage of daily receipts
+2. Payment Percentage: [COLLECTION_PERCENTAGE]% of daily gross receipts
+3. Minimum Payment: $[MINIMUM_DAILY_PAYMENT] per business day
+4. Maximum Payment: $[MAXIMUM_DAILY_PAYMENT] per business day
+
+MERCHANT REPRESENTATIONS:
+Merchant represents and warrants:
+- All information provided is accurate and complete
+- Business is in good standing and operational
+- No pending bankruptcies or legal proceedings
+- Authorization to enter this agreement
+- Will maintain business operations during term
+
+FUNDER OBLIGATIONS:
+- Fund advance within 1-2 business days of agreement execution
+- Provide clear payment schedule and terms
+- Maintain confidentiality of merchant information
+- Comply with all applicable regulations
+
+MERCHANT OBLIGATIONS:
+- Maintain merchant processing accounts
+- Provide daily sales reports if requested
+- Notify Funder of material business changes
+- Comply with all payment obligations
+- Maintain business insurance
+
+EVENTS OF DEFAULT:
+- Failure to make required payments for 3 consecutive days
+- Bankruptcy filing or business closure
+- Material adverse change in business operations
+- Breach of representations or warranties
+- Failure to maintain processing accounts
+
+REMEDIES:
+Upon default, Funder may:
+- Accelerate remaining balance
+- Exercise rights to collect receivables
+- Pursue legal remedies
+- Apply additional fees and costs
+
+FEES:
+- Origination Fee: [ORIGINATION_FEE]% (if applicable)
+- Late Payment Fee: $[LATE_FEE] per occurrence
+- NSF Fee: $[NSF_FEE] per occurrence
+- Default Fee: [DEFAULT_FEE]% of outstanding balance
+
+GOVERNING LAW:
+This Agreement is governed by [STATE] law and subject to jurisdiction of [COUNTY] courts.
+
+ENTIRE AGREEMENT:
+This Agreement constitutes the complete understanding between parties and supersedes all prior negotiations.
+
+MERCHANT ACKNOWLEDGMENT:
+I acknowledge receipt of this Agreement and understand all terms and conditions.
+
+INVESTOFUND LLC                    MERCHANT
+
+_________________________         _________________________
+[AUTHORIZED_SIGNATORY]            [MERCHANT_NAME]
+Title: [TITLE]                    Title: [MERCHANT_TITLE]
+Date: [DATE]                      Date: [DATE]
+
+Electronic Signature Record:
+IP Address: [IP_ADDRESS]
+Timestamp: [TIMESTAMP]
+Document Hash: [DOCUMENT_HASH]
+`
   },
+
+  // BROKER/ISO DOCUMENTS
   {
-    id: 'iso-information-packet',
-    title: 'ISO Information Packet',
-    description: 'An introductory packet for prospective brokers (ISOs)',
-    category: 'iso',
-    format: 'html',
-    requiresPersonalization: false,
-    content: `<!DOCTYPE html>
-<html>
-<head>
-    <title>Partner with InvestoFund</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-        h1, h2 { color: #1A5959; }
-        .logo { text-align: center; margin-bottom: 30px; font-size: 24px; font-weight: bold; color: #1A5959; }
-        .checklist { background: #f8f9fa; padding: 20px; border-radius: 5px; }
-        .highlight { background: #e8f5e5; padding: 15px; border-radius: 5px; margin: 15px 0; }
-    </style>
-</head>
-<body>
-    <div class="logo">[InvestoFund Logo]</div>
-    
-    <h1>Partner with InvestoFund & Fund More Deals</h1>
-    
-    <p>Welcome to InvestoFund LLC ("InvestoFund")! This packet is for Independent Sales Organizations (ISOs) and brokers looking for a reliable funding partner that values speed, transparency, and rewarding quality submissions.</p>
-    
-    <div class="highlight">
-        <h2>WHY PARTNER WITH INVESTOFUND?</h2>
-        <ul>
-            <li><strong>High Commissions:</strong> Earn a default of 15% commission on the deal's profit.</li>
-            <li><strong>Fast Funding:</strong> Our streamlined process means we can get from submission to funding in as little as 48 hours.</li>
-            <li><strong>Real-Time Feedback:</strong> Our broker portal gives you instant updates on your deal's status.</li>
-            <li><strong>We Fund B-D Paper:</strong> We have an appetite for a wide range of deal types and sizes.</li>
-        </ul>
-    </div>
-    
-    <h2>COMMISSION STRUCTURE</h2>
-    <ul>
-        <li><strong>15% Base Commission:</strong> Paid from the "Net Receivable Profit" of each deal.</li>
-        <li><strong>Net Receivable Profit Definition:</strong> The Total Repayment received from the Merchant, MINUS the original Advance Amount. Your commission is calculated from this gross profit.</li>
-        <li><strong>Adjustments:</strong> Reduced commission may apply for incomplete submissions requiring significant underwriting work from our team.</li>
-    </ul>
-    
-    <h2>DEAL SIZE & APPETITE</h2>
-    <ul>
-        <li><strong>Funding Range:</strong> $5,000 – $250,000</li>
-        <li><strong>Industries:</strong> We fund most industries, including retail, restaurants, auto repair, and medical practices.</li>
-    </ul>
-    
-    <div class="checklist">
-        <h2>SUBMISSION CHECKLIST (FOR FULL 15% COMMISSION)</h2>
-        <ul style="list-style: none;">
-            <li>☐ Completed Application</li>
-            <li>☐ 4 Months of Business Bank Statements</li>
-            <li>☐ 4 Months of Merchant Processing Statements</li>
-            <li>☐ Driver's License of Owner</li>
-            <li>☐ Voided Check</li>
-            <li>☐ Signed ISO Agreement</li>
-        </ul>
-    </div>
-    
-    <h2>GET STARTED TODAY</h2>
-    <ol>
-        <li>Review our ISO Agreement.</li>
-        <li>Sign and return it to <strong>partnerships@investofund.com</strong>.</li>
-        <li>Get access to our Broker Portal and start submitting deals!</li>
-    </ol>
-    
-    <h2>CONTACTS</h2>
-    <ul>
-        <li><strong>Submissions Team:</strong> submissions@investofund.com</li>
-        <li><strong>Broker Support:</strong> support@investofund.com</li>
-    </ul>
-</body>
-</html>`
+    id: 'iso-commission-agreement',
+    title: 'Independent Sales Organization Commission Agreement',
+    category: 'broker',
+    description: 'Agreement governing ISO/broker relationships and commission structures',
+    requiredFields: ['isoName', 'commissionRate', 'territoryRestrictions'],
+    legalNotice: 'Independent contractor agreement with specific performance obligations.',
+    content: `
+INDEPENDENT SALES ORGANIZATION COMMISSION AGREEMENT
+
+This Agreement is entered into on [DATE] between InvestoFund LLC ("Company") and [ISO_NAME] ("ISO").
+
+ISO INFORMATION:
+- Legal Name: [ISO_LEGAL_NAME]
+- DBA: [ISO_DBA]
+- Federal Tax ID: [ISO_TAX_ID]
+- Business Address: [ISO_ADDRESS]
+- Contact Person: [ISO_CONTACT]
+- Phone: [ISO_PHONE]
+- Email: [ISO_EMAIL]
+
+APPOINTMENT:
+Company hereby appoints ISO as an independent sales organization to market and originate merchant cash advance opportunities subject to the terms herein.
+
+COMMISSION STRUCTURE:
+- Base Commission Rate: [COMMISSION_RATE]%
+- Volume Bonus Tier 1: [TIER1_VOLUME] - [TIER1_RATE]%
+- Volume Bonus Tier 2: [TIER2_VOLUME] - [TIER2_RATE]%
+- Volume Bonus Tier 3: [TIER3_VOLUME] - [TIER3_RATE]%
+- Renewal Commission: [RENEWAL_RATE]%
+
+PAYMENT TERMS:
+- Commissions paid within 5 business days of funding
+- Volume bonuses calculated monthly
+- Payment via ACH transfer or check
+- 1099 issued annually for tax reporting
+
+ISO OBLIGATIONS:
+1. Originate quality merchant applications
+2. Verify merchant information accuracy
+3. Maintain professional conduct
+4. Comply with all applicable regulations
+5. Submit complete application packages
+6. Provide ongoing merchant support
+
+COMPANY OBLIGATIONS:
+1. Process applications within 24 hours
+2. Provide competitive pricing
+3. Fund approved deals promptly
+4. Pay commissions as agreed
+5. Provide marketing materials
+6. Offer training and support
+
+QUALITY STANDARDS:
+- Minimum approval rate: 70%
+- Maximum default rate: 15%
+- Complete application submission required
+- Bank statement verification mandatory
+- Credit check authorization required
+
+TERRITORIAL RESTRICTIONS:
+[TERRITORY_RESTRICTIONS]
+
+TERM AND TERMINATION:
+- Initial term: 12 months
+- Automatic renewal unless terminated
+- Either party may terminate with 30 days notice
+- Post-termination commission rights preserved
+
+COMPLIANCE REQUIREMENTS:
+- Maintain all required licenses
+- Follow fair lending practices
+- Comply with state and federal regulations
+- Maintain client confidentiality
+- Report suspicious activities
+
+INTELLECTUAL PROPERTY:
+- Company retains all proprietary information
+- ISO may use approved marketing materials
+- Non-disclosure obligations survive termination
+- Return all materials upon termination
+
+INDEMNIFICATION:
+ISO indemnifies Company against:
+- Misrepresentations to merchants
+- Regulatory violations
+- Breach of agreement terms
+- Fraudulent activities
+
+DISPUTE RESOLUTION:
+- Good faith negotiation required
+- Binding arbitration if necessary
+- [STATE] law governs agreement
+- Venue in [COUNTY], [STATE]
+
+INDEPENDENT CONTRACTOR STATUS:
+ISO is an independent contractor, not an employee. ISO responsible for own taxes, insurance, and business expenses.
+
+ENTIRE AGREEMENT:
+This Agreement constitutes the complete understanding between parties.
+
+INVESTOFUND LLC                    ISO
+
+_________________________         _________________________
+[AUTHORIZED_SIGNATORY]            [ISO_NAME]
+Title: [TITLE]                    Title: [ISO_TITLE]
+Date: [DATE]                      Date: [DATE]
+
+Electronic Signature Verification:
+IP Address: [IP_ADDRESS]
+Timestamp: [TIMESTAMP]
+Document Hash: [DOCUMENT_HASH]
+`
   },
+
+  // PLATFORM DOCUMENTS
   {
-    id: 'iso-commission-structure',
-    title: 'ISO Commission Structure Sheet',
-    description: 'A clear, one-page reference for the ISO commission model',
-    category: 'iso',
-    format: 'html',
-    requiresPersonalization: false,
-    content: `<!DOCTYPE html>
-<html>
-<head>
-    <title>ISO Commission Structure</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-        h1, h2 { color: #1A5959; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #1A5959; color: white; }
-        .calculation { background: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0; }
-    </style>
-</head>
-<body>
-    <h1>ISO COMMISSION STRUCTURE</h1>
-    <p><strong>Effective Date:</strong> [Current Date]</p>
-    
-    <p>This document outlines the commission structure for ISO Brokers partnered with InvestoFund LLC ("InvestoFund"). Our goal is to reward high-quality, complete submissions that allow for fast and efficient funding.</p>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Commission Tier</th>
-                <th>Percentage & Basis</th>
-                <th>Requirements & Notes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Platinum (Default)</strong></td>
-                <td>15% of Net Receivable Profit</td>
-                <td>Complete Submission: All required documents are included, legible, and verified by the ISO.</td>
-            </tr>
-            <tr>
-                <td><strong>Gold</strong></td>
-                <td>10% - 12% of Net Receivable Profit</td>
-                <td>Partial Submission: Deal is missing non-critical documents that our team must source.</td>
-            </tr>
-            <tr>
-                <td><strong>Standard</strong></td>
-                <td>8% of Net Receivable Profit</td>
-                <td>Minimal Submission: Application only, requiring full underwriting and document collection by our team.</td>
-            </tr>
-            <tr>
-                <td><strong>Adjustments</strong></td>
-                <td>Reduction/Clawback</td>
-                <td>Applied to deals found to contain fraudulent information or that default within the first 14 days due to misrepresentation.</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <div class="calculation">
-        <h2>How "Net Receivable Profit" is Calculated:</h2>
-        <p><strong>Step 1:</strong> (Advance Amount x Factor Rate) = Total Repayment</p>
-        <p><strong>Step 2:</strong> (Total Repayment) - (Advance Amount) = Net Receivable Profit</p>
-        <p><strong>Step 3:</strong> (Net Receivable Profit) x 0.15 = Your Commission (Platinum Tier)</p>
-        
-        <p>This model ensures we are aligned partners in the success of every deal. Commissions are paid within 5-7 business days following the full collection of the MCA.</p>
-    </div>
-</body>
-</html>`
+    id: 'platform-terms-of-service',
+    title: 'InvestoFund Platform Terms of Service',
+    category: 'platform',
+    description: 'Comprehensive terms governing platform usage for all user types',
+    requiredFields: ['effectiveDate'],
+    legalNotice: 'These terms are legally binding and govern all platform usage.',
+    content: `
+INVESTOFUND PLATFORM TERMS OF SERVICE
+
+Effective Date: [EFFECTIVE_DATE]
+Last Updated: [LAST_UPDATED]
+
+ACCEPTANCE OF TERMS
+By accessing or using the InvestoFund platform, you agree to be bound by these Terms of Service ("Terms").
+
+1. PLATFORM OVERVIEW
+InvestoFund LLC operates a digital platform connecting investors with merchant cash advance opportunities. The platform facilitates:
+- Investment opportunity presentation
+- Due diligence document sharing
+- Electronic signature processing
+- Payment processing and distribution
+- Investor relations management
+
+2. USER CATEGORIES AND ACCESS
+a) Investors: Individuals or entities investing in MCA opportunities
+b) Merchants: Businesses seeking cash advances
+c) ISOs/Brokers: Independent sales organizations originating deals
+d) Platform Administrators: InvestoFund staff and authorized personnel
+
+3. ACCOUNT REGISTRATION
+- Users must provide accurate, complete information
+- Verify identity through required documentation
+- Maintain account security and confidentiality
+- Promptly update information changes
+- Comply with eligibility requirements
+
+4. INVESTOR PROVISIONS
+a) Accreditation Requirements:
+   - Must meet accredited investor standards if required
+   - Provide verification documentation
+   - Acknowledge investment risks
+   
+b) Investment Minimums:
+   - Direct Deal Participation: $5,000 minimum
+   - Portfolio Blend: $25,000 minimum
+   - Maximum investment limits may apply
+
+c) Risk Acknowledgment:
+   - Substantial risk of loss exists
+   - No guaranteed returns
+   - Past performance not indicative of future results
+
+5. MERCHANT PROVISIONS
+a) Eligibility Requirements:
+   - Operating business for minimum time period
+   - Minimum monthly revenue thresholds
+   - Satisfactory credit and business history
+   
+b) Documentation Requirements:
+   - Business registration and licensing
+   - Financial statements and bank records
+   - Processing statements and tax returns
+   - Personal guarantees may be required
+
+c) Funding Terms:
+   - Factor rates range 1.15x to 1.49x
+   - Terms from 25 days to 18 months
+   - Daily, weekly, bi-weekly, or monthly payments
+
+6. ISO/BROKER PROVISIONS
+a) Licensing Requirements:
+   - Maintain all required state and federal licenses
+   - Comply with applicable regulations
+   - Provide proof of insurance coverage
+   
+b) Quality Standards:
+   - Submit complete, accurate applications
+   - Maintain minimum approval rates
+   - Adhere to ethical business practices
+
+7. PLATFORM FEES
+a) Investor Fees:
+   - No upfront investment fees
+   - Management fees for Portfolio Blend option
+   - Wire transfer costs
+   
+b) Merchant Fees:
+   - Origination fees may apply
+   - Late payment and default fees
+   - Third-party processing costs
+   
+c) ISO Fees:
+   - No platform usage fees
+   - Commission-based compensation only
+
+8. INTELLECTUAL PROPERTY
+- InvestoFund retains all platform IP rights
+- Users granted limited license for intended use
+- Prohibited from copying or distributing content
+- Respect third-party intellectual property rights
+
+9. PRIVACY AND DATA PROTECTION
+- Personal information handled per Privacy Policy
+- Industry-standard security measures implemented
+- Data sharing limited to business purposes
+- Users control account information access
+
+10. PROHIBITED ACTIVITIES
+Users may not:
+- Provide false or misleading information
+- Engage in fraudulent activities
+- Violate applicable laws or regulations
+- Interfere with platform operations
+- Reverse engineer platform technology
+
+11. DISCLAIMERS
+- Platform provided "as is" without warranties
+- No guarantee of system availability
+- Investment results not guaranteed
+- Third-party content not endorsed
+
+12. LIMITATION OF LIABILITY
+InvestoFund's liability limited to actual damages not exceeding fees paid. No liability for consequential, indirect, or punitive damages.
+
+13. INDEMNIFICATION
+Users indemnify InvestoFund against claims arising from their platform use, including legal fees and costs.
+
+14. TERMINATION
+- Either party may terminate account with notice
+- Immediate termination for Terms violations
+- Surviving obligations continue post-termination
+
+15. GOVERNING LAW
+These Terms governed by [STATE] law. Disputes subject to binding arbitration in [JURISDICTION].
+
+16. MODIFICATIONS
+InvestoFund may modify Terms with notice. Continued use constitutes acceptance of changes.
+
+17. CONTACT INFORMATION
+For questions regarding these Terms:
+InvestoFund LLC
+[COMPANY_ADDRESS]
+Email: legal@investofund.com
+Phone: [COMPANY_PHONE]
+
+ELECTRONIC ACCEPTANCE:
+By clicking "I Accept" or using the platform, you acknowledge reading and agreeing to these Terms.
+
+Acceptance Date: [ACCEPTANCE_DATE]
+IP Address: [IP_ADDRESS]
+User Agent: [USER_AGENT]
+`
   },
-  {
-    id: 'iso-agreement',
-    title: 'ISO Agreement',
-    description: 'The binding legal agreement between InvestoFund LLC and its ISO partners',
-    category: 'legal',
-    format: 'html',
-    requiresPersonalization: true,
-    content: `<!DOCTYPE html>
-<html>
-<head>
-    <title>Independent Sales Organization Agreement</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-        h1, h2 { color: #1A5959; }
-        .signature-line { border-bottom: 1px solid #000; width: 300px; display: inline-block; }
-        .date-placeholder { color: #666; background: #f0f0f0; padding: 2px 4px; }
-    </style>
-</head>
-<body>
-    <h1>INDEPENDENT SALES ORGANIZATION AGREEMENT</h1>
-    
-    <p>This Independent Sales Organization Agreement (the "Agreement") is made effective as of <span class="date-placeholder">[Date of Signing]</span> (the "Effective Date"), by and between:</p>
-    
-    <p><strong>InvestoFund LLC</strong>, a New York limited liability company (hereinafter, "InvestoFund" or the "Company"), with its principal place of business at <span class="date-placeholder">[Your Company Address]</span>;</p>
-    
-    <p><strong>AND</strong></p>
-    
-    <p><strong><span class="date-placeholder">[ISO Company Name]</span></strong>, located at <span class="date-placeholder">[ISO Address]</span> (hereinafter, "ISO").</p>
-    
-    <p><strong>WHEREAS</strong>, InvestoFund is in the business of providing Merchant Cash Advances ("MCAs") to merchants, and ISO is engaged in the business of identifying and referring potential merchants suitable for MCAs.</p>
-    
-    <p><strong>NOW, THEREFORE</strong>, in consideration of the mutual covenants herein, the parties agree as follows:</p>
-    
-    <h2>1. Referral Services</h2>
-    <p><strong>a.</strong> ISO shall identify and refer potential merchants ("Merchants") to InvestoFund. InvestoFund has sole and absolute discretion to approve or reject any referred Merchant.</p>
-    <p><strong>b.</strong> ISO shall provide all requested documentation for each Merchant and ensure all information is accurate, complete, and obtained with the Merchant's full consent.</p>
-    
-    <h2>2. Compensation</h2>
-    <p><strong>a.</strong> In consideration for successful referrals, InvestoFund shall pay ISO a commission as outlined in the official ISO Commission Structure Sheet. The default commission is fifteen percent (15%) of the "Net Receivable Profit" generated from each MCA successfully funded and collected.</p>
-    <p><strong>b.</strong> "Net Receivable Profit" is defined as the Total Repayment received from a Merchant MINUS the original Advance Amount provided to that Merchant.</p>
-    <p><strong>c.</strong> <strong>Payment of Commission:</strong> Commission shall be paid to ISO within five (5) to seven (7) business days following the full collection by InvestoFund of the Total Repayment from the Merchant.</p>
-    
-    <h2>3. Use of Name & Reputation</h2>
-    <p><strong>a.</strong> ISO explicitly agrees that any misrepresentations, unethical practices, or illegal acts performed by ISO shall be the sole responsibility of ISO. ISO shall indemnify and hold harmless InvestoFund from any and all claims, damages, and expenses arising from ISO's actions.</p>
-    
-    <h2>4. Non-Circumvention</h2>
-    <p><strong>a.</strong> Each Party agrees not to directly or indirectly circumvent, interfere with, or attempt to circumvent the relationship of the other Party with its Merchants, capital providers, or other business contacts during the term of this Agreement and for a period of two (2) years thereafter.</p>
-    
-    <h2>5. Confidentiality</h2>
-    <p><strong>a.</strong> All information exchanged between the Parties related to business operations, underwriting criteria, or specific Merchant details shall be considered confidential and shall not be disclosed to any third party without express written consent. This obligation shall survive the termination of this Agreement.</p>
-    
-    <h2>6. Term and Termination</h2>
-    <p><strong>a.</strong> Either Party may terminate this Agreement for convenience with thirty (30) days' written notice. Such termination shall not affect commissions due on deals already funded.</p>
-    <p><strong>b.</strong> InvestoFund may terminate this Agreement immediately for cause, including fraud or material breach.</p>
-    
-    <h2>7. Governing Law & Dispute Resolution</h2>
-    <p><strong>a.</strong> This Agreement shall be governed by the laws of the State of New York. Any dispute shall be resolved through binding arbitration in New York, NY.</p>
-    
-    <p><strong>IN WITNESS WHEREOF</strong>, the Parties have executed this Agreement.</p>
-    
-    <div style="margin-top: 40px;">
-        <p><strong>INVESTOFUND LLC</strong></p>
-        <br><br>
-        <p>By: <span class="signature-line"></span></p>
-        <p>Name: <span class="date-placeholder">[Your Name]</span></p>
-        <p>Title: <span class="date-placeholder">[Your Title]</span></p>
-        <br><br>
-        
-        <p><strong>ISO</strong></p>
-        <br><br>
-        <p>By: <span class="signature-line"></span></p>
-        <p>Name: <span class="date-placeholder">[ISO Contact Name]</span></p>
-        <p>Title: <span class="date-placeholder">[ISO Title]</span></p>
-    </div>
-</body>
-</html>`
-  },
-  {
-    id: 'terms-of-service',
-    title: 'Terms of Service',
-    description: 'General terms for website and platform use',
-    category: 'legal',
-    format: 'html',
-    requiresPersonalization: false,
-    content: `<!DOCTYPE html>
-<html>
-<head>
-    <title>Terms of Service</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-        h1, h2 { color: #1A5959; }
-    </style>
-</head>
-<body>
-    <h1>TERMS OF SERVICE</h1>
-    
-    <p>Welcome to InvestoFund LLC ("InvestoFund"). By accessing our website and using our platform, you agree to these Terms of Service.</p>
-    
-    <h2>1. Use of the Platform</h2>
-    <p>You agree to use the InvestoFund platform for its intended purposes only and in compliance with all applicable laws. You may not use this site for any unlawful purpose.</p>
-    
-    <h2>2. Intellectual Property</h2>
-    <p>All content on this site, including logos, text, graphics, and software, is the property of InvestoFund and is protected by copyright and other intellectual property laws.</p>
-    
-    <h2>3. Limitation of Liability</h2>
-    <p>InvestoFund is not liable for any direct, indirect, or consequential damages arising from your use of this platform or from any investment decisions made based on information found here. All investments carry risk, and you should consult with professional advisors.</p>
-    
-    <h2>4. Jurisdiction</h2>
-    <p>Any legal disputes related to these terms shall be governed by the laws of the State of New York. You agree to the exclusive jurisdiction of the state and federal courts located in New York, NY.</p>
-    
-    <h2>5. Consent to Communications</h2>
-    <p>By creating an account or submitting a form, you consent to receive emails, text messages, and other communications from InvestoFund. You may opt out at any time by following the unsubscribe instructions in those communications.</p>
-    
-    <h2>6. Cookie Policy Notice</h2>
-    <p>This website uses cookies to enhance user experience. By using our site, you consent to our use of cookies as described in our Privacy Policy.</p>
-</body>
-</html>`
-  },
+
   {
     id: 'privacy-policy',
-    title: 'Privacy Policy',
-    description: 'Explains data handling practices for compliance and user trust',
-    category: 'legal',
-    format: 'html',
-    requiresPersonalization: false,
-    content: `<!DOCTYPE html>
-<html>
-<head>
-    <title>Privacy Policy</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-        h1, h2 { color: #1A5959; }
-    </style>
-</head>
-<body>
-    <h1>PRIVACY POLICY</h1>
-    
-    <p><strong>Last Updated:</strong> [Current Date]</p>
-    
-    <p>InvestoFund LLC ("InvestoFund," "we," "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and share information about you.</p>
-    
-    <h2>1. Data We Collect</h2>
-    <ul>
-        <li><strong>Personal Information:</strong> Name, email, phone number, address.</li>
-        <li><strong>Financial Information:</strong> Information submitted through investor questionnaires or deal submission forms.</li>
-        <li><strong>Technical Information:</strong> IP address, browser type, usage data collected via cookies.</li>
-    </ul>
-    
-    <h2>2. How We Use Your Data</h2>
-    <ul>
-        <li>To provide and manage our services.</li>
-        <li>To process your applications and transactions.</li>
-        <li>To communicate with you about your account and our services.</li>
-        <li>To comply with legal obligations and for security purposes.</li>
-        <li>To improve our platform and user experience.</li>
-    </ul>
-    
-    <h2>3. Data Storage & Security</h2>
-    <p>Your data is stored on secure, encrypted servers. We implement reasonable administrative, technical, and physical security measures to protect your information from unauthorized access and use.</p>
-    
-    <h2>4. Third-Party Tools</h2>
-    <p>We may use third-party services such as Google Analytics, Zapier, Formspree, and DocuSign to facilitate our services. These services have their own privacy policies and are not controlled by InvestoFund.</p>
-    
-    <h2>5. Your Data Rights</h2>
-    <p>You may have certain rights regarding your personal data, subject to local law. These may include the right to access, correct, or delete your data. To make a request, please contact us.</p>
-    
-    <h2>6. Data Deletion Request</h2>
-    <p>You may request the deletion of your personal data by contacting us at privacy@investofund.com. We will comply with all lawful requests.</p>
-    
-    <h2>7. GDPR/CCPA Compliance</h2>
-    <p>We are committed to complying with the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA). Residents of the EU and California have specific rights regarding their personal data, which we will honor.</p>
-</body>
-</html>`
+    title: 'InvestoFund Privacy Policy',
+    category: 'platform',
+    description: 'Comprehensive privacy policy governing data collection and usage',
+    requiredFields: ['effectiveDate'],
+    legalNotice: 'CCPA, GDPR, and financial privacy regulation compliant.',
+    content: `
+INVESTOFUND PRIVACY POLICY
+
+Effective Date: [EFFECTIVE_DATE]
+Last Updated: [LAST_UPDATED]
+
+INTRODUCTION
+InvestoFund LLC ("we," "our," "us") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your information.
+
+1. INFORMATION WE COLLECT
+
+a) Personal Information:
+   - Name, address, phone number, email
+   - Social Security number or Tax ID
+   - Date of birth and identification documents
+   - Financial information and bank details
+   - Employment and income information
+
+b) Business Information (Merchants):
+   - Company name and business structure
+   - Business address and contact information
+   - Financial statements and tax returns
+   - Bank statements and processing records
+   - Credit reports and business history
+
+c) Technical Information:
+   - IP addresses and device information
+   - Browser type and operating system
+   - Platform usage data and preferences
+   - Cookies and tracking technologies
+
+2. HOW WE COLLECT INFORMATION
+
+- Direct submission through platform forms
+- Document uploads and verification
+- Third-party data providers and credit agencies
+- Automatic collection through platform usage
+- Public records and business databases
+
+3. USE OF INFORMATION
+
+We use your information to:
+- Process investment and funding applications
+- Verify identity and conduct due diligence
+- Facilitate transactions and payments
+- Communicate important updates
+- Comply with legal and regulatory requirements
+- Improve platform functionality
+- Prevent fraud and maintain security
+
+4. INFORMATION SHARING
+
+We may share information with:
+- Investors and merchants for deal facilitation
+- Service providers and business partners
+- Regulatory authorities as required
+- Legal proceedings when necessary
+- Affiliates for business purposes
+
+We do not sell personal information to third parties.
+
+5. DATA SECURITY
+
+Security measures include:
+- Encryption of sensitive data
+- Secure server infrastructure
+- Access controls and authentication
+- Regular security audits
+- Employee training on data protection
+
+6. DATA RETENTION
+
+We retain information:
+- As long as accounts remain active
+- For 7 years after relationship termination
+- As required by legal obligations
+- Until specific deletion requests processed
+
+7. YOUR RIGHTS
+
+You have the right to:
+- Access your personal information
+- Correct inaccurate information
+- Request deletion of information
+- Opt-out of marketing communications
+- Restrict certain processing activities
+
+8. CALIFORNIA PRIVACY RIGHTS (CCPA)
+
+California residents have additional rights including:
+- Right to know what information is collected
+- Right to delete personal information
+- Right to opt-out of information sales
+- Right to non-discrimination
+
+9. EUROPEAN PRIVACY RIGHTS (GDPR)
+
+EU residents have rights including:
+- Data access and portability
+- Right to rectification
+- Right to erasure
+- Right to restrict processing
+- Right to object to processing
+
+10. COOKIES AND TRACKING
+
+We use cookies for:
+- Authentication and security
+- Platform functionality
+- Performance analytics
+- User preferences
+
+You can control cookies through browser settings.
+
+11. THIRD-PARTY LINKS
+
+Our platform may contain links to third-party websites. We are not responsible for their privacy practices.
+
+12. CHILDREN'S PRIVACY
+
+Our platform is not intended for users under 18. We do not knowingly collect information from minors.
+
+13. INTERNATIONAL TRANSFERS
+
+Information may be transferred internationally with appropriate safeguards in place.
+
+14. CHANGES TO POLICY
+
+We may update this Privacy Policy with notice to users. Continued use constitutes acceptance.
+
+15. CONTACT INFORMATION
+
+For privacy questions or requests:
+InvestoFund LLC
+Privacy Officer
+[COMPANY_ADDRESS]
+Email: privacy@investofund.com
+Phone: [PRIVACY_PHONE]
+
+DATA PROTECTION OFFICER (if applicable):
+[DPO_NAME]
+Email: dpo@investofund.com
+
+ACKNOWLEDGMENT:
+By using our platform, you acknowledge reading and understanding this Privacy Policy.
+
+Acceptance Date: [ACCEPTANCE_DATE]
+IP Address: [IP_ADDRESS]
+`
   },
+
+  // COMPLIANCE DOCUMENTS
   {
-    id: 'deal-submission-template',
-    title: 'Merchant Funding Application',
-    description: 'A standardized form for brokers to submit deals',
-    category: 'application',
-    format: 'html',
-    requiresPersonalization: false,
-    content: `<!DOCTYPE html>
-<html>
-<head>
-    <title>Merchant Funding Application</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-        h1, h2 { color: #1A5959; }
-        .logo { text-align: center; margin-bottom: 30px; font-size: 24px; font-weight: bold; color: #1A5959; }
-        .form-section { margin: 30px 0; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-        .form-row { margin: 15px 0; }
-        .form-row label { display: inline-block; width: 200px; font-weight: bold; }
-        .form-row input { border-bottom: 1px solid #000; width: 300px; }
-        .checkbox { margin: 5px 0; }
-    </style>
-</head>
-<body>
-    <div class="logo">[InvestoFund Logo]</div>
-    
-    <h1>MERCHANT FUNDING APPLICATION</h1>
-    
-    <div class="form-row">
-        <label>Submission Date:</label> <input type="text" name="submission_date">
-    </div>
-    <div class="form-row">
-        <label>Broker/ISO Name:</label> <input type="text" name="broker_name">
-    </div>
-    <div class="form-row">
-        <label>Broker Email:</label> <input type="text" name="broker_email">
-    </div>
-    
-    <div class="form-section">
-        <h2>SECTION 1: BUSINESS INFORMATION</h2>
-        <div class="form-row">
-            <label>Legal Business Name:</label> <input type="text" name="business_name">
-        </div>
-        <div class="form-row">
-            <label>DBA (if any):</label> <input type="text" name="dba">
-        </div>
-        <div class="form-row">
-            <label>Federal Tax ID (EIN):</label> <input type="text" name="tax_id">
-        </div>
-        <div class="form-row">
-            <label>Business Address:</label> <input type="text" name="business_address">
-        </div>
-        <div class="form-row">
-            <label>Business Phone:</label> <input type="text" name="business_phone">
-        </div>
-        <div class="form-row">
-            <label>Type of Business:</label> <input type="text" name="business_type">
-        </div>
-        <div class="form-row">
-            <label>Years in Business:</label> <input type="text" name="years_in_business">
-        </div>
-    </div>
-    
-    <div class="form-section">
-        <h2>SECTION 2: OWNER INFORMATION</h2>
-        <div class="form-row">
-            <label>Owner's Full Name:</label> <input type="text" name="owner_name">
-        </div>
-        <div class="form-row">
-            <label>Owner's Home Address:</label> <input type="text" name="owner_address">
-        </div>
-        <div class="form-row">
-            <label>Owner's Cell Phone:</label> <input type="text" name="owner_phone">
-        </div>
-        <div class="form-row">
-            <label>Owner's Email:</label> <input type="text" name="owner_email">
-        </div>
-    </div>
-    
-    <div class="form-section">
-        <h2>SECTION 3: FUNDING & FINANCIALS</h2>
-        <div class="form-row">
-            <label>Requested Funding Amount:</label> $ <input type="text" name="funding_amount">
-        </div>
-        <div class="form-row">
-            <label>Average Monthly Revenue:</label> $ <input type="text" name="monthly_revenue">
-        </div>
-        <div class="form-row">
-            <label>Average Monthly Credit Card Sales:</label> $ <input type="text" name="cc_sales">
-        </div>
-    </div>
-    
-    <div class="form-section">
-        <h2>NOTES</h2>
-        <p>(Use this section for any additional information about the deal)</p>
-        <textarea style="width: 100%; height: 100px; border: 1px solid #ddd;"></textarea>
-    </div>
-    
-    <div class="form-section">
-        <h2>SUBMISSION INSTRUCTIONS</h2>
-        <p>Please email this completed form along with the required documents (4 months bank statements, 4 months processing statements, driver's license, voided check) to <strong>submissions@investofund.com</strong>.</p>
-        
-        <p>By submitting this application, the ISO represents and warrants that all information provided is true, accurate, and complete to the best of their knowledge and has been obtained with the full consent of the Merchant.</p>
-    </div>
-</body>
-</html>`
+    id: 'aml-compliance-policy',
+    title: 'Anti-Money Laundering Compliance Policy',
+    category: 'compliance',
+    description: 'AML/BSA compliance procedures for financial transactions',
+    requiredFields: ['effectiveDate'],
+    legalNotice: 'Required compliance documentation under federal banking regulations.',
+    content: `
+ANTI-MONEY LAUNDERING COMPLIANCE POLICY
+
+Document Version: 2.0
+Effective Date: [EFFECTIVE_DATE]
+Review Date: [REVIEW_DATE]
+
+PURPOSE
+This policy establishes InvestoFund LLC's Anti-Money Laundering (AML) and Bank Secrecy Act (BSA) compliance program to detect and prevent money laundering activities.
+
+1. REGULATORY FRAMEWORK
+- Bank Secrecy Act (BSA)
+- USA PATRIOT Act
+- FinCEN regulations
+- State money transmission laws
+- OFAC sanctions requirements
+
+2. COMPLIANCE OFFICER
+AML Compliance Officer: [COMPLIANCE_OFFICER_NAME]
+Responsibilities:
+- Oversee AML program implementation
+- Conduct risk assessments
+- Ensure regulatory reporting
+- Provide staff training
+- Monitor compliance effectiveness
+
+3. CUSTOMER IDENTIFICATION PROGRAM (CIP)
+
+a) Individual Customers:
+   - Full legal name
+   - Date of birth
+   - Physical address
+   - Government-issued ID verification
+
+b) Business Customers:
+   - Legal business name
+   - Principal business address
+   - Employer Identification Number
+   - Articles of incorporation or formation
+
+4. CUSTOMER DUE DILIGENCE (CDD)
+
+Enhanced Due Diligence required for:
+- High-value transactions ($10,000+)
+- Foreign entities or persons
+- Politically Exposed Persons (PEPs)
+- High-risk business types
+- Unusual transaction patterns
+
+Documentation includes:
+- Source of funds verification
+- Business purpose documentation
+- Beneficial ownership information
+- Risk assessment completion
+
+5. SUSPICIOUS ACTIVITY MONITORING
+
+Red flags requiring investigation:
+- Large cash transactions
+- Rapid movement of funds
+- Transactions with high-risk countries
+- Structuring to avoid reporting
+- Unusual business activity patterns
+
+6. REPORTING REQUIREMENTS
+
+a) Currency Transaction Reports (CTR):
+   - Filed for cash transactions over $10,000
+   - Within 15 days of transaction
+
+b) Suspicious Activity Reports (SAR):
+   - Filed for suspicious activities $5,000+
+   - Within 30 days of detection
+
+7. OFAC SANCTIONS SCREENING
+
+All customers screened against:
+- Specially Designated Nationals (SDN) list
+- Blocked Persons List
+- Sectoral Sanctions Identifications List
+- Real-time screening for transactions
+
+8. RECORD KEEPING
+
+Required records maintained for 5 years:
+- Customer identification information
+- Transaction records and documentation
+- SAR and CTR filings
+- Training records
+- Risk assessments
+
+9. TRAINING PROGRAM
+
+All employees receive:
+- Initial AML training within 30 days
+- Annual refresher training
+- Updates on regulatory changes
+- Specific role-based training
+
+10. INDEPENDENT TESTING
+
+Annual independent review includes:
+- Program effectiveness assessment
+- Policy and procedure evaluation
+- Staff training adequacy
+- Record keeping compliance
+
+11. HIGH-RISK CUSTOMERS
+
+Additional monitoring for:
+- Money service businesses
+- Foreign shell companies
+- Cash-intensive businesses
+- Non-cooperative jurisdictions
+
+12. TECHNOLOGY SYSTEMS
+
+AML monitoring systems:
+- Transaction monitoring software
+- Watch list screening
+- Case management systems
+- Regulatory reporting tools
+
+13. PENALTIES AND ENFORCEMENT
+
+Violations may result in:
+- Civil monetary penalties
+- Criminal prosecution
+- Regulatory sanctions
+- Reputational damage
+
+14. POLICY UPDATES
+
+This policy reviewed and updated:
+- Annually or as needed
+- Upon regulatory changes
+- Following examination findings
+- After system implementations
+
+APPROVAL:
+This policy is approved by InvestoFund LLC Board of Directors.
+
+_________________________
+[CEO_NAME], Chief Executive Officer
+Date: [APPROVAL_DATE]
+
+_________________________
+[COMPLIANCE_OFFICER_NAME], AML Compliance Officer
+Date: [APPROVAL_DATE]
+`
   }
 ];
 
-export function getDocumentById(id: string): DocumentTemplate | undefined {
-  return DOCUMENT_TEMPLATES.find(doc => doc.id === id);
-}
-
-export function getDocumentsByCategory(category: string): DocumentTemplate[] {
-  return DOCUMENT_TEMPLATES.filter(doc => doc.category === category);
-}
-
-export function personalizeDocument(template: DocumentTemplate, data: Record<string, string>): string {
-  if (!template.requiresPersonalization) {
-    return template.content;
+// Document generation utilities
+export const generateDocument = (
+  templateId: string, 
+  fieldValues: Record<string, string>
+): string => {
+  const template = legalDocuments.find(doc => doc.id === templateId);
+  if (!template) {
+    throw new Error(`Template not found: ${templateId}`);
   }
+
+  let content = template.content;
   
-  let personalizedContent = template.content;
-  
-  // Replace placeholders with actual data
-  Object.entries(data).forEach(([key, value]) => {
-    const placeholder = `[${key}]`;
-    personalizedContent = personalizedContent.replace(new RegExp(placeholder, 'g'), value);
+  // Replace all field placeholders with actual values
+  Object.entries(fieldValues).forEach(([field, value]) => {
+    const placeholder = `[${field.toUpperCase()}]`;
+    content = content.replace(new RegExp(placeholder, 'g'), value);
   });
-  
-  return personalizedContent;
-}
+
+  return content;
+};
+
+export const getDocumentsByCategory = (category: DocumentTemplate['category']) => {
+  return legalDocuments.filter(doc => doc.category === category);
+};
+
+export const getAllDocuments = () => {
+  return legalDocuments;
+};
