@@ -127,7 +127,8 @@ export default function Header() {
                       closeSheet();
                       handleGetStarted();
                     }}
-                    className="w-full bg-brand-blue hover:bg-brand-blue-light text-white"
+                    className="w-full bg-brand-blue hover:bg-brand-blue-light text-white py-3 px-6 rounded-lg text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                    size="lg"
                   >
                     Get Started
                   </Button>
