@@ -24,7 +24,9 @@ import {
   Banknote,
   Factory,
   Truck,
-  Wrench
+  Wrench,
+  BookOpen,
+  Calculator
 } from "lucide-react";
 import { scrollToElement } from "@/lib/scrollUtils";
 
@@ -177,59 +179,93 @@ export default function MerchantDashboardLearnMore() {
           <div className="mb-6">
             <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-500/30 text-blue-100 border border-blue-400/40 mb-4">
               <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
-              Advanced Merchant Portal
+              Business Education Center
             </span>
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent">
-              InvestoFund for Merchants
+              Understanding Business Funding
             </span>
             <br />
             <span className="bg-gradient-to-r from-cyan-200 via-blue-200 to-white bg-clip-text text-transparent">
-              Real Capital. Real Relationships. Real Fast.
+              Learn. Explore. Make Informed Decisions.
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed max-w-3xl mx-auto">
-            We provide fast, structured, and transparent funding to business owners who need capital to grow. 
-            Build long-term relationships with direct investors who understand your business.
+          <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed max-w-4xl mx-auto">
+            Discover how modern business funding works, understand your options, and learn what makes 
+            InvestoFund's approach unique. Knowledge empowers better financial decisions for your business.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <Button 
               size="lg" 
               className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-300"
-              onClick={handleApplyNow}
+              onClick={() => scrollToElement('funding-options')}
             >
-              Start Your Application
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <FileText className="mr-2 w-5 h-5" />
+              Explore Funding Types
             </Button>
             <Button 
               size="lg" 
               className="bg-white/15 backdrop-blur-sm border-white/40 text-white hover:bg-white/25 hover:border-white/60 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-              onClick={() => scrollToElement('funding-options')}
+              onClick={() => scrollToElement('investoscore')}
             >
-              Explore Funding Options
+              <BarChart3 className="mr-2 w-5 h-5" />
+              Learn About InvestoScore™
             </Button>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white mb-1">$2M</div>
-              <div className="text-blue-200 text-sm">Max Funding</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+              <div className="text-2xl font-bold text-white mb-1">8</div>
+              <div className="text-blue-200 text-sm">Funding Types Explained</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white mb-1">24hr</div>
-              <div className="text-blue-200 text-sm">Approval</div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+              <div className="text-2xl font-bold text-white mb-1">100+</div>
+              <div className="text-blue-200 text-sm">Educational Resources</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white mb-1">1.15x</div>
-              <div className="text-blue-200 text-sm">Starting Rate</div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+              <div className="text-2xl font-bold text-white mb-1">Real</div>
+              <div className="text-blue-200 text-sm">Success Stories</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white mb-1">Same Day</div>
-              <div className="text-blue-200 text-sm">Funding</div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+              <div className="text-2xl font-bold text-white mb-1">Free</div>
+              <div className="text-blue-200 text-sm">Learning Platform</div>
+            </div>
+          </div>
+          
+          {/* Educational Value Props */}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <div className="w-12 h-12 bg-cyan-400/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="w-6 h-6 text-cyan-200" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">Learn the Basics</h3>
+              <p className="text-blue-200 text-sm">
+                Understand different funding types, terms, and what they mean for your business
+              </p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <div className="w-12 h-12 bg-blue-400/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Calculator className="w-6 h-6 text-blue-200" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">Calculate Your Options</h3>
+              <p className="text-blue-200 text-sm">
+                Use interactive tools to see how different funding structures affect your business
+              </p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <div className="w-12 h-12 bg-purple-400/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-6 h-6 text-purple-200" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">Real Business Stories</h3>
+              <p className="text-blue-200 text-sm">
+                Learn from actual business owners and their funding experiences
+              </p>
             </div>
           </div>
         </div>
