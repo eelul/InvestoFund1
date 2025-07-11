@@ -23,7 +23,8 @@ import {
   ChevronLeft,
   X,
   HelpCircle,
-  AlertCircle
+  AlertCircle,
+  Shield
 } from "lucide-react";
 import FactorRateRiskSlider from "@/components/FactorRateRiskSlider";
 
