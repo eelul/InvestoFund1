@@ -283,6 +283,7 @@ export default function EnhancedCalculatorSection() {
                   <Button 
                     variant="outline" 
                     className="w-full border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white"
+                    onClick={() => window.location.href = '/merchant-dashboard-learn-more'}
                   >
                     <Clock className="w-4 h-4 mr-2" />
                     Learn More About MCA
