@@ -116,12 +116,22 @@ export default function MerchantDashboardLearnMoreV2() {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-semibold text-gray-800">Business Funding Education</h1>
-            <Button 
-              className="bg-blue-600 hover:bg-blue-700"
-              onClick={() => scrollToElement('apply-form')}
-            >
-              Start Application
-            </Button>
+            <div className="flex items-center space-x-3">
+              <Button 
+                variant="outline"
+                className="border-purple-600 text-purple-600 hover:bg-purple-50"
+                onClick={() => scrollToElement('investoscore-section')}
+              >
+                <BarChart3 className="mr-2 w-4 h-4" />
+                InvestoScore™
+              </Button>
+              <Button 
+                className="bg-blue-600 hover:bg-blue-700"
+                onClick={() => scrollToElement('apply-form')}
+              >
+                Start Application
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -368,6 +378,227 @@ export default function MerchantDashboardLearnMoreV2() {
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* InvestoScore™ Explainer Section */}
+      <section id="investoscore-section" className="py-16 bg-purple-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="mb-4">
+              <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-100 text-purple-800 border border-purple-200">
+                <BarChart3 className="w-4 h-4 mr-2" />
+                Primary Decision Metric
+              </span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-gray-800">
+              What is the InvestoScore™ — And Why It Matters
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              The InvestoScore™ is the primary metric used by InvestoFund contributors to determine whether or not to fund a deal.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            <div>
+              <Card className="bg-white shadow-lg border-purple-200">
+                <CardHeader>
+                  <CardTitle className="text-xl text-gray-800 flex items-center">
+                    <Target className="w-6 h-6 mr-2 text-purple-600" />
+                    How Investors Use Your Score
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">
+                    When a deal is submitted to the fund, the InvestoScore™ is the first thing investors see. 
+                    They use it to evaluate:
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                      <span className="text-gray-700">Risk assessment</span>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                      <span className="text-gray-700">Speed to return</span>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                      <span className="text-gray-700">Confidence in the business owner</span>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                      <span className="text-gray-700">Whether to participate in the offer</span>
+                    </li>
+                  </ul>
+                  
+                  <div className="mt-6 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                    <p className="text-sm text-purple-800 font-medium">
+                      A strong InvestoScore™ often means faster approvals, better terms, and more funding participation. 
+                      A weak or incomplete score leads to passed deals or delays.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            
+            <div>
+              <Card className="bg-white shadow-lg border-green-200">
+                <CardHeader>
+                  <CardTitle className="text-xl text-gray-800 flex items-center">
+                    <TrendingUp className="w-6 h-6 mr-2 text-green-600" />
+                    What a Higher Score Unlocks
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">
+                    A stronger InvestoScore™ improves:
+                  </p>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <Zap className="w-5 h-5 text-yellow-500 mt-1" />
+                      <div>
+                        <p className="font-medium text-gray-800">Speed to fund</p>
+                        <p className="text-sm text-gray-600">Less back-and-forth, quicker underwriting</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <Users className="w-5 h-5 text-blue-500 mt-1" />
+                      <div>
+                        <p className="font-medium text-gray-800">Investor confidence</p>
+                        <p className="text-sm text-gray-600">More bids = better pricing</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <Award className="w-5 h-5 text-purple-500 mt-1" />
+                      <div>
+                        <p className="font-medium text-gray-800">Better terms</p>
+                        <p className="text-sm text-gray-600">Longer terms, lower costs, larger approvals</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <Shield className="w-5 h-5 text-green-500 mt-1" />
+                      <div>
+                        <p className="font-medium text-gray-800">Priority placement</p>
+                        <p className="text-sm text-gray-600">Better options in re-funding scenarios</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <Card className="bg-white shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-xl text-gray-800 flex items-center">
+                  <CheckCircle className="w-6 h-6 mr-2 text-green-600" />
+                  Essential Documents
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">Required to establish your baseline score:</p>
+                <ul className="space-y-3">
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">3 to 6 months of business bank statements</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Voided check or official bank letter</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Government-issued photo ID</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Business entity documents (EIN, Articles, DBA)</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-white shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-xl text-gray-800 flex items-center">
+                  <TrendingUp className="w-6 h-6 mr-2 text-blue-600" />
+                  Score Boosting Documents
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">Additional items that significantly improve your score:</p>
+                <ul className="space-y-2">
+                  <li className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-2"></div>
+                    <span className="text-gray-700 text-sm">Year-to-date profit & loss statement</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-2"></div>
+                    <span className="text-gray-700 text-sm">Balance sheet (if available)</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-2"></div>
+                    <span className="text-gray-700 text-sm">Most recent business tax return</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-2"></div>
+                    <span className="text-gray-700 text-sm">Invoices or contracts for upcoming receivables</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-2"></div>
+                    <span className="text-gray-700 text-sm">Equipment lists or inventory purchase orders</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-2"></div>
+                    <span className="text-gray-700 text-sm">Lease agreement (retail/warehouse)</span>
+                  </li>
+                </ul>
+                
+                <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <p className="text-sm text-blue-800">
+                    Each document helps confirm stability and legitimacy — making your business more attractive to investors.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="text-center">
+            <Card className="bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 shadow-lg">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Need Help Raising Your Score?</h3>
+                <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                  Merchants don't need to figure this out alone. Speak with an InvestoFund advisor to review your current score, 
+                  identify missing documentation, and build a pre-funding profile to unlock better options.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button 
+                    className="bg-purple-600 hover:bg-purple-700"
+                    onClick={() => window.location.href = '/contact'}
+                  >
+                    <Users className="mr-2 w-4 h-4" />
+                    Talk to an Advisor
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    className="border-purple-600 text-purple-600 hover:bg-purple-50"
+                    onClick={() => scrollToElement('apply-form')}
+                  >
+                    <FileText className="mr-2 w-4 h-4" />
+                    Start Application
+                  </Button>
+                </div>
+                <p className="text-sm text-gray-500 mt-4">
+                  Email: support@investofund.com • Free consultation • Secure process
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

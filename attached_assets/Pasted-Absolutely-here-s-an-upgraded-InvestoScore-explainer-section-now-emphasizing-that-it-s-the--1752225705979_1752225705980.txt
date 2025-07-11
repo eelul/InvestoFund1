@@ -1,0 +1,77 @@
+Absolutely — here’s an upgraded **InvestoScore™ explainer section**, now emphasizing that it’s the **primary decision metric** funders use to approve or pass on a deal. It also includes a **call to action** to submit more documentation and a clear checklist of what to provide.
+
+This version is ideal for your Learn More page, onboarding portal, or follow-up emails.
+
+---
+
+## 📊 What is the InvestoScore™ — And Why It Matters
+
+The **InvestoScore™** is the **primary metric used by InvestoFund contributors** to determine whether or not to fund a deal.
+
+It reflects how reliable, stable, and fundable your business appears based on real data — not just a credit score.
+
+When a deal is submitted to the fund, the InvestoScore™ is the first thing investors see.
+They use it to evaluate:
+
+* Risk
+* Speed to return
+* Confidence in the business owner
+* And whether to participate in the offer
+
+In short: **a strong InvestoScore™ often means faster approvals, better terms, and more funding participation. A weak or incomplete score leads to passed deals or delays.**
+
+---
+
+## 🧾 How to Raise Your InvestoScore™
+
+The InvestoScore™ is based on real behavior, documentation, and interaction history. Merchants can **improve their score** by submitting more verified information and maintaining strong communication.
+
+To increase your InvestoScore™, provide as many of the following as possible:
+
+### ✅ Essential Documents
+
+* 3 to 6 months of business bank statements
+* Voided check or official bank letter
+* Government-issued photo ID
+* Business entity documents (EIN, Articles of Incorporation, DBA certificate)
+
+### 🔁 Additional Documents That Boost Your Score
+
+* Year-to-date profit & loss statement
+* Balance sheet (if available)
+* Most recent business tax return
+* Copies of invoices or contracts tied to upcoming receivables
+* Equipment lists or inventory purchase orders
+* Lease agreement (if retail or warehouse based)
+
+Each document helps confirm stability and legitimacy — making the business more attractive to investors.
+
+---
+
+## 📈 What a Higher Score Unlocks
+
+A stronger InvestoScore™ improves:
+
+* Speed to fund (less back-and-forth, quicker underwriting)
+* Confidence from multiple contributors (more bids = better pricing)
+* Eligibility for longer terms, lower costs, and larger approvals
+* Priority placement in re-funding scenarios
+
+---
+
+## 🗣️ Need Help Raising Your Score?
+
+Merchants don’t need to figure this out alone.
+Speak with an InvestoFund advisor to:
+
+* Review your current score
+* Identify missing documentation
+* Submit additional items
+* Build a pre-funding profile to unlock better options
+
+📞 **Talk to an advisor now** to take control of your funding profile:
+👉 \[Schedule a Call] or email **[support@investofund.com](mailto:support@investofund.com)**
+
+---
+
+Let me know if you want this section paired with a **score dashboard widget**, **upload portal**, or **step-by-step submission guide** inside your Replit site or Notion system.
