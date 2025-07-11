@@ -324,11 +324,46 @@ export default function DealDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      {/* Tutorial Bar */}
-      <div className="bg-white border-b border-gray-200 p-4 mb-6">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+    <div className="min-h-screen bg-gray-50">
+      {/* Investor Signup Banner */}
+      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0">
+            <div className="flex items-center space-x-4">
+              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+              <div className="text-center md:text-left">
+                <p className="font-semibold">Ready to start investing? Join 1,250+ investors earning 20.8%+ returns</p>
+                <p className="text-sm text-blue-100">Complete application • Access live deals • Start earning within 48 hours</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3">
+              <Button 
+                variant="outline" 
+                size="sm"
+                className="bg-white/10 border-white/40 text-white hover:bg-white/20 hover:border-white/60 transition-all duration-300"
+                onClick={() => window.location.href = '/investor-signup'}
+              >
+                <Users className="w-4 h-4 mr-2" />
+                Become an Investor
+              </Button>
+              <Button 
+                size="sm"
+                className="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => window.location.href = '/investor-signup'}
+              >
+                Start Application
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-4">
+        {/* Tutorial Bar */}
+        <div className="bg-white border-b border-gray-200 p-4 mb-6">
+          <div className="container mx-auto flex items-center justify-between">
+            <div className="flex items-center space-x-4">
             <h1 className="text-2xl font-bold text-brand-dark">Deal Dashboard</h1>
             <Badge variant="secondary" className="bg-brand-teal text-white">
               Grok v1 Enhanced
@@ -353,6 +388,7 @@ export default function DealDashboard() {
               {demoMode ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               <span>{demoMode ? 'Exit Demo' : 'Demo'}</span>
             </Button>
+          </div>
           </div>
         </div>
       </div>
@@ -830,6 +866,67 @@ export default function DealDashboard() {
             </div>
           </div>
         )}
+
+        {/* Investor Comfort & Benefits Section */}
+        <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-lg border border-green-200">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-green-800 mb-4">Why 1,250+ Investors Choose InvestoFund</h3>
+            <p className="text-green-700">Join our growing community of successful alternative investors</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <h4 className="font-semibold text-green-800 mb-2">Transparent Process</h4>
+              <p className="text-sm text-green-700">
+                Full deal documentation, clear terms, and regular performance updates. 
+                No hidden fees or surprise changes.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-6 h-6 text-white" />
+              </div>
+              <h4 className="font-semibold text-green-800 mb-2">Proven Track Record</h4>
+              <p className="text-sm text-green-700">
+                $2.1M+ funded weekly, 92% approval rate, and consistent 20.8%+ returns 
+                with our rigorous underwriting process.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-6 h-6 text-white" />
+              </div>
+              <h4 className="font-semibold text-green-800 mb-2">Dedicated Support</h4>
+              <p className="text-sm text-green-700">
+                Personal investor relations manager, comprehensive dashboard, 
+                and 24/7 support for all your questions.
+              </p>
+            </div>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg border border-green-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="font-semibold text-green-800 mb-2">Ready to Join Our Investor Community?</h4>
+                <p className="text-sm text-green-700">
+                  Complete your application today and start accessing high-yield MCA opportunities within 48 hours.
+                </p>
+              </div>
+              <Button 
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3"
+                onClick={() => window.location.href = '/investor-signup'}
+              >
+                Apply Now
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </div>
+        </div>
 
         {/* Legal Footer */}
         <div className="bg-gray-100 p-6 rounded-lg text-center">

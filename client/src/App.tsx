@@ -48,6 +48,7 @@ import MerchantApplicationForm from "@/pages/MerchantApplicationForm";
 import BrokerCommissionCalculator from "@/pages/BrokerCommissionCalculator";
 import TermsOfService from "@/pages/TermsOfService";
 import InvestoScore from "@/pages/InvestoScore";
+import InvestorSignup from "@/pages/InvestorSignup";
 
 function Router() {
   return (
@@ -82,6 +83,8 @@ function Router() {
         <Route path="/broker-calculator" component={BrokerCommissionCalculator} />
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/investoscore" component={InvestoScore} />
+        <Route path="/investor-signup" component={InvestorSignup} />
+        <Route path="/dashboard/investor" component={InvestorSignup} />
         <Route path="/iso-tools" component={ISOTools} />
         <Route path="/iso-training" component={ISOTraining} />
         <Route path="/admin" component={Admin} />
