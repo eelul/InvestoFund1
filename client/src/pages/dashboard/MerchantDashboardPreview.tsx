@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Building2, CreditCard, Calendar, TrendingUp, Eye, EyeOff, CheckCircle } from "lucide-react";
+import { useState, useMemo } from "react";
+import { Building2, CreditCard, Calendar, TrendingUp, Eye, EyeOff, CheckCircle, BarChart3 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -18,11 +18,67 @@ export default function MerchantDashboardPreview() {
     nextPayment: "Tomorrow",
     totalPaid: 52250,
     monthlyRevenue: 28500,
+    timeInBusiness: 36, // months
+    creditScore: 680,
+    bankStatementsProvided: true,
+    taxReturnsProvided: true,
     recentTransactions: [
       { date: "Jan 15", amount: 425, type: "Daily Payment", status: "Processed" },
       { date: "Jan 14", amount: 425, type: "Daily Payment", status: "Processed" },
       { date: "Jan 13", amount: 425, type: "Daily Payment", status: "Processed" }
     ]
+  };
+
+  // Calculate InvestoScore based on merchant metrics
+  const investoScore = useMemo(() => {
+    if (isBlurred) return "Not Assigned";
+    
+    let baseScore = 650; // Starting score
+    
+    // Revenue factor (28,500 monthly revenue)
+    if (previewData.monthlyRevenue >= 25000) baseScore += 50;
+    else if (previewData.monthlyRevenue >= 15000) baseScore += 30;
+    else if (previewData.monthlyRevenue >= 10000) baseScore += 10;
+    
+    // Time in business factor
+    if (previewData.timeInBusiness >= 24) baseScore += 40;
+    else if (previewData.timeInBusiness >= 12) baseScore += 20;
+    
+    // Credit score factor
+    if (previewData.creditScore >= 650) baseScore += 30;
+    else if (previewData.creditScore >= 600) baseScore += 15;
+    
+    // Payment history (based on payoff progress)
+    if (previewData.payoffProgress >= 50) baseScore += 25;
+    else if (previewData.payoffProgress >= 25) baseScore += 15;
+    
+    // Documentation completeness
+    if (previewData.bankStatementsProvided) baseScore += 20;
+    if (previewData.taxReturnsProvided) baseScore += 15;
+    
+    return Math.min(baseScore, 850); // Cap at 850
+  }, [isBlurred, previewData]);
+
+  const getScoreColor = (score: number | string) => {
+    if (score === "Not Assigned") return "text-gray-500";
+    if (typeof score === "number") {
+      if (score >= 750) return "text-green-600";
+      if (score >= 700) return "text-blue-600";
+      if (score >= 650) return "text-yellow-600";
+      return "text-red-600";
+    }
+    return "text-gray-500";
+  };
+
+  const getScoreBadgeColor = (score: number | string) => {
+    if (score === "Not Assigned") return "bg-gray-100 text-gray-600";
+    if (typeof score === "number") {
+      if (score >= 750) return "bg-green-100 text-green-700";
+      if (score >= 700) return "bg-blue-100 text-blue-700";
+      if (score >= 650) return "bg-yellow-100 text-yellow-700";
+      return "bg-red-100 text-red-700";
+    }
+    return "bg-gray-100 text-gray-600";
   };
 
   return (
@@ -54,6 +110,28 @@ export default function MerchantDashboardPreview() {
           </div>
         </div>
       </header>
+
+      {/* InvestoScore Indicator */}
+      <div className="container mx-auto px-4 py-3">
+        <div className="flex items-center justify-start">
+          <Card className="inline-flex items-center space-x-3 p-3 bg-white border shadow-sm">
+            <div className="flex items-center space-x-2">
+              <BarChart3 className="w-5 h-5 text-purple-600" />
+              <span className="text-sm font-medium text-gray-700">InvestoScore™:</span>
+            </div>
+            <Badge className={getScoreBadgeColor(investoScore)}>
+              {investoScore === "Not Assigned" ? "Not Assigned" : `${investoScore}/850`}
+            </Badge>
+            {investoScore !== "Not Assigned" && typeof investoScore === "number" && (
+              <div className="text-xs text-gray-500">
+                {investoScore >= 750 ? "Excellent" : 
+                 investoScore >= 700 ? "Good" : 
+                 investoScore >= 650 ? "Fair" : "Needs Improvement"}
+              </div>
+            )}
+          </Card>
+        </div>
+      </div>
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
