@@ -212,10 +212,36 @@ export default function DealDashboard() {
   const [showDetails, setShowDetails] = useState(false);
   const [investmentAmount, setInvestmentAmount] = useState([25000]);
   const [demoMode, setDemoMode] = useState(false);
+  const [viewMode, setViewMode] = useState<'real' | 'demo'>('real');
   const [factorRateRange, setFactorRateRange] = useState<[number, number]>([1.15, 1.49]);
   const [showOnboarding, setShowOnboarding] = useState(false);
+  const [showUserParametersModal, setShowUserParametersModal] = useState(false);
   const [advancedMode, setAdvancedMode] = useState(false);
   const [showTutorial, setShowTutorial] = useState(false);
+  const [userInvestmentApproach, setUserInvestmentApproach] = useState<'direct' | 'blend' | null>(null);
+
+  // Demo configuration - prefilled with $250,000 and full settings
+  const demoConfig = {
+    investmentAmount: 250000,
+    factorRateRange: [1.15, 1.49] as [number, number],
+    investmentApproach: 'both', // Show both Direct and InvestoBlend options
+    hasAccess: true
+  };
+
+  // Switch to demo mode with prefilled settings
+  const activateDemoMode = () => {
+    setViewMode('demo');
+    setInvestmentAmount([demoConfig.investmentAmount]);
+    setFactorRateRange(demoConfig.factorRateRange);
+    setDemoMode(true);
+  };
+
+  // Switch to real mode and ask for user parameters
+  const activateRealMode = () => {
+    setViewMode('real');
+    setShowUserParametersModal(true);
+    setDemoMode(false);
+  };
   const [currentTutorialStep, setCurrentTutorialStep] = useState(0);
   const [completedOnboarding, setCompletedOnboarding] = useState(false);
 
@@ -254,9 +280,15 @@ export default function DealDashboard() {
     localStorage.setItem('investofund-visited', 'true');
   };
 
-  const filteredDeals = demoMode 
+  const filteredDeals = viewMode === 'demo'
+    ? deals // Show all deals in demo mode
+    : viewMode === 'real' && userInvestmentApproach
     ? deals.filter(deal => deal.factor_rate >= factorRateRange[0] && deal.factor_rate <= factorRateRange[1])
-    : deals;
+    : deals.slice(0, investmentAmount[0] >= 25000 ? deals.length : 1); // Limit deals based on investment amount
+
+  const displayDeals = viewMode === 'demo' 
+    ? filteredDeals.slice(0, 6) // Show 6 deals in demo mode
+    : filteredDeals;
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
@@ -380,13 +412,22 @@ export default function DealDashboard() {
               <span>How it works</span>
             </Button>
             <Button
-              variant="outline"
+              variant={viewMode === 'real' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setDemoMode(!demoMode)}
+              onClick={activateRealMode}
               className="flex items-center space-x-2"
             >
-              {demoMode ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              <span>{demoMode ? 'Exit Demo' : 'Demo'}</span>
+              <Target className="w-4 h-4" />
+              <span>Real Deals</span>
+            </Button>
+            <Button
+              variant={viewMode === 'demo' ? 'default' : 'outline'}
+              size="sm"
+              onClick={activateDemoMode}
+              className="flex items-center space-x-2"
+            >
+              <Play className="w-4 h-4" />
+              <span>Demo ($250K)</span>
             </Button>
           </div>
           </div>
@@ -506,6 +547,177 @@ export default function DealDashboard() {
         </div>
       )}
 
+      {/* User Parameters Modal for Real Deals Mode */}
+      {showUserParametersModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <CardHeader>
+              <CardTitle className="text-xl text-brand-dark flex items-center space-x-2">
+                <Target className="w-5 h-5" />
+                <span>Configure Your Real Investment Dashboard</span>
+              </CardTitle>
+              <p className="text-sm text-gray-600">
+                Set your investment parameters to see personalized deal recommendations and potential returns
+              </p>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Investment Amount */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Your Investment Amount
+                </label>
+                <Slider
+                  value={investmentAmount}
+                  onValueChange={setInvestmentAmount}
+                  max={500000}
+                  min={5000}
+                  step={1000}
+                  className="w-full"
+                />
+                <div className="flex justify-between text-sm text-gray-500 mt-2">
+                  <span>$5,000</span>
+                  <span className="font-medium text-lg text-brand-dark">
+                    ${investmentAmount[0].toLocaleString()}
+                  </span>
+                  <span>$500,000</span>
+                </div>
+              </div>
+
+              {/* Factor Rate Range */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Preferred Factor Rate Range (Risk/Return Level)
+                </label>
+                <FactorRateRiskSlider
+                  value={factorRateRange}
+                  onChange={setFactorRateRange}
+                />
+                <div className="bg-blue-50 p-3 rounded-lg mt-3">
+                  <p className="text-sm text-blue-800">
+                    <strong>Your Selection:</strong> {factorRateRange[0]}x - {factorRateRange[1]}x factor rates
+                  </p>
+                  <p className="text-xs text-blue-600 mt-1">
+                    Lower rates = More conservative returns | Higher rates = Higher potential returns
+                  </p>
+                </div>
+              </div>
+
+              {/* Investment Approach */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  Preferred Investment Approach
+                </label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div 
+                    className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                      userInvestmentApproach === 'direct' 
+                        ? 'border-blue-500 bg-blue-50' 
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                    onClick={() => setUserInvestmentApproach('direct')}
+                  >
+                    <div className="flex items-center space-x-2 mb-2">
+                      <div className={`w-4 h-4 rounded-full border-2 ${
+                        userInvestmentApproach === 'direct' 
+                          ? 'border-blue-500 bg-blue-500' 
+                          : 'border-gray-300'
+                      }`} />
+                      <h4 className="font-semibold text-gray-900">Direct Deal Participation</h4>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      Choose specific deals yourself. Target returns: <strong>20.8%+ per deal</strong>
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Full control, higher potential returns, individual deal selection
+                    </p>
+                  </div>
+                  
+                  <div 
+                    className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                      userInvestmentApproach === 'blend' 
+                        ? 'border-green-500 bg-green-50' 
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                    onClick={() => setUserInvestmentApproach('blend')}
+                  >
+                    <div className="flex items-center space-x-2 mb-2">
+                      <div className={`w-4 h-4 rounded-full border-2 ${
+                        userInvestmentApproach === 'blend' 
+                          ? 'border-green-500 bg-green-500' 
+                          : 'border-gray-300'
+                      }`} />
+                      <h4 className="font-semibold text-gray-900">InvestoBlend™ Portfolio</h4>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      Diversified portfolio management. Target returns: <strong>18.7% annually</strong>
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Automated diversification, consistent returns, hands-off approach
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Personalized Insights Based on Parameters */}
+              {investmentAmount[0] > 0 && userInvestmentApproach && (
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg border border-green-200">
+                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
+                    <Zap className="w-4 h-4 mr-2 text-green-600" />
+                    Your Personalized Potential
+                  </h4>
+                  <div className="space-y-2 text-sm">
+                    {userInvestmentApproach === 'direct' ? (
+                      <>
+                        <p className="text-gray-700">
+                          <strong>With ${investmentAmount[0].toLocaleString()}</strong>, you can access:
+                        </p>
+                        <ul className="list-disc list-inside text-gray-600 space-y-1 ml-2">
+                          <li>{investmentAmount[0] >= 25000 ? 'Multiple deals simultaneously' : '1 deal at a time'}</li>
+                          <li>Expected monthly returns: <strong>${((investmentAmount[0] * 0.208) / 12).toLocaleString()}</strong></li>
+                          <li>Factor rate range: {factorRateRange[0]}x - {factorRateRange[1]}x</li>
+                          <li>{investmentAmount[0] >= 25000 ? 'InvestoBlend™ access available' : 'Upgrade to $25K+ for blend access'}</li>
+                        </ul>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-gray-700">
+                          <strong>InvestoBlend™ with ${investmentAmount[0].toLocaleString()}</strong> provides:
+                        </p>
+                        <ul className="list-disc list-inside text-gray-600 space-y-1 ml-2">
+                          <li>Diversified across 8-12 deals automatically</li>
+                          <li>Target annual return: <strong>${(investmentAmount[0] * 0.187).toLocaleString()}</strong></li>
+                          <li>10% management fee included</li>
+                          <li>Reduced risk through portfolio diversification</li>
+                        </ul>
+                      </>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              <div className="flex justify-between pt-4">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowUserParametersModal(false)}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={() => {
+                    setShowUserParametersModal(false);
+                    setDemoMode(false);
+                  }}
+                  className="bg-brand-blue hover:bg-blue-600"
+                  disabled={!userInvestmentApproach}
+                >
+                  Apply Settings
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
       {/* Main Dashboard Content */}
       <div className="container mx-auto space-y-8">
         {/* Portfolio Summary */}
@@ -576,31 +788,102 @@ export default function DealDashboard() {
         </div>
 
         {/* Demo Configuration */}
-        {demoMode && (
-          <Card className="bg-purple-50 border-purple-200">
+        {viewMode === 'demo' && (
+          <Card className="bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
             <CardHeader>
               <CardTitle className="text-purple-800 flex items-center">
-                <Settings className="w-5 h-5 mr-2" />
-                Demo Configuration
+                <Play className="w-5 h-5 mr-2" />
+                Demo Mode: $250,000 Investment Simulation
               </CardTitle>
+              <p className="text-sm text-purple-600">
+                Experience the full platform with prefilled settings and live deal simulations
+              </p>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-purple-700 mb-2">
-                    Factor Rate Range: {factorRateRange[0].toFixed(2)}x - {factorRateRange[1].toFixed(2)}x
-                  </label>
-                  <FactorRateRiskSlider 
-                    value={factorRateRange}
-                    onChange={setFactorRateRange}
-                  />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <h4 className="font-semibold text-gray-900">Option 1: Direct Deal Participation</h4>
+                  <div className="bg-white p-4 rounded-lg border">
+                    <ul className="text-sm space-y-2">
+                      <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Investment: $250,000</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Access: Multiple deals simultaneously</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Expected Returns: 20.8%+ per deal</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Monthly Potential: $4,333</li>
+                    </ul>
+                  </div>
                 </div>
-                <div className="bg-purple-100 p-3 rounded-lg">
-                  <p className="text-sm text-purple-800">
-                    <strong>Risk/Yield Notice:</strong> Expected yields range from 
-                    {factorRateRange[0] <= 1.25 ? ' 15-25%' : factorRateRange[0] <= 1.35 ? ' 25-35%' : ' 35-45%'} 
-                    based on your selected factor rate range.
+                
+                <div className="space-y-3">
+                  <h4 className="font-semibold text-gray-900">Option 2: InvestoBlend™ Portfolio</h4>
+                  <div className="bg-white p-4 rounded-lg border">
+                    <ul className="text-sm space-y-2">
+                      <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Investment: $250,000</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Diversification: 8-12 deals automatically</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Target Return: 18.7% annually</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Annual Target: $46,750</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-4">
+                <div className="bg-blue-100 p-3 rounded-lg">
+                  <p className="text-sm text-blue-800">
+                    <strong>Demo Features:</strong> Full factor rate range (1.15x - 1.49x), all deal types, 
+                    complete portfolio simulation, real-time tracking, and both investment approaches available.
                   </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Real Mode Configuration */}
+        {viewMode === 'real' && userInvestmentApproach && (
+          <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+            <CardHeader>
+              <CardTitle className="text-green-800 flex items-center">
+                <Target className="w-5 h-5 mr-2" />
+                Your Personalized Investment Setup
+              </CardTitle>
+              <p className="text-sm text-green-600">
+                Based on your selected parameters and preferences
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-white p-4 rounded-lg border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Investment Amount</h4>
+                  <p className="text-2xl font-bold text-green-600">${investmentAmount[0].toLocaleString()}</p>
+                </div>
+                <div className="bg-white p-4 rounded-lg border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Factor Rate Range</h4>
+                  <p className="text-lg font-bold text-blue-600">{factorRateRange[0]}x - {factorRateRange[1]}x</p>
+                </div>
+                <div className="bg-white p-4 rounded-lg border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Approach</h4>
+                  <p className="text-lg font-bold text-purple-600">
+                    {userInvestmentApproach === 'direct' ? 'Direct Deals' : 'InvestoBlend™'}
+                  </p>
+                </div>
+              </div>
+              
+              <div className="mt-4 bg-green-100 p-4 rounded-lg">
+                <h4 className="font-semibold text-green-800 mb-2">Expected Outcomes</h4>
+                <div className="text-sm text-green-700 space-y-1">
+                  {userInvestmentApproach === 'direct' ? (
+                    <>
+                      <p>• Monthly potential: <strong>${((investmentAmount[0] * 0.208) / 12).toLocaleString()}</strong></p>
+                      <p>• Deal access: <strong>{investmentAmount[0] >= 25000 ? 'Multiple simultaneous' : '1 at a time'}</strong></p>
+                      <p>• Risk level: <strong>{factorRateRange[1] <= 1.30 ? 'Conservative' : factorRateRange[1] <= 1.40 ? 'Moderate' : 'Aggressive'}</strong></p>
+                    </>
+                  ) : (
+                    <>
+                      <p>• Annual target: <strong>${(investmentAmount[0] * 0.187).toLocaleString()}</strong></p>
+                      <p>• Diversification: <strong>8-12 deals automatically</strong></p>
+                      <p>• Management: <strong>10% fee included</strong></p>
+                    </>
+                  )}
                 </div>
               </div>
             </CardContent>
@@ -612,10 +895,28 @@ export default function DealDashboard() {
           <div className="mb-6">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-2xl font-bold text-brand-dark mb-2">Live Investment Opportunities</h2>
+                <div className="flex items-center space-x-3">
+                  <h2 className="text-2xl font-bold text-brand-dark mb-2">
+                    {viewMode === 'demo' ? 'Demo Investment Opportunities' : 'Live Investment Opportunities'}
+                  </h2>
+                  {viewMode === 'demo' && (
+                    <Badge variant="secondary" className="bg-purple-100 text-purple-800">
+                      Demo Mode
+                    </Badge>
+                  )}
+                  {viewMode === 'real' && (
+                    <Badge variant="secondary" className="bg-green-100 text-green-800">
+                      Real Deals
+                    </Badge>
+                  )}
+                </div>
                 <p className="text-gray-600">
-                  {demoMode ? `Filtered by factor rate: ${factorRateRange[0].toFixed(2)}x - ${factorRateRange[1].toFixed(2)}x` : 
-                   "Browse merchant cash advance deals with verified metrics"}
+                  {viewMode === 'demo' 
+                    ? "Experiencing the platform with $250,000 capacity and full deal access"
+                    : viewMode === 'real' && userInvestmentApproach
+                    ? `Filtered by your preferences: ${factorRateRange[0].toFixed(2)}x - ${factorRateRange[1].toFixed(2)}x factor rates`
+                    : "Browse merchant cash advance deals with verified metrics"
+                  }
                 </p>
               </div>
               <Button
@@ -659,7 +960,34 @@ export default function DealDashboard() {
                 );
               }
               
-              if (demoMode && filteredDeals.length === 0) {
+              if (viewMode === 'real' && !userInvestmentApproach) {
+                return (
+                  <div className="col-span-full">
+                    <Card className="border-2 border-green-200 bg-green-50">
+                      <CardContent className="p-12 text-center">
+                        <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                          <Target className="w-8 h-8 text-green-500" />
+                        </div>
+                        <h3 className="text-xl font-semibold text-green-800 mb-4">
+                          Configure Your Real Dashboard
+                        </h3>
+                        <p className="text-green-700 mb-6 max-w-md mx-auto">
+                          Set your investment parameters to see personalized deal recommendations.
+                        </p>
+                        <Button 
+                          onClick={activateRealMode}
+                          className="bg-green-600 hover:bg-green-700"
+                        >
+                          <Target className="w-4 h-4 mr-2" />
+                          Set Parameters
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </div>
+                );
+              }
+
+              if (displayDeals.length === 0) {
                 return (
                   <div className="col-span-full">
                     <Card className="border-2 border-orange-200 bg-orange-50">
@@ -677,8 +1005,8 @@ export default function DealDashboard() {
                 );
               }
               
-              return filteredDeals.map((deal, index) => {
-                const isLocked = maxDealsAllowed !== "unlimited" && index > 0;
+              return displayDeals.map((deal, index) => {
+                const isLocked = viewMode === 'real' && maxDealsAllowed !== "unlimited" && index > 0;
                 
                 return (
                   <Card 
@@ -703,7 +1031,14 @@ export default function DealDashboard() {
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div>
-                          <CardTitle className="text-lg">{deal.merchant}</CardTitle>
+                          <div className="flex items-center space-x-2">
+                            <CardTitle className="text-lg">{deal.merchant}</CardTitle>
+                            {viewMode === 'demo' && (
+                              <Badge variant="outline" className="text-purple-600 border-purple-300 text-xs">
+                                Demo
+                              </Badge>
+                            )}
+                          </div>
                           <div className="flex space-x-2 mt-2">
                             <Badge className={getIndustryColor(deal.industry)}>
                               {deal.industry}
