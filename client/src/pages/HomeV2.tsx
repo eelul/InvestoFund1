@@ -100,146 +100,153 @@ export default function HomeV2() {
 
   return (
     <div className="min-h-screen">
-      {/* 1. Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 via-cyan-600/20 to-blue-600/30"></div>
+      {/* Hero Section - Learning Focused */}
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-blue-50"></div>
         
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-400/20 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute top-32 right-20 w-48 h-48 bg-cyan-400/15 rounded-full blur-xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-blue-500/25 rounded-full blur-xl animate-pulse delay-2000"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
+        <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
           <div className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-green-500/30 text-green-100 border border-green-400/40 mb-4">
-              <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-              20.8%+ Average Returns
+            <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-800 border border-blue-200 mb-4">
+              <BookOpen className="w-4 h-4 mr-2" />
+              Learn About Alternative Investing
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent">
-              Earn 20.8%+ Returns
-            </span>
+          <h1 className="text-3xl md:text-5xl font-semibold mb-6 leading-tight text-gray-800">
+            Understanding Merchant Cash Advances
             <br />
-            <span className="bg-gradient-to-r from-cyan-200 via-blue-200 to-white bg-clip-text text-transparent">
-              with Real-World Deals
-            </span>
+            <span className="text-blue-600">A Learning Journey</span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed max-w-4xl mx-auto">
-            Direct access to Merchant Cash Advance opportunities. Real businesses, verified returns, 
-            transparent processes. Start with as little as $5,000 and earn consistent profits.
+          <p className="text-lg md:text-xl mb-8 text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            Discover how businesses get funded, how investors earn returns, and what makes 
+            this alternative investment approach different from traditional options.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-green-500/25 transform hover:scale-105 transition-all duration-300"
-              onClick={handleGetStarted}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
+              onClick={() => scrollToElement('how-it-works')}
             >
-              Start Investing Today
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <BookOpen className="mr-2 w-5 h-5" />
+              Start Learning
             </Button>
             <Button 
               size="lg" 
-              className="bg-white/15 backdrop-blur-sm border-white/40 text-white hover:bg-white/25 hover:border-white/60 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              variant="outline"
+              className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3"
               onClick={handleCalculator}
             >
               <Calculator className="mr-2 w-5 h-5" />
-              Calculate Returns
+              Try Calculator
             </Button>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="text-2xl font-bold text-white mb-1">
-                <CounterAnimation target={208} suffix="%" />
-              </div>
-              <div className="text-blue-200 text-sm">Average Annual Return</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+            <div className="text-center">
+              <div className="text-2xl font-semibold text-gray-800 mb-1">Learn</div>
+              <div className="text-gray-600 text-sm">How It Works</div>
             </div>
-            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="text-2xl font-bold text-white mb-1">
-                <CounterAnimation target={90} />
-              </div>
-              <div className="text-blue-200 text-sm">Days Average Term</div>
+            <div className="text-center">
+              <div className="text-2xl font-semibold text-gray-800 mb-1">Explore</div>
+              <div className="text-gray-600 text-sm">Real Examples</div>
             </div>
-            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="text-2xl font-bold text-white mb-1">
-                <CounterAnimation target={5000} prefix="$" />
-              </div>
-              <div className="text-blue-200 text-sm">Minimum Investment</div>
+            <div className="text-center">
+              <div className="text-2xl font-semibold text-gray-800 mb-1">Calculate</div>
+              <div className="text-gray-600 text-sm">Potential Returns</div>
             </div>
-            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="text-2xl font-bold text-white mb-1">
-                <CounterAnimation target={23} />
-              </div>
-              <div className="text-blue-200 text-sm">Active Deals Today</div>
+            <div className="text-center">
+              <div className="text-2xl font-semibold text-gray-800 mb-1">Decide</div>
+              <div className="text-gray-600 text-sm">Your Next Step</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Why InvestoFund? */}
+      {/* What is a Merchant Cash Advance? */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-dark">
-              The Alternative Investment Edge
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-gray-800">
+              What is a Merchant Cash Advance?
             </h2>
-            <p className="text-xl text-brand-gray max-w-3xl mx-auto">
-              While traditional investments struggle with volatility and low returns, 
-              InvestoFund offers a proven alternative backed by real business performance.
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              A simple way for businesses to get funding based on their future sales, 
+              and how investors can participate in this growing market.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow border-2 border-red-200">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-red-600 transform rotate-180" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800">For Business Owners</h3>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-blue-600 font-semibold text-sm">1</span>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Quick Access to Capital</p>
+                    <p className="text-gray-600 text-sm">Get funding in 24-48 hours instead of waiting weeks for bank loans</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-red-700">Traditional Markets</h3>
-                <ul className="text-sm text-red-600 space-y-1">
-                  <li>• 6-8% average returns</li>
-                  <li>• High volatility</li>
-                  <li>• Complex regulations</li>
-                  <li>• No direct control</li>
-                </ul>
-              </CardContent>
-            </Card>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-blue-600 font-semibold text-sm">2</span>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Flexible Repayment</p>
+                    <p className="text-gray-600 text-sm">Repay based on daily sales - slower sales mean smaller payments</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-blue-600 font-semibold text-sm">3</span>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">No Collateral Required</p>
+                    <p className="text-gray-600 text-sm">Based on business performance, not personal assets</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             
-            <Card className="text-center hover:shadow-lg transition-shadow border-2 border-green-200 bg-green-50">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Target className="w-8 h-8 text-green-600" />
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800">For Investors</h3>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-green-600 font-semibold text-sm">1</span>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Steady Returns</p>
+                    <p className="text-gray-600 text-sm">Earn returns as businesses repay their advances over time</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-green-700">InvestoFund MCAs</h3>
-                <ul className="text-sm text-green-600 space-y-1">
-                  <li>• 20.8%+ average returns</li>
-                  <li>• Predictable outcomes</li>
-                  <li>• Direct business backing</li>
-                  <li>• Full transparency</li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            <Card className="text-center hover:shadow-lg transition-shadow border-2 border-gray-200">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Building className="w-8 h-8 text-gray-600" />
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-green-600 font-semibold text-sm">2</span>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Direct Business Impact</p>
+                    <p className="text-gray-600 text-sm">Your investment directly helps real businesses grow and succeed</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-700">Bank CDs</h3>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• 2-4% typical returns</li>
-                  <li>• Long lock-up periods</li>
-                  <li>• Inflation risk</li>
-                  <li>• Limited growth</li>
-                </ul>
-              </CardContent>
-            </Card>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-green-600 font-semibold text-sm">3</span>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">Alternative to Traditional Markets</p>
+                    <p className="text-gray-600 text-sm">Diversify beyond stocks and bonds with business-backed investments</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
