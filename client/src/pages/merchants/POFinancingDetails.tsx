@@ -1,3 +1,4 @@
+import { scrollToElement } from '@/lib/scrollUtils';
 import { CheckCircle, Clock, ArrowRight, ShoppingCart, DollarSign, Shield } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -47,7 +48,7 @@ export default function POFinancingDetails() {
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-pink-500/25 transform hover:scale-105 transition-all duration-300"
-                onClick={() => document.getElementById('apply-now')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToElement('apply-now')}
               >
                 Get P.O. Financing
               </Button>

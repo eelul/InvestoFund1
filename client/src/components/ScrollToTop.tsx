@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
+import { scrollToElement, scrollToTop } from '@/lib/scrollUtils';
 
 export default function ScrollToTop() {
   const [location] = useLocation();
@@ -9,16 +10,14 @@ export default function ScrollToTop() {
     const hash = window.location.hash;
     
     if (hash) {
-      // Small delay to ensure the page has rendered
+      // Small delay to ensure the page has rendered and components are mounted
       setTimeout(() => {
-        const element = document.getElementById(hash.substring(1));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+        const targetId = hash.substring(1);
+        scrollToElement(targetId, 100); // Use utility function with 100px offset
+      }, 150);
     } else {
-      // No hash, scroll to top
-      window.scrollTo(0, 0);
+      // No hash, scroll to top immediately for all page changes
+      scrollToTop();
     }
   }, [location]);
 

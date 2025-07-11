@@ -193,6 +193,17 @@
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Account for fixed headers when navigating to anchors */
+}
+
+/* Force scroll to top for page transitions */
+body {
+  scroll-behavior: auto; /* Override for instant page transitions */
+}
+
+/* Ensure all anchor targets have proper spacing */
+section[id], div[id] {
+  scroll-margin-top: 100px;
 }
 
 /* Enhanced hover effects */

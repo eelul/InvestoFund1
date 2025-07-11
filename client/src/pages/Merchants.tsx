@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import EnhancedMerchantApplicationForm from "@/components/forms/EnhancedMerchantApplicationForm";
+import { scrollToElement } from "@/lib/scrollUtils";
 
 export default function Merchants() {
   return (
@@ -54,7 +55,7 @@ export default function Merchants() {
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-7 py-3.5 text-base font-semibold shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border-0"
-                onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToElement('apply-funding')}
               >
                 <span className="flex items-center">
                   Get Funded Today
@@ -67,7 +68,7 @@ export default function Merchants() {
               <Button 
                 size="lg" 
                 className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/40 px-7 py-3.5 text-base font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => document.getElementById('financing-solutions')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToElement('financing-solutions')}
               >
                 <span className="flex items-center">
                   Explore Solutions
@@ -159,7 +160,7 @@ export default function Merchants() {
                         </Button>
                         <Button 
                           className="px-6 bg-green-600 hover:bg-green-700 text-white"
-                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                          onClick={() => scrollToElement('apply-funding')}
                         >
                           Apply
                         </Button>
@@ -204,7 +205,7 @@ export default function Merchants() {
                         </Button>
                         <Button 
                           className="px-6 bg-green-600 hover:bg-green-700 text-white"
-                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                          onClick={() => scrollToElement('apply-funding')}
                         >
                           Apply
                         </Button>
@@ -249,7 +250,7 @@ export default function Merchants() {
                         </Button>
                         <Button 
                           className="px-6 bg-green-600 hover:bg-green-700 text-white"
-                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                          onClick={() => scrollToElement('apply-funding')}
                         >
                           Apply
                         </Button>
@@ -294,7 +295,7 @@ export default function Merchants() {
                         </Button>
                         <Button 
                           className="px-6 bg-green-600 hover:bg-green-700 text-white"
-                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                          onClick={() => scrollToElement('apply-funding')}
                         >
                           Apply
                         </Button>
@@ -339,7 +340,7 @@ export default function Merchants() {
                         </Button>
                         <Button 
                           className="px-6 bg-green-600 hover:bg-green-700 text-white"
-                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                          onClick={() => scrollToElement('apply-funding')}
                         >
                           Apply
                         </Button>
@@ -384,7 +385,7 @@ export default function Merchants() {
                         </Button>
                         <Button 
                           className="px-6 bg-green-600 hover:bg-green-700 text-white"
-                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                          onClick={() => scrollToElement('apply-funding')}
                         >
                           Apply
                         </Button>
@@ -429,7 +430,7 @@ export default function Merchants() {
                         </Button>
                         <Button 
                           className="px-6 bg-green-600 hover:bg-green-700 text-white"
-                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                          onClick={() => scrollToElement('apply-funding')}
                         >
                           Apply
                         </Button>
@@ -474,7 +475,7 @@ export default function Merchants() {
                         </Button>
                         <Button 
                           className="px-6 bg-green-600 hover:bg-green-700 text-white"
-                          onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                          onClick={() => scrollToElement('apply-funding')}
                         >
                           Apply
                         </Button>
@@ -492,7 +493,7 @@ export default function Merchants() {
                     <Button 
                       size="lg" 
                       className="bg-white text-brand-blue hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
-                      onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() => scrollToElement('apply-funding')}
                     >
                       Apply Now
                     </Button>
@@ -500,7 +501,7 @@ export default function Merchants() {
                       size="lg" 
                       variant="outline" 
                       className="border-white text-white hover:bg-white hover:text-brand-blue px-8 py-4 text-lg font-semibold"
-                      onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() => scrollToElement('apply-funding')}
                     >
                       Get Free Consultation
                     </Button>
@@ -585,7 +586,7 @@ export default function Merchants() {
                   <Button 
                     size="lg" 
                     className="bg-brand-blue hover:bg-brand-dark text-white px-8 py-4 text-lg"
-                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToElement('apply-funding')}
                   >
                     Get Started with Any Solution →
                   </Button>
@@ -665,7 +666,7 @@ export default function Merchants() {
                   <Button 
                     size="sm" 
                     className="bg-orange-500 hover:bg-orange-600 text-white"
-                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToElement('apply-funding')}
                   >
                     Get Funded Now
                   </Button>
@@ -682,7 +683,7 @@ export default function Merchants() {
                   <Button 
                     size="sm" 
                     className="bg-red-500 hover:bg-red-600 text-white"
-                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToElement('apply-funding')}
                   >
                     Get Funded Now
                   </Button>
@@ -699,7 +700,7 @@ export default function Merchants() {
                   <Button 
                     size="sm" 
                     className="bg-blue-500 hover:bg-blue-600 text-white"
-                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToElement('apply-funding')}
                   >
                     Get Funded Now
                   </Button>
@@ -716,7 +717,7 @@ export default function Merchants() {
                   <Button 
                     size="sm" 
                     className="bg-yellow-500 hover:bg-yellow-600 text-white"
-                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToElement('apply-funding')}
                   >
                     Get Funded Now
                   </Button>
@@ -733,7 +734,7 @@ export default function Merchants() {
                   <Button 
                     size="sm" 
                     className="bg-green-500 hover:bg-green-600 text-white"
-                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToElement('apply-funding')}
                   >
                     Get Funded Now
                   </Button>
@@ -750,7 +751,7 @@ export default function Merchants() {
                   <Button 
                     size="sm" 
                     className="bg-purple-500 hover:bg-purple-600 text-white"
-                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToElement('apply-funding')}
                   >
                     Get Funded Now
                   </Button>
@@ -767,7 +768,7 @@ export default function Merchants() {
                   <Button 
                     size="sm" 
                     className="bg-pink-500 hover:bg-pink-600 text-white"
-                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToElement('apply-funding')}
                   >
                     Get Funded Now
                   </Button>
@@ -784,7 +785,7 @@ export default function Merchants() {
                   <Button 
                     size="sm" 
                     className="bg-indigo-500 hover:bg-indigo-600 text-white"
-                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToElement('apply-funding')}
                   >
                     Get Funded Now
                   </Button>
@@ -801,7 +802,7 @@ export default function Merchants() {
                   <Button 
                     size="sm" 
                     className="bg-teal-500 hover:bg-teal-600 text-white"
-                    onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToElement('apply-funding')}
                   >
                     Get Funded Now
                   </Button>
@@ -816,7 +817,7 @@ export default function Merchants() {
               <Button 
                 size="lg" 
                 className="hover:bg-primary/90 h-11 rounded-md from-brand-blue to-brand-teal hover:from-brand-dark hover:to-brand-blue px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 bg-[#15b8a6] text-[#ffffff]"
-                onClick={() => document.getElementById('apply-funding')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToElement('apply-funding')}
               >
                 Apply for Funding Today →
               </Button>

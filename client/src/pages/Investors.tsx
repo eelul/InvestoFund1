@@ -5,6 +5,7 @@ import InvestorOnboardingForm from "@/components/forms/InvestorOnboardingForm";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import FeatureCard from "@/components/FeatureCard";
 import { Link } from "wouter";
+import { scrollToElement } from "@/lib/scrollUtils";
 
 export default function Investors() {
   return (
@@ -38,7 +39,7 @@ export default function Investors() {
               </Link>
               <Button 
                 className="bg-gradient-to-r from-brand-blue to-brand-teal hover:from-brand-dark hover:to-brand-blue text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => document.getElementById('start-investing')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToElement('start-investing')}
               >
                 <Users className="w-5 h-5 mr-2" />
                 Start Investing Today
