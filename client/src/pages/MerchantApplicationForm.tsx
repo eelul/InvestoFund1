@@ -65,8 +65,15 @@ export default function MerchantApplicationForm() {
         setPassedInvestoScore(parseInt(urlParams.get('investoScore')!));
       }
       
-      // Update progress after autofill
-      setTimeout(() => updateProgress(), 100);
+      // Update progress after autofill with updated form data
+      setTimeout(() => {
+        // Manually calculate progress with the new data
+        const requiredFields = ['businessName', 'industry', 'monthlyRevenue', 'timeInBusiness', 'requestedAmount', 'contactName', 'email', 'phone'];
+        const updatedFormData = { ...formData, ...paramData };
+        const filledFields = requiredFields.filter(field => updatedFormData[field as keyof FormData]?.toString().trim() !== '');
+        const newProgress = Math.round((filledFields.length / requiredFields.length) * 100);
+        setProgress(newProgress);
+      }, 200);
       
       // Show success toast
       toast({
@@ -92,7 +99,10 @@ export default function MerchantApplicationForm() {
 
   const updateProgress = () => {
     const requiredFields = ['businessName', 'industry', 'monthlyRevenue', 'timeInBusiness', 'requestedAmount', 'contactName', 'email', 'phone'];
-    const filledFields = requiredFields.filter(field => formData[field as keyof FormData].trim() !== '');
+    const filledFields = requiredFields.filter(field => {
+      const value = formData[field as keyof FormData];
+      return value && value.toString().trim() !== '';
+    });
     const newProgress = Math.round((filledFields.length / requiredFields.length) * 100);
     setProgress(newProgress);
   };
@@ -232,7 +242,10 @@ export default function MerchantApplicationForm() {
             </div>
             <Progress value={progress} className="h-3" />
             <p className="text-xs text-brand-gray mt-2">
-              {progress < 100 ? "Complete all required fields to submit" : "Ready to submit!"}
+              {autoFilledFromScore && progress > 0 ? 
+                `${progress < 100 ? "Complete remaining contact information to submit" : "Ready to submit!"}` :
+                `${progress < 100 ? "Complete all required fields to submit" : "Ready to submit!"}`
+              }
             </p>
           </CardContent>
         </Card>
