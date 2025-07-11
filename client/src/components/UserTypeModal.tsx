@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Users, Building, LogIn } from "lucide-react";
 import { FaGoogle } from "react-icons/fa";
@@ -62,38 +62,38 @@ export default function UserTypeModal({ isOpen, onClose, onUserTypeSelect }: Use
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto mx-4 my-8 p-6" aria-describedby="user-type-description">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-brand-dark text-center mb-2">
             Welcome to InvestoFund
           </DialogTitle>
-          <p className="text-brand-gray text-center">
+          <DialogDescription id="user-type-description" className="text-brand-gray text-center">
             Choose your role to get started with the right experience for you
-          </p>
+          </DialogDescription>
         </DialogHeader>
         
-        <div className="space-y-6 mt-6">
+        <div className="space-y-4 mt-4">
           {/* User Type Selection */}
-          <div className="grid gap-4">
+          <div className="grid gap-3">
             {userTypes.map((type) => (
               <Button
                 key={type.id}
                 variant="outline"
-                className={`h-auto p-6 ${type.color} border-2 transition-all duration-200`}
+                className={`h-auto p-4 ${type.color} border-2 transition-all duration-200`}
                 onClick={() => handleUserTypeSelect(type.id as 'investor' | 'broker' | 'merchant')}
               >
-                <div className="flex items-center space-x-4 w-full">
-                  <div className={`p-3 rounded-full bg-white shadow-sm`}>
-                    <type.icon className={`w-6 h-6 ${type.iconColor}`} />
+                <div className="flex items-center space-x-3 w-full">
+                  <div className={`p-2 rounded-full bg-white shadow-sm`}>
+                    <type.icon className={`w-5 h-5 ${type.iconColor}`} />
                   </div>
                   <div className="flex-1 text-left">
-                    <h3 className="font-semibold text-brand-dark text-lg">
+                    <h3 className="font-semibold text-brand-dark text-base">
                       {type.title}
                     </h3>
                     <p className="text-sm font-medium text-brand-gray mb-1">
                       {type.slogan}
                     </p>
-                    <p className="text-xs text-brand-gray">
+                    <p className="text-xs text-brand-gray leading-tight">
                       {type.description}
                     </p>
                   </div>
@@ -113,10 +113,10 @@ export default function UserTypeModal({ isOpen, onClose, onUserTypeSelect }: Use
           </div>
 
           {/* Sign In Options */}
-          <div className="space-y-3">
+          <div className="space-y-2">
             <Button
               variant="outline"
-              className="w-full h-12 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white"
+              className="w-full h-10 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white"
               onClick={handleSignIn}
             >
               <LogIn className="w-4 h-4 mr-2" />
@@ -125,7 +125,7 @@ export default function UserTypeModal({ isOpen, onClose, onUserTypeSelect }: Use
             
             <Button
               variant="outline"
-              className="w-full h-12 border-red-500 text-red-600 hover:bg-red-500 hover:text-white"
+              className="w-full h-10 border-red-500 text-red-600 hover:bg-red-500 hover:text-white"
               onClick={handleGoogleSignIn}
             >
               <FaGoogle className="w-4 h-4 mr-2" />
@@ -134,7 +134,7 @@ export default function UserTypeModal({ isOpen, onClose, onUserTypeSelect }: Use
           </div>
 
           {/* Footer Note */}
-          <p className="text-xs text-center text-brand-gray mt-4">
+          <p className="text-xs text-center text-brand-gray mt-3">
             By continuing, you agree to our Terms of Service and Privacy Policy
           </p>
         </div>

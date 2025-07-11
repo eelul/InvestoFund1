@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -183,11 +183,14 @@ export default function ESignatureModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto mx-4" aria-describedby="esignature-description">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-brand-dark">
             Electronic Document Signing
           </DialogTitle>
+          <DialogDescription id="esignature-description" className="sr-only">
+            Complete the electronic signature process for {document.title}
+          </DialogDescription>
         </DialogHeader>
 
         {/* Progress Steps */}
