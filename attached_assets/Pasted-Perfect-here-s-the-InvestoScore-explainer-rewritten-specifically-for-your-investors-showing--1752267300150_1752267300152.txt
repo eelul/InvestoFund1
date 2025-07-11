@@ -1,0 +1,92 @@
+Perfect — here’s the **InvestoScore™ explainer rewritten specifically for your investors**, showing how it helps them make smart, confident decisions and build real, compounding income over time.
+
+This version positions the InvestoScore™ as a **trust signal**, a **risk filter**, and a way to **identify repeatable income opportunities** — ideal for your **Investor Portal**, **pitch deck**, or investor onboarding page.
+
+---
+
+## 📊 Understanding the InvestoScore™
+
+### The Core Metric Driving Deal Selection — and Investor Returns
+
+The **InvestoScore™** is the **primary underwriting signal** used by the InvestoFund platform to determine which merchants are most likely to repay efficiently, communicate clearly, and support repeat investment cycles.
+
+This score is what **investors see first** when reviewing a deal — and it serves as the **baseline indicator of deal strength, risk, and readiness**.
+
+---
+
+## ✅ Why the InvestoScore™ Matters to Investors
+
+* **Confidence to participate or pass** on a deal
+* **Risk-tier clarity** without requiring deep due diligence
+* **Insight into merchant behavior** beyond the raw numbers
+* **Alignment with fund strategy** — conservative investors can choose higher-score deals, while aggressive investors may pursue low-score/high-yield profiles
+* **Longer-term compounding** — higher scores often lead to repeatable, lower-risk reinvestment cycles with trusted merchants
+
+---
+
+## 🔍 How the Score is Calculated
+
+The InvestoScore™ is algorithmically generated and manually validated, factoring in:
+
+| Metric                   | Description                                       |
+| ------------------------ | ------------------------------------------------- |
+| 📈 Repayment Behavior    | Consistency and early repayment improve score     |
+| 🧾 Document Completeness | More verified financials = lower risk             |
+| 💬 Communication History | Responsiveness, clarity, professionalism          |
+| 💰 Cash Flow Trends      | Monthly revenue, deposit frequency, seasonality   |
+| 📊 Deal Performance      | Previous funding through InvestoFund and outcomes |
+
+Scores update in real time as new data is submitted or behavior evolves.
+
+---
+
+## 💼 How It Affects Your Portfolio
+
+### Higher-Score Merchants Typically:
+
+* Have stronger documentation
+* Attract more contributor bids
+* Get funded faster
+* Have **higher reinvestment potential**
+* Qualify for larger and longer-term offers over time
+
+### Lower-Score Merchants:
+
+* May offer higher yield
+* Are generally higher risk
+* Require stronger justification or special notes from underwriting
+
+This **score-based approach** gives investors the ability to build a **diversified capital portfolio** around measurable performance indicators.
+
+---
+
+## 💸 Real Income, Repeatable Results
+
+Many of the top-performing contributors on the InvestoFund platform fund:
+
+* High-Score Merchants on a repeat cycle
+* Deals with 30–180 day returns and clear payback logic
+* Merchants who’ve graduated into larger tranches based on strong scores
+
+This creates **compounding income cycles** from merchants with proven ability to repay and grow — not just one-time gains from riskier plays.
+
+---
+
+## 📞 Invest with Intelligence — Ask About Score Logic
+
+Want to understand the scoring tiers?
+Need help navigating high-score vs. high-yield profiles?
+
+Connect with a deal advisor to:
+
+* View score-based merchant tiers
+* Set preferences for your funding profile
+* Review real-world repayment outcomes by score class
+* Get early access to high-score opportunities
+
+📧 Email: **[investor@investofund.com](mailto:investor@investofund.com)**
+📞 Schedule a session: **\[Speak to an Advisor]**
+
+---
+
+Would you like this built into a **live dashboard widget**, **Replit investor portal**, or stylized PDF for capital partners? I can mock it up next.

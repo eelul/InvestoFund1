@@ -28,6 +28,7 @@ import {
   BookOpen,
   Calculator
 } from "lucide-react";
+import { Link } from "wouter";
 import { scrollToElement } from "@/lib/scrollUtils";
 
 interface CounterAnimationProps {
@@ -141,13 +142,14 @@ export default function MerchantDashboardLearnMore() {
               >
                 Funding Options
               </Button>
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => scrollToElement('investoscore')}
-              >
-                InvestoScore™
-              </Button>
+              <Link href="/investoscore">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                >
+                  InvestoScore™
+                </Button>
+              </Link>
               <Button 
                 size="sm"
                 className="bg-brand-blue hover:bg-brand-blue-light"
