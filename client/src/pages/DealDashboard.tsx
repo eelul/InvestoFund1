@@ -428,7 +428,7 @@ export default function DealDashboard() {
               className="flex items-center space-x-2"
             >
               <Play className="w-4 h-4" />
-              <span>Demo ($250K)</span>
+              <span>Demo (${Math.round(investmentAmount[0] / 1000)}K)</span>
             </Button>
           </div>
           </div>
@@ -792,7 +792,7 @@ export default function DealDashboard() {
             <CardHeader>
               <CardTitle className="text-purple-800 flex items-center">
                 <Play className="w-5 h-5 mr-2" />
-                Demo Mode: $250,000 Investment Simulation
+                Demo Mode: ${investmentAmount[0].toLocaleString()} Investment Simulation
               </CardTitle>
               <p className="text-sm text-purple-600">
                 Experience the full platform with prefilled settings and live deal simulations
@@ -804,10 +804,10 @@ export default function DealDashboard() {
                   <h4 className="font-semibold text-gray-900">Option 1: Direct Deal Participation</h4>
                   <div className="bg-white p-4 rounded-lg border">
                     <ul className="text-sm space-y-2">
-                      <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Investment: $250,000</li>
-                      <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Access: Multiple deals simultaneously</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Investment: ${investmentAmount[0].toLocaleString()}</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Access: {investmentAmount[0] >= 25000 ? 'Multiple deals simultaneously' : '1 deal at a time'}</li>
                       <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Expected Returns: 20.8%+ per deal</li>
-                      <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Monthly Potential: $4,333</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Monthly Potential: ${((investmentAmount[0] * 0.208) / 12).toLocaleString()}</li>
                     </ul>
                   </div>
                 </div>
@@ -816,10 +816,10 @@ export default function DealDashboard() {
                   <h4 className="font-semibold text-gray-900">Option 2: InvestoBlend™ Portfolio</h4>
                   <div className="bg-white p-4 rounded-lg border">
                     <ul className="text-sm space-y-2">
-                      <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Investment: $250,000</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Investment: ${investmentAmount[0].toLocaleString()}</li>
                       <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Diversification: 8-12 deals automatically</li>
                       <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Target Return: 18.7% annually</li>
-                      <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Annual Target: $46,750</li>
+                      <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Annual Target: ${(investmentAmount[0] * 0.187).toLocaleString()}</li>
                     </ul>
                   </div>
                 </div>
@@ -911,7 +911,7 @@ export default function DealDashboard() {
                 </div>
                 <p className="text-gray-600">
                   {viewMode === 'demo' 
-                    ? "Experiencing the platform with $250,000 capacity and full deal access"
+                    ? `Experiencing the platform with ${investmentAmount[0].toLocaleString()} capacity and full deal access`
                     : viewMode === 'real' && userInvestmentApproach
                     ? `Filtered by your preferences: ${factorRateRange[0].toFixed(2)}x - ${factorRateRange[1].toFixed(2)}x factor rates`
                     : "Browse merchant cash advance deals with verified metrics"
