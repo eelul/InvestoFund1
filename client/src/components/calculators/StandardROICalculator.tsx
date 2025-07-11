@@ -113,7 +113,7 @@ export default function StandardROICalculator() {
                 <div className="flex justify-between text-sm text-brand-gray mt-1">
                   <span>25</span>
                   <span className="font-bold text-brand-blue">{termDays}</span>
-                  <span>540</span>
+                  <span>18 months</span>
                 </div>
               </div>
             </div>

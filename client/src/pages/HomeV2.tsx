@@ -285,7 +285,7 @@ export default function HomeV2() {
                   step: 3,
                   icon: RefreshCw,
                   title: "Business Repays with Factor",
-                  description: "Merchants repay based on agreed factor rates (1.15x-1.49x) over 25-540 day terms through daily/weekly payments.",
+                  description: "Merchants repay based on agreed factor rates (1.15x-1.49x) over 25 days to 18 months terms through daily/weekly payments.",
                   color: "bg-purple-100 text-purple-600"
                 },
                 {

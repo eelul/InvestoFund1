@@ -37,7 +37,7 @@ NOW, THEREFORE, the parties agree as follows:
    b) Investment Type: [INVESTMENT_TYPE] (Direct Deal Participation or Portfolio Blend)
    c) Risk Preference: [RISK_PREFERENCE] (Factor Rate Range: [FACTOR_RATE_RANGE])
    d) Minimum Deal Term: 25 days
-   e) Maximum Deal Term: 540 days (18 months)
+   e) Maximum Deal Term: 18 months
 
 2. PROFIT SHARING TERMS
    a) Direct Deal Participation: 
