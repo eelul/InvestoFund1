@@ -1041,17 +1041,48 @@ export default function DealDashboard() {
                     )}
                     
                     <CardHeader>
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="flex items-center space-x-2">
-                            <CardTitle className="text-lg">{deal.merchant}</CardTitle>
-                            {viewMode === 'demo' && (
-                              <Badge variant="outline" className="text-purple-600 border-purple-300 text-xs">
-                                Demo
-                              </Badge>
-                            )}
+                      <div className="space-y-3">
+                        {/* First Row: Merchant Name and Return */}
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <div className="flex items-center space-x-2">
+                              <CardTitle className="text-lg">{deal.merchant}</CardTitle>
+                              {viewMode === 'demo' && (
+                                <Badge variant="outline" className="text-purple-600 border-purple-300 text-xs">
+                                  Demo
+                                </Badge>
+                              )}
+                            </div>
                           </div>
-                          <div className="flex space-x-2 mt-2">
+                          <div className="text-right">
+                            <p className="text-sm text-gray-600">Estimated Return</p>
+                            <p className="text-xl font-bold text-green-600">
+                              {deal.estimated_return?.toFixed(1)}%
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Second Row: InvestoScore */}
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                            <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-indigo-50 px-3 py-2 rounded-lg border border-blue-200">
+                              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                              <span className="text-sm font-medium text-blue-800">InvestoScore™</span>
+                              <span className="text-lg font-bold text-blue-900">{deal.investo_score}</span>
+                              <span className="text-sm text-blue-600">/850</span>
+                            </div>
+                            <div className={`px-2 py-1 rounded-full text-xs font-medium ${
+                              deal.investo_score >= 750 ? 'bg-green-100 text-green-800' :
+                              deal.investo_score >= 650 ? 'bg-blue-100 text-blue-800' :
+                              deal.investo_score >= 550 ? 'bg-yellow-100 text-yellow-800' :
+                              'bg-red-100 text-red-800'
+                            }`}>
+                              {deal.investo_score >= 750 ? 'Excellent' :
+                               deal.investo_score >= 650 ? 'Good' :
+                               deal.investo_score >= 550 ? 'Fair' : 'Needs Review'}
+                            </div>
+                          </div>
+                          <div className="flex space-x-2">
                             <Badge className={getIndustryColor(deal.industry)}>
                               {deal.industry}
                             </Badge>
@@ -1061,12 +1092,6 @@ export default function DealDashboard() {
                               </Badge>
                             )}
                           </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-sm text-gray-600">Estimated Return</p>
-                          <p className="text-xl font-bold text-green-600">
-                            {deal.estimated_return?.toFixed(1)}%
-                          </p>
                         </div>
                       </div>
                     </CardHeader>
@@ -1121,8 +1146,8 @@ export default function DealDashboard() {
                             <span>${deal.monthly_revenue.toLocaleString()}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span>InvestoScore™:</span>
-                            <span className="font-medium">{deal.investo_score}/850</span>
+                            <span>Time in Business:</span>
+                            <span className="font-medium">{deal.time_in_business} months</span>
                           </div>
                         </div>
                       )}
