@@ -153,7 +153,7 @@ export default function MerchantApplicationForm() {
           <h1 className="text-3xl font-bold text-brand-dark mb-2">5-Minute Business Funding Application</h1>
           <p className="text-brand-gray">Get pre-approved for $2,000-$2,000,000 in merchant cash advances</p>
           <Badge variant="secondary" className="mt-2 bg-brand-teal text-white">
-            Grok v1 Enhanced
+            Advanced Platform
           </Badge>
         </div>
 

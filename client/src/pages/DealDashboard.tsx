@@ -399,7 +399,7 @@ export default function DealDashboard() {
             <div className="flex items-center space-x-4">
             <h1 className="text-2xl font-bold text-brand-dark">Deal Dashboard</h1>
             <Badge variant="secondary" className="bg-brand-teal text-white">
-              Grok v1 Enhanced
+              Advanced Platform
             </Badge>
           </div>
           <div className="flex items-center space-x-4">

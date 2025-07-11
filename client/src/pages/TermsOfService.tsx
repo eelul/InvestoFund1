@@ -24,7 +24,7 @@ export default function TermsOfService() {
             </div>
           </div>
           <Badge variant="secondary" className="bg-brand-teal text-white">
-            Grok v1 Enhanced
+            Advanced Platform
           </Badge>
         </div>
 

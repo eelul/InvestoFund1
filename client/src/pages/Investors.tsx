@@ -33,7 +33,7 @@ export default function Investors() {
               <Link href="/deal-dashboard">
                 <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                   <Target className="w-5 h-5 mr-2" />
-                  Deal Dashboard (Grok v1)
+                  Investment Dashboard
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>

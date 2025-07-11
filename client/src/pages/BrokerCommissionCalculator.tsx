@@ -49,7 +49,7 @@ export default function BrokerCommissionCalculator() {
           <h1 className="text-3xl font-bold text-brand-dark mb-2">Broker Commission Calculator</h1>
           <p className="text-brand-gray">Boost your earnings by 37.5% with InvestoFund's deal flow</p>
           <Badge variant="secondary" className="mt-2 bg-brand-teal text-white">
-            Grok v1 Enhanced
+            Advanced Platform
           </Badge>
         </div>
 
