@@ -251,28 +251,36 @@ export default function InvestoScore() {
               </TabsTrigger>
             </TabsList>
 
-            {/* Score Display */}
-            <div className="text-center mb-8">
-              <Card className="max-w-md mx-auto bg-gradient-to-br from-purple-50 to-blue-50 border-2 border-purple-200">
-                <CardContent className="p-8">
-                  <div className="text-6xl font-bold mb-2 transition-all duration-1000">
-                    <span className={getScoreColor(currentScore)}>
-                      {animatingScore}
-                    </span>
+            {/* Compact Score Display */}
+            <div className="mb-6">
+              <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-200 rounded-lg p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="text-3xl font-bold transition-all duration-1000">
+                      <span className={getScoreColor(currentScore)}>
+                        {animatingScore}
+                      </span>
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-600">InvestoScore™ / 850</div>
+                      <Badge className={scoreBadge.color} size="sm">
+                        {scoreBadge.text}
+                      </Badge>
+                    </div>
                   </div>
-                  <div className="text-sm text-gray-600 mb-4">InvestoScore™ / 850</div>
-                  <Progress value={(currentScore / 850) * 100} className="mb-4" />
-                  <Badge className={scoreBadge.color}>
-                    {scoreBadge.text}
-                  </Badge>
-                  <p className="text-sm text-gray-600 mt-4">
-                    {currentScore >= 750 ? "Excellent funding eligibility" :
-                     currentScore >= 650 ? "Good funding options available" :
-                     currentScore >= 550 ? "Standard funding terms" :
-                     "Focus on score improvement for better terms"}
-                  </p>
-                </CardContent>
-              </Card>
+                  <div className="flex-1 max-w-xs mx-4">
+                    <Progress value={(currentScore / 850) * 100} className="h-2" />
+                  </div>
+                  <div className="text-right max-w-48">
+                    <p className="text-xs text-gray-600">
+                      {currentScore >= 750 ? "Excellent funding eligibility" :
+                       currentScore >= 650 ? "Good funding options available" :
+                       currentScore >= 550 ? "Standard funding terms" :
+                       "Focus on score improvement"}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <TabsContent value="instant">
