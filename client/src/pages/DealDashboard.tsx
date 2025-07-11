@@ -722,63 +722,76 @@ export default function DealDashboard() {
       {/* Main Dashboard Content */}
       <div className="container mx-auto space-y-8">
         {/* Portfolio Summary */}
-        <div id="portfolio-summary" className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card className="hover:shadow-lg transition-shadow duration-200 border-2 border-transparent hover:border-blue-200">
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-2 mb-3">
-                <DollarSign className="w-5 h-5 text-green-600" />
-                <div>
-                  <p className="text-sm text-gray-600">Available Balance</p>
-                  <p className="text-2xl font-bold">${investmentAmount[0].toLocaleString()}</p>
+        <div id="portfolio-summary" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100">
+            <CardContent className="p-6 h-full flex flex-col justify-between min-h-[140px]">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-green-500 bg-opacity-10 rounded-full group-hover:bg-opacity-20 transition-all duration-300">
+                  <DollarSign className="w-6 h-6 text-green-600" />
+                </div>
+                <div className="text-right flex-1 ml-3">
+                  <p className="text-sm font-medium text-green-700 mb-1">Available Balance</p>
+                  <p className="text-2xl font-bold text-green-800">${investmentAmount[0].toLocaleString()}</p>
                 </div>
               </div>
               <button 
                 onClick={() => setShowOnboarding(true)}
-                className="flex items-center space-x-1 text-xs text-gray-500 hover:text-blue-600 transition-colors cursor-pointer"
+                className="flex items-center justify-center space-x-2 w-full py-2 px-3 bg-white bg-opacity-60 hover:bg-opacity-80 rounded-lg text-xs text-green-700 hover:text-green-800 transition-all duration-200 border border-green-200 hover:border-green-300"
               >
                 <Settings className="w-3 h-3" />
-                <span>Edit Investment Amount</span>
+                <span className="font-medium">Edit Amount</span>
               </button>
             </CardContent>
           </Card>
           
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-2">
-                <TrendingUp className="w-5 h-5 text-blue-600" />
-                <div>
-                  <p className="text-sm text-gray-600">Active Investments</p>
-                  <p className="text-2xl font-bold">{activeDeals}</p>
+          <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100">
+            <CardContent className="p-6 h-full flex flex-col justify-between min-h-[140px]">
+              <div className="flex items-start justify-between">
+                <div className="p-3 bg-blue-500 bg-opacity-10 rounded-full group-hover:bg-opacity-20 transition-all duration-300">
+                  <TrendingUp className="w-6 h-6 text-blue-600" />
+                </div>
+                <div className="text-right flex-1 ml-3">
+                  <p className="text-sm font-medium text-blue-700 mb-1">Active Investments</p>
+                  <p className="text-2xl font-bold text-blue-800">{activeDeals}</p>
+                  <p className="text-xs text-blue-600 mt-1">Deals in portfolio</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-2">
-                <Target className="w-5 h-5 text-purple-600" />
-                <div>
-                  <p className="text-sm text-gray-600">Projected Returns</p>
-                  <p className="text-2xl font-bold">
+          <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-purple-50 to-violet-50 hover:from-purple-100 hover:to-violet-100">
+            <CardContent className="p-6 h-full flex flex-col justify-between min-h-[140px]">
+              <div className="flex items-start justify-between">
+                <div className="p-3 bg-purple-500 bg-opacity-10 rounded-full group-hover:bg-opacity-20 transition-all duration-300">
+                  <Target className="w-6 h-6 text-purple-600" />
+                </div>
+                <div className="text-right flex-1 ml-3">
+                  <p className="text-sm font-medium text-purple-700 mb-1">Projected Returns</p>
+                  <p className="text-2xl font-bold text-purple-800">
                     {filteredDeals.length > 0 ? 
                       `${(filteredDeals.reduce((sum, deal) => sum + (deal.estimated_return || 0), 0) / filteredDeals.length).toFixed(1)}%` 
                       : '--'
                     }
                   </p>
+                  <p className="text-xs text-purple-600 mt-1">Average estimate</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-2">
-                <Briefcase className="w-5 h-5 text-orange-600" />
-                <div>
-                  <p className="text-sm text-gray-600">Deal Access</p>
-                  <p className="text-lg font-bold">
+          <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-orange-50 to-amber-50 hover:from-orange-100 hover:to-amber-100">
+            <CardContent className="p-6 h-full flex flex-col justify-between min-h-[140px]">
+              <div className="flex items-start justify-between">
+                <div className="p-3 bg-orange-500 bg-opacity-10 rounded-full group-hover:bg-opacity-20 transition-all duration-300">
+                  <Briefcase className="w-6 h-6 text-orange-600" />
+                </div>
+                <div className="text-right flex-1 ml-3">
+                  <p className="text-sm font-medium text-orange-700 mb-1">Deal Access</p>
+                  <p className="text-2xl font-bold text-orange-800">
                     {maxDealsAllowed === "unlimited" ? "Unlimited" : `${maxDealsAllowed} Deal`}
+                  </p>
+                  <p className="text-xs text-orange-600 mt-1">
+                    {investmentAmount[0] >= 25000 ? "Full platform access" : "Upgrade for more"}
                   </p>
                 </div>
               </div>
