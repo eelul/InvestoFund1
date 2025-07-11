@@ -546,6 +546,107 @@ export default function InvestorV1Demo() {
           </Card>
         </div>
 
+        {/* InvestoScore Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <Card className="lg:col-span-2">
+            <CardHeader>
+              <CardTitle className="text-xl flex items-center space-x-2">
+                <BarChart3 className="w-5 h-5 text-purple-600" />
+                <span>Your InvestoScore™</span>
+                <Badge variant="secondary">Premium</Badge>
+              </CardTitle>
+              <p className="text-sm text-gray-600">
+                Real-time creditworthiness assessment for merchants and market insights
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="relative w-24 h-24 mx-auto mb-3">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-blue-500"></div>
+                    <div className="absolute inset-2 rounded-full bg-white flex items-center justify-center">
+                      <span className="text-2xl font-bold text-gray-800">A+</span>
+                    </div>
+                  </div>
+                  <p className="font-semibold">Credit Grade</p>
+                  <p className="text-xs text-gray-500">Excellent Rating</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="relative w-24 h-24 mx-auto mb-3">
+                    <svg className="w-24 h-24 transform -rotate-90">
+                      <circle
+                        cx="48"
+                        cy="48"
+                        r="40"
+                        stroke="#e5e7eb"
+                        strokeWidth="8"
+                        fill="none"
+                      />
+                      <circle
+                        cx="48"
+                        cy="48"
+                        r="40"
+                        stroke="#3b82f6"
+                        strokeWidth="8"
+                        fill="none"
+                        strokeDasharray={`${2 * Math.PI * 40}`}
+                        strokeDashoffset={`${2 * Math.PI * 40 * (1 - 0.92)}`}
+                        className="transition-all duration-1000"
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-lg font-bold">92</span>
+                    </div>
+                  </div>
+                  <p className="font-semibold">Risk Score</p>
+                  <p className="text-xs text-gray-500">Low Risk</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="mb-3">
+                    <div className="text-2xl font-bold text-green-600">1.18x</div>
+                    <div className="text-sm text-gray-600">Factor Rate</div>
+                  </div>
+                  <p className="font-semibold">Best Terms</p>
+                  <p className="text-xs text-gray-500">Qualified Rate</p>
+                </div>
+              </div>
+              
+              <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
+                <div className="bg-blue-50 p-3 rounded-lg">
+                  <p className="font-medium text-blue-800">Monthly Revenue</p>
+                  <p className="text-blue-600">$95,000 - $140,000</p>
+                </div>
+                <div className="bg-green-50 p-3 rounded-lg">
+                  <p className="font-medium text-green-800">Approval Rate</p>
+                  <p className="text-green-600">94% Success Rate</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Market Insights</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="text-center p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
+                <div className="text-2xl font-bold text-blue-600">23</div>
+                <p className="text-sm text-gray-600">Active Deals Today</p>
+              </div>
+              <div className="text-center p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg">
+                <div className="text-2xl font-bold text-green-600">1.32x</div>
+                <p className="text-sm text-gray-600">Average Factor Rate</p>
+              </div>
+              <div className="text-center p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg">
+                <div className="text-2xl font-bold text-purple-600">$2.1M</div>
+                <p className="text-sm text-gray-600">Funded This Week</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Demo Investment Configuration */}
         {demoMode && (
           <Card className="border-2 border-blue-200 bg-blue-50">
@@ -809,8 +910,11 @@ export default function InvestorV1Demo() {
                         <span>{deal.investorsJoined} investors joined</span>
                       </div>
                       {advancedMode && (
-                        <div className="text-xs text-gray-500">
-                          Factor: {deal.factorRate}x | Score: {deal.underwritingScore}
+                        <div className="flex items-center space-x-2 text-xs text-gray-500">
+                          <BarChart3 className="w-3 h-3 text-purple-600" />
+                          <span>InvestoScore™: {deal.underwritingScore}</span>
+                          <span>|</span>
+                          <span>Factor: {deal.factorRate}x</span>
                         </div>
                       )}
                     </div>
@@ -831,6 +935,7 @@ export default function InvestorV1Demo() {
                     <Button 
                       className="w-full bg-brand-blue hover:bg-blue-600"
                       disabled={isLocked}
+                      onClick={() => !isLocked && (window.location.href = '/fund-now')}
                     >
                       <Zap className="w-4 h-4 mr-2" />
                       Fund Now
