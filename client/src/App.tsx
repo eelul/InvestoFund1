@@ -43,6 +43,10 @@ import MerchantDashboardLearnMore from "@/pages/MerchantDashboardLearnMore";
 import MerchantDashboardLearnMoreV2 from "@/pages/MerchantDashboardLearnMoreV2";
 import FundNow from "@/pages/FundNow";
 import HomeV2 from "@/pages/HomeV2";
+import DealDashboard from "@/pages/DealDashboard";
+import MerchantApplicationForm from "@/pages/MerchantApplicationForm";
+import BrokerCommissionCalculator from "@/pages/BrokerCommissionCalculator";
+import TermsOfService from "@/pages/TermsOfService";
 
 function Router() {
   return (
@@ -72,6 +76,10 @@ function Router() {
         <Route path="/merchant-dashboard-learn-more-v2" component={MerchantDashboardLearnMoreV2} />
         <Route path="/fund-now" component={FundNow} />
         <Route path="/home-v2" component={HomeV2} />
+        <Route path="/deal-dashboard" component={DealDashboard} />
+        <Route path="/merchant-application" component={MerchantApplicationForm} />
+        <Route path="/broker-calculator" component={BrokerCommissionCalculator} />
+        <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/iso-tools" component={ISOTools} />
         <Route path="/iso-training" component={ISOTraining} />
         <Route path="/admin" component={Admin} />
